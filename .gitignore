@@ -1,6 +1,5 @@
 # build output
 dist/
-.tina/__generated__
 
 # generated types
 .astro/
