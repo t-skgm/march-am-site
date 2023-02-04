@@ -1,6 +1,7 @@
 ---
-layout: ../../layouts/BlogLayout.astro
 title: Test1
+author: march-am
+description: post for test
 draft: true
 ---
 

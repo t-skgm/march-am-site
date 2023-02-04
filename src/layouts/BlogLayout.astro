@@ -1,9 +1,13 @@
 ---
 export interface Props {
-  frontmatter: Record<string, unknown>;
+  metadata: {
+    title?: string;
+    author?: string;
+    description?: string;
+  };
 }
 
-const { frontmatter } = Astro.props;
+const { metadata } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -16,9 +20,11 @@ const { frontmatter } = Astro.props;
     <title>blog</title>
   </head>
   <body>
-    <h1>{frontmatter.title ?? "?"}</h1>
-    <h2>Post author: {frontmatter.author ?? "?"}</h2>
-    <p>{frontmatter.description ?? "?"}</p>
+    <header>
+      <h1>{metadata?.title ?? "?"}</h1>
+      <h2>Post author: {metadata?.author ?? "?"}</h2>
+      <p>{metadata?.description ?? "?"}</p>
+    </header>
     <slot />
   </body>
 </html>
