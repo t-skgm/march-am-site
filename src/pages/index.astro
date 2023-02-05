@@ -1,17 +1,17 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-import { getCollection } from "astro:content";
 import { PreactCompTest } from "../components/PreactCompTest";
 
 const blogEntries = await getCollection("blog");
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="container mx-auto pt-4">
+  <main>
 		<h1 class="text-3xl font-bold">Welcome to my site!</h1>
 
-		<PreactCompTest client:load>
+		<PreactCompTest client:visible>
 			This is clickable text
 		</PreactCompTest>
 
@@ -25,6 +25,3 @@ const blogEntries = await getCollection("blog");
     </section>
   </main>
 </Layout>
-
-<style>
-</style>
