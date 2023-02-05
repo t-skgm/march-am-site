@@ -1,0 +1,26 @@
+---
+title: "[playlist] いい感じの四つ打ち"
+postedAt: "2019-12-26T22:44:00.000+09:00"
+tags: ["apple music"]
+---
+
+[いい感じの四つ打ち (Apple Music)](https://geo.music.apple.com/jp/playlist/%E3%81%84%E3%81%84%E6%84%9F%E3%81%98%E3%81%AE%E5%9B%9B%E3%81%A4%E6%89%93%E3%81%A1/pl.u-qxylzWBsXRlkK4?mt=1&app=music&at=1000lR8X)
+
+---
+
+1. Cut Copy - Standing in the Middle of the Field \[from Haiku from Zero\]
+2. Snips - The Product (feat. William Stowe) \[from Defected Miami\]
+3. Lord Echo - The Sweetest Meditation (feat. Mara TK) \[from Harmonies\]
+4. SUPERCAR - FREE HAND \[from ANSWER\]
+5. Taylor McFerrin - So Cold in the Summer \[from Love’s Last Chance\]
+6. Spoek Mathambo - Want Ur Love (feat. Kajama & Fantasma) \[from Mzansi Beat Code\]
+7. Herbert - The Audience \[from Bodily Functions\]
+8. Heavenly Beat - Variation \[from John\]
+9. Geotic - Actually Smiling \[from Abysma\]
+10. Nathan Fake - Sunder \[from Sunder\]
+11. THE NOTWIST - Pilot(Console remix) \[from Neon Golden\]
+12. くるり - ワールズエンド・スーパーノヴァ \[from くるりの20回転\]
+13. Styrofoam - Carolyn \[from Disco Synthesizers & Daily Tranquilizers\]
+14. The Go Find - Over the Edge \[from Miami\]
+15. サカナクション - 雨は気まぐれ \[from NIGHT FISHING\]
+16. COLTECO - Don’t Need Say \[from ALBUS\]

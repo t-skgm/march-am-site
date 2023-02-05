@@ -1,10 +1,10 @@
 ---
 export interface Props {
-  metadata: {
-    title?: string;
-    author?: string;
-    description?: string;
-  };
+  metadata?: {
+    title?: string | null;
+    author?: string | null;
+    description?: string | null;
+  } | undefined;
 }
 
 const { metadata } = Astro.props;

@@ -4,5 +4,10 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [preact(), tailwind()]
+  integrations: [preact(), tailwind()],
+  vite: {
+    ssr: {
+      noExternal: ["path-to-regexp", "tinacms"]
+    }
+  }
 });

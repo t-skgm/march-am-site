@@ -1,0 +1,138 @@
+---
+title: "Best Music of 2016"
+postedAt: "2016-12-22T22:01:00.000+09:00"
+tags: ["best music", "Apple Music"]
+---
+
+![](/images/154804269994_0.png)
+
+## Best Albums of 2016
+
+- AppleMusic プレイリスト: [Best Albums in 2016](https://itunes.apple.com/jp/playlist/best-albums-of-2016/idpl.53fe4ca4eae043979b6bc2ece19ec26a)
+- 「優れているか」というより「好きか」どうかで順位
+- 1 アーティスト 1 作
+- 15 位くらいから順位は気分レベル
+- 正直全部好き
+
+---
+
+1. サニーデイ・サービス - DANCE TO YOU  
+   結成 24 年で 10th アルバム、ソロでも 17 枚くらいリリースしている曽我部恵一だが、このアルバムが個人的にオールタイムベスト。円熟したバンドの集大成でありつつも、シンプルで強くて、なにより青い。
+2. Okkervil River - Away  
+   翳りと美しさのコントラストが本当に素晴らしい。このアルバムが好きすぎて今年フォークばかり聴くことになった。
+3. Owen - The King of Whys  
+   家族ができた彼の日常とエモ。バンド活動もすべて Owen 名義のためだったといっていい完成度。
+4. Jose Galvez - jglp2  
+   全曲名曲としか言えない、宝石箱のようなアルバム。自分が好きな音楽を伝えるのに、説明よりこのアルバムを渡せばいい。
+5. I Love Your Lifestyle - We Go Way Back  
+   これも文句の付けどころがないキラキラエモインディポップ。正直ほかの Twinkle Emo がかすんでしまった。
+6. David Bowie - ★  
+   自分の死が見えている人間にこんな音楽が作れるんだろうか、若しくは見えていないと作れないんだろうか。正直聴いていて恐ろしいが、思い出してまた聴いてしまう。
+7. 青葉市子 - マホロボシヤ  
+   アコギと歌だけで、どうしてこうも色々な景色や感情が喚起されてしまうんだろうか。真っ暗な闇に浮かび上がる懐かしいような恐ろしいような情景。
+8. Crying - Beyond the Fleeting Gales  
+   ハードロックシンセポップというべきか、こんなアホなアレンジを 2016 年にやる心意気とその完成度に謎の感動。
+9. ともこ一角 - ロムエ  
+   トルネード竜巻の魅力を純化させたような、愛らしいポップソングたち。良いところしか見つからない。
+10. Cass McCombs - Mangy Love  
+    この人は毎回どこかつかめないんだけど、気が付くと聴いてしまう。参加アーティストの豪華さにも驚かされた。
+11. Snowball II - Doughnut Holes  
+    Jackson Wargo の音楽にも今年かなりハマった。最小単位のポップ。
+12. Punch Brothers - The Phosphorescent Blues  
+    フォークと室内楽の完全なる融合（フォーク寄り）、でも堅苦しくはない。
+13. Liima - ii  
+    Efterklang 周辺の外れなさ。意味わからないアレンジなのに恐ろしく聞きやすい。
+14. Aloha - Little Windows Cut Right Through  
+    全部の音が気持ちいい。
+15. Yumi Zouma - Yoncalla  
+    80s への回帰がいよいよ過渡期な年だったが、中でも消化が素晴らしかった。
+16. Giorgio Tuma - This Life Denied Me Your Love  
+    この人は本当に良い曲しか作れないんだろうか。来年の来日が楽しみすぎる。
+17. ASIAN KUNG-FU GENERATION - ソルファ  
+    このアルバム、本当にめちゃくちゃ良い。ゴッチはなんでこんなに僕らのことをわかってくれるのか。
+18. Ryley Walker - Golden Sings That Have Been Sung  
+    この人去年今年で大好きになったフォークロッカー。今作は躍動的になってまた違う一面が。
+19. The Explorers Club - Together  
+    ビーチボーイズサウンドへのあくなき探求を続けてきたバンドが、ついに完成形といっていいアルバムを作ってしまった。次作はもう本家を越えるしか…。
+20. Finnegan Shanahan & Contemporaneous - The Two Halves  
+    フォークとクラシックの完全な融合（クラシック寄り）。聞き込みが甘くてこの順位。
+21. Dylan Mondegreen - Every Little Step  
+    Shelflife のポップマエストロ、最新作もゆったりしてキラキラした時間を提供してくれるアルバムを作ってくれた。
+22. Pinegrove - Cardinal  
+    Run for Cover と Triple Crown は最近すごいな。エモとかパンクとかの括りを超えた良メロ・ジンワリアルバムがたくさん。その中でもとくにメロディに重きを置いた良いバンド。
+23. Whitney - Light Upon the Lake  
+    元 Smith Westerns という肩書きは知らない人の方が多いかも知れない。毎回前作を更新してくるのがすごい。今年のインディポップは彼らが一番盛り上がってた印象。
+24. Bent Van Looy - Pyjama Days  
+    Jason Falkner プロデュースのすごさをかみしめつつ、ベントさんのきらめくポップセンスを味わうアルバム。
+25. ミツメ - A Long Day
+26. 岡村靖幸 - 幸福
+27. Radiohead - A Moon Shaped Pool
+28. The Lemon Twigs - Do Hollywood
+29. Stephen Steinbrink - Anagrams
+30. ふくろうず - だって、あたしたちエバーグリーン
+31. Marching Band - Heart Jewel
+32. Vulfpeck - The Beautiful Game
+33. Andy Shauf The Party
+34. Nada Surf - You Know Who You are / Peaceful Ghosts
+35. Emitt Rhodes - Rainbow Ends
+36. American Football - American Football
+37. Shugo Tokumaru - TOSS
+38. The Eternals - Isn’t That Anyone
+39. Trashcan Sinatras - Wild Pendulum
+40. King Creosote - Astronaut Meets Appleman
+41. Blue House - Suppose
+42. Sioux Falls - Rot Forever
+43. OGRE YOU ASSHOLE - ハンドルを放す前に
+44. Cotton Mather - Death of the Cool
+45. GoGo Penguin - Man Made Object
+46. Look Park - Look Park
+47. Kyle Forester - Kyle Forester
+48. Wild Nothing - Life of Pause
+49. From Indian Lakes - Everything Feels Better Now
+50. Mild High Club - Skiptracing
+
+## Best Singles & EPs in 2016
+
+- AppleMusic プレイリスト: [Best Singles & EPs of 2016](https://itunes.apple.com/jp/playlist/best-singles-eps-of-2016/idpl.3446dd1f72f444bd88f159dd907305bf)
+- Best Albums との重複は避ける
+- 順位なし
+
+---
+
+- くるり - 琥珀色の街、上海蟹の朝 \[EP\]
+- サカナクション - 多分、風。
+- 坂本美雨 with CANTUS - Sing with me \[EP\]
+- シャムキャッツ - 君の町にも雨はふるのかい? \[EP\]
+- CITY BOKKA - Restart \[EP\]
+- dear student - Recollection of the Philatelist \[EP\]
+- momarmots - ジューンブライド \[EP\]
+- Poet-type.M - A Place, Dark & Dark -永遠の終わりまで YES を- \[EP\]
+- Babaganouj - Hard to Be \[EP\]
+- Carousel Casualties - Safety
+- Hazel English - Never Going Home \[EP\]
+- Hoops - Hoops \[EP\]
+
+## 個人的な 2016 年の音楽のイメージ
+
+- Bowie 死去
+- Prince 死去
+- Leonard Cohen 死去  
+  → ヤバい
+- エモリバイバル過渡期
+- フォーク流行ぼちぼち
+- プリズマイザー流行
+- シリアスより根明ポップス
+- インディークラシック浮上
+- サブスクリプション便利すぎる(が、やはり日本では流行きらない)
+- 日本は…
+  - メロコア・パンク再興
+  - 高 BPM もまだ健在
+  - 名ばかりシティポップ
+  - シンガーソングライター下火
+  - アニメ映画と劇伴の関係性深化
+  - 高すぎるアナログ再発
+  - 根の深いチケット転売問題
+
+---
+
+来年もよい音楽ライフを。

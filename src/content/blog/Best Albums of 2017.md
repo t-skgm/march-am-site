@@ -1,0 +1,113 @@
+---
+title: "Best Albums of 2017"
+postedAt: "2018-02-05T21:44:00.000+09:00"
+tags: ["best music"]
+---
+
+![](/images/170533277469_0.jpg)
+
+- [Best Albums of 2017 (Apple Music)](https://itunes.apple.com/jp/playlist/best-albums-of-2017/pl.u-EdAVmPYIXvGlP3)
+
+---
+
+### 1\. Snowball II - Flashes of Quincy \[Doughnut Records\]
+
+2017 年に一番聴いたアルバムといえばこれなので、この場所しかなかった。一番注目していたシューゲ・ノイズポップバンドの最新作として、珠玉のキャッチーメロディが詰まった作品として、Lilys の Kurt Heasley とのコラボ作として、アルバムの 3 枚の連続リリースの集大成として、もう申し分のないアルバムだった。Velocity Girl、初期 Yuck、Lilys、Superdrag はもういないけど、Snowball II は活動している…！という喜びがあった。更にポップネスを突き詰めた作品を期待してます。
+
+### 2\. BURGER NUDS - Act 2 或いは Act 3 \[UK.PROJECT\]
+
+### 3\. Hoops - Routines \[Fat Possum Records\]
+
+### 4\. Geotic - Abysma \[Ghostly International\]
+
+### 5\. Cool American - Infinite Hiatus \[Good Cheer Reocrds\]
+
+### 6\. The Wellingtons - End of the Summer \[Rock Indiana\]
+
+### 7\. Chris Price - Stop Talking \[Omnivore Recordings\]
+
+### 8\. Beach Fossils - Somersault \[Bayonet Records\]
+
+### 9\. Alvvays - Antisocialites \[Polyvinyl Record Company\]
+
+### 10\. Jay Som - Everybody Works \[Polyvinyl Record Company\]
+
+### 11\. 橋本絵莉子波多野裕文 - 橋本絵莉子波多野裕文 \[Ki/oon Music\]
+
+### 12\. Julian Lage & Chris Eldridge - Mount Royal \[Free Dirt Records‎\]
+
+### 13\. Spoon - Hot Thoughts \[Matador Records\]
+
+### 14\. Kommode - Analog Dance Music \[Brilliance Records\]
+
+### 15\. Heavenly Beat - John \[Self-release\]
+
+### 16\. カーネーション - Suburban Baroque \[日本クラウン\]
+
+### 17\. Syrup16g - delaidback \[DAIZAWA RECORDS\]
+
+### 18\. Foxygen - Hang \[Jagjaguwar\]
+
+### 19\. Bonobo - Migration \[Ninja Tune\]
+
+### 20\. シャムキャッツ - Friends Again \[TETRA RECORDS\]
+
+### 21\. Jeremy Enigk - Ghosts \[Lewis Hollow Records\]
+
+### 22\. Toro y Moi - Boo Boo \[Carpark Records\]
+
+### 23\. Ryan Power - They Sell Doomsday \[NNA Tapes\]
+
+### 24\. The Last Dinosaur - The Nothing \[Naim Records\]
+
+### 25\. Brent Cash - The New High \[Marina Records\]
+
+### 26\. haruka nakamura PIANO ENSEMBLE - 光 \[KITCHEN.LABEL\]
+
+### 27\. Phoebe Bridgers - Stranger in the Alps \[Dead Oceans\]
+
+### 28\. ふくろうず - びゅーてぃふる \[徳間ジャパン\]
+
+### 29\. Yumi Zouma - Willowbank \[Cascine\]
+
+### 30\. The Drums - Abysmal Thoughts \[Anti- Records\]
+
+### 31\. Soccer Mommy - Collection \[Fat Possum Records\]
+
+### 32\. Iron and Wine - Beast Epic \[Sub Pop / Black Cricket Recording Co.\]
+
+### 33\. Hornal - The Game Begins with the Lights Out \[Self-release\]
+
+### 34\. Cut Copy - Haiku from Zero \[Cutters Records / Astralwerks\]
+
+### 35\. Daniel Brandt - Eternal Something \[Erased Tapes Records\]
+
+### 36\. DUTCH UNCLES - Big Balloon \[Memphis Industries\]
+
+### 37\. 寺尾紗穂 - たよりないもののために \[P-VINE\]
+
+### 38\. Everything Everything - A Fever Dream \[RCA Victor / Sony Music\]
+
+### 39\. Bash & Pop - Anything Could Happen \[Fat Possum Records\]
+
+### 40\. Cloud Nothings - Life Without Sound \[Carpark Records\]
+
+### 41\. PLECTRUM - The Life Romantic \[INDIAN SUMMER\]
+
+### 42\. 柴田聡子 - 愛の休日 \[P-VINE\]
+
+### 43\. Ray Davies - Americana \[Legacy Recordings\]
+
+### 44\. Glen Campbell - Adiós \[Universal Music Enterprises\]
+
+### 45\. Sampha - Process \[Young Turks\]
+
+### 46\. Jens Lekman - Life Will See You Now \[Secretly Canadian\]
+
+### 47\. Museyroom - Sleight of Hand \[Grind Select\]
+
+### 48\. Will Stratton - Rosewood Almanac \[Bella Union\]
+
+### 49\. Tuxedo - Tuxedo II \[Stones Throw Records\]
+
+### 50\. Bing & Ruth - No Home of the Mind \[4AD\]
