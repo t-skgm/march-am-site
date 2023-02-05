@@ -1,8 +1,10 @@
 ---
-title: "30min reviewとは"
+title: 30min reviewとは
 postedAt: "2010-01-01T12:00:00.000+09:00"
-layout: ../layouts/BlogLayout.astro
+layout: ../layouts/Layout.astro
 ---
+
+# 30min review とは
 
 普段音楽とか聴いたり映画みたりしてもなにも記録を残さないので、せっかくなので感想を残そうというブログです。
 
@@ -13,13 +15,6 @@ layout: ../layouts/BlogLayout.astro
 1. 本文は 30 分以内に書き終わるようにする。
 2. 後から見直して書き換えるのは誤字脱字その他ミスのみ。内容に手を加えない。
 3. 書きたくなったら書く。
-
-現在、定期更新しているコンテンツは以下の通りです。
-
-- [今週のレコメンド](http://30minreview.tumblr.com/post/154975409149/weeklyrec)  
-  その 1 週間で気になった音楽をピックアップ、どのあたりが印象に残ったのかをメモ。Apple Music/Youtube プレイリストへのリンク付。 [#WeeklyRecommendation](http://30minreview.tumblr.com/tagged/weeklyrecommendation)
-- [Apple Music プレイリスト](http://30minreview.tumblr.com/post/154975431614/am-playlist)  
-  たまに Twitter などに貼る、レーベルやジャンル、テーマごとに作った Apple Music のプレイリスト置き場。
 
 ---
 
