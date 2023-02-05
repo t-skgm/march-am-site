@@ -2,8 +2,7 @@ import { defineConfig } from "tinacms";
 import { Blog } from "./__generated__/types";
 import dayjs from "dayjs";
 import slugify from "slugify";
-
-type OmitSysProps<T> = Omit<T, "__typename" | "_sys" | "_values">;
+import { OmitTinaSysProps } from "../src/types";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
@@ -32,7 +31,7 @@ export default defineConfig({
         ui: {
           filename: {
             slugify: (values) => {
-              const b = values as OmitSysProps<Blog>;
+              const b = values as OmitTinaSysProps<Blog>;
               const slugified = b.title ? slugify(b.title) : undefined;
               return `${dayjs(b.postedAt).format("YYYY-MM-DD")}${
                 slugified

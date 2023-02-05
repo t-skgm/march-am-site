@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { formatDate } from "../../utils/date";
+
+const blogEntries = await getCollection("blog", (entry) => !entry.data.draft);
+
+const title = 'Weblogs'
+
+---
+
+<Layout title={title}>
+  <main>
+		<h1 class="text-3xl font-bold">{title}</h1>
+		<section>
+			<h2 class="my-4">Articles</h2>
+      <ul class="grid grid-cols-1 gap-4 p-0">
+      {
+        blogEntries.map((e) => (
+          <li class="border-l-4 pl-4 py-2 list-none">
+            <a href={`/blog/${e.slug}`} class="no-underline hover:underline">
+              <div class="font-bold mb-1">{e.data.title}</div>
+              <div class="text-sm text-slate-500">posted at <time>{formatDate(e.data.postedAt)}</time></div>
+            </a>
+          </li>
+        ))
+      }
+      </ul>
+    </section>
+  </main>
+</Layout>
