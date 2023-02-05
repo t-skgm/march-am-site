@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: system-ui, sans-serif;
+  background-color: #F6F6F6;
+}
+
+@layer base {
+  h1 {
+    @apply text-slate-900;
+  }
+
+  h2 {
+    @apply font-bold text-2xl mb-3 mt-20 text-slate-900;
+  }
+
+  h3 {
+    @apply font-bold text-lg mb-3 mt-5 text-slate-900;
+  }
+
+  p {
+    @apply my-5 leading-relaxed text-slate-800 font-normal;
+  }
+
+  a {
+    @apply underline hover:no-underline text-slate-900 font-normal;
+  }
+
+  ul {
+    @apply my-5 px-5;
+  }
+
+  ol {
+    @apply list-decimal;
+    @apply my-5 px-8;
+  }
+
+  dt {
+    @apply font-bold;
+  }
+
+  article img {
+    @apply inline rounded md:max-w-lg sm:max-w-md max-w-xs my-4;
+  }
+
+  table {
+    @apply border-slate-200 border-2;
+  }
+
+  th {
+    @apply bg-slate-100 border-slate-200 border-y-2 py-2 px-5 font-semibold;
+  }
+
+  td {
+    @apply border-slate-200 border-y-2 py-2 px-5 font-normal;
+  }
+
+  p>code {
+    @apply px-2 text-slate-900 bg-slate-100 rounded-md after:content-['`'] before:content-['`'];
+  }
+
+  blockquote>p {
+    @apply rounded bg-slate-100 p-8 italic;
+  }
+}
+
+@layer components {
+  section[class="footnotes"]>h2 {
+    @apply relative w-fit mt-20 pb-10 text-slate-900;
+  }
+
+  section[class="footnotes"]>ol {
+    @apply pb-1;
+  }
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+    @apply text-sm !important;
+  }
+}
+
