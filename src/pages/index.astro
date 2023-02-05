@@ -2,13 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import { getCollection } from "astro:content";
+import { PreactCompTest } from "../components/PreactCompTest";
 const blogEntries = await getCollection("blog");
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-    <div class="card-list">
+
+		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
+		<PreactCompTest client:load>
+			This is clickable
+		</PreactCompTest>
+
+		<div class="card-list">
       {
         blogEntries.map((e) => (
           <Card body="" title={e.data.title} href={`/blog/${e.slug}`} />

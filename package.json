@@ -13,9 +13,11 @@
     "sync": "astro sync"
   },
   "dependencies": {
+    "@astrojs/preact": "^2.0.2",
     "@tinacms/cli": "^1.0.3",
     "@types/node": "^18.11.18",
     "astro": "^2.0.6",
+    "preact": "^10.11.3",
     "sass": "^1.58.0",
     "tinacms": "^1.1.5"
   }
