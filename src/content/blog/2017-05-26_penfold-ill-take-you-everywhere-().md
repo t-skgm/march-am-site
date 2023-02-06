@@ -1,7 +1,7 @@
 ---
 title: Penfold - I’ll Take You Everywhere (拙訳)
-postedAt: "2017-05-26T20:15:00.000+09:00"
-tags: ["lyrics"]
+postedAt: '2017-05-26T20:15:00.000+09:00'
+tags: ['lyrics']
 ---
 
 > I’ll Take You Everywhere

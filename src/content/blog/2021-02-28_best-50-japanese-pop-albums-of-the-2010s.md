@@ -1,14 +1,14 @@
 ---
 title: Best 50 Japanese Pop Albums of the 2010s
-postedAt: "2021-02-28T19:17:00.000+09:00"
-tags: ["best music"]
+postedAt: '2021-02-28T19:17:00.000+09:00'
+tags: ['best music']
 ---
 
-2010年から2019年にかけて日本で発売された、僕が「ポップ」だと思うアルバム…というか前回のロック編以外というテーマで選んだのでオールジャンルから、1アーティスト1枚ずつ、50枚選びました。選考根拠は僕が好きかどうかです。
+2010 年から 2019 年にかけて日本で発売された、僕が「ポップ」だと思うアルバム…というか前回のロック編以外というテーマで選んだのでオールジャンルから、1 アーティスト 1 枚ずつ、50 枚選びました。選考根拠は僕が好きかどうかです。
 
 ---
 
-<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/best-50-japanese-pop-albums-of-the-2010s/pl.u-4JoK1RDFMZjkWr?app=music&amp;at=1000lR8X"></iframe> 
+<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/best-50-japanese-pop-albums-of-the-2010s/pl.u-4JoK1RDFMZjkWr?app=music&amp;at=1000lR8X"></iframe>
 
 [Best 50 Japanese Pop Albums of the 2010s (Apple Music)](https://music.apple.com/jp/playlist/best-50-japanese-pop-albums-of-the-2010s/pl.u-4JoK1RDFMZjkWr)  
 (配信されていないアルバムが数枚あります)
@@ -38,7 +38,7 @@ tags: ["best music"]
 21. 君島大空 **“午後の反射光”** (2019)
 22. whoo **“音のない部屋の中で”** (2010)
 23. 柴田聡子 **“愛の休日”** (2017)
-24. 清竜人25 **“PROPOSE”** (2015)
+24. 清竜人 25 **“PROPOSE”** (2015)
 25. 安藤裕子 **“勘違い”** (2012)
 26. RYUTist **“柳都芸妓”** (2017)
 27. KIRINJI **“cherish”** (2019)
@@ -50,7 +50,7 @@ tags: ["best music"]
 33. 釘宮理恵 **“kokohadoko”** (2012)
 34. のあのわ **“Cry Like a Monster”** (2013)
 35. MUSEMENT **“Musement Fair”** (2016)
-36. group\_inou **“\_”** (2010)
+36. group_inou **“\_”** (2010)
 37. Lamp **“ゆめ”** (2014)
 38. □□□ **“JAPANESE COUPLE”** (2013)
 39. 古川本舗 **“SOUP”** (2013)
@@ -70,15 +70,15 @@ tags: ["best music"]
 
 ちなみに各年の内訳は以下の通り。ロック編に比べるとかなり均等になってる。
 
-| 年    | 枚数 |
-| ---- | -- |
-| 2010 | 5  |
-| 2011 | 3  |
-| 2012 | 3  |
-| 2013 | 8  |
-| 2014 | 5  |
-| 2015 | 6  |
-| 2016 | 4  |
-| 2017 | 7  |
-| 2018 | 6  |
-| 2019 | 3  |
+| 年   | 枚数 |
+| ---- | ---- |
+| 2010 | 5    |
+| 2011 | 3    |
+| 2012 | 3    |
+| 2013 | 8    |
+| 2014 | 5    |
+| 2015 | 6    |
+| 2016 | 4    |
+| 2017 | 7    |
+| 2018 | 6    |
+| 2019 | 3    |

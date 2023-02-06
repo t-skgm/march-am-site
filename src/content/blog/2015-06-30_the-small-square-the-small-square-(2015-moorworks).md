@@ -1,16 +1,16 @@
 ---
 title: The Small Square - The Small Square (2015, MOORWORKS)
-postedAt: "2015-06-30T22:36:00.000+09:00"
+postedAt: '2015-06-30T22:36:00.000+09:00'
 tags:
   [
-    "The Small Square",
-    "Paul Chastain",
-    "Velvet Crush",
-    "MOORWORKS",
-    "Power Pop",
-    "Rock",
-    "☆7",
-    "2015",
+    'The Small Square',
+    'Paul Chastain',
+    'Velvet Crush',
+    'MOORWORKS',
+    'Power Pop',
+    'Rock',
+    '☆7',
+    '2015'
   ]
 ---
 

@@ -2,25 +2,25 @@
 import '../styles/global.css'
 
 export interface Props {
-	title: string;
-	frontmatter?: any;
+  title: string
+  frontmatter?: any
 }
 
-const { title, frontmatter } = Astro.props;
+const { title, frontmatter } = Astro.props
 ---
 
 <!DOCTYPE html>
 <html lang="ja">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title ?? frontmatter?.title}</title>
-	</head>
-	<body>
-		<div class="md:container md:mx-auto md:w-4/6 px-5 my-10">
-			<slot />
-		</div>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ?? frontmatter?.title}</title>
+  </head>
+  <body>
+    <div class="md:container md:mx-auto md:w-4/6 px-5 my-10">
+      <slot />
+    </div>
+  </body>
 </html>

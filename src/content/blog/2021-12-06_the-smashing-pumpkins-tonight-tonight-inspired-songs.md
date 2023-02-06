@@ -1,16 +1,16 @@
 ---
 title: The Smashing Pumpkins "Tonight, Tonight" inspired songs
-postedAt: "2021-12-06T19:18:00.000+09:00"
-tags: ["Apple Music"]
+postedAt: '2021-12-06T19:18:00.000+09:00'
+tags: ['Apple Music']
 ---
 
 本人が言及したもの、していないものを問わず、The Smashing Pumpkins “Tonight, Tonight” っぽい要素を持つ曲をリストアップした。インスパイアされた楽曲を見る前に、この曲自体のざっくりな分解と、元ネタ楽曲を軽く見てみようと思う。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NOG3eus4ZSo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NOG3eus4ZSo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
 > The Smashing Pumpkins - **Tonight, Tonight** (from “Mellon Collie and the Infinite Sadness”, 1995)
 
-1995年にリリースされた、本記事の主役。この曲が如何に素晴らしいか、エポックメイキングだったかは他の記事に譲るとして、楽曲としての特徴を整理しておこうと思う。
+1995 年にリリースされた、本記事の主役。この曲が如何に素晴らしいか、エポックメイキングだったかは他の記事に譲るとして、楽曲としての特徴を整理しておこうと思う。
 
 1. ロールを交えたせき立てるようなスネア
 2. エモーショナルなストリングスアレンジ
@@ -21,13 +21,13 @@ tags: ["Apple Music"]
 
 次に、"元ネタ" とされている楽曲について。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fe5PaIa0SX4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fe5PaIa0SX4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
 > Generation X - **Kiss Me Deadly** (from “Generation X”, 1978)
 
-Billy Idolが結成したパンクバンドGeneration Xの楽曲で、スマパンファンからはこの曲が Tonight Tonight のいわゆる「元ネタ」とされている。
+Billy Idol が結成したパンクバンド Generation X の楽曲で、スマパンファンからはこの曲が Tonight Tonight のいわゆる「元ネタ」とされている。
 
-たしかにTonight Tonightの特徴的な要素を感じ、上で挙げた「3\. ヴァースのアルペジオフレーズ」「4\. 静動のメリハリのついた展開」はこの曲由来であると言っていいだろうと思う。
+たしかに Tonight Tonight の特徴的な要素を感じ、上で挙げた「3\. ヴァースのアルペジオフレーズ」「4\. 静動のメリハリのついた展開」はこの曲由来であると言っていいだろうと思う。
 
 以上の特徴について、 Tonight, Tonight に影響を受けた楽曲についてもどの点が影響を受けたといえるか分析してみたいと思う。
 
@@ -53,7 +53,7 @@ Billy Idolが結成したパンクバンドGeneration Xの楽曲で、スマパ�
 18. Bring Me The Horizon - **Drown** (from “That’s the Spirit”, 2014)
 19. BiSH - **オーケストラ** (from “KiLLER BiSH”, 2016)
 20. 山本彩 - **JOKER** (from “identity”, 2017)
-21. リーガルリリー - **惑星トラッシュ** (from “Cとし生けるもの”, 2021)
+21. リーガルリリー - **惑星トラッシュ** (from “C とし生けるもの”, 2021)
 
 ---
 

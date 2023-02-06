@@ -1,10 +1,10 @@
 ---
 title: Best Music of 2018 (January-June)
-postedAt: "2018-07-22T16:43:00.000+09:00"
-tags: ["best music"]
+postedAt: '2018-07-22T16:43:00.000+09:00'
+tags: ['best music']
 ---
 
-<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/best-music-of-2018-january-june/pl.u-55D6307IYDxR47?app=music&amp;at=1000lR8X"></iframe> 
+<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/best-music-of-2018-january-june/pl.u-55D6307IYDxR47?app=music&amp;at=1000lR8X"></iframe>
 
 [Best Music of 2018 (January-June) (Apple Music)](https://itunes.apple.com/jp/playlist/best-music-of-2018-january-june/pl.u-55D6307IYDxR47?mt=1&app=music&at=1000lR8X)
 
@@ -61,9 +61,9 @@ tags: ["best music"]
 
 ## メモ
 
-2018年上半期に発表されたアルバム/EPの中から好きなものを50枚選ぶなら？というテーマのプレイリスト。順番にあまり意味はない。
+2018 年上半期に発表されたアルバム/EP の中から好きなものを 50 枚選ぶなら？というテーマのプレイリスト。順番にあまり意味はない。
 
-改めて並べて去年と比較すると、ジャズっぽいのやローファイシンセポップみたいなのが増えた気がする。リバーブ多めSSW系も純増。その一方でギターポップからも逃れられない。エモはけっこう減った。新しいアーティストをちゃんと聴いてる。という感じだろうか。
+改めて並べて去年と比較すると、ジャズっぽいのやローファイシンセポップみたいなのが増えた気がする。リバーブ多め SSW 系も純増。その一方でギターポップからも逃れられない。エモはけっこう減った。新しいアーティストをちゃんと聴いてる。という感じだろうか。
 
 それぞれどういう個人的なジャンル分けで聴いてたかも最後に付録的に書いてみるので、知らないアーティストを探す手がかりにしてもらえたら嬉しいです。
 
@@ -73,71 +73,71 @@ tags: ["best music"]
 
 ### ひたすら良メロ
 
-* Bart & The Bedazzled − Blue Motel
-* bearstape − だきしめたら
-* Carb on Carb − For Ages
-* Chris Price − Dalmatian
-* Chris Richards and the Subtractions − Peaks and Valleys
-* David Myhr − Lucky Day
-* Dropkick − Longwave
-* Forth Wanderers − Forth Wanderers
-* Gin Blossoms − Mixed Reality
-* Hurry − Every Little Thought
-* Matthew Sweet − Tomorrow’s Daughter
-* Nap Eyes − I’m Bad Now
-* Linus of Hollywood − Cabin Life
-* The Love-birds − In the Lover’s Corner
-* Snail Mail − Lush
-* Stephen Steinbrink − B-Sides & Instrumentals 2012-2017
-* Tres Oui − Poised To Flourish
-* ベランダ − Anywhere You Like
+- Bart & The Bedazzled − Blue Motel
+- bearstape − だきしめたら
+- Carb on Carb − For Ages
+- Chris Price − Dalmatian
+- Chris Richards and the Subtractions − Peaks and Valleys
+- David Myhr − Lucky Day
+- Dropkick − Longwave
+- Forth Wanderers − Forth Wanderers
+- Gin Blossoms − Mixed Reality
+- Hurry − Every Little Thought
+- Matthew Sweet − Tomorrow’s Daughter
+- Nap Eyes − I’m Bad Now
+- Linus of Hollywood − Cabin Life
+- The Love-birds − In the Lover’s Corner
+- Snail Mail − Lush
+- Stephen Steinbrink − B-Sides & Instrumentals 2012-2017
+- Tres Oui − Poised To Flourish
+- ベランダ − Anywhere You Like
 
 ### 日曜の昼間にゆったり
 
-* Kevin Krauter − Toss Up
-* Major Murphy − No. 1
-* Paul Cherry − Flavour
-* Twin Shadow − Caer
+- Kevin Krauter − Toss Up
+- Major Murphy − No. 1
+- Paul Cherry − Flavour
+- Twin Shadow − Caer
 
 ### 静けさの音楽
 
-* Father John Misty − God’s Favorite Customer
-* Hovvdy − Cranberry
-* Jamison Isaak − EP1
-* Patricia Lopes & Paula Mirhan − O Feminino Em Pessoa
-* S. Carey − Hundred Acres
-* Thomas Bartlett & Nico Muhly − Peter Pears: Balinese Ceremonial Music
+- Father John Misty − God’s Favorite Customer
+- Hovvdy − Cranberry
+- Jamison Isaak − EP1
+- Patricia Lopes & Paula Mirhan − O Feminino Em Pessoa
+- S. Carey − Hundred Acres
+- Thomas Bartlett & Nico Muhly − Peter Pears: Balinese Ceremonial Music
 
 ### ビートが気持ちいい
 
-* APOGEE − Higher Deeper
-* Jamie Isaac − (04:30) Idler
-* Mom − BABY LIKE A PAPERDRIVER
-* Natalie Prass − The Future and the Past
-* Nathan Fake − Sunder
-* Talkie − Fundamental Things
-* Young Guv − 2 Sad 2 Funk
+- APOGEE − Higher Deeper
+- Jamie Isaac − (04:30) Idler
+- Mom − BABY LIKE A PAPERDRIVER
+- Natalie Prass − The Future and the Past
+- Nathan Fake − Sunder
+- Talkie − Fundamental Things
+- Young Guv − 2 Sad 2 Funk
 
 ### モダンジャズ
 
-* Julian Lage − Modern Lore
-* Kamaal Williams − The Return
-* Kiefer − Happysad
-* Ryley Walker − Deafman Glance
-* R+R=NOW − Collagically Speaking
+- Julian Lage − Modern Lore
+- Kamaal Williams − The Return
+- Kiefer − Happysad
+- Ryley Walker − Deafman Glance
+- R+R=NOW − Collagically Speaking
 
 ### 凝りすぎアレンジ
 
-* Candy Opera − 45 Revolutions Per Minute
-* colormal − merkmal
-* Palm − Rock Island
-* 国府達矢 − ロックブッダ
-* 田中ヤコブ − お湯の中のナイフ
-* VA − スロウスタート キャラクターソングアルバム Step by Step
+- Candy Opera − 45 Revolutions Per Minute
+- colormal − merkmal
+- Palm − Rock Island
+- 国府達矢 − ロックブッダ
+- 田中ヤコブ − お湯の中のナイフ
+- VA − スロウスタート キャラクターソングアルバム Step by Step
 
 ### 待たせただけある久しぶりの新譜
 
-* The Get Up Kids − Kicker
-* The Sea and Cake − Any Day
-* Stephen Malkmus − Sparkle Hard
-* Superchunk − What a Time to Be Alive
+- The Get Up Kids − Kicker
+- The Sea and Cake − Any Day
+- Stephen Malkmus − Sparkle Hard
+- Superchunk − What a Time to Be Alive

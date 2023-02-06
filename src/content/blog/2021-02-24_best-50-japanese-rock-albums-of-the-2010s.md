@@ -1,10 +1,10 @@
 ---
 title: Best 50 Japanese Rock Albums of the 2010s
-postedAt: "2021-02-24T15:03:00.000+09:00"
-tags: ["best music"]
+postedAt: '2021-02-24T15:03:00.000+09:00'
+tags: ['best music']
 ---
 
-2010年から2019年にかけて日本で発売された、僕が「ロック」だと思うジャンルのアルバムを1バンド1枚ずつ、50枚選びました。選考根拠は僕が好きかどうかです。順位はあるようなないような。
+2010 年から 2019 年にかけて日本で発売された、僕が「ロック」だと思うジャンルのアルバムを 1 バンド 1 枚ずつ、50 枚選びました。選考根拠は僕が好きかどうかです。順位はあるようなないような。
 
 [Best 50 Japanese Rock Albums of the 2010s (Apple Music)](https://music.apple.com/jp/playlist/best-50-japanese-rock-albums-of-the-2010s/pl.u-zPy1ak5IMpdaXj)  
 (かなり欠け多いのでオマケ程度)
@@ -39,7 +39,7 @@ tags: ["best music"]
 26. ボールズ **“SEASON”** (2015)
 27. ふくろうず **“テレフォン No. 1”** (2013)
 28. 真空メロウ **“アンナ＊ソンナ＊バカナ”** (2015)
-29. the band apart **“街の14景”** (2013)
+29. the band apart **“街の 14 景”** (2013)
 30. the pillows **“HORN AGAIN”** (2010)
 31. People In The Box **“Family Record”** (2010)
 32. PERIDOTS **“MY MIND WANDERS”** (2010)
@@ -50,7 +50,7 @@ tags: ["best music"]
 37. malegoat **“to face the music”** (2010)
 38. The SALOVERS **“いざ、サラバーズ!”** (2012)
 39. SHIPYARDS **“ABOUT LIGHTS”** (2014)
-40. bonobos **“23区”** (2016)
+40. bonobos **“23 区”** (2016)
 41. AS MEIAS **“AS MEIAS II”** (2010)
 42. 百々和宏 **“窓”** (2012)
 43. OGRE YOU ASSHOLE **“homely”** (2011)
@@ -66,15 +66,15 @@ tags: ["best music"]
 
 ちなみに各年の内訳は以下の通り。なぜかめっちゃ偏っている。
 
-| 年    | 枚数 |
-| ---- | -- |
-| 2010 | 11 |
-| 2011 | 4  |
-| 2012 | 4  |
-| 2013 | 4  |
-| 2014 | 4  |
-| 2015 | 3  |
-| 2016 | 9  |
-| 2017 | 6  |
-| 2018 | 4  |
-| 2019 | 0  |
+| 年   | 枚数 |
+| ---- | ---- |
+| 2010 | 11   |
+| 2011 | 4    |
+| 2012 | 4    |
+| 2013 | 4    |
+| 2014 | 4    |
+| 2015 | 3    |
+| 2016 | 9    |
+| 2017 | 6    |
+| 2018 | 4    |
+| 2019 | 0    |

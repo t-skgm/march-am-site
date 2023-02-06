@@ -1,7 +1,7 @@
 ---
-title: "[試聴] The Velvet Teen - All is Illusory (2015, Topshelf)"
-postedAt: "2015-06-23T21:32:00.000+09:00"
-tags: ["The Velvet Teen", "2015", "topshelf records", "rock", "☆7", "試聴"]
+title: '[試聴] The Velvet Teen - All is Illusory (2015, Topshelf)'
+postedAt: '2015-06-23T21:32:00.000+09:00'
+tags: ['The Velvet Teen', '2015', 'topshelf records', 'rock', '☆7', '試聴']
 ---
 
 ![image](/images/122247723764_0.jpg)

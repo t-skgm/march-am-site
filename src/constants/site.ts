@@ -1,3 +1,3 @@
 export const site = {
-  title: "march-am",
-};
+  title: 'march-am'
+}

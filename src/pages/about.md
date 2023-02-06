@@ -1,6 +1,6 @@
 ---
 title: 30min reviewとは
-postedAt: "2010-01-01T12:00:00.000+09:00"
+postedAt: '2010-01-01T12:00:00.000+09:00'
 layout: ../layouts/Layout.astro
 ---
 
@@ -18,4 +18,4 @@ layout: ../layouts/Layout.astro
 
 ---
 
-ご意見ご感想は Twitter まで：[@march_am\_](https://twitter.com/march%5Fam%5F "＠march_am_")
+ご意見ご感想は Twitter まで：[@march_am\_](https://twitter.com/march%5Fam%5F '＠march_am_')

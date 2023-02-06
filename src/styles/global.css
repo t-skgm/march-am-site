@@ -68,16 +68,16 @@ html {
 }
 
 @layer components {
-  section[class="footnotes"] > h2 {
+  section[class='footnotes'] > h2 {
     @apply relative w-fit mt-20 pb-10 text-slate-900;
   }
 
-  section[class="footnotes"] > ol {
+  section[class='footnotes'] > ol {
     @apply pb-1;
   }
 
-  code[class*="language-"],
-  pre[class*="language-"] {
+  code[class*='language-'],
+  pre[class*='language-'] {
     @apply text-sm !important;
   }
 }

@@ -1,28 +1,28 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import { formatDate } from "../../utils/date";
+import { CollectionEntry, getCollection } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+import { formatDate } from '../../utils/date'
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("blog");
+  const blogEntries = await getCollection('blog')
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry },
-  }));
+    props: { entry }
+  }))
 }
 
 export type Props = {
   entry: CollectionEntry<'blog'>
 }
 
-const { entry }  = Astro.props;
-const { Content } = await entry.render();
+const { entry } = Astro.props
+const { Content } = await entry.render()
 const { title, postedAt, tags } = entry.data
 ---
 
 <Layout title={title}>
   <header>
-    <h1 class="text-3xl font-bold">{title ?? "?"}</h1>
+    <h1 class="text-3xl font-bold">{title ?? '?'}</h1>
     <p>{formatDate(postedAt)}</p>
     {tags && <p>tags: {tags?.join(', ')}</p>}
   </header>
