@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
 import { onlyPublished } from '../../utils/collection'
 import ListItem from '../../components/ListItem.astro'
+import GlobalHeader from '../../components/GlobalHeader.astro'
 import { sortBy } from 'remeda'
 
 const blogEntries = await getCollection('blog', onlyPublished)
@@ -12,6 +13,8 @@ const title = 'Weblogs'
 ---
 
 <Layout title={title}>
+  <GlobalHeader current={'blog'} />
+
   <main>
     <h1 class="text-3xl font-bold">{title}</h1>
     <section>
