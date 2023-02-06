@@ -19,11 +19,7 @@ const title = 'Weblogs'
       <ul class="grid grid-cols-1 gap-4 p-0">
         {
           entries.map((e) => (
-            <ListItem
-              title={e.data.title}
-              dateString={e.data.postedAt}
-              href={`/blog/${e.slug}`}
-            />
+            <ListItem title={e.data.title} dateString={e.data.postedAt} href={`/blog/${e.slug}`} />
           ))
         }
       </ul>
