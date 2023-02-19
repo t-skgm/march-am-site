@@ -1,13 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { PreactCompTest } from '../components/PreactCompTest'
-import GlobalHeader from '../components/GlobalHeader.astro'
 import { site } from '../constants/site'
 ---
 
 <Layout title={site.title}>
-  <GlobalHeader current="index" />
-
   <main class="pt-5">
     <h1 class="text-3xl font-bold">The site of {site.title}</h1>
 

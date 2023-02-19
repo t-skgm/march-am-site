@@ -1,0 +1,33 @@
+---
+import logo from '/assets/logo.svg'
+---
+
+<div class="logo">
+  <a href="/">
+    <img src={logo} width="80" alt="march-am" />
+  </a>
+</div>
+
+<style>
+  .logo {
+    @apply absolute;
+    top: theme(spacing.2);
+    left: 0;
+  }
+
+  .logo img {
+    width: 55px;
+  }
+
+  @media screen(md) {
+    .logo {
+      width: 80px;
+      top: theme(spacing.16);
+      left: theme(spacing.48);
+    }
+
+    .logo img {
+      width: 80px;
+    }
+  }
+</style>
