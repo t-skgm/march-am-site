@@ -1,10 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { site } from '../constants/site'
+import ArticleList from '../components/organisms/ArticleList.astro'
 ---
 
 <Layout title={site.title}>
-  <main class="pt-5">
+  <main>
     <h1 class="text-3xl font-bold">The site of {site.title}</h1>
+    <ArticleList first={20} />
   </main>
 </Layout>

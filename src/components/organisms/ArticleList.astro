@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content'
+import { onlyPublished } from '../../utils/collection'
+import ListItem from '../molecules/ListItem.astro'
+import { sortBy, reverse, take, drop, pipe, identity } from 'remeda'
+
+export type Props = {
+  first?: number
+  skip?: number
+}
+const { first, skip } = Astro.props
+
+const blogEntries = await getCollection('blog', onlyPublished)
+
+const entries = pipe(
+  blogEntries,
+  sortBy((e) => e.data.postedAt),
+  reverse(),
+  skip != null ? drop(skip) : identity,
+  first != null ? take(first) : identity
+)
+---
+
+<ul class="grid grid-cols-1 gap-4 p-0">
+  {
+    entries.map((e) => (
+      <ListItem title={e.data.title} dateString={e.data.postedAt} href={`/blog/${e.slug}`} />
+    ))
+  }
+</ul>
+
+<style></style>

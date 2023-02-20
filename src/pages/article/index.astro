@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import ArticleList from '../../components/organisms/ArticleList.astro'
+
+const title = 'Article'
+---
+
+<Layout title={title}>
+  <main>
+    <h1>{title}</h1>
+    <section>
+      <ArticleList first={20} skip={0} />
+    </section>
+  </main>
+</Layout>
+
+<style>
+  h1 {
+    @apply text-3xl font-bold uppercase;
+    font-family: 'Lora', serif;
+  }
+</style>
