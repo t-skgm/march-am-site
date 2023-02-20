@@ -20,7 +20,7 @@ html {
   }
 
   p {
-    @apply my-5 leading-relaxed text-slate-800 font-normal;
+    @apply my-5 leading-loose text-slate-800 font-normal;
   }
 
   a {
@@ -35,6 +35,10 @@ html {
   ol {
     @apply my-5 px-8;
     @apply list-decimal;
+  }
+
+  li {
+    @apply leading-loose
   }
 
   dt {
