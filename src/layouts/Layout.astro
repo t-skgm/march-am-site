@@ -25,7 +25,6 @@ const { title, frontmatter } = Astro.props
     <Logo />
     <Header />
     <div class="content">
-      <!-- <div class="md:container md:mx-auto md:w-4/6 px-5 my-10"> -->
       <slot />
     </div>
     <Footer />
@@ -34,24 +33,28 @@ const { title, frontmatter } = Astro.props
 
 <style>
   body {
-    background: repeat-y 0 / 80px url(/assets/images/back_gr.jpg),
-      repeat-y right 0% / 60px url(/assets/images/back_or.jpg);
+    background: repeat-y 0 / 50px url(/assets/images/back_gr.jpg),
+      repeat-y right 0% / 50px url(/assets/images/back_or.jpg);
+    background-color: #fff;
   }
 
   .content {
-    @apply pl-2;
-    background: rgb(255, 255, 255, 0.75);
-    margin: 0 60px;
+    @apply px-2;
+    background-color: rgb(247, 248, 247, 0.75);
+    margin: 0 50px 0 40px;
+    padding-bottom: 10rem;
   }
 
-  @media screen(md) {
+  @media screen(lg) {
     body {
       background: repeat-y 0 / 300px url(/assets/images/back_gr.jpg),
         repeat-y right 0 url(/assets/images/back_or.jpg);
     }
 
     .content {
-      @apply container pl-80;
+      @apply px-0 my-0;
+      margin-left: 300px;
+      margin-right: 250px;
     }
   }
 </style>

@@ -1,13 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import { PreactCompTest } from '../components/PreactCompTest'
 import { site } from '../constants/site'
 ---
 
 <Layout title={site.title}>
   <main class="pt-5">
     <h1 class="text-3xl font-bold">The site of {site.title}</h1>
-
-    <PreactCompTest client:visible>This is clickable text</PreactCompTest>
   </main>
 </Layout>

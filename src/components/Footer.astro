@@ -1,8 +1,8 @@
 ---
 ---
 
-<footer class="md:px-80 py-20" aria-label="Global">
-  <div class="lg:flex lg:gap-x-12">
+<footer>
+  <div class="links">
     <a href="/" class:list={['text-sm', 'font-semibold', 'leading-6', 'text-gray-900']}>Top</a>
     <a href="/blog" class:list={['text-sm', 'font-semibold', 'leading-6', 'text-gray-900']}
       >Article</a
@@ -15,6 +15,20 @@
 
 <style>
   footer {
-    background-color: rgb(251, 243, 178, 0.8);
+    background-color: rgb(251, 243, 178, 0.7);
+  }
+
+  .links {
+    @apply p-10;
+    background-color: rgb(120, 145, 120, 0.06);
+    margin: 0 50px 0 40px;
+  }
+
+  @media screen(lg) {
+    .links {
+      @apply p-20;
+      margin-left: 300px;
+      margin-right: 250px;
+    }
   }
 </style>

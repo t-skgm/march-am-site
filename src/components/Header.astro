@@ -10,11 +10,15 @@ import search from '/assets/icons/glass.svg'
 
 <style>
   .search {
-    @apply absolute;
-    top: theme(spacing.4);
-    right: 8px;
+    @apply fixed;
+    top: theme(spacing.3);
+    right: 5px;
   }
 
   @media screen(lg) {
+    .search {
+      top: theme(spacing.4);
+      right: 11px;
+    }
   }
 </style>
