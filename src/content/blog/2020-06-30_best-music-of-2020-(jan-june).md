@@ -12,9 +12,10 @@ tags: ['best music']
 
 ## 49 Albums
 
-<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/best-music-of-2020-jan-june/pl.u-4JomMNbtMZjkWr?app=music&amp;at=1000lR8X"></iframe> 
-* [Apple Music](https://music.apple.com/jp/playlist/best-music-of-2020-jan-june/pl.u-4JomMNbtMZjkWr)
-* [Spotify](https://open.spotify.com/playlist/2B5b1yyE42WyMvWJb7K2iv?si=leUwGpsHSRqq0bxZ7ZT4uA)
+<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/best-music-of-2020-jan-june/pl.u-4JomMNbtMZjkWr?app=music&amp;at=1000lR8X"></iframe>
+
+- [Apple Music](https://music.apple.com/jp/playlist/best-music-of-2020-jan-june/pl.u-4JomMNbtMZjkWr)
+- [Spotify](https://open.spotify.com/playlist/2B5b1yyE42WyMvWJb7K2iv?si=leUwGpsHSRqq0bxZ7ZT4uA)
 
 ---
 
@@ -70,9 +71,10 @@ tags: ['best music']
 
 ## 16 EPs
 
-<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/best-singles-eps-of-2020-jan-june/pl.u-qxyl7jJTXRlkK4?app=music&amp;at=1000lR8X"></iframe> 
-* [Apple Music](https://music.apple.com/jp/playlist/best-singles-eps-of-2020-jan-june/pl.u-qxyl7jJTXRlkK4)
-* [Spotify](https://open.spotify.com/playlist/6Wk91o1Ux5jEjkDtLWeTJ0)
+<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/best-singles-eps-of-2020-jan-june/pl.u-qxyl7jJTXRlkK4?app=music&amp;at=1000lR8X"></iframe>
+
+- [Apple Music](https://music.apple.com/jp/playlist/best-singles-eps-of-2020-jan-june/pl.u-qxyl7jJTXRlkK4)
+- [Spotify](https://open.spotify.com/playlist/6Wk91o1Ux5jEjkDtLWeTJ0)
 
 ---
 

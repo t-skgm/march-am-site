@@ -24,19 +24,27 @@ const { title, postedAt, tags } = entry.data
 <Layout title={title}>
   <Main>
     <header>
-      <h1 class="text-3xl font-bold">{title ?? '?'}</h1>
-      <p>{formatDate(postedAt)}</p>
-      {tags && <p>tags: {tags?.join(', ')}</p>}
+      <h1 class="text-3xl font-bold">
+        <a href={`/article/${entry.slug}`}>{title}</a>
+      </h1>
     </header>
 
-    <article class="post-content py-2 my-2 border-y-2">
-      <Content />
-    </article>
+    <p>{formatDate(postedAt)}</p>
+    {tags && <p>tags: {tags?.join(', ')}</p>}
   </Main>
+
+  <article class="post-content py-2 my-2 border-y-2">
+    <Content />
+  </article>
 </Layout>
 
 <style is:global lang="scss">
   .post-content {
+    ul,
+    ol {
+      @apply mr-0 pr-0;
+    }
+
     ul ol,
     ol ul,
     ul ul {
