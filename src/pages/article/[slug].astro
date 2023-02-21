@@ -1,5 +1,6 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content'
+import Main from '../../components/molecules/Main.astro'
 import Layout from '../../layouts/Layout.astro'
 import { formatDate } from '../../utils/date'
 
@@ -21,13 +22,25 @@ const { title, postedAt, tags } = entry.data
 ---
 
 <Layout title={title}>
-  <header>
-    <h1 class="text-3xl font-bold">{title ?? '?'}</h1>
-    <p>{formatDate(postedAt)}</p>
-    {tags && <p>tags: {tags?.join(', ')}</p>}
-  </header>
+  <Main>
+    <header>
+      <h1 class="text-3xl font-bold">{title ?? '?'}</h1>
+      <p>{formatDate(postedAt)}</p>
+      {tags && <p>tags: {tags?.join(', ')}</p>}
+    </header>
 
-  <main class="post-content py-2 my-2 border-y-2">
-    <Content />
-  </main>
+    <article class="post-content py-2 my-2 border-y-2">
+      <Content />
+    </article>
+  </Main>
 </Layout>
+
+<style is:global lang="scss">
+  .post-content {
+    ul ol,
+    ol ul,
+    ul ul {
+      margin: 0;
+    }
+  }
+</style>

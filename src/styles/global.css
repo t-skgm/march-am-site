@@ -4,27 +4,33 @@
 
 html {
   font-family: system-ui, sans-serif;
+  font-size: 16px;
 }
 
 @layer base {
+  * {
+    @apply text-greenish;
+  }
+
   h1 {
-    @apply text-4xl text-slate-900;
+    @apply text-greenish-dark text-3xl font-bold uppercase;
+    font-family: 'Lora', serif;
   }
 
   h2 {
-    @apply font-bold text-2xl mb-3 mt-20 text-slate-900;
+    @apply font-bold text-2xl mb-3 mt-20 text-greenish-dark;
   }
 
   h3 {
-    @apply font-bold text-lg mb-3 mt-5 text-slate-900;
+    @apply font-bold text-lg mb-3 mt-5 text-greenish-dark;
   }
 
   p {
-    @apply my-5 leading-loose text-slate-800 font-normal;
+    @apply my-5 leading-loose text-greenish font-normal;
   }
 
   a {
-    @apply underline hover:no-underline text-slate-900 font-normal;
+    @apply underline hover:no-underline text-greenish-dark font-normal;
   }
 
   ul {
@@ -62,7 +68,7 @@ html {
   }
 
   p > code {
-    @apply px-2 text-slate-900 bg-slate-100 rounded-md after:content-['`'] before:content-['`'];
+    @apply px-2 text-greenish-dark bg-slate-100 rounded-md after:content-['`'] before:content-['`'];
   }
 
   blockquote > p {
@@ -72,7 +78,7 @@ html {
 
 @layer components {
   section[class='footnotes'] > h2 {
-    @apply relative w-fit mt-20 pb-10 text-slate-900;
+    @apply relative w-fit mt-20 pb-10 text-greenish-dark;
   }
 
   section[class='footnotes'] > ol {

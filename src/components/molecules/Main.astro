@@ -1,0 +1,27 @@
+---
+---
+
+<main>
+  <slot />
+</main>
+
+<style>
+  main::after {
+    @apply block mx-auto my-20;
+    content: '';
+    width: 80px;
+    height: 80px;
+    background: no-repeat 0 / 80px url(/assets/images/bird_s.png);
+  }
+
+  main {
+    @apply pl-3 pr-1 pt-4;
+  }
+
+  @media screen(lg) {
+    main {
+      @apply mx-auto;
+      max-width: 660px;
+    }
+  }
+</style>
