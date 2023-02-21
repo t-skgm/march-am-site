@@ -72,7 +72,7 @@ html {
   }
 
   blockquote > p {
-    @apply rounded bg-slate-100 p-8 italic;
+    @apply rounded bg-slate-100 p-6 italic;
   }
 }
 
