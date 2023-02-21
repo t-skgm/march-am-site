@@ -1,6 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content'
 import Main from '../../components/molecules/Main.astro'
+import { routes } from '../../constants/routes'
 import Layout from '../../layouts/Layout.astro'
 import { formatDate } from '../../utils/date'
 
@@ -25,7 +26,7 @@ const { title, postedAt, tags } = entry.data
   <Main>
     <header>
       <h1 class="text-3xl font-bold">
-        <a href={`/article/${entry.slug}`}>{title}</a>
+        <a href={routes.article.slug(entry.slug)}>{title}</a>
       </h1>
     </header>
 

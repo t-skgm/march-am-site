@@ -2,11 +2,15 @@
 import Layout from '../layouts/Layout.astro'
 import ArticleList from '../components/organisms/ArticleList.astro'
 import Main from '../components/molecules/Main.astro'
+import { routes } from '../constants/routes'
 ---
 
 <Layout title="top">
   <Main>
     <h1>Article</h1>
     <ArticleList first={20} />
+    <p>
+      <a href={routes.article.index}>&gt; View all articles</a>
+    </p>
   </Main>
 </Layout>

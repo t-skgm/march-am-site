@@ -1,0 +1,42 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import ArticleList from '../../../components/organisms/ArticleList.astro'
+import Main from '../../../components/molecules/Main.astro'
+import { getCollection } from 'astro:content'
+import { getTotalPage, onlyPublished, paginateParams } from '../../../utils/collection'
+import { routes } from '../../../constants/routes'
+import { range } from 'remeda'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('blog', onlyPublished)
+  const totalPage = getTotalPage({ totalCount: entries.length })
+  return range(1, totalPage).map((page) => ({
+    params: { page }
+  }))
+}
+
+const { page } = Astro.params
+const currentPage = Number(page ?? 1)
+
+const entries = await getCollection('blog', onlyPublished)
+
+const paginated = paginateParams({
+  totalCount: entries.length,
+  page: currentPage,
+  perPage: 20
+})
+
+const title = 'Article: All'
+---
+
+<Layout title={title}>
+  <Main>
+    <h1>{title}</h1>
+    <ArticleList first={paginated.perPage} skip={paginated.skip} />
+    <nav>
+      {paginated.prevPage && <a href={routes.article.page(paginated.prevPage)}>←</a>}
+      {currentPage} / {paginated.totalPage}
+      {paginated.nextPage && <a href={routes.article.page(paginated.nextPage)}>→</a>}
+    </nav>
+  </Main>
+</Layout>

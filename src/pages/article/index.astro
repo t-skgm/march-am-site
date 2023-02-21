@@ -2,15 +2,30 @@
 import Layout from '../../layouts/Layout.astro'
 import ArticleList from '../../components/organisms/ArticleList.astro'
 import Main from '../../components/molecules/Main.astro'
+import { getCollection } from 'astro:content'
+import { onlyPublished, paginateParams } from '../../utils/collection'
+import { routes } from '../../constants/routes'
 
-const title = 'Article'
+const entries = await getCollection('blog', onlyPublished)
+const currentPage = 1
+
+const paginated = paginateParams({
+  totalCount: entries.length,
+  page: currentPage,
+  perPage: 20
+})
+
+const title = 'Article: All'
 ---
 
 <Layout title={title}>
   <Main>
     <h1>{title}</h1>
-    <section>
-      <ArticleList first={20} skip={0} />
-    </section>
+    <ArticleList first={paginated.perPage} skip={paginated.skip} />
+    <nav>
+      {paginated.prevPage && <a href={routes.article.page(paginated.prevPage)}>←</a>}
+      {currentPage} / {paginated.totalPage}
+      {paginated.nextPage && <a href={routes.article.page(paginated.nextPage)}>→</a>}
+    </nav>
   </Main>
 </Layout>
