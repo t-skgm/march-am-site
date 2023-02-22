@@ -7,7 +7,6 @@ import Logo from '../components/molecules/Logo.astro'
 import Footer from '../components/molecules/Footer.astro'
 import GA from '../components/molecules/GoogleAnalytics.astro'
 import { site } from '../constants/site'
-import ogpImage from '/assets/ogp_base.jpg'
 
 export interface Props {
   title?: string
@@ -15,8 +14,13 @@ export interface Props {
 }
 
 const { title, frontmatter } = Astro.props
-const pageTitle = title ?? frontmatter?.title
-const withSiteTitle = pageTitle ? `${pageTitle} - ${site.title}` : site.title
+const articleTitle = title ?? frontmatter?.title
+const pageTitle = (divider: string = '-') =>
+  articleTitle ? `${articleTitle} ${divider} ${site.title}` : site.title
+
+const baseUrl = Astro.site ?? Astro.url
+const canonicalURL = new URL(Astro.url.pathname, baseUrl)
+const socialImageURL = new URL('/assets/ogp_base.jpg', baseUrl)
 ---
 
 <!DOCTYPE html>
@@ -25,16 +29,17 @@ const withSiteTitle = pageTitle ? `${pageTitle} - ${site.title}` : site.title
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <SEO
-      title={withSiteTitle}
+      title={pageTitle()}
       description={site.description}
+      canonical={canonicalURL.toString()}
       openGraph={{
         basic: {
-          image: ogpImage,
-          title: `${pageTitle} | ${site.title}`,
+          image: socialImageURL.toString(),
+          title: pageTitle('|'),
           type: 'blog'
         },
         image: {
-          alt: 'Image of this site'
+          alt: 'Image of this site, ' + site.title
         }
       }}
       twitter={{
