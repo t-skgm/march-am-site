@@ -1,0 +1,24 @@
+---
+export type Props = {
+  currentPage: number
+  paginateParams: {
+    totalPage: number
+    perPage: number
+    prevPage: number | undefined
+    nextPage: number | undefined
+  }
+  urlWithPage: (page: number) => string
+}
+
+const {
+  currentPage,
+  paginateParams: { totalPage, nextPage, prevPage },
+  urlWithPage
+} = Astro.props
+---
+
+<nav>
+  {prevPage && <a href={urlWithPage(prevPage)}>←</a>}
+  {currentPage} / {totalPage}
+  {nextPage && <a href={urlWithPage(nextPage)}>→</a>}
+</nav>

@@ -29,7 +29,7 @@ export const getTotalPage = ({
   perPage?: number
 }) => Math.round(totalCount / perPage)
 
-export const paginateParams = ({
+export const getPaginateParams = ({
   page,
   perPage = 20,
   totalCount
