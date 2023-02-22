@@ -24,7 +24,7 @@ tags: ['The Go! Team', 'The Scene Between', '2015', 'Memphis Industries', 'Rock'
 
 The Go! Team の 4th アルバム。繰り返し聴いていた前作からいつ次のアルバムが出るのかと思っていたら早 4 年、やっとの新作は期待を裏切らない出来…。実質 Ian Parton のソロユニットになっちゃったけど、むしろやりたい放題度合は高まった気がしないでもない。
 
-<iframe width="500" height="315" src="https://www.youtube.com/embed/r4LbdTf-fl0?list=PLUtfwx5Mqd09YGEh3z9_djVP9y-hF7ciz" frameborder="0"></iframe>
+<iframe width="500" height="315" class="youtube" src="https://www.youtube.com/embed/r4LbdTf-fl0?list=PLUtfwx5Mqd09YGEh3z9_djVP9y-hF7ciz" frameborder="0"></iframe>
 
 このバンド（？）はたぶん、ヒップホップだったりダンスミュージックだったりの良さをインディロックの文脈に違和感なく持ってきたのが評価ポイントなんだろうけど、まあ個人的にそんなロック史の立場なんてどうでもよくて、とにかくメロディが良いという点で大好き。
 
@@ -32,7 +32,7 @@ The Go! Team の 4th アルバム。繰り返し聴いていた前作からい�
 
 もう 1 曲目の What D'You Say?から誰もが口ずさんでしまうこと請け合いのどキャッチーメロディが次々と炸裂し、最終曲まで 37 分があっという間に終わる。日本人でも訛ってることがわかる女性ボーカルたちは曲にぴったりだし、ぐちゃぐちゃに歪んでるオケがたぶん単独で聴いても最高にポップ。ポップすぎるけどすぐ終わっちゃうので飽きもこない。
 
-<iframe width="500" height="315" src="https://www.youtube.com/embed/Cq8_dmCO_bw?list=PLUtfwx5Mqd09YGEh3z9_djVP9y-hF7ciz" frameborder="0"></iframe>
+<iframe width="500" height="315" class="youtube" src="https://www.youtube.com/embed/Cq8_dmCO_bw?list=PLUtfwx5Mqd09YGEh3z9_djVP9y-hF7ciz" frameborder="0"></iframe>
 
 求めていた The Go! Team でうれしすぎるので Vinyl も買ってしまったし、もっと話題になるべきだとおもうんだけども。
 

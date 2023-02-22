@@ -7,7 +7,7 @@ tags: ['Apple Music']
 
 本人が言及したもの、していないものを問わず、The Smashing Pumpkins “Tonight, Tonight” っぽい要素を持つ曲をリストアップした。インスパイアされた楽曲を見る前に、この曲自体のざっくりな分解と、元ネタ楽曲を軽く見てみようと思う。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NOG3eus4ZSo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<iframe width="560" height="315" class="youtube" src="https://www.youtube.com/embed/NOG3eus4ZSo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
 > The Smashing Pumpkins - **Tonight, Tonight** (from “Mellon Collie and the Infinite Sadness”, 1995)
 
@@ -22,7 +22,7 @@ tags: ['Apple Music']
 
 次に、"元ネタ" とされている楽曲について。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fe5PaIa0SX4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<iframe width="560" height="315" class="youtube" src="https://www.youtube.com/embed/fe5PaIa0SX4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
 > Generation X - **Kiss Me Deadly** (from “Generation X”, 1978)
 

@@ -38,7 +38,7 @@ Paul Chastain の活動を知っていて内容を心配している人はいな
 
 なにしろ Velvet Crush の活動が 2004 年から休止中なので、節々のメロディのクセがうれしい。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/D62_TcQLoz4" frameborder="0" allowfullscreen=""></iframe>
+<iframe width="560" height="315" class="youtube" src="https://www.youtube.com/embed/D62_TcQLoz4" frameborder="0" allowfullscreen=""></iframe>
 
 #2「Dream Faker (Open Your Heart)」の静かに盛り上がっていく展開にしびれ、#5「After the Tears」の TFC 顔負けのメロウなメロディがめっちゃいい。そして#6「Otherwhile」なんて、瑞々しいメロディにぶちのめされるし、2 番目のコーラス後のインタールードとか最高すぎる。ボートラ扱いだけど#12「Stories」も良質ポップス。
 

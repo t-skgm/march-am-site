@@ -25,7 +25,7 @@ const { title, postedAt, category, tags } = entry.data
 <Layout title={title}>
   <Main>
     <header>
-      <h1 class="text-3xl font-bold">
+      <h1 class="text-3xl font-bold break-all">
         <a href={routes.article.slug(entry.slug)}>{title}</a>
       </h1>
     </header>
@@ -52,7 +52,8 @@ const { title, postedAt, category, tags } = entry.data
       margin: 0;
     }
 
-    iframe {
+    // iframe: YouTube
+    iframe.youtube {
       max-width: 100%;
       height: 100%;
     }
