@@ -1,18 +1,22 @@
 ---
 import '../styles/global.css'
 import '@fontsource/lora'
+import { SEO } from 'astro-seo'
 import Header from '../components/molecules/Header.astro'
 import Logo from '../components/molecules/Logo.astro'
 import Footer from '../components/molecules/Footer.astro'
 import GA from '../components/molecules/GoogleAnalytics.astro'
 import { site } from '../constants/site'
+import ogpImage from '/assets/ogp_base.jpg'
 
 export interface Props {
-  title: string
+  title?: string
   frontmatter?: any
 }
 
 const { title, frontmatter } = Astro.props
+const pageTitle = title ?? frontmatter?.title
+const withSiteTitle = pageTitle ? `${pageTitle} - ${site.title}` : site.title
 ---
 
 <!DOCTYPE html>
@@ -20,9 +24,27 @@ const { title, frontmatter } = Astro.props
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title ?? frontmatter?.title} - {site.title}</title>
+    <SEO
+      title={withSiteTitle}
+      description={site.description}
+      openGraph={{
+        basic: {
+          image: ogpImage,
+          title: `${pageTitle} | ${site.title}`,
+          type: 'blog'
+        },
+        image: {
+          alt: 'Image of this site'
+        }
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        site: site.twitter.accountId
+      }}
+      extend={{
+        link: [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }]
+      }}
+    />
     <GA gtagId={process.env.GA_TRACKING_ID!} />
   </head>
   <body>
@@ -32,6 +54,7 @@ const { title, frontmatter } = Astro.props
       <slot />
     </div>
     <Footer />
+
     <style>
       body {
         background: repeat-y 0 / 50px url(/assets/images/back_gr.jpg),

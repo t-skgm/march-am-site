@@ -23,6 +23,7 @@
     "@tinacms/cli": "^1.0.8",
     "@types/node": "^18.11.18",
     "astro": "^2.0.14",
+    "astro-seo": "^0.7.1",
     "dayjs": "^1.11.7",
     "preact": "^10.11.3",
     "remeda": "^1.6.1",

@@ -2811,6 +2811,11 @@
     "eslint-visitor-keys" "^3.0.0"
     "espree" "^9.0.0"
 
+"astro-seo@^0.7.1":
+  "integrity" "sha512-8Yo1nQrl2iB5zj+VUAHrvGIck8bZ4WAmXQgJOeF9FuAZGQD5qK6DtSZaRbpBXsFfZYHA6tE8pjs3btHhLbC1zQ=="
+  "resolved" "https://registry.npmjs.org/astro-seo/-/astro-seo-0.7.1.tgz"
+  "version" "0.7.1"
+
 "astro@^2.0.14", "astro@^2.0.2", "astro@^2.0.4":
   "integrity" "sha512-BiXnHyK3rj5Uz45V5p9jRi0xtJc/zxhCxnXYAekHHF1bVvvoa3aXMwl0GZ3Bc0mxP6vPLmbRcjNKdqfyZn1B3Q=="
   "resolved" "https://registry.npmjs.org/astro/-/astro-2.0.14.tgz"
