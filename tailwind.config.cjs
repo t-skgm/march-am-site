@@ -7,7 +7,8 @@ module.exports = {
         greenish: {
           DEFAULT: '#4a4740',
           dark: '#37342f'
-        }
+        },
+        maccha: '#769171'
       }
     }
   },

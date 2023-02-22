@@ -15,10 +15,66 @@ const {
   paginateParams: { totalPage, nextPage, prevPage },
   urlWithPage
 } = Astro.props
+
+const showFirst = currentPage !== 1 && currentPage !== 2
+const showFirstEllipsis = currentPage !== 1 && currentPage !== 2 && currentPage !== 3
+const showLastEllipsis = currentPage !== totalPage && currentPage !== totalPage - 1
+const showLast = currentPage < totalPage - 1
 ---
 
 <nav>
-  {prevPage && <a href={urlWithPage(prevPage)}>←</a>}
-  {currentPage} / {totalPage}
-  {nextPage && <a href={urlWithPage(nextPage)}>→</a>}
+  {
+    showFirst && (
+      <a href={urlWithPage(1)} class="circle">
+        {1}
+      </a>
+    )
+  }
+  {showFirstEllipsis && <div class="ellipsis-line">―</div>}
+  {
+    prevPage && (
+      <a href={urlWithPage(prevPage)} class="circle">
+        {prevPage}
+      </a>
+    )
+  }
+  <div class="current circle">{currentPage}</div>
+  {
+    nextPage && (
+      <a href={urlWithPage(nextPage)} class="circle">
+        {nextPage}
+      </a>
+    )
+  }
+  {showLastEllipsis && <div class="ellipsis-line">―</div>}
+  {
+    showLast && (
+      <a href={urlWithPage(totalPage)} class="circle">
+        {totalPage}
+      </a>
+    )
+  }
 </nav>
+
+<style>
+  nav {
+    @apply flex items-center justify-center mt-20;
+    column-gap: 0.5rem;
+  }
+
+  .circle {
+    @apply box-content inline-block border no-underline
+      text-maccha hover:text-white border-maccha hover:bg-maccha
+      text-center w-12 h-12;
+    line-height: 3rem;
+    border-radius: 2.6rem;
+  }
+
+  .current {
+    @apply bg-maccha text-white;
+  }
+
+  .ellipsis-line {
+    @apply text-maccha;
+  }
+</style>

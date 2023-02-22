@@ -1,18 +1,23 @@
 ---
+import { routes } from '../../constants/routes'
 ---
 
 <footer>
   <ul class="links">
     <li>
-      <a href="/" class:list={['text-sm', 'font-semibold', 'leading-6', 'text-gray-900']}>Top</a>
+      <a href={routes.index} class:list={['text-sm', 'font-semibold', 'leading-6', 'text-gray-900']}
+        >Top</a
+      >
     </li>
     <li>
-      <a href="/article" class:list={['text-sm', 'font-semibold', 'leading-6', 'text-gray-900']}
-        >Article</a
+      <a
+        href={routes.article.index}
+        class:list={['text-sm', 'font-semibold', 'leading-6', 'text-gray-900']}>Article</a
       >
       <li>
-        <a href="/about" class:list={['text-sm', 'font-semibold', 'leading-6', 'text-gray-900']}
-          >About</a
+        <a
+          href={routes.about}
+          class:list={['text-sm', 'font-semibold', 'leading-6', 'text-gray-900']}>About</a
         >
       </li>
     </li>
