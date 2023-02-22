@@ -1,6 +1,7 @@
 ---
 title: The Small Square - The Small Square (2015, MOORWORKS)
 postedAt: '2015-06-30T22:36:00.000+09:00'
+category: Review
 tags:
   [
     'The Small Square',

@@ -1,6 +1,7 @@
 ---
 title: 'Music Label in Apple Music - Part 5: Firestation Records'
 postedAt: '2016-02-11T22:51:00.000+09:00'
+category: Review
 tags: ['MLiAM', 'Firestation Records']
 ---
 

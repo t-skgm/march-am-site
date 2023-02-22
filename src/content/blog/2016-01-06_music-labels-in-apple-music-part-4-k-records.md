@@ -1,6 +1,7 @@
 ---
 title: 'Music Labels in Apple Music - Part 4: K Records'
 postedAt: '2016-01-06T01:20:00.000+09:00'
+category: Review
 tags: ['K Records', 'MLiAM']
 ---
 

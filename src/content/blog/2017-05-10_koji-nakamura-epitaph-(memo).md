@@ -1,6 +1,7 @@
 ---
 title: koji nakamura - Epitaph (memo)
 postedAt: '2017-05-10T20:25:00.000+09:00'
+category: Review
 tags: ['memo']
 ---
 

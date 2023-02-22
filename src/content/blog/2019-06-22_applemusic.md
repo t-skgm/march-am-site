@@ -1,6 +1,7 @@
 ---
 title: AppleMusic公式のプレイリストメモ
 postedAt: '2019-06-22T11:33:00.000+09:00'
+category: Review
 tags: ['AppleMusic']
 ---
 

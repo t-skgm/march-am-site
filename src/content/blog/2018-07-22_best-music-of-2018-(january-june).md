@@ -1,6 +1,7 @@
 ---
 title: Best Music of 2018 (January-June)
 postedAt: '2018-07-22T16:43:00.000+09:00'
+category: Review
 tags: ['best music']
 ---
 

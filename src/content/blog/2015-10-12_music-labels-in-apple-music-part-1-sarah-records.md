@@ -1,6 +1,7 @@
 ---
 title: 'Music Labels in Apple Music - Part 1: Sarah Records'
 postedAt: '2015-10-12T12:18:00.000+09:00'
+category: Review
 tags: ['MLiAM', 'Sarah Records']
 ---
 

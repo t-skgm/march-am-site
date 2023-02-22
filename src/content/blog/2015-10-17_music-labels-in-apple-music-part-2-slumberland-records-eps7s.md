@@ -1,6 +1,7 @@
 ---
 title: 'Music Labels in Apple Music - Part 2′: Slumberland Records EPs/7″s'
 postedAt: '2015-10-17T12:47:00.000+09:00'
+category: Review
 tags: ['MLiAM', 'Slumberland Records']
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: The Smashing Pumpkins "Tonight, Tonight" inspired songs
 postedAt: '2021-12-06T19:18:00.000+09:00'
+category: Review
 tags: ['Apple Music']
 ---
 

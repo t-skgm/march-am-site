@@ -1,6 +1,7 @@
 ---
 title: Music Labels in Apple Music
 postedAt: '2021-05-06T20:31:00.000+09:00'
+category: Review
 tags: ['AppleMusic']
 ---
 

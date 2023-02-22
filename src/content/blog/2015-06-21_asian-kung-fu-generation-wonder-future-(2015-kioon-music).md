@@ -1,6 +1,7 @@
 ---
 title: ASIAN KUNG-FU GENERATION - Wonder Future (2015, Ki/oon Music)
 postedAt: '2015-06-21T19:39:00.000+09:00'
+category: Review
 tags: ['Ki/oon Music', 'asian kung-fu generation', 'j-rock', 'rock', '☆8', '2015']
 ---
 
