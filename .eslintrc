@@ -9,7 +9,8 @@
     "space-before-function-paren": "off",
     "import/no-absolute-path": "off",
     "@typescript-eslint/member-delimiter-style": "off",
-    "@typescript-eslint/space-before-function-paren": "off"
+    "@typescript-eslint/space-before-function-paren": "off",
+    "@typescript-eslint/triple-slash-reference": "off"
   },
   "overrides": [
     {
