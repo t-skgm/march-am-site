@@ -20,19 +20,22 @@ export type Props = {
 
 const { entry } = Astro.props
 const { Content } = await entry.render()
-const { title, postedAt, category, tags } = entry.data
+const { title, postedAt, category, tags, thumbnail } = entry.data
 ---
 
 <Layout title={title}>
   <Main>
     <header>
+      {thumbnail && <img src={thumbnail} alt={`Eye catch of ${title}`} class="mb-8" />}
       <h1 class="text-3xl font-bold break-all">
         <a href={routes.article.slug(entry.slug)}>{title}</a>
       </h1>
     </header>
 
-    <div class="mt-6">
-      <a href={routes.article.category.page(category)}>{category}</a> | {formatDate(postedAt)}
+    <div class="mt-6 mb-2">
+      <a href={routes.article.category.page(category)} class="uppercase">{category}</a> | {
+        formatDate(postedAt)
+      }
     </div>
     {
       tags && (
