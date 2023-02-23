@@ -1,6 +1,6 @@
 ---
 title: Best Music of 2022
-postedAt: '2023-01-11T12:12:00.000+09:00'
+postedAt: 2023-01-11T12:12:00.000+09:00
 category: Review
 tags: ['best music']
 draft: false

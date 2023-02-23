@@ -1,6 +1,6 @@
 ---
 title: The Go! Team - The Scene Between (2015, Memphis Industries)
-postedAt: '2015-07-11T22:42:00.000+09:00'
+postedAt: 2015-07-11T22:42:00.000+09:00
 category: Review
 tags: ['The Go! Team', 'The Scene Between', '2015', 'Memphis Industries', 'Rock', '☆9']
 ---

@@ -1,6 +1,6 @@
 ---
 title: Best 50 Japanese Pop Albums of the 2010s
-postedAt: '2021-02-28T19:17:00.000+09:00'
+postedAt: 2021-02-28T19:17:00.000+09:00
 category: Review
 tags: ['best music']
 ---

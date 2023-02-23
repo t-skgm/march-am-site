@@ -1,6 +1,6 @@
 ---
 title: Apple Musicプレイリスト
-postedAt: '2010-01-01T12:00:00.000+09:00'
+postedAt: 2010-01-01T12:00:00.000+09:00
 category: Review
 tags: ['Apple Music']
 ---

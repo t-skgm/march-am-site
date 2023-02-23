@@ -1,6 +1,6 @@
 ---
 title: Mineral - Live at Primavera Sound (2015)
-postedAt: '2015-07-02T22:46:00.000+09:00'
+postedAt: 2015-07-02T22:46:00.000+09:00
 category: Review
 tags: ['Mineral', 'Live', 'Emo', 'Rock', '2015', '☆6']
 ---

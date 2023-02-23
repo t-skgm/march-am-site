@@ -1,3 +1,3 @@
 import dayjs from 'dayjs'
 
-export const formatDate = (str: string) => dayjs(str).format('YYYY.MM.DD')
+export const formatDate = (date: dayjs.ConfigType) => dayjs(date).format('YYYY.MM.DD')

@@ -1,6 +1,6 @@
 ---
 title: Todd Rundgren 全アルバム個人的ランキング
-postedAt: '2017-04-12T22:08:00.000+09:00'
+postedAt: 2017-04-12T22:08:00.000+09:00
 category: Review
 tags: ['Todd Rundgren', 'Ranking', 'memo']
 ---

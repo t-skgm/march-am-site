@@ -1,6 +1,6 @@
 ---
 title: '[playlist] Restless Pop Songs'
-postedAt: '2017-01-14T13:07:00.000+09:00'
+postedAt: 2017-01-14T13:07:00.000+09:00
 category: Review
 tags: ['Apple Music']
 ---

@@ -1,6 +1,6 @@
 ---
 title: BURGER NUDSを感じる曲/アーティスト
-postedAt: '2020-06-06T00:08:00.000+09:00'
+postedAt: 2020-06-06T00:08:00.000+09:00
 category: Review
 tags: ['AppleMusic']
 ---

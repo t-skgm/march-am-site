@@ -1,6 +1,6 @@
 ---
 title: the pillows 元ネタメモ (part 1)
-postedAt: '2020-08-18T01:13:00.000+09:00'
+postedAt: 2020-08-18T01:13:00.000+09:00
 category: Review
 tags: ['the pillows']
 ---

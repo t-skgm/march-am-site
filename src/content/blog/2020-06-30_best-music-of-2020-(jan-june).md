@@ -1,6 +1,6 @@
 ---
 title: Best Music of 2020 (Jan-June)
-postedAt: '2020-06-30T12:19:00.000+09:00'
+postedAt: 2020-06-30T12:19:00.000+09:00
 category: Review
 tags: ['best music']
 ---

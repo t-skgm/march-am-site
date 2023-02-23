@@ -1,6 +1,6 @@
 ---
 title: Best Music released in 2015
-postedAt: '2016-01-02T23:22:00.000+09:00'
+postedAt: 2016-01-02T23:22:00.000+09:00
 category: Review
 tags: ['Best Music']
 ---

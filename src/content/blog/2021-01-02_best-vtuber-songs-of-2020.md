@@ -1,6 +1,6 @@
 ---
 title: Best 声優/アニメ/Vtuber songs of 2020
-postedAt: '2021-01-02T13:55:00.000+09:00'
+postedAt: 2021-01-02T13:55:00.000+09:00
 category: Review
 tags: ['Best Music', '2020']
 ---

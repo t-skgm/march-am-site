@@ -1,6 +1,6 @@
 ---
 title: Veronica FallsとJoanna Gruesomeの活動停止後の動きがどうにも混乱するのでリストにしてみた
-postedAt: '2019-12-07T19:05:00.000+09:00'
+postedAt: 2019-12-07T19:05:00.000+09:00
 category: Review
 ---
 

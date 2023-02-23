@@ -1,6 +1,6 @@
 ---
 title: 'Music Labels in Apple Music - Part 3: Shelflife Records'
-postedAt: '2016-01-06T01:17:00.000+09:00'
+postedAt: 2016-01-06T01:17:00.000+09:00
 category: Review
 tags: ['MLiAM', 'Shelflife Records']
 ---

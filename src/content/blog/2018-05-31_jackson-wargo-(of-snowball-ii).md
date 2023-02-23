@@ -1,6 +1,6 @@
 ---
 title: Jackson Wargo (of Snowball II) についての覚書
-postedAt: '2018-05-31T22:20:00.000+09:00'
+postedAt: 2018-05-31T22:20:00.000+09:00
 category: Review
 tags: ['Snowball II']
 ---

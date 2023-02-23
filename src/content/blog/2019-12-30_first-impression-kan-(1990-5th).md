@@ -1,6 +1,6 @@
 ---
 title: '[first impression] KAN - 野球選手が夢だった。 (1990年 / 5thアルバム)'
-postedAt: '2019-12-30T00:27:00.000+09:00'
+postedAt: 2019-12-30T00:27:00.000+09:00
 category: Review
 tags: ['レビュー', 'KAN']
 ---
