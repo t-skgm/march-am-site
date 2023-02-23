@@ -27,7 +27,9 @@ const paginateParams = getPaginateParams({
   perPage: 20
 })
 
-const title = 'Article: All'
+const titlePrefix = 'Article - '
+const page1 = 'All'
+const title = `${titlePrefix}${currentPage === 1 ? page1 : `page ${currentPage}`}`
 ---
 
 <Layout title={title}>

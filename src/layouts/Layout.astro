@@ -15,7 +15,7 @@ export interface Props {
 
 const { title, frontmatter } = Astro.props
 const articleTitle = title ?? frontmatter?.title
-const pageTitle = (divider: string = '-') =>
+const pageTitle = (divider: string) =>
   articleTitle ? `${articleTitle} ${divider} ${site.title}` : site.title
 
 const baseUrl = Astro.site ?? Astro.url
@@ -29,7 +29,7 @@ const socialImageURL = new URL('/assets/ogp_base.jpg', baseUrl)
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <SEO
-      title={pageTitle()}
+      title={pageTitle('-')}
       description={site.description}
       canonical={canonicalURL.toString()}
       openGraph={{
