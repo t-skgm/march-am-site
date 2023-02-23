@@ -47,7 +47,10 @@ const socialImageURL = new URL('/assets/ogp_site.jpg', baseUrl)
       }}
       twitter={{
         card: 'summary_large_image',
-        site: site.twitter.accountId
+        site: site.twitter.accountId,
+        title: pageTitle('|'),
+        image: socialImageURL.toString(),
+        imageAlt: 'Image of this site, ' + site.title
       }}
       extend={{
         link: [
