@@ -1,6 +1,7 @@
 ---
 import CategoryPage from './[page].astro'
-import { BlogEntry, getBlogCategories, getBlogCollection } from '../../../../utils/collection/blog'
+import type { BlogEntry } from '../../../../utils/collection/blog'
+import { getBlogCategories, getBlogCollection } from '../../../../utils/collection/blog'
 import type { GetStaticPaths, Page } from 'astro'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
 import { calcFirstPage, normalizeTag } from '../../../../utils/collection/common'
