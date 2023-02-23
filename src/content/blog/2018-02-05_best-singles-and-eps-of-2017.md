@@ -5,7 +5,7 @@ category: Review
 tags: ['best music']
 ---
 
-![](/images/170533394524_0.jpg)
+![](/uploads/170533394524_0.jpg)
 
 - [Best Singles & EPs of 2017 (Apple Music)](https://itunes.apple.com/jp/playlist/best-singles-eps-of-2017/pl.u-zPyL5aRIMpdaXj)
 

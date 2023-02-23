@@ -5,7 +5,7 @@ category: Review
 tags: ['The Go! Team', 'The Scene Between', '2015', 'Memphis Industries', 'Rock', '☆9']
 ---
 
-![image](/images/123806482849_0.jpg)
+![image](/uploads/123806482849_0.jpg)
 
 1. What D'You Say?
 2. The Scene Between

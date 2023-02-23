@@ -4,12 +4,11 @@ postedAt: 2021-10-29T15:00:00.000Z
 category: Review
 tags:
 - Best Music
-thumbnail: "/assets/img/uploads/Best Shoegaze 1.png"
 
 ---
-![](/assets/img/uploads/Best Shoegaze 1.png)
+![](/uploads/BestShoegaze1.png)
 
-![](/assets/img/uploads/Best Shoegaze 2.png)
+![](/uploads/BestShoegaze2.png)
 
 ### List
 

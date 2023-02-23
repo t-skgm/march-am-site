@@ -5,7 +5,7 @@ category: Review
 tags: ['Ki/oon Music', 'asian kung-fu generation', 'j-rock', 'rock', '☆8', '2015']
 ---
 
-![image](/images/122071216684_0.jpg)
+![image](/uploads/122071216684_0.jpg)
 
 1. Easter / 復活祭
 2. Little Lennon / 小さなレノン

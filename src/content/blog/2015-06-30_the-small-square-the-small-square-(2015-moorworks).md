@@ -15,7 +15,7 @@ tags:
   ]
 ---
 
-![image](/images/122851893489_0.jpg)
+![image](/uploads/122851893489_0.jpg)
 
 1. So Low
 2. Dream Faker \[Open Your Heart\]

@@ -5,7 +5,7 @@ category: Review
 tags: ['The Velvet Teen', '2015', 'topshelf records', 'rock', '☆7', '試聴']
 ---
 
-![image](/images/122247723764_0.jpg)
+![image](/uploads/122247723764_0.jpg)
 
 [First Listen: The Velvet Teen, ‘All Is Illusory’ ](http://www.npr.org/2015/06/21/414724830/first-listen-the-velvet-teen-all-is-illusory)
 
