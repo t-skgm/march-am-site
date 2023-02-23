@@ -1,0 +1,42 @@
+---
+import Layout from '../../../../layouts/Layout.astro'
+import Main from '../../../../components/molecules/Main.astro'
+import ArticleList from '../../../../components/organisms/ArticleList.astro'
+import Paginate from '../../../../components/molecules/Paginate.astro'
+import { getBlogCollection, BlogEntry, getBlogTags } from '../../../../utils/blogCollection'
+import type { GetStaticPaths, Page } from 'astro'
+import { routes } from '../../../../constants/routes'
+import { pathReplacer } from '../../../../utils/pathReplacer'
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const entries = await getBlogCollection()
+  const uniqTags = await getBlogTags()
+
+  return uniqTags.map((tag) => {
+    const taggedEntries = entries.filter((e) => e.data.tags && e.data.tags.includes(tag))
+    const safeTag = pathReplacer(tag)
+
+    return paginate(taggedEntries, {
+      params: { tag: safeTag },
+      pageSize: 20
+    })
+  })
+}
+
+export type Props = {
+  page: Page<BlogEntry>
+}
+const { page } = Astro.props
+
+const { tag: safeTag } = Astro.params
+const tag = safeTag ?? '?' // FIXME
+const title = `Tag: ${tag}`
+---
+
+<Layout title={title}>
+  <Main>
+    <h1>{title}</h1>
+    <ArticleList entries={page.data} />
+    <Paginate page={page} urlWithPage={(page) => routes.article.tag.page(tag, page)} />
+  </Main>
+</Layout>
