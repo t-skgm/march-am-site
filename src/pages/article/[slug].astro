@@ -30,8 +30,19 @@ const { title, postedAt, category, tags } = entry.data
       </h1>
     </header>
 
-    <div class="mt-6">{category} | {formatDate(postedAt)}</div>
-    {tags && <div>tags: {tags?.join(', ')}</div>}
+    <div class="mt-6">
+      <a href={routes.article.category.page(category)}>{category}</a> | {formatDate(postedAt)}
+    </div>
+    {
+      tags && (
+        <div>
+          tags:
+          {tags.map((tag) => (
+            <a href={routes.article.tag.page(tag)}>{tag}</a>
+          ))}
+        </div>
+      )
+    }
 
     <article class="post-content mt-10">
       <Content />

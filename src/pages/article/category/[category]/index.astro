@@ -3,7 +3,7 @@ import CategoryPage from './[page].astro'
 import { BlogEntry, getBlogCategories, getBlogCollection } from '../../../../utils/collection/blog'
 import type { GetStaticPaths, Page } from 'astro'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
-import { calcFirstPage } from '../../../../utils/collection/common'
+import { calcFirstPage, normalizeTag } from '../../../../utils/collection/common'
 import { configs } from '../../../../constants/site'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -13,7 +13,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return uniqCategories.map((_category) => {
     const category = cleanPathParam(_category)
 
-    const categorygedEntries = entries.filter((e) => e.data.category === category)
+    const categorygedEntries = entries.filter((e) => normalizeTag(e.data.category) === category)
     const page = calcFirstPage({
       entries: categorygedEntries,
       pageSize: configs.paginateSize

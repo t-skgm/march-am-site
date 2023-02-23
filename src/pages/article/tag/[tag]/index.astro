@@ -3,7 +3,7 @@ import TagPage from './[page].astro'
 import { BlogEntry, getBlogCollection, getBlogTags } from '../../../../utils/collection/blog'
 import type { GetStaticPaths, Page } from 'astro'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
-import { calcFirstPage } from '../../../../utils/collection/common'
+import { calcFirstPage, normalizeTag } from '../../../../utils/collection/common'
 import { configs } from '../../../../constants/site'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -13,7 +13,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return uniqTags.map((_tag) => {
     const tag = cleanPathParam(_tag)
 
-    const taggedEntries = entries.filter((e) => e.data.tags && e.data.tags.includes(_tag))
+    const taggedEntries = entries.filter((e) =>
+      (e.data.tags ?? []).map(normalizeTag).includes(_tag)
+    )
     const page = calcFirstPage({
       entries: taggedEntries,
       pageSize: configs.paginateSize

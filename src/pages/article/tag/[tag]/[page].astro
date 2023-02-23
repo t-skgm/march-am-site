@@ -8,13 +8,14 @@ import type { GetStaticPaths, Page } from 'astro'
 import { routes } from '../../../../constants/routes'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
 import { configs } from '../../../../constants/site'
+import { normalizeTag } from '../../../../utils/collection/common'
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const entries = await getBlogCollection()
   const uniqTags = await getBlogTags()
 
   return uniqTags.map((tag) => {
-    const taggedEntries = entries.filter((e) => e.data.tags && e.data.tags.includes(tag))
+    const taggedEntries = entries.filter((e) => (e.data.tags ?? []).map(normalizeTag).includes(tag))
     const safeTag = cleanPathParam(tag)
 
     return paginate(taggedEntries, {

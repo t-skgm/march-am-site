@@ -1,3 +1,5 @@
+import { capitalizeWords } from '../string'
+
 export const onlyPublished = (entry: { data: { draft?: boolean | undefined } }): boolean =>
   entry.data.draft == null || !entry.data.draft
 
@@ -21,3 +23,5 @@ export const calcFirstPage = <T>({ entries, pageSize }: { entries: T[]; pageSize
     end: pageSize - 1
   }
 }
+
+export const normalizeTag = (tag: string) => capitalizeWords(tag)
