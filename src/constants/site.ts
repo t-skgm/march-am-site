@@ -3,7 +3,7 @@ export const site = {
   description: 'the site of march-am',
   author: {
     displayName: '街',
-    twitter: '@march_am_',
+    twitter: 'march_am_',
     appleMusic: 'march_am_'
   }
 }
