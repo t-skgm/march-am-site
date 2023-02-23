@@ -4,15 +4,15 @@ import { site } from '../../constants/site'
 ---
 
 <footer>
-  <ul class="links">
+  <ul class="links gutter">
     <li>
       <a href={routes.index}>Top</a>
     </li>
     <li>
       <a href={routes.article.index}>Article</a>
       <ul>
-        <li><a href={routes.article.category.index}>Category</a></li>
-        <li><a href={routes.article.tag.index}>Tag</a></li>
+        <li>→ <a href={routes.article.category.index}>Category</a></li>
+        <li>→ <a href={routes.article.tag.index}>Tag</a></li>
       </ul>
     </li>
     <li>
@@ -20,10 +20,21 @@ import { site } from '../../constants/site'
     </li>
   </ul>
 
-  <ul class="sns">
-    <li><a href={`https://twitter.com/${site.author.twitter}`}>Twitter: @march_am_</a></li>
+  <ul class="sns gutter">
     <li>
-      <a href={`https://music.apple.com/profile/${site.author.appleMusic}`}>Apple Music: march-am</a
+      <a
+        class="sns-icon sns-tw"
+        href={`https://twitter.com/${site.author.twitter}`}
+        target="_blank"
+        rel="noopener">Twitter: @march_am_</a
+      >
+    </li>
+    <li>
+      <a
+        class="sns-icon sns-apple"
+        href={`https://music.apple.com/profile/${site.author.appleMusic}`}
+        target="_blank"
+        rel="noopener">Apple Music: march-am</a
       >
     </li>
   </ul>
@@ -34,15 +45,27 @@ import { site } from '../../constants/site'
     background-color: rgb(251, 243, 178, 0.7);
   }
 
-  .links {
-    @apply p-10 mt-0;
-    background-color: rgb(120, 145, 120, 0.06);
+  .gutter {
+    @apply p-10;
     margin: 0 50px 0 40px;
+  }
+
+  @media screen(lg) {
+    .gutter {
+      @apply px-20;
+      margin-left: 300px;
+      margin-right: 250px;
+    }
+  }
+
+  .links {
+    @apply block text-center pb-0;
+    background-color: rgb(120, 145, 120, 0.06);
     font-family: 'Lora', serif;
   }
 
   .links li {
-    @apply list-none leading-10;
+    @apply block leading-10;
   }
 
   .links li ul {
@@ -54,20 +77,17 @@ import { site } from '../../constants/site'
   }
 
   .links li li a {
-    @apply text-lg italic;
+    @apply text-sm italic;
   }
 
-  @media screen(lg) {
-    .links {
-      @apply p-20;
-      margin-left: 300px;
-      margin-right: 250px;
-    }
+  .links::after {
+    @apply block mx-auto mt-8 border border-greenish-dark border-solid;
+    width: 30%;
+    content: '';
   }
 
   .sns {
-    @apply mx-auto px-10 pb-10 text-center;
-    margin: 0 50px 0 40px;
+    @apply pb-12 flex justify-center gap-8;
     background-color: rgb(120, 145, 120, 0.06);
   }
 
@@ -75,11 +95,18 @@ import { site } from '../../constants/site'
     @apply list-none;
   }
 
-  @media screen(lg) {
-    .sns {
-      @apply p-20;
-      margin-left: 300px;
-      margin-right: 250px;
-    }
+  .sns-icon {
+    @apply block text-maccha;
+    font-size: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .sns-tw {
+    background: 0 / 2.5rem url(/assets/icons/logo_tw.svg);
+  }
+
+  .sns-apple {
+    background: 0 / 2.5rem url(/assets/icons/logo_apple.svg);
   }
 </style>
