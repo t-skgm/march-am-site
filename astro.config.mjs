@@ -15,5 +15,5 @@ export default defineConfig({
       noExternal: ['path-to-regexp', 'tinacms']
     }
   },
-  site: process.env.SITE_URL || process.env.CF_PAGES_URL
+  site: process.env.SITE_URL || process.env.CF_PAGES_URL || 'http://localhost:3000'
 })

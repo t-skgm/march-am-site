@@ -50,7 +50,15 @@ const socialImageURL = new URL('/assets/ogp_site.jpg', baseUrl)
         site: site.twitter.accountId
       }}
       extend={{
-        link: [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }]
+        link: [
+          { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+          {
+            rel: 'alternate',
+            type: 'application/rss+xml',
+            href: '/feed',
+            title: `${site.title} feed`
+          }
+        ]
       }}
     />
     <GA gtagId={process.env.GA_TRACKING_ID!} />

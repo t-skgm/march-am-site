@@ -19,6 +19,7 @@
   "dependencies": {
     "@astrojs/mdx": "^0.16.2",
     "@astrojs/preact": "^2.0.2",
+    "@astrojs/rss": "^2.1.1",
     "@astrojs/tailwind": "^3.0.1",
     "@fontsource/lora": "^4.5.13",
     "@tinacms/cli": "^1.0.8",
