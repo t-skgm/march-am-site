@@ -65,7 +65,7 @@ tags: ['best music']
     - Midwest Emo, Indie Rock
 30. Rocky Votolato - **Wild Roots** \[Spartan Records, Thirty Something Records\]
     - Indie Folk, Midwest Emo
-31. Flight Mode - \*\*Torshov, ‘05 \*\* \[Sound as Language\]
+31. Flight Mode - **Torshov, ‘05** \[Sound as Language\]
     - Indie Rock, Midwest Emo, Noise Pop
 32. ANORAK! - **ANORAK!** \[SUPERNICEBOYS\]
     - Midwest Emo, Twinkle Emo, Indie Rock
@@ -73,7 +73,7 @@ tags: ['best music']
     - Math Rock, Indie Rock, Psychedelic Rock, Dream Pop
 34. Horsegirl - **Versions of Modern Performance** \[Matador\]
     - Alternative Rock, Noise Pop, Indie Rock, Slacker Rock
-35. kurayamisaka - \*\*kimi wo omotte iru \*\* \[tomoran\]
+35. kurayamisaka - **kimi wo omotte iru** \[tomoran\]
     - Indie Rock, Dream Pop, Power Pop
 36. paionia - **Pre Normal** \[gsp\]
     - Alternative Rock, Post-Punk, Indie Folk
