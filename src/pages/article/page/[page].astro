@@ -3,43 +3,30 @@ import Layout from '../../../layouts/Layout.astro'
 import ArticleList from '../../../components/organisms/ArticleList.astro'
 import Main from '../../../components/molecules/Main.astro'
 import Paginate from '../../../components/molecules/Paginate.astro'
-import { getCollection } from 'astro:content'
-import { getTotalPage, onlyPublished, getPaginateParams } from '../../../utils/collection'
+import { getBlogCollection, BlogEntry } from '../../../utils/collection'
 import { routes } from '../../../constants/routes'
-import { range } from 'remeda'
+import type { GetStaticPaths, Page } from 'astro'
 
-export async function getStaticPaths() {
-  const entries = await getCollection('blog', onlyPublished)
-  const totalPage = getTotalPage({ totalCount: entries.length })
-  return range(1, totalPage + 1).map((page) => ({
-    params: { page }
-  }))
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const entries = await getBlogCollection()
+  return paginate(entries, { pageSize: 20 })
 }
 
-const { page } = Astro.params
-const currentPage = Number(page ?? 1)
+export type Props = {
+  /** /page からのアクセスか  */
+  isIndexPage?: boolean
+  page: Page<BlogEntry>
+}
 
-const entries = await getCollection('blog', onlyPublished)
+const { isIndexPage, page } = Astro.props
 
-const paginateParams = getPaginateParams({
-  totalCount: entries.length,
-  page: currentPage,
-  perPage: 20
-})
-
-const titlePrefix = 'Article - '
-const page1 = 'All'
-const title = `${titlePrefix}${currentPage === 1 ? page1 : `page ${currentPage}`}`
+const title = `Article - ${Astro.params.page === undefined ? 'All' : `page ${page.currentPage}`}`
 ---
 
-<Layout title={title}>
+<Layout title={title} canonicalPath={isIndexPage ? routes.article.page(1) : undefined}>
   <Main>
     <h1>{title}</h1>
-    <ArticleList first={paginateParams.perPage} skip={paginateParams.skip} />
-    <Paginate
-      currentPage={currentPage}
-      paginateParams={paginateParams}
-      urlWithPage={routes.article.page}
-    />
+    <ArticleList entries={page.data} />
+    <Paginate page={page} urlWithPage={routes.article.page} />
   </Main>
 </Layout>

@@ -1,0 +1,8 @@
+---
+import Page from './[page].astro'
+import { getFirstBlogPage } from '../../../utils/getFirstBlogPage'
+
+const firstPage = await getFirstBlogPage()
+---
+
+<Page isIndexPage page={firstPage} />

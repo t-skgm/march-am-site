@@ -1,21 +1,11 @@
 ---
-import { getCollection } from 'astro:content'
-import { cropEntries, onlyPublished } from '../../utils/collection'
+import type { CollectionEntry } from 'astro:content'
 import ListItem from '../molecules/ListItem.astro'
 
 export type Props = {
-  first?: number
-  skip?: number
+  entries: CollectionEntry<'blog'>[]
 }
-const { first, skip } = Astro.props
-
-const blogEntries = await getCollection('blog', onlyPublished)
-
-const entries = cropEntries({
-  entries: blogEntries,
-  first,
-  skip
-})
+const { entries } = Astro.props
 ---
 
 <ul class="grid grid-cols-1 gap-4 p-0">

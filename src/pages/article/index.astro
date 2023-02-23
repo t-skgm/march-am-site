@@ -3,18 +3,10 @@ import Layout from '../../layouts/Layout.astro'
 import ArticleList from '../../components/organisms/ArticleList.astro'
 import Main from '../../components/molecules/Main.astro'
 import Paginate from '../../components/molecules/Paginate.astro'
-import { getCollection } from 'astro:content'
-import { onlyPublished, getPaginateParams } from '../../utils/collection'
 import { routes } from '../../constants/routes'
+import { getFirstBlogPage } from '../../utils/getFirstBlogPage'
 
-const entries = await getCollection('blog', onlyPublished)
-const currentPage = 1
-
-const paginateParams = getPaginateParams({
-  totalCount: entries.length,
-  page: currentPage,
-  perPage: 20
-})
+const firstPage = await getFirstBlogPage()
 
 const title = 'Article: All'
 ---
@@ -22,11 +14,7 @@ const title = 'Article: All'
 <Layout title={title}>
   <Main>
     <h1>{title}</h1>
-    <ArticleList first={paginateParams.perPage} skip={paginateParams.skip} />
-    <Paginate
-      currentPage={currentPage}
-      paginateParams={paginateParams}
-      urlWithPage={routes.article.page}
-    />
+    <ArticleList entries={firstPage.data} />
+    <Paginate page={firstPage} urlWithPage={routes.article.page} />
   </Main>
 </Layout>

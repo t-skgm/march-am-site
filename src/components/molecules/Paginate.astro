@@ -1,25 +1,23 @@
 ---
+import type { Page } from 'astro'
+
 export type Props = {
-  currentPage: number
-  paginateParams: {
-    totalPage: number
-    perPage: number
-    prevPage: number | undefined
-    nextPage: number | undefined
-  }
+  page: Page<unknown>
   urlWithPage: (page: number) => string
 }
 
 const {
-  currentPage,
-  paginateParams: { totalPage, nextPage, prevPage },
+  page: { currentPage, lastPage, url },
   urlWithPage
 } = Astro.props
 
+const nextPageNum = url.next ? currentPage + 1 : undefined
+const prevPageNum = url.prev ? currentPage - 1 : undefined
+
 const showFirst = currentPage !== 1 && currentPage !== 2
 const showFirstEllipsis = currentPage !== 1 && currentPage !== 2 && currentPage !== 3
-const showLastEllipsis = currentPage !== totalPage && currentPage !== totalPage - 1
-const showLast = currentPage < totalPage - 1
+const showLastEllipsis = currentPage !== lastPage && currentPage !== lastPage - 1
+const showLast = currentPage < lastPage - 1
 ---
 
 <nav>
@@ -32,25 +30,25 @@ const showLast = currentPage < totalPage - 1
   }
   {showFirstEllipsis && <div class="ellipsis-line">―</div>}
   {
-    prevPage && (
-      <a href={urlWithPage(prevPage)} class="circle">
-        {prevPage}
+    prevPageNum && (
+      <a href={urlWithPage(prevPageNum)} class="circle">
+        {prevPageNum}
       </a>
     )
   }
   <div class="current circle">{currentPage}</div>
   {
-    nextPage && (
-      <a href={urlWithPage(nextPage)} class="circle">
-        {nextPage}
+    nextPageNum && (
+      <a href={urlWithPage(nextPageNum)} class="circle">
+        {nextPageNum}
       </a>
     )
   }
   {showLastEllipsis && <div class="ellipsis-line">―</div>}
   {
     showLast && (
-      <a href={urlWithPage(totalPage)} class="circle">
-        {totalPage}
+      <a href={urlWithPage(lastPage)} class="circle">
+        {lastPage}
       </a>
     )
   }

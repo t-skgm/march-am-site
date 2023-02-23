@@ -11,15 +11,18 @@ import { site } from '../constants/site'
 export interface Props {
   title?: string
   frontmatter?: any
+  /** canpnicalのPath部分を上書きしたい場合 */
+  canonicalPath?: string | undefined
 }
 
-const { title, frontmatter } = Astro.props
+const { title, frontmatter, canonicalPath } = Astro.props
+
 const articleTitle = title ?? frontmatter?.title
 const pageTitle = (divider: string) =>
   articleTitle ? `${articleTitle} ${divider} ${site.title}` : site.title
 
 const baseUrl = Astro.site ?? Astro.url
-const canonicalURL = new URL(Astro.url.pathname, baseUrl)
+const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, baseUrl)
 const socialImageURL = new URL('/assets/ogp_base.jpg', baseUrl)
 ---
 

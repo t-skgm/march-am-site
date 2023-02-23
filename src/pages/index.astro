@@ -3,12 +3,15 @@ import Layout from '../layouts/Layout.astro'
 import ArticleList from '../components/organisms/ArticleList.astro'
 import Main from '../components/molecules/Main.astro'
 import { routes } from '../constants/routes'
+import { getFirstBlogPage } from '../utils/getFirstBlogPage'
+
+const firstPage = await getFirstBlogPage()
 ---
 
 <Layout>
   <Main>
     <h1>Article</h1>
-    <ArticleList first={20} />
+    <ArticleList entries={firstPage.data} />
     <p>
       <a href={routes.article.page(2)}>&gt; View all articles</a>
     </p>
