@@ -13,10 +13,6 @@ tags: ['Apple Music']
 
 [Apple Music アカウント: march_am](https://itunes.apple.com/profile/march%5Fam)
 
-## 今週のレコメンド
-
-→ [一覧ページ](http://30minreview.tumblr.com/post/154975409149/weeklyrec) or [#WeeklyRecomendation](http://30minreview.tumblr.com/tagged/weeklyrecommendation)
-
 ## ディスコグラフィ
 
 - [**& records**](https://itunes.apple.com/jp/playlist/records-chronology/idpl.19693d571ebe43728fb360f274c7112c)  
@@ -56,8 +52,8 @@ tags: ['Apple Music']
 - [タンタンタコタコ：隠れた名曲](https://itunes.apple.com/jp/playlist/tantantakotako-yinreta-ming/idpl.3590b0755c2849399eb070b2308067ae)
 - [ティン・パン・アレーが演奏を担当した曲](https://itunes.apple.com/jp/playlist/tin-pan-arega-yan-zouwo-dan/idpl.394c32de731540988d87763ef54c0e4c)
 - [響け！ユーフォニアムを見ると聴きたくなる吹奏楽曲](https://itunes.apple.com/jp/playlist/xiangke!yufoniamuwo-jianruto/idpl.138b68fa94224ab4b85a4a1cdece9b43)
-- [探りさぐり聴く台湾インディ](https://itunes.apple.com/jp/playlist/tanrisaguri-tingku-tai-wanindi/idpl.5cd20b18c6ae4e428d88df54dcce45d7), [記事](http://30minreview.tumblr.com/post/154761086599/%E6%8E%A2%E3%82%8A%E3%81%95%E3%81%90%E3%82%8A%E8%81%B4%E3%81%8F%E5%8F%B0%E6%B9%BE%E3%82%A4%E3%83%B3%E3%83%87%E3%82%A3)
-- [Restless Pop Songs](https://itunes.apple.com/jp/playlist/restless-pop-songs/idpl.9d095e481bd241169df908a86d53854d), [記事](http://30minreview.tumblr.com/post/155835554824/playlist-restless-pop-songs)
+- [探りさぐり聴く台湾インディ](https://itunes.apple.com/jp/playlist/tanrisaguri-tingku-tai-wanindi/idpl.5cd20b18c6ae4e428d88df54dcce45d7)
+- [Restless Pop Songs](https://itunes.apple.com/jp/playlist/restless-pop-songs/idpl.9d095e481bd241169df908a86d53854d)
 - [（僕の好きな）女性 Vo オルタナティヴ](https://itunes.apple.com/jp/playlist/nu-xingvoorutanativu/idpl.c1658c8779d94a3186c08eb4d1d7bec5)
 - [Chiptune Rock](https://itunes.apple.com/jp/playlist/chiptune-rock/idpl.b910d7dd4ddd4033affa1873541ac29e)
 - [koji nakamura - Epitaph (all songs)](https://itunes.apple.com/jp/playlist/koji-nakamura-epitaph/idpl.ed995c5badd34372817f50e0601e1e22)
@@ -65,8 +61,8 @@ tags: ['Apple Music']
 
 ## 年間ベスト
 
-- [Best Music of 2015](https://itunes.apple.com/jp/playlist/best-music-of-2015/idpl.dccdb8b06efa4776b00a52e45672dd97)
-- [Best Albums of 2016](https://itunes.apple.com/jp/playlist/best-albums-of-2016/idpl.53fe4ca4eae043979b6bc2ece19ec26a), [詳細記事](http://30minreview.tumblr.com/post/154804269994/best-music-of-2016)
-- [Best Singles & EPs of 2016](https://itunes.apple.com/jp/playlist/best-singles-eps-of-2016/idpl.3446dd1f72f444bd88f159dd907305bf), [詳細記事](http://30minreview.tumblr.com/post/154804269994/best-music-of-2016)
-- [Best Albums of 2017](https://itunes.apple.com/jp/playlist/best-albums-of-2017/pl.u-EdAVmPYIXvGlP3), [詳細記事](http://30minreview.tumblr.com/post/170533277469/best-albums-of-2017)
-- [Best Singles & EPs of 2017](https://itunes.apple.com/jp/playlist/best-singles-eps-of-2017/pl.u-zPyL5aRIMpdaXj), [詳細記事](http://30minreview.tumblr.com/post/170533394524/best-singles-eps-of-2017)
+- [Best Music of 2015](https://itunes.apple.com/jp/playlist/best-music-of-2015/idpl.dccdb8b06efa4776b00a52e45672dd97), [記事](/article/2015-12-20_2015)
+- [Best Albums of 2016](https://itunes.apple.com/jp/playlist/best-albums-of-2016/idpl.53fe4ca4eae043979b6bc2ece19ec26a), [詳細記事]/article/2016-12-22_best-music-of-2016)
+- [Best Singles & EPs of 2016](https://itunes.apple.com/jp/playlist/best-singles-eps-of-2016/idpl.3446dd1f72f444bd88f159dd907305bf)
+- [Best Albums of 2017](https://itunes.apple.com/jp/playlist/best-albums-of-2017/pl.u-EdAVmPYIXvGlP3), [詳細記事](/article/2018-02-05_best-albums-of-2017)
+- [Best Singles & EPs of 2017](https://itunes.apple.com/jp/playlist/best-singles-eps-of-2017/pl.u-zPyL5aRIMpdaXj), [詳細記事](/article/2018-02-05_best-singles-and-eps-of-2017)
