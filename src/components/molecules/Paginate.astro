@@ -11,12 +11,12 @@ const {
   urlWithPage
 } = Astro.props
 
-const nextPageNum = url.next ? currentPage + 1 : undefined
 const prevPageNum = url.prev ? currentPage - 1 : undefined
+const nextPageNum = url.next ? currentPage + 1 : undefined
 
 const showFirst = currentPage !== 1 && currentPage !== 2
 const showFirstEllipsis = currentPage !== 1 && currentPage !== 2 && currentPage !== 3
-const showLastEllipsis = currentPage !== lastPage && currentPage !== lastPage - 1
+const showLastEllipsis = currentPage !== lastPage && currentPage !== lastPage - 1 && lastPage !== 3
 const showLast = currentPage < lastPage - 1
 ---
 
@@ -30,19 +30,25 @@ const showLast = currentPage < lastPage - 1
   }
   {showFirstEllipsis && <div class="ellipsis-line">―</div>}
   {
-    prevPageNum && (
-      <a href={urlWithPage(prevPageNum)} class="circle">
-        {prevPageNum}
-      </a>
-    )
+    // prettier-ignore
+    prevPageNum != null
+      ? (
+          <a href={urlWithPage(prevPageNum)} class="circle">
+            {prevPageNum}
+          </a>
+        )
+      : null
   }
   <div class="current circle">{currentPage}</div>
   {
-    nextPageNum && (
-      <a href={urlWithPage(nextPageNum)} class="circle">
-        {nextPageNum}
-      </a>
-    )
+    // prettier-ignore
+    nextPageNum != null
+      ? (
+          <a href={urlWithPage(nextPageNum)} class="circle">
+            {nextPageNum}
+          </a>
+        )
+      : null
   }
   {showLastEllipsis && <div class="ellipsis-line">―</div>}
   {

@@ -48,7 +48,7 @@ html {
   }
 
   li {
-    @apply leading-loose
+    @apply leading-loose;
   }
 
   dt {

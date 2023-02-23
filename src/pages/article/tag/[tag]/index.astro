@@ -1,0 +1,33 @@
+---
+import TagPage from './[page].astro'
+import { BlogEntry, getBlogCollection, getBlogTags } from '../../../../utils/collection/blog'
+import type { GetStaticPaths, Page } from 'astro'
+import { cleanPathParam } from '../../../../utils/cleanPathParam'
+import { calcFirstPage } from '../../../../utils/collection/common'
+import { configs } from '../../../../constants/site'
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const entries = await getBlogCollection()
+  const uniqTags = await getBlogTags()
+
+  return uniqTags.map((_tag) => {
+    const tag = cleanPathParam(_tag)
+
+    const taggedEntries = entries.filter((e) => e.data.tags && e.data.tags.includes(_tag))
+    const page = calcFirstPage({
+      entries: taggedEntries,
+      pageSize: configs.paginateSize
+    })
+
+    return { params: { tag }, props: { page } }
+  })
+}
+
+type Props = {
+  page: Page<BlogEntry>
+}
+
+const { page } = Astro.props
+---
+
+<TagPage page={page} />

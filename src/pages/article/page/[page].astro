@@ -3,22 +3,23 @@ import Layout from '../../../layouts/Layout.astro'
 import Main from '../../../components/molecules/Main.astro'
 import ArticleList from '../../../components/organisms/ArticleList.astro'
 import Paginate from '../../../components/molecules/Paginate.astro'
-import { getBlogCollection, BlogEntry } from '../../../utils/blogCollection'
+import { getBlogCollection, BlogEntry } from '../../../utils/collection/blog'
 import { routes } from '../../../constants/routes'
 import type { GetStaticPaths, Page } from 'astro'
+import { configs } from '../../../constants/site'
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const entries = await getBlogCollection()
-  return paginate(entries, { pageSize: 20 })
+  return paginate(entries, { pageSize: configs.paginateSize })
 }
 
 export type Props = {
+  page: Page<BlogEntry>
   /** /page からのアクセスか  */
   isIndexPage?: boolean
-  page: Page<BlogEntry>
 }
 
-const { isIndexPage, page } = Astro.props
+const { page, isIndexPage } = Astro.props
 
 const title = `Article - ${Astro.params.page === undefined ? 'All' : `page ${page.currentPage}`}`
 ---

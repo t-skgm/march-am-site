@@ -1,3 +1,3 @@
 /** `[^\/#\?]+?` にマッチするように全角文字に置き換える */
-export const pathReplacer = (path: string) =>
+export const cleanPathParam = (path: string) =>
   path.replace(/\//g, '／').replace(/#/g, '＃').replace(/\?/g, '？')

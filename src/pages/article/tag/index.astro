@@ -2,8 +2,8 @@
 import Layout from '../../../layouts/Layout.astro'
 import Main from '../../../components/molecules/Main.astro'
 import { routes } from '../../../constants/routes'
-import { getBlogTags } from '../../../utils/blogCollection'
-import { pathReplacer } from '../../../utils/pathReplacer'
+import { getBlogTags } from '../../../utils/collection/blog'
+import { cleanPathParam } from '../../../utils/cleanPathParam'
 
 const alltags = await getBlogTags()
 
@@ -17,7 +17,7 @@ const title = 'Tag: All'
       {
         alltags.map((tag) => (
           <li>
-            <a href={routes.article.tag.page(pathReplacer(tag), 1)}>{tag}</a>
+            <a href={routes.article.tag.page(cleanPathParam(tag), 1)}>{tag}</a>
           </li>
         ))
       }

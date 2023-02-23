@@ -13,7 +13,8 @@
     "sync": "astro sync",
     "lint": "eslint --ext .js,.astro src",
     "fmt:check": "prettier src/",
-    "fmt": "prettier --write src/"
+    "fmt": "prettier --write src/",
+    "typecheck": "tsc -p . --noEmit"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.16.2",
