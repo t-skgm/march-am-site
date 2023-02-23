@@ -23,7 +23,7 @@ const pageTitle = (divider: string) =>
 
 const baseUrl = Astro.site ?? Astro.url
 const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, baseUrl)
-const socialImageURL = new URL('/assets/ogp_base.jpg', baseUrl)
+const socialImageURL = new URL('/assets/ogp_site.jpg', baseUrl)
 ---
 
 <!DOCTYPE html>
