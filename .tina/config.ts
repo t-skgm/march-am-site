@@ -58,6 +58,22 @@ export default defineConfig({
             }
           },
           {
+            label: 'カテゴリー',
+            name: 'category',
+            type: 'string',
+            required: true,
+            options: [
+              {
+                label: 'Review',
+                value: 'Review'
+              },
+              {
+                label: 'Diary',
+                value: 'Diary'
+              }
+            ]
+          },
+          {
             label: 'タグ',
             name: 'tags',
             type: 'string',
