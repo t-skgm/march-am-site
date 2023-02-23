@@ -25,6 +25,13 @@ export const getBlogTags = async (): Promise<string[]> => {
   return uniqTags
 }
 
+export const getBlogCategories = async (): Promise<string[]> => {
+  const entries = await getBlogCollection()
+  const categories = entries.map((e) => e.data.category)
+  const uniqCategories = uniqBy(categories, (t) => t.toLowerCase()).sort()
+  return uniqCategories
+}
+
 export const getBlogFirstPage = async (pageSize: number = 20): Promise<Page<BlogEntry>> => {
   const entries = await getBlogCollection()
   return calcFirstPage({ entries, pageSize })

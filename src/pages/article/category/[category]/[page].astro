@@ -1,0 +1,48 @@
+---
+import Layout from '../../../../layouts/Layout.astro'
+import Main from '../../../../components/molecules/Main.astro'
+import ArticleList from '../../../../components/organisms/ArticleList.astro'
+import Paginate from '../../../../components/molecules/Paginate.astro'
+import { getBlogCollection, BlogEntry, getBlogCategories } from '../../../../utils/collection/blog'
+import type { GetStaticPaths, Page } from 'astro'
+import { routes } from '../../../../constants/routes'
+import { cleanPathParam } from '../../../../utils/cleanPathParam'
+import { configs } from '../../../../constants/site'
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const entries = await getBlogCollection()
+  const uniqCategories = await getBlogCategories()
+
+  return uniqCategories.map((category) => {
+    const taggedEntries = entries.filter((e) => e.data.category === category)
+    const safeCategory = cleanPathParam(category)
+
+    return paginate(taggedEntries, {
+      params: { category: safeCategory },
+      pageSize: configs.paginateSize
+    })
+  })
+}
+
+export type Props = {
+  page: Page<BlogEntry>
+  /** /[category]/page からのアクセスか  */
+  isIndexPage?: boolean
+}
+const { page, isIndexPage } = Astro.props
+
+const { category: safeCategory } = Astro.params
+const category = safeCategory ?? '?' // FIXME
+const title = `Category: ${category} (page ${page.currentPage})`
+---
+
+<Layout
+  title={title}
+  canonicalPath={isIndexPage ? routes.article.category.page(category, 1) : undefined}
+>
+  <Main>
+    <h1>{title}</h1>
+    <ArticleList entries={page.data} />
+    <Paginate page={page} urlWithPage={(page) => routes.article.category.page(category, page)} />
+  </Main>
+</Layout>

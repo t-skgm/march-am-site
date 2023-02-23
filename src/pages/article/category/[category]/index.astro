@@ -1,6 +1,6 @@
 ---
-import TagPage from './[page].astro'
-import { BlogEntry, getBlogCollection, getBlogTags } from '../../../../utils/collection/blog'
+import CategoryPage from './[page].astro'
+import { BlogEntry, getBlogCategories, getBlogCollection } from '../../../../utils/collection/blog'
 import type { GetStaticPaths, Page } from 'astro'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
 import { calcFirstPage } from '../../../../utils/collection/common'
@@ -8,18 +8,18 @@ import { configs } from '../../../../constants/site'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const entries = await getBlogCollection()
-  const uniqTags = await getBlogTags()
+  const uniqCategories = await getBlogCategories()
 
-  return uniqTags.map((_tag) => {
-    const tag = cleanPathParam(_tag)
+  return uniqCategories.map((_category) => {
+    const category = cleanPathParam(_category)
 
-    const taggedEntries = entries.filter((e) => e.data.tags && e.data.tags.includes(_tag))
+    const categorygedEntries = entries.filter((e) => e.data.category === category)
     const page = calcFirstPage({
-      entries: taggedEntries,
+      entries: categorygedEntries,
       pageSize: configs.paginateSize
     })
 
-    return { params: { tag }, props: { page } }
+    return { params: { category }, props: { page } }
   })
 }
 
@@ -30,4 +30,4 @@ type Props = {
 const { page } = Astro.props
 ---
 
-<TagPage isIndexPage page={page} />
+<CategoryPage isIndexPage page={page} />

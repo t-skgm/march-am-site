@@ -1,0 +1,26 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import Main from '../../../components/molecules/Main.astro'
+import { routes } from '../../../constants/routes'
+import { getBlogCategories } from '../../../utils/collection/blog'
+import { cleanPathParam } from '../../../utils/cleanPathParam'
+
+const categories = await getBlogCategories()
+
+const title = 'Category: All'
+---
+
+<Layout title={title}>
+  <Main>
+    <h1>{title}</h1>
+    <ul>
+      {
+        categories.map((category) => (
+          <li>
+            <a href={routes.article.category.page(cleanPathParam(category), 1)}>{category}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </Main>
+</Layout>

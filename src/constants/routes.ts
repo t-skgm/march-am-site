@@ -9,6 +9,12 @@ export const routes = {
       index: '/article/tag',
       tag: (encodedTag: string) => `/article/tag/${encodedTag}`,
       page: (encodedTag: string, p: number) => `/article/tag/${encodedTag}/${p.toString()}`
+    },
+    category: {
+      index: '/article/category',
+      category: (encodedCategory: string) => `/article/category/${encodedCategory}`,
+      page: (encodedCategory: string, p: number) =>
+        `/article/category/${encodedCategory}/${p.toString()}`
     }
   }
 } as const
