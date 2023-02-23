@@ -1,54 +1,85 @@
 ---
 import { routes } from '../../constants/routes'
+import { site } from '../../constants/site'
 ---
 
 <footer>
   <ul class="links">
     <li>
-      <a href={routes.index} class:list={['text-sm', 'font-semibold', 'leading-6', 'text-gray-900']}
-        >Top</a
-      >
+      <a href={routes.index}>Top</a>
     </li>
     <li>
-      <a
-        href={routes.article.index}
-        class:list={['text-sm', 'font-semibold', 'leading-6', 'text-gray-900']}>Article</a
-      >
-      <li>
-        <a
-          href={routes.about}
-          class:list={['text-sm', 'font-semibold', 'leading-6', 'text-gray-900']}>About</a
-        >
-      </li>
+      <a href={routes.article.index}>Article</a>
+      <ul>
+        <li><a href={routes.article.category.index}>Category</a></li>
+        <li><a href={routes.article.tag.index}>Tag</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href={routes.about}>About</a>
     </li>
   </ul>
 
-  <style>
-    footer {
-      background-color: rgb(251, 243, 178, 0.7);
-    }
-
-    .links {
-      @apply p-10;
-      background-color: rgb(120, 145, 120, 0.06);
-      margin: 0 50px 0 40px;
-    }
-
-    .links li {
-      @apply list-none leading-10;
-    }
-
-    .links a {
-      @apply text-xl italic uppercase no-underline;
-      font-family: 'Lora', serif;
-    }
-
-    @media screen(lg) {
-      .links {
-        @apply p-20;
-        margin-left: 300px;
-        margin-right: 250px;
-      }
-    }
-  </style>
+  <ul class="sns">
+    <li><a href={`https://twitter.com/${site.author.twitter}`}>Twitter: @march_am_</a></li>
+    <li>
+      <a href={`https://music.apple.com/profile/${site.author.appleMusic}`}>Apple Music: march-am</a
+      >
+    </li>
+  </ul>
 </footer>
+
+<style>
+  footer {
+    background-color: rgb(251, 243, 178, 0.7);
+  }
+
+  .links {
+    @apply p-10 mt-0;
+    background-color: rgb(120, 145, 120, 0.06);
+    margin: 0 50px 0 40px;
+    font-family: 'Lora', serif;
+  }
+
+  .links li {
+    @apply list-none leading-10;
+  }
+
+  .links li ul {
+    @apply m-0;
+  }
+
+  .links a {
+    @apply text-xl italic uppercase no-underline font-semibold leading-10 text-gray-900;
+  }
+
+  .links li li a {
+    @apply text-lg italic;
+  }
+
+  @media screen(lg) {
+    .links {
+      @apply p-20;
+      margin-left: 300px;
+      margin-right: 250px;
+    }
+  }
+
+  .sns {
+    @apply mx-auto px-10 pb-10 text-center;
+    margin: 0 50px 0 40px;
+    background-color: rgb(120, 145, 120, 0.06);
+  }
+
+  .sns li {
+    @apply list-none;
+  }
+
+  @media screen(lg) {
+    .sns {
+      @apply p-20;
+      margin-left: 300px;
+      margin-right: 250px;
+    }
+  }
+</style>

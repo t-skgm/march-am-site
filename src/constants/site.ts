@@ -1,7 +1,11 @@
 export const site = {
   title: 'march-am',
   description: 'the site of march-am',
-  twitter: { accountId: '@march_am_' }
+  author: {
+    displayName: '街',
+    twitter: '@march_am_',
+    appleMusic: 'march_am_'
+  }
 }
 
 export const configs = {
