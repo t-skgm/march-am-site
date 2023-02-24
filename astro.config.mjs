@@ -18,7 +18,7 @@ const cmsConfig = {
     // repo: 't-skgm/march-am-site',
     branch: 'main'
   },
-  publish_mode: 'editorial_workflow',
+  publish_mode: 'simple',
   media_folder: 'public/uploads',
   site_url: SITE_URL,
   collections: [
