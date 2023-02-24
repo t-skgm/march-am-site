@@ -9,7 +9,8 @@ const SITE_URL = process.env.SITE_URL || process.env.CF_PAGES_URL || 'http://loc
 /** @type {import('netlify-cms-core').CmsConfig} */
 const cmsConfig = {
   backend: {
-    name: 'git-gateway',
+    name: 'github',
+    repo: 't-skgm/march-am-site',
     branch: 'main'
   },
   publish_mode: 'editorial_workflow',
