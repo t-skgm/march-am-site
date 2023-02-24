@@ -21,6 +21,7 @@ const cmsConfig = {
       label: 'Blog',
       identifier_field: 'slug',
       folder: 'src/content/blog',
+      preview_path: 'article/{{slug}}',
       create: true,
       delete: true,
       extension: 'md',
