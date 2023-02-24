@@ -4,7 +4,12 @@ import tailwind from '@astrojs/tailwind'
 import sitemap from '@astrojs/sitemap'
 import netlifyCMS from 'astro-netlify-cms'
 
-const SITE_URL = process.env.SITE_URL || process.env.CF_PAGES_URL || 'http://localhost:3000'
+const SITE_URL =
+  process.env.SITE_URL ||
+  process.env.CF_PAGES_URL ||
+  // Netlify
+  process.env.DEPLOY_PRIME_URL ||
+  'http://localhost:3000'
 
 /** @type {import('netlify-cms-core').CmsConfig} */
 const cmsConfig = {
