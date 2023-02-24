@@ -4,7 +4,7 @@ postedAt: 2023-01-11T12:12:00.000+09:00
 category: Review
 tags: ['best music']
 draft: false
-thumbnail: /assets/img/uploads/IMG_8710.PNG.png
+thumbnail: /uploads/IMG_8710.PNG.png
 ---
 
 ## Best Albums & EPs of 2022
