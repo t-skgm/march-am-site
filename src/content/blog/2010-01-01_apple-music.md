@@ -7,8 +7,6 @@ tags:
 ---
 作った Apple Music のプレイリスト置き場。Windows 版 iTunes では上手く開けないことがあります。
 
-test
-
 ### Apple Music アカウント
 
 [Apple Music アカウント: march_am](https://itunes.apple.com/profile/march%5Fam)
