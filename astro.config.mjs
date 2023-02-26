@@ -16,7 +16,9 @@ const cmsConfig = {
   backend: {
     name: 'github',
     repo: 't-skgm/march-am-site',
-    branch: 'main'
+    branch: 'main',
+    base_url: SITE_URL,
+    auth_endpoint: `${SITE_URL}/auth`
   },
   publish_mode: 'simple',
   media_folder: 'public/uploads',
