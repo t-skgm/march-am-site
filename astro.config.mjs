@@ -18,7 +18,7 @@ const cmsConfig = {
     repo: 't-skgm/march-am-site',
     branch: 'main',
     base_url: SITE_URL,
-    auth_endpoint: `${SITE_URL}/auth`
+    auth_endpoint: '/api/auth'
   },
   publish_mode: 'simple',
   media_folder: 'public/uploads',
