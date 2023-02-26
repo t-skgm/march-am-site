@@ -1,7 +1,6 @@
-import { coerceReponse, type PagesFunction, type Env } from './types'
+import type { PagesFunction, Env } from './types'
 
-type ResponseSuccess = { access_token: string }
-type ResponseError = { error: string }
+type ResponseBody = { access_token: string } | { error: string }
 
 export const onRequest: PagesFunction<Env> = async (context) => {
   const {
@@ -28,22 +27,25 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       },
       body: JSON.stringify({ client_id: clientId, client_secret: clientSecret, code })
     })
-    const result = (await response.json()) as ResponseError | ResponseSuccess
+
+    const result = await response.json<ResponseBody>()
     if ('error' in result) {
-      return coerceReponse(renderBody('error', result), {
+      return new Response(renderBody('error', result), {
         headers: {
           'content-type': 'text/html;charset=UTF-8'
         },
         status: 401
       })
     }
+
     const token = result.access_token
     const provider = 'github'
     const responseBody = renderBody('success', {
       token,
       provider
     })
-    return coerceReponse(responseBody, {
+
+    return new Response(responseBody, {
       headers: {
         'content-type': 'text/html;charset=UTF-8'
       },
@@ -51,7 +53,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     })
   } catch (error) {
     console.error(error)
-    return coerceReponse((error as Error).message, {
+    return new Response((error as Error).message, {
       headers: {
         'content-type': 'text/html;charset=UTF-8'
       },
@@ -75,5 +77,5 @@ function renderBody(status: string, content: Record<string, unknown>) {
     </script>
     `
   const blob = new Blob([html])
-  return blob as unknown as BodyInit
+  return blob
 }

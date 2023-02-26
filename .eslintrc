@@ -26,6 +26,13 @@
       "parserOptions": {
         "extraFileExtensions": [".astro"]
       }
+    },
+    {
+      "files": ["./functions/**/*"],
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "project": ["./functions/tsconfig.json"]
+      }
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { type CFResponse, coerceReponse, type PagesFunction, type Env } from './types'
+import type { PagesFunction, Env } from './types'
 
 export const onRequest: PagesFunction<Env> = async (context) => {
   const {
@@ -19,10 +19,11 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     redirectUrl.searchParams.set('redirect_uri', url.origin + '/api/callback')
     redirectUrl.searchParams.set('scope', 'repo user')
     redirectUrl.searchParams.set('state', crypto.getRandomValues(new Uint8Array(12)).join(''))
-    return Response.redirect(redirectUrl.href, 301) as unknown as CFResponse
+
+    return Response.redirect(redirectUrl.href, 301)
   } catch (error) {
     console.error(error)
-    return coerceReponse((error as Error).message, {
+    return new Response((error as Error).message, {
       status: 500
     })
   }
