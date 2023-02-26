@@ -11,7 +11,8 @@
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/triple-slash-reference": "off",
-    "@typescript-eslint/consistent-type-imports": "error"
+    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/consistent-type-definitions": "off"
   },
   "overrides": [
     {
