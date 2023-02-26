@@ -7226,7 +7226,7 @@
   "resolved" "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
   "version" "2.1.2"
 
-"sanitize-filename@^1.6.1", "sanitize-filename@^1.6.3":
+"sanitize-filename@^1.6.1":
   "integrity" "sha512-y/52Mcy7aw3gRm7IrcGDFx/bCk4AhRh2eI9luHOQM86nZsqwiRkkq2GekHXBBD+SmPidc8i2PqtYZl+pWJ8Oeg=="
   "resolved" "https://registry.npmjs.org/sanitize-filename/-/sanitize-filename-1.6.3.tgz"
   "version" "1.6.3"
@@ -7511,11 +7511,6 @@
     "tiny-invariant" "^1.0.1"
     "tiny-warning" "^0.0.3"
     "type-of" "^2.0.1"
-
-"slugify@^1.6.5":
-  "integrity" "sha512-8mo9bslnBO3tr5PEVFzMPIWwWnipGS0xVbYf65zxDqfNwmzYn1LpiKNrR6DlClusuvo+hDHd1zKpmfAe83NQSQ=="
-  "resolved" "https://registry.npmjs.org/slugify/-/slugify-1.6.5.tgz"
-  "version" "1.6.5"
 
 "sort-asc@^0.1.0":
   "integrity" "sha512-jBgdDd+rQ+HkZF2/OHCmace5dvpos/aWQpcxuyRs9QUbPRnkEJmYVo81PIGpjIdpOcsnJ4rGjStfDHsbn+UVyw=="
