@@ -14,8 +14,8 @@ const SITE_URL =
 /** @type {import('netlify-cms-core').CmsConfig} */
 const cmsConfig = {
   backend: {
-    name: 'git-gateway',
-    // repo: 't-skgm/march-am-site',
+    name: 'github',
+    repo: 't-skgm/march-am-site',
     branch: 'main'
   },
   publish_mode: 'simple',
