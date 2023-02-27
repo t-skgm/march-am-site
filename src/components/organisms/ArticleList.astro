@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import { routes } from '../../constants/routes'
 import ListItem from '../molecules/ListItem.astro'
 
 export type Props = {
@@ -11,7 +12,7 @@ const { entries } = Astro.props
 <ul class="grid grid-cols-1 gap-4 p-0">
   {
     entries.map((e) => (
-      <ListItem title={e.data.title} date={e.data.postedAt} href={`/article/${e.slug}`} />
+      <ListItem title={e.data.title} date={e.data.postedAt} href={routes.article.slug(e.slug)} />
     ))
   }
 </ul>

@@ -1,12 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
 import Main from '../../components/molecules/Main.astro'
 import { routes } from '../../constants/routes'
 import Layout from '../../layouts/Layout.astro'
 import { formatDate } from '../../utils/date'
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const blogEntries = await getCollection('blog')
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
