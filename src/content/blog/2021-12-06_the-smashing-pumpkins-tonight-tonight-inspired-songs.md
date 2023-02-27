@@ -2,10 +2,12 @@
 title: The Smashing Pumpkins "Tonight, Tonight" inspired songs
 postedAt: 2021-12-06T19:18:00.000+09:00
 category: Review
-tags: ['Apple Music']
+tags:
+  - Apple Music
 ---
+本人が言及したもの、していないものを問わず、The Smashing Pumpkins “Tonight, Tonight” っぽい要素を持つ曲をリストアップした。
 
-本人が言及したもの、していないものを問わず、The Smashing Pumpkins “Tonight, Tonight” っぽい要素を持つ曲をリストアップした。インスパイアされた楽曲を見る前に、この曲自体のざっくりな分解と、元ネタ楽曲を軽く見てみようと思う。
+インスパイアされた楽曲を見る前に、この曲自体のざっくりな分解と、元ネタ楽曲を軽く見てみようと思う。
 
 <iframe width="560" height="315" class="youtube" src="https://www.youtube.com/embed/NOG3eus4ZSo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
@@ -28,9 +30,11 @@ tags: ['Apple Music']
 
 Billy Idol が結成したパンクバンド Generation X の楽曲で、スマパンファンからはこの曲が Tonight Tonight のいわゆる「元ネタ」とされている。
 
-たしかに Tonight Tonight の特徴的な要素を感じ、上で挙げた「3\. ヴァースのアルペジオフレーズ」「4\. 静動のメリハリのついた展開」はこの曲由来であると言っていいだろうと思う。
+たしかに Tonight Tonight の特徴的な要素を感じ、上で挙げた「3. ヴァースのアルペジオフレーズ」「4. 静動のメリハリのついた展開」はこの曲由来であると言っていいだろうと思う。
 
 以上の特徴について、 Tonight, Tonight に影響を受けた楽曲についてもどの点が影響を受けたといえるか分析してみたいと思う。
+
+
 
 ## Track list
 
@@ -38,7 +42,7 @@ Billy Idol が結成したパンクバンド Generation X の楽曲で、スマ�
 2. Silverchair - **Emotion Sickness** (from “Neon Ballroom”, 1999)
 3. syrup16g - **Sonic Disorder** (from “Free Throw”, 1999)
 4. BUMP OF CHICKEN - **ラフ・メイカー** (from “present from you”, 2000)
-5. GOING UNDER GROUND - **かよわきエナジー \~ Take Me Home, Country Roads** (from “かよわきエナジー”, 2006)
+5. GOING UNDER GROUND - **かよわきエナジー ~ Take Me Home, Country Roads** (from “かよわきエナジー”, 2006)
 6. GOING UNDER GROUND - **シンドローム** (from “ホーム”, 2002)
 7. ELLEGARDEN - **月** (from “DON’T TRUST ANYONE BUT US”, 2002)
 8. Mr.Children - **UFO** (from “It’s a wonderful world”, 2002)
@@ -56,6 +60,6 @@ Billy Idol が結成したパンクバンド Generation X の楽曲で、スマ�
 20. 山本彩 - **JOKER** (from “identity”, 2017)
 21. リーガルリリー - **惑星トラッシュ** (from “C とし生けるもの”, 2021)
 
----
+- - -
 
 [The Smashing Pumpkins - “Tonight, Tonight” inspired songs](https://music.apple.com/jp/playlist/tonight-tonight-inspired-songs/pl.u-zPy1229uMpdaXj)
