@@ -1,6 +1,6 @@
 ---
 title: Best Singles & EPs of 2017
-thumbnail: /public/uploads/170533394524_0.jpg
+thumbnail: /uploads/170533394524_0.jpg
 postedAt: 2018-02-05T21:49:00.000+09:00
 category: Review
 tags:

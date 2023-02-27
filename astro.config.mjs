@@ -23,6 +23,7 @@ const cmsConfig = {
   },
   publish_mode: 'simple',
   media_folder: 'public/uploads',
+  public_folder: '/uploads',
   site_url: SITE_URL,
   collections: [
     {
