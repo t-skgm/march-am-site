@@ -5,13 +5,11 @@ import Main from '../../components/molecules/Main.astro'
 import Paginate from '../../components/molecules/Paginate.astro'
 import { routes } from '../../constants/routes'
 import { getBlogFirstPage } from '../../utils/collection/blog'
-import { fetchArticles } from '../../lib/contentful/article'
+import { fetchArticles } from '../../infra/contentful/article'
 
 const firstPage = await getBlogFirstPage()
 
 const articles = await fetchArticles()
-
-console.log(articles.items)
 
 const title = 'Article: All'
 ---
@@ -20,7 +18,13 @@ const title = 'Article: All'
   <Main>
     <h1>{title}</h1>
     <ArticleList entries={firstPage.data} />
-    {articles.items.map((item) => <p>{item.fields.title}</p>)}
+    {
+      articles.items.map((item) => (
+        <p>
+          <a href={routes.article.slug(item.fields.slug)}>{item.fields.title}</a>
+        </p>
+      ))
+    }
     <Paginate page={firstPage} urlWithPage={routes.article.page} />
   </Main>
 </Layout>

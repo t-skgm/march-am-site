@@ -1,15 +1,12 @@
-import { contentfulClient } from './client'
-import type { Document } from '@contentful/rich-text-types'
+import type { ContentfulCollection } from 'contentful'
+import { contentfulClient, contentTpes } from './client'
+import type { IArticle } from './generated'
 
-export type Article = {
-  slug: string
-  title: string
-  body: Document
-}
+export type ArticleItem = IArticle
 
 export const fetchArticles = async () => {
-  const entries = await contentfulClient.getEntries<Article>({
-    content_type: 'article'
+  const entries = await contentfulClient.getEntries({
+    content_type: contentTpes.article
   })
-  return entries
+  return entries as ContentfulCollection<ArticleItem>
 }

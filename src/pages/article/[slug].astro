@@ -1,27 +1,51 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
-import type { GetStaticPaths } from 'astro'
 import Main from '../../components/molecules/Main.astro'
 import { routes } from '../../constants/routes'
 import Layout from '../../layouts/Layout.astro'
 import { formatDate } from '../../utils/date'
+import { fetchArticles } from '../../infra/contentful/article'
+import { remark } from '../../utils/remark'
+import type { GetStaticPaths } from 'astro'
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const blogEntries = await getCollection('blog')
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry }
-  }))
+type Entry = {
+  slug: string
+  title: string
+  content: string
+  postedAt: Date
+  category: string
+  tags: string[] | undefined
+  thumbnail: string | undefined
 }
 
 export type Props = {
-  entry: CollectionEntry<'blog'>
+  entry: Entry
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const articleData = await fetchArticles()
+
+  const pages = await Promise.all(
+    articleData.items.map(async ({ fields }) => ({
+      params: { slug: fields.slug },
+      props: {
+        entry: {
+          title: fields.title,
+          slug: fields.slug,
+          category: fields.category,
+          postedAt: new Date(fields.postedAt),
+          tags: fields.tags,
+          thumbnail: fields.thumbnail?.fields.file.url,
+          content: String(await remark.process(fields.body))
+        }
+      } satisfies Props
+    }))
+  )
+
+  return pages
 }
 
 const { entry } = Astro.props
-const { Content } = await entry.render()
-const { title, postedAt, category, tags, thumbnail } = entry.data
+const { title, postedAt, category, tags, thumbnail, slug, content } = entry
 ---
 
 <Layout title={title}>
@@ -29,7 +53,7 @@ const { title, postedAt, category, tags, thumbnail } = entry.data
     <header>
       {thumbnail && <img src={thumbnail} alt={`Eye catch of ${title}`} class="mb-8" />}
       <h1 class="text-3xl font-bold break-all">
-        <a href={routes.article.slug(entry.slug)}>{title}</a>
+        <a href={routes.article.slug(slug)}>{title}</a>
       </h1>
     </header>
 
@@ -49,9 +73,7 @@ const { title, postedAt, category, tags, thumbnail } = entry.data
       )
     }
 
-    <article class="post-content mt-10">
-      <Content />
-    </article>
+    <article class="post-content mt-10" set:html={content} />
   </Main>
 </Layout>
 

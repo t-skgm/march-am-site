@@ -7,10 +7,10 @@ export interface IArticleFields {
   category: 'Review' | 'Diary'
 
   /** Title */
-  title?: string | undefined
+  title: string
 
   /** PostedAt */
-  postedAt?: string | undefined
+  postedAt: string
 
   /** Slug */
   slug: string
