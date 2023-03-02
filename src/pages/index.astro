@@ -3,9 +3,9 @@ import Layout from '../layouts/Layout.astro'
 import ArticleList from '../components/organisms/ArticleList.astro'
 import Main from '../components/molecules/Main.astro'
 import { routes } from '../constants/routes'
-import { getBlogFirstPage } from '../utils/collection/blog'
+import { fetchArticlesFirstPage } from '../infra/contentful/article'
 
-const firstPage = await getBlogFirstPage()
+const firstPage = await fetchArticlesFirstPage()
 ---
 
 <Layout>

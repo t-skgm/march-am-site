@@ -1,8 +1,8 @@
 ---
 import Page from './[page].astro'
-import { getBlogFirstPage } from '../../../utils/collection/blog'
+import { fetchArticlesFirstPage } from '../../../infra/contentful/article'
 
-const firstPage = await getBlogFirstPage()
+const firstPage = await fetchArticlesFirstPage()
 ---
 
 <Page isIndexPage page={firstPage} />
