@@ -25,7 +25,6 @@
     "@fontsource/lora": "^4.5.13",
     "@types/node": "^18.11.18",
     "astro": "^2.0.14",
-    "astro-netlify-cms": "^0.5.3",
     "astro-seo": "^0.7.1",
     "contentful": "^9.3.3",
     "dayjs": "^1.11.7",
