@@ -12,3 +12,11 @@ export const contentfulClient = contentful.createClient({
 export const contentTpes: Record<CONTENT_TYPE, CONTENT_TYPE> = {
   article: 'article'
 }
+
+export type SearchParams = {
+  order?: string
+  /** max 1000 */
+  limit?: number
+  skip?: number
+  [param: string]: any
+}

@@ -3,6 +3,7 @@ import type { APIRoute } from 'astro'
 import { routes } from '../constants/routes'
 import { site } from '../constants/site'
 import { getBlogCollection } from '../utils/collection/blog'
+import { fetchArticles, mapArticleEntry } from '../infra/contentful/article'
 
 const blogEntries = await getBlogCollection()
 

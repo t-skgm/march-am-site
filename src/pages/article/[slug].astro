@@ -3,45 +3,22 @@ import Main from '../../components/molecules/Main.astro'
 import { routes } from '../../constants/routes'
 import Layout from '../../layouts/Layout.astro'
 import { formatDate } from '../../utils/date'
-import { fetchArticles } from '../../infra/contentful/article'
-import { remark } from '../../utils/remark'
+import type { ArticleEntry } from '../../infra/contentful/article'
+import { mapArticleEntry, fetchArticles } from '../../infra/contentful/article'
 import type { GetStaticPaths } from 'astro'
 
-type Entry = {
-  slug: string
-  title: string
-  content: string
-  postedAt: Date
-  category: string
-  tags: string[] | undefined
-  thumbnail: string | undefined
-}
-
 export type Props = {
-  entry: Entry
+  entry: ArticleEntry
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articleData = await fetchArticles()
+  const articleEntries = await Promise.all(articleData.items.map(mapArticleEntry))
 
-  const pages = await Promise.all(
-    articleData.items.map(async ({ fields }) => ({
-      params: { slug: fields.slug },
-      props: {
-        entry: {
-          title: fields.title,
-          slug: fields.slug,
-          category: fields.category,
-          postedAt: new Date(fields.postedAt),
-          tags: fields.tags,
-          thumbnail: fields.thumbnail?.fields.file.url,
-          content: String(await remark.process(fields.body))
-        }
-      } satisfies Props
-    }))
-  )
-
-  return pages
+  return articleEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry } satisfies Props
+  }))
 }
 
 const { entry } = Astro.props
