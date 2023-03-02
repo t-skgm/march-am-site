@@ -4,10 +4,9 @@ import ArticleList from '../../components/organisms/ArticleList.astro'
 import Main from '../../components/molecules/Main.astro'
 import Paginate from '../../components/molecules/Paginate.astro'
 import { routes } from '../../constants/routes'
-import { fetchArticlesFirstPage, mapArticleEntry } from '../../infra/contentful/article'
+import { fetchArticlesFirstPage } from '../../infra/contentful/article'
 
 const firstPage = await fetchArticlesFirstPage()
-const entries = await Promise.all(firstPage.data.map(mapArticleEntry))
 
 const title = 'Article: All'
 ---
@@ -15,7 +14,7 @@ const title = 'Article: All'
 <Layout title={title}>
   <Main>
     <h1>{title}</h1>
-    <ArticleList entries={entries} />
+    <ArticleList entries={firstPage.data} />
     <Paginate page={firstPage} urlWithPage={routes.article.page} />
   </Main>
 </Layout>

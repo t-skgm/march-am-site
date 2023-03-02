@@ -4,7 +4,7 @@ import { routes } from '../../constants/routes'
 import Layout from '../../layouts/Layout.astro'
 import { formatDate } from '../../utils/date'
 import type { ArticleEntry } from '../../infra/contentful/article'
-import { mapArticleEntry, fetchArticles } from '../../infra/contentful/article'
+import { fetchArticleEntries } from '../../infra/contentful/article'
 import type { GetStaticPaths } from 'astro'
 
 export type Props = {
@@ -12,8 +12,7 @@ export type Props = {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articleData = await fetchArticles()
-  const articleEntries = await Promise.all(articleData.items.map(mapArticleEntry))
+  const articleEntries = await fetchArticleEntries()
 
   return articleEntries.map((entry) => ({
     params: { slug: entry.slug },

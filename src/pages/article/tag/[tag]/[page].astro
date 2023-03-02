@@ -3,20 +3,20 @@ import Layout from '../../../../layouts/Layout.astro'
 import Main from '../../../../components/molecules/Main.astro'
 import ArticleList from '../../../../components/organisms/ArticleList.astro'
 import Paginate from '../../../../components/molecules/Paginate.astro'
-import type { BlogEntry } from '../../../../utils/collection/blog'
-import { getBlogCollection, getBlogTags } from '../../../../utils/collection/blog'
 import type { GetStaticPaths, Page } from 'astro'
 import { routes } from '../../../../constants/routes'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
 import { configs } from '../../../../constants/site'
 import { normalizeTag } from '../../../../utils/collection/common'
+import type { ArticleEntry } from '../../../../infra/contentful/article'
+import { fetchArticleEntries, fetchArticleTags } from '../../../../infra/contentful/article'
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
-  const entries = await getBlogCollection()
-  const uniqTags = await getBlogTags()
+  const entries = await fetchArticleEntries()
+  const uniqTags = await fetchArticleTags()
 
   return uniqTags.map((tag) => {
-    const taggedEntries = entries.filter((e) => (e.data.tags ?? []).map(normalizeTag).includes(tag))
+    const taggedEntries = entries.filter((e) => (e.tags ?? []).map(normalizeTag).includes(tag))
     const safeTag = cleanPathParam(tag)
 
     return paginate(taggedEntries, {
@@ -27,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 }
 
 export type Props = {
-  page: Page<BlogEntry>
+  page: Page<ArticleEntry>
   /** /[tag]/page からのアクセスか  */
   isIndexPage?: boolean
 }

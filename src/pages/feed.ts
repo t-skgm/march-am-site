@@ -2,21 +2,20 @@ import rss, { type RSSOptions } from '@astrojs/rss'
 import type { APIRoute } from 'astro'
 import { routes } from '../constants/routes'
 import { site } from '../constants/site'
-import { getBlogCollection } from '../utils/collection/blog'
-import { fetchArticles, mapArticleEntry } from '../infra/contentful/article'
+import { fetchArticles } from '../infra/contentful/article'
 
-const blogEntries = await getBlogCollection()
+const articles = await fetchArticles()
 
 export const get: APIRoute = async () => {
-  const items: RSSOptions['items'] = blogEntries.map((ent) => ({
-    link: routes.article.slug(ent.slug),
-    title: ent.data.title,
-    pubDate: new Date(ent.data.postedAt)
+  const items: RSSOptions['items'] = articles.map(({ fields }) => ({
+    link: routes.article.slug(fields.slug),
+    title: fields.title,
+    pubDate: new Date(fields.postedAt)
   }))
 
   const { body } = await rss({
     title: site.title,
-    description: `News feed of ${site.title}`,
+    description: `Feed of ${site.title}`,
     site: import.meta.env.SITE,
     items,
     stylesheet: '/xsl/pretty-feed-v3.xsl'
