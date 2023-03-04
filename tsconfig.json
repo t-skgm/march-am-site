@@ -4,6 +4,13 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
-  "include": ["src/**/*"],
-  "exclude": ["functions/**/*"]
+  "include": ["src/**/*", "script/**/*"],
+  "exclude": ["functions/**/*"],
+  "ts-node": {
+    "esm": true,
+    "compilerOptions": {
+      "noUnusedLocals": false,
+      "noUnusedParameters": false
+    }
+  }
 }
