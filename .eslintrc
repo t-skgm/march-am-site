@@ -1,5 +1,5 @@
 {
-  "extends": ["standard-with-typescript", "plugin:astro/recommended"],
+  "extends": ["plugin:astro/recommended", "standard-with-typescript"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "project": ["tsconfig.json"]
