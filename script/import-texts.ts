@@ -31,7 +31,9 @@ const main = async () => {
   // const e = await environment.getEntry('5wkYpFhJ0bfqvXBMT2OMZY')
   // console.dir(e, { depth: 5 })
 
-  await Bluebird.each(filenames.slice(0, 1), async (filename) => {
+  await Bluebird.each(filenames, async (filename, idx) => {
+    if (idx % 10 === 1) console.log('idx:', idx)
+
     const markdownStr = await readFile(resolve(currentDir, './articles/', filename), {
       encoding: 'utf-8'
     })
@@ -45,14 +47,14 @@ const main = async () => {
         category: ja(attr.category),
         title: ja(attr.title),
         postedAt: ja(attr.postedAt),
-        thumbnail: attr.thumbnail != null ? ja(attr.thumbnail) : undefined,
+        // thumbnail: attr.thumbnail != null ? ja(attr.thumbnail) : undefined,
         tags: attr.tags != null ? ja(attr.tags) : undefined,
         body: ja(parsed.body)
       }
     })
-    console.log(draftEntry)
+    // console.log(draftEntry)
 
-    // const publishedEntry = await draftEntry.publish()
+    await draftEntry.publish()
   })
 }
 
