@@ -1,18 +1,33 @@
 ---
+import { routes } from '../../constants/routes'
+
 export type Props = {
+  isTop?: boolean
   backTo?: string
 }
-const { backTo } = Astro.props
+const { backTo, isTop = false } = Astro.props
 ---
+
+{
+  !isTop && (
+    <nav class="py-6">
+      <a href={routes.index} class="back-to-top">
+        ← back to top
+      </a>
+    </nav>
+  )
+}
 
 <main>
   <slot />
 </main>
 {
   backTo && (
-    <a href={backTo} class="back-to">
-      ←
-    </a>
+    <nav>
+      <a href={backTo} class="back-to">
+        ←
+      </a>
+    </nav>
   )
 }
 
@@ -26,7 +41,12 @@ const { backTo } = Astro.props
   }
 
   main {
-    @apply pr-0 pt-8;
+    @apply pr-0;
+  }
+
+  .back-to-top {
+    @apply text-greenish no-underline hover:underline italic;
+    font-family: 'Lora', serif;
   }
 
   .back-to {

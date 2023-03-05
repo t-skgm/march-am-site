@@ -8,8 +8,8 @@ import { fetchArticlesFirstPage } from '../infra/contentful/article'
 const firstPage = await fetchArticlesFirstPage()
 ---
 
-<Layout>
-  <Main>
+<Layout isTop>
+  <Main isTop>
     <h1>Article</h1>
     <ArticleList entries={firstPage.data} />
     <p>

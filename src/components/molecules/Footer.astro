@@ -1,10 +1,15 @@
 ---
 import { routes } from '../../constants/routes'
 import { site } from '../../constants/site'
+
+export type Props = {
+  isTop?: boolean
+}
+const { isTop = false } = Astro.props
 ---
 
 <footer>
-  <ul class="links gutter">
+  <ul class:list={['links', { 'gutter-top': isTop, gutter: !isTop }]}>
     <li>
       <a href={routes.index}>Top</a>
     </li>
@@ -20,7 +25,7 @@ import { site } from '../../constants/site'
     </li>
   </ul>
 
-  <ul class="sns gutter">
+  <ul class:list={['sns', { 'gutter-top': isTop, gutter: !isTop }]}>
     <li>
       <a
         class="sns-icon sns-tw"
@@ -47,6 +52,11 @@ import { site } from '../../constants/site'
 
   .gutter {
     @apply p-10;
+    margin: 0 12px 0 12px;
+  }
+
+  .gutter-top {
+    @apply p-10;
     margin: 0 50px 0 40px;
   }
 
@@ -60,7 +70,7 @@ import { site } from '../../constants/site'
 
   .links {
     @apply block text-center pb-0;
-    background-color: rgb(120, 145, 120, 0.06);
+    background-color: rgb(255 255 255 / 20%);
     font-family: 'Lora', serif;
   }
 
@@ -88,7 +98,7 @@ import { site } from '../../constants/site'
 
   .sns {
     @apply pb-12 flex justify-center gap-8;
-    background-color: rgb(120, 145, 120, 0.06);
+    background-color: rgb(255 255 255 / 20%);
   }
 
   .sns li {
