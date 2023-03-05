@@ -65,10 +65,9 @@ const CopietArticleContent = ({
 
 const isValidAccess = (cookies: string[]): boolean => {
   if (import.meta.env.DEV) return true
-  const token = Object.fromEntries(cookies.map((c) => c.split('='))).contentful_preview_token as
-    | string
-    | undefined
-  console.log('token', cookies, token)
+  const token = Object.fromEntries(cookies.map((c) => c.trim().split('=')))
+    .contentful_preview_token as string | undefined
+
   // FIXME: 雑
   if (token != null && token.length !== 0) return true
 
