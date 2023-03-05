@@ -1,9 +1,20 @@
 ---
+export type Props = {
+  backTo?: string
+}
+const { backTo } = Astro.props
 ---
 
 <main>
   <slot />
 </main>
+{
+  backTo && (
+    <a href={backTo} class="back-to">
+      ←
+    </a>
+  )
+}
 
 <style>
   main::after {
@@ -16,6 +27,10 @@
 
   main {
     @apply pl-3 pr-0 pt-8;
+  }
+
+  .back-to {
+    @apply text-4xl no-underline hover:underline mt-4;
   }
 
   @media screen(lg) {
