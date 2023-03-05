@@ -13,6 +13,7 @@
     "lint": "eslint --ext .js,.astro src",
     "fmt:check": "prettier src/",
     "fmt": "prettier --write src/",
+    "test": "vitest",
     "typecheck": "tsc -p . --noEmit",
     "codegen": "contentful-typescript-codegen --output src/infra/contentful/generated.d.ts"
   },
@@ -51,6 +52,7 @@
     "front-matter": "^4.0.2",
     "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.8.0",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "vitest": "^0.29.2"
   }
 }

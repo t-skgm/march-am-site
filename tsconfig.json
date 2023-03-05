@@ -4,7 +4,7 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
-  "include": ["src/**/*", "script/**/*"],
+  "include": ["src/**/*", "script/**/*", "vitest.config.ts"],
   "exclude": ["functions/**/*"],
   "ts-node": {
     "esm": true,
