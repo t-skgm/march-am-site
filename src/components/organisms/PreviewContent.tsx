@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'preact/hooks'
+import type { FunctionComponent } from 'preact'
 import { routes } from '../../constants/routes'
 import { fetchArticleEntry } from '../../infra/contentful/articlePreview'
 import type { ArticleEntry } from '../../infra/contentful/interfaces'
 import { formatDateJp } from '../../utils/date'
 
-export const PreviewContent = () => {
+export const PreviewContent: FunctionComponent = () => {
   const [entry, setEntry] = useState<ArticleEntry | undefined>()
 
   useEffect(() => {
@@ -31,10 +32,8 @@ export const PreviewContent = () => {
   return <CopietArticleContent entry={entry} />
 }
 
-const CopietArticleContent = ({
+const CopietArticleContent: FunctionComponent<{ entry: ArticleEntry }> = ({
   entry: { category, content, postedAt, slug, tags, thumbnail, title }
-}: {
-  entry: ArticleEntry
 }) => (
   <>
     <header>

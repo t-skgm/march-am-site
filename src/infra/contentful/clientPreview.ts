@@ -5,8 +5,8 @@ const { createClient } = contentfulAll
 export const contentfulPreviewClient = () => {
   const client = createClient({
     space: import.meta.env.PUBLIC_CONTENTFUL_SPACE_ID,
-    accessToken: import.meta.env.PUBLIC_CONTENTFUL_DELIVERY_TOKEN,
-    host: 'cdn.contentful.com'
+    accessToken: import.meta.env.PUBLIC_CONTENTFUL_PREVIEW_TOKEN,
+    host: 'https://preview.contentful.com'
   })
 
   return client
