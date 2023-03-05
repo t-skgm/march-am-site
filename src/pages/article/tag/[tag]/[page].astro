@@ -7,7 +7,7 @@ import type { GetStaticPaths, Page } from 'astro'
 import { routes } from '../../../../constants/routes'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
 import { configs } from '../../../../constants/site'
-import { normalizeTag } from '../../../../utils/collection/common'
+import { normalizeTag } from '../../../../infra/contentful/common'
 import { fetchArticleEntries, fetchArticleTags } from '../../../../infra/contentful/article'
 import type { ArticleEntry } from '../../../../infra/contentful/interfaces'
 

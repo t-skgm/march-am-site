@@ -1,4 +1,4 @@
-import { normalizeTag } from '../utils/collection/common'
+import { normalizeTag } from '../infra/contentful/common'
 
 export const routes = {
   index: '/',
