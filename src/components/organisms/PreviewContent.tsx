@@ -68,6 +68,7 @@ const isValidAccess = (cookies: string[]): boolean => {
   const token = Object.fromEntries(cookies.map((c) => c.split('='))).contentful_preview_token as
     | string
     | undefined
+  console.log('token', cookies, token)
   // FIXME: 雑
   if (token != null && token.length !== 0) return true
 
