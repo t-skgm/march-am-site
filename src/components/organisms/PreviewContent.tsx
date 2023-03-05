@@ -14,8 +14,8 @@ export const PreviewContent: FunctionComponent = () => {
       throw new Error('Invalid Access')
     }
 
-    // fetch entry
     ;(async () => {
+      // fetch entry
       const search = new URLSearchParams(window.location.search)
       const slugParam = search.get('slug')
       if (slugParam != null) {
