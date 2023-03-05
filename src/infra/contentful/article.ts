@@ -1,13 +1,16 @@
 import type { Entry } from 'contentful'
-import { contentfulClient, contentTpes, type SearchParams } from './client'
-import type { IArticle } from './generated'
+import {
+  type ArticleEntity,
+  type ArticleEntry,
+  contentTypes,
+  type SearchParams
+} from './interfaces'
 import { processMarkdown } from '../../utils/remark'
 import { calcFirstPage, normalizeTag } from '../../utils/collection/common'
 import { uniqBy } from 'remeda'
+import { contentfulClient } from './client'
 
-export type ArticleItem = IArticle
-
-const fetchCache: Record<string, ArticleItem[]> = {}
+const fetchCache: Record<string, ArticleEntity[]> = {}
 
 export const fetchArticles = async (args: SearchParams = {}) => {
   // メモリキャッシュに存在すればそちらを返す
@@ -18,8 +21,8 @@ export const fetchArticles = async (args: SearchParams = {}) => {
   }
 
   // paginateしてすべて取得
-  const entries = await getNext<ArticleItem>({
-    content_type: contentTpes.article,
+  const entries = await getNext<ArticleEntity>({
+    content_type: contentTypes.article,
     order: '-fields.postedAt',
     ...args
   })
@@ -53,17 +56,7 @@ const getNext = async <Item extends Entry<unknown>>(
 
 // ------
 
-export type ArticleEntry = {
-  slug: string
-  title: string
-  content: string
-  postedAt: Date
-  category: string
-  tags: string[] | undefined
-  thumbnail: string | undefined
-}
-
-export const mapArticleEntry = async ({ fields }: Pick<ArticleItem, 'fields'>) => ({
+export const mapArticleEntry = async ({ fields }: Pick<ArticleEntity, 'fields'>) => ({
   title: fields.title,
   slug: fields.slug,
   category: fields.category,

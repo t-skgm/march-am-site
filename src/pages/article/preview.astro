@@ -1,0 +1,14 @@
+---
+import Main from '../../components/molecules/Main.astro'
+import { PreviewContent } from '../../components/organisms/PreviewContent'
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout title="preview" overrideSEOProps={{ noindex: true, nofollow: true }}>
+  <Main>
+    <h1>Preview Mode</h1>
+    <hr class="mb-20" />
+
+    <PreviewContent client:load />
+  </Main>
+</Layout>

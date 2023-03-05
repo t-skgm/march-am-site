@@ -1,0 +1,61 @@
+---
+import { routes } from '../../constants/routes'
+import type { ArticleEntry } from '../../infra/contentful/interfaces'
+import { formatDateJp } from '../../utils/date'
+
+export type Props = {
+  entry: ArticleEntry
+}
+
+const { entry } = Astro.props
+const { title, postedAt, category, tags, thumbnail, slug, content } = entry
+---
+
+<header>
+  {thumbnail && <img src={thumbnail} alt={`Eye catch of ${title}`} class="mb-8" />}
+  <h1 class="text-3xl font-bold break-all">
+    <a href={routes.article.slug(slug)}>{title}</a>
+  </h1>
+</header>
+
+<div class="mt-6 mb-2">
+  <a href={routes.article.category.page(category)} class="uppercase">{category}</a> | {
+    formatDateJp(postedAt)
+  }
+</div>
+{
+  tags && (
+    <div>
+      tags:
+      {tags.map((tag) => (
+        <a href={routes.article.tag.page(tag)}>{tag}</a>
+      ))}
+    </div>
+  )
+}
+
+<article class="post-content mt-10" set:html={content} />
+
+<style is:global lang="scss">
+  .post-content {
+    ul,
+    ol {
+      @apply mr-0 pr-0;
+    }
+
+    ul ol,
+    ol ul,
+    ul ul {
+      margin: 0;
+    }
+
+    img {
+      @apply h-auto max-w-full;
+    }
+
+    // iframe: YouTube
+    iframe.youtube {
+      @apply h-full max-w-full;
+    }
+  }
+</style>

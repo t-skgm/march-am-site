@@ -41,6 +41,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230221.0",
     "@types/bluebird": "^3.5.38",
+    "@types/safe-compare": "^1.1.0",
     "@typescript-eslint/parser": "^5.50.0",
     "bluebird": "^3.7.2",
     "contentful-management": "^10.30.0",
