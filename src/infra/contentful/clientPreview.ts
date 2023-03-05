@@ -1,5 +1,7 @@
-import { createClient } from 'contentful'
+import * as contentfulAll from 'contentful'
+const { createClient } = contentfulAll
 
+/** プレビュー表示用 */
 export const contentfulPreviewClient = () => {
   const client = createClient({
     space: import.meta.env.PUBLIC_CONTENTFUL_SPACE_ID,

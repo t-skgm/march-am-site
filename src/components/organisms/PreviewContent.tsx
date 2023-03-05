@@ -8,6 +8,12 @@ export const PreviewContent = () => {
   const [entry, setEntry] = useState<ArticleEntry | undefined>()
 
   useEffect(() => {
+    const cookies = (window.document.cookie ?? '').split(';')
+    if (!isValidAccess(cookies)) {
+      throw new Error('Invalid Access')
+    }
+
+    // fetch entry
     ;(async () => {
       const search = new URLSearchParams(window.location.search)
       const slugParam = search.get('slug')
@@ -15,9 +21,7 @@ export const PreviewContent = () => {
         const entry = await fetchArticleEntry({ slug: slugParam })
         setEntry(entry)
       }
-    })().catch((e) => {
-      console.warn(e)
-    })
+    })().catch(console.warn)
   }, [])
 
   console.log('entry', entry)
@@ -58,3 +62,9 @@ const CopietArticleContent = ({
     <article class="post-content mt-10" dangerouslySetInnerHTML={{ __html: content }} />
   </>
 )
+
+const isValidAccess = (cookies: string[]): boolean => {
+  if (import.meta.env.DEV) return true
+
+  return false
+}

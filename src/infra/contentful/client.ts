@@ -1,4 +1,5 @@
-import { createClient } from 'contentful'
+import contentful from 'contentful'
+const { createClient } = contentful
 
 export const contentfulClient = createClient({
   space: import.meta.env.PUBLIC_CONTENTFUL_SPACE_ID,
