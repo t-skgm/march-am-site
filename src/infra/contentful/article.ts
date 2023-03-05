@@ -1,7 +1,7 @@
 import type { Entry } from 'contentful'
 import { contentfulClient, contentTpes, type SearchParams } from './client'
 import type { IArticle } from './generated'
-import { remark } from '../../utils/remark'
+import { processMarkdown } from '../../utils/remark'
 import { calcFirstPage, normalizeTag } from '../../utils/collection/common'
 import { uniqBy } from 'remeda'
 
@@ -70,7 +70,7 @@ export const mapArticleEntry = async ({ fields }: Pick<ArticleItem, 'fields'>) =
   postedAt: new Date(fields.postedAt),
   tags: fields.tags,
   thumbnail: fields.thumbnail?.fields.file.url,
-  content: String(await remark.process(fields.body))
+  content: String(await processMarkdown(fields.body))
 })
 
 export const fetchArticleEntries = async (args: SearchParams = {}): Promise<ArticleEntry[]> => {
