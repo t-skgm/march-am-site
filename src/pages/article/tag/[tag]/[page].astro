@@ -41,7 +41,7 @@ const title = `Tag: ${tag} (page ${page.currentPage})`
 <Layout title={title} canonicalPath={isIndexPage ? routes.article.tag.page(tag, 1) : undefined}>
   <Main>
     <h1>{title}</h1>
-    <ArticleList entries={page.data} />
+    <ArticleList entries={page.data} fullwidth />
     <Paginate page={page} urlWithPage={(page) => routes.article.tag.page(tag, page)} />
   </Main>
 </Layout>

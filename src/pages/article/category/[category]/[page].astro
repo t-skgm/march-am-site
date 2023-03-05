@@ -45,7 +45,7 @@ const title = `Category: ${category} (page ${page.currentPage})`
 >
   <Main>
     <h1>{title}</h1>
-    <ArticleList entries={page.data} />
+    <ArticleList entries={page.data} fullwidth />
     <Paginate page={page} urlWithPage={(page) => routes.article.category.page(category, page)} />
   </Main>
 </Layout>

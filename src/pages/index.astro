@@ -11,7 +11,7 @@ const firstPage = await fetchArticlesFirstPage()
 <Layout isTop>
   <Main isTop>
     <h1>Article</h1>
-    <ArticleList entries={firstPage.data} />
+    <ArticleList entries={firstPage.data} fullwidth />
     <p>
       <a href={routes.article.page(2)}>&gt; View all articles</a>
     </p>

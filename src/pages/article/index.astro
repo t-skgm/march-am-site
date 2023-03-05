@@ -14,7 +14,7 @@ const title = 'Article: All'
 <Layout title={title}>
   <Main>
     <h1>{title}</h1>
-    <ArticleList entries={firstPage.data} />
+    <ArticleList entries={firstPage.data} fullwidth />
     <Paginate page={firstPage} urlWithPage={routes.article.page} />
   </Main>
 </Layout>
