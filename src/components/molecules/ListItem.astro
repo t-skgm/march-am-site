@@ -1,5 +1,5 @@
 ---
-import { formatDate } from '../../utils/date'
+import { formatDateJp } from '../../utils/date'
 
 export interface Props {
   title: string
@@ -14,7 +14,7 @@ const { href, title, date } = Astro.props
   <a href={href} class="no-underline hover:underline">
     <div class="font-bold mb-1">{title}</div>
     <div class="text-sm text-slate-500">
-      posted at <time>{formatDate(date)}</time>
+      posted at <time>{formatDateJp(date)}</time>
     </div>
   </a>
 </li>
