@@ -9,23 +9,34 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     // next, // used for middleware or to fetch assets
     // data // arbitrary space for passing data between middlewares
   } = context
-  const params = new URL(request.url).searchParams
-  const secret = params.get('secret')
-  const slug = params.get('slug')
+  const url = new URL(request.url)
+  const secret = url.searchParams.get('secret')
+  const slug = url.searchParams.get('slug')
 
   if (
     slug == null ||
-    (secret != null && ctEqual(toUint8a(secret), toUint8a(env.CONTENTFUL_PREVIEW_SECRET)))
+    slug.length === 0 ||
+    secret == null ||
+    secret.length === 0 ||
+    !ctEqual(toUint8a(secret), toUint8a(env.CONTENTFUL_PREVIEW_SECRET))
   ) {
-    return new Response('Error', { status: 401 })
+    return new Response('Unauthorized', { status: 401 })
   }
 
-  const response = Response.redirect(`${BASE_URL}/article/preview?slug=${slug}`)
-  response.headers.set('Set-Cookie', `ContentfulPreviewToken=${ContentfulPreviewToken}`)
+  const redirectURL = `${url.origin}/article/preview?slug=${slug}`
+  const response = new Response(
+    `<html><head><meta http-equiv="refresh" content="0; URL='${redirectURL}'"/></head></html>`,
+    {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/html',
+        'Set-Cookie': `contentful_preview_token=${ContentfulPreviewToken}; SameSite=Lax; Secure; Path=/`
+      }
+    }
+  )
   return response
 }
 
-const BASE_URL = 'https://march-am.page'
 /** FIXME: 雑 */
 const ContentfulPreviewToken = '24b648b45b108aeb21980aa907009387300ec2e5c598636607ccf2096e8cfc73'
 
