@@ -1,4 +1,4 @@
-import { capitalizeWords } from '../string'
+import { capitalizeWords } from '../../utils/string'
 
 export const onlyPublished = (entry: { data: { draft?: boolean | undefined } }): boolean =>
   entry.data.draft == null || !entry.data.draft

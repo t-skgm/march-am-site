@@ -2,7 +2,7 @@
 import TagPage from './[page].astro'
 import type { GetStaticPaths, Page } from 'astro'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
-import { calcFirstPage, normalizeTag } from '../../../../utils/collection/common'
+import { calcFirstPage, normalizeTag } from '../../../../infra/contentful/common'
 import { configs } from '../../../../constants/site'
 import type { ArticleEntry } from '../../../../infra/contentful/interfaces'
 import { fetchArticleEntries, fetchArticleTags } from '../../../../infra/contentful/article'

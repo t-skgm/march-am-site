@@ -6,7 +6,7 @@ import {
   type SearchParams
 } from './interfaces'
 import { processMarkdown } from '../../utils/remark'
-import { calcFirstPage, normalizeTag } from '../../utils/collection/common'
+import { calcFirstPage, normalizeTag } from './common'
 import { uniqBy } from 'remeda'
 import { contentfulClient } from './client'
 
