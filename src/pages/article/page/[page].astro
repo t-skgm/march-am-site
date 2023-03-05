@@ -28,7 +28,7 @@ const title = `Article - ${Astro.params.page === undefined ? 'All' : `page ${pag
 <Layout title={title} canonicalPath={isIndexPage ? routes.article.page(1) : undefined}>
   <Main>
     <h1>{title}</h1>
-    <ArticleList entries={page.data} />
+    <ArticleList entries={page.data} fullwidth />
     <Paginate page={page} urlWithPage={routes.article.page} />
   </Main>
 </Layout>

@@ -8,7 +8,8 @@ module.exports = {
           DEFAULT: '#4a4740',
           dark: '#37342f'
         },
-        maccha: '#769171'
+        maccha: '#769171',
+        greenlite: '#F7F8F7'
       }
     }
   },

@@ -1,0 +1,67 @@
+---
+import type { ArticleEntry } from '../../infra/contentful/interfaces'
+import { formatDateJp } from '../../utils/date'
+import birdImage from '/assets/images/bird-silhouette-left.png'
+
+export interface Props {
+  entry: ArticleEntry
+  linkMapper: (slug: string) => string
+}
+
+const {
+  entry: { slug, title, postedAt, thumbnail, category, tags },
+  linkMapper
+} = Astro.props
+---
+
+<li class="py-2 list-none">
+  <a href={linkMapper(slug)} class="no-underline">
+    <div class="text-sm mb-1"><time>{formatDateJp(postedAt)}</time></div>
+    {
+      thumbnail != null ? (
+        <div class="thumbnail">
+          <img src={thumbnail} />
+        </div>
+      ) : (
+        <div class="thumbnail-placeholder">
+          <img src={birdImage} />
+          <span class="text-lg text-greenlite mt-2">{title}</span>
+        </div>
+      )
+    }
+    <div class="mb-1 font-bold hover:text-maccha">{title}</div>
+    <div>
+      <span class="text-sm uppercase bg-maccha text-greenlite px-2 py-1 mr-2">{category}</span>
+      {
+        tags != null &&
+          tags.map((tag) => (
+            <span class="text-sm text-maccha border-maccha border rounded-3xl px-2 py-1">
+              {tag}
+            </span>
+          ))
+      }
+    </div>
+  </a>
+</li>
+
+<style>
+  .thumbnail,
+  .thumbnail-placeholder {
+    @apply h-52 w-full flex flex-col items-center justify-center bg-maccha rounded-lg;
+  }
+
+  @media screen(lg) {
+    .thumbnail,
+    .thumbnail-placeholder {
+      @apply h-72;
+    }
+  }
+
+  .thumbnail img {
+    @apply h-full w-full object-cover rounded-lg;
+  }
+
+  .thumbnail-placeholder img {
+    height: 6rem;
+  }
+</style>
