@@ -19,16 +19,17 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
 </header>
 
 <div class="mt-6 mb-2">
-  <a href={routes.article.category.page(category)} class="uppercase">{category}</a> | {
-    formatDateJp(postedAt)
-  }
+  <a href={routes.article.category.page(category)} class="uppercase no-underline hover:underline"
+    >{category}</a
+  > | {formatDateJp(postedAt)}
 </div>
 {
   tags && (
-    <div>
-      tags:
+    <div class="tag-list">
       {tags.map((tag) => (
-        <a href={routes.article.tag.page(tag)}>{tag}</a>
+        <a href={routes.article.tag.page(tag)} class="tag">
+          {tag}
+        </a>
       ))}
     </div>
   )
@@ -56,6 +57,20 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
     // iframe: YouTube
     iframe.youtube {
       @apply h-full max-w-full;
+    }
+  }
+
+  .tag-list {
+    @apply flex gap-4 my-6;
+  }
+
+  .tag {
+    @apply no-underline hover:underline flex items-center;
+
+    &::before {
+      @apply h-4 w-4 inline-block mr-2;
+      content: '';
+      background: url(/assets/icons/tag.svg);
     }
   }
 </style>

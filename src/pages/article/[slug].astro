@@ -5,6 +5,7 @@ import Layout from '../../layouts/Layout.astro'
 import { fetchArticleEntries } from '../../infra/contentful/article'
 import type { GetStaticPaths } from 'astro'
 import type { ArticleEntry } from '../../infra/contentful/interfaces'
+import { routes } from '../../constants/routes'
 
 export type Props = {
   entry: ArticleEntry
@@ -23,7 +24,7 @@ const { entry } = Astro.props
 ---
 
 <Layout title={entry.title}>
-  <Main>
+  <Main backTo={routes.article.index}>
     <ArticleContent entry={entry} />
   </Main>
 </Layout>

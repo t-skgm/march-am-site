@@ -1,9 +1,35 @@
 ---
+import { routes } from '../../constants/routes'
+
+export type Props = {
+  isTop?: boolean
+  backTo?: string
+}
+const { backTo, isTop = false } = Astro.props
 ---
+
+{
+  !isTop && (
+    <nav class="py-6">
+      <a href={routes.index} class="back-to-top">
+        ← back to top
+      </a>
+    </nav>
+  )
+}
 
 <main>
   <slot />
 </main>
+{
+  backTo && (
+    <nav>
+      <a href={backTo} class="back-to">
+        ←
+      </a>
+    </nav>
+  )
+}
 
 <style>
   main::after {
@@ -15,7 +41,16 @@
   }
 
   main {
-    @apply pl-3 pr-0 pt-8;
+    @apply pr-0;
+  }
+
+  .back-to-top {
+    @apply text-greenish no-underline hover:underline italic;
+    font-family: 'Lora', serif;
+  }
+
+  .back-to {
+    @apply text-4xl no-underline hover:underline mt-4;
   }
 
   @media screen(lg) {
