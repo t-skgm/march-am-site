@@ -15,7 +15,7 @@ export const get: APIRoute = async () => {
 
   const { body } = await rss({
     title: site.title,
-    description: `Feed of ${site.title}`,
+    description: `${site.title}: Feed`,
     site: import.meta.env.SITE,
     items,
     stylesheet: '/xsl/pretty-feed-v3.xsl'

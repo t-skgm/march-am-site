@@ -1,4 +1,4 @@
-name: Run checks
+name: Check
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
     branches-ignore: [ "main" ]
 
 jobs:
-  eslint:
-    name: Run eslint scanning
+  checks:
+    name: Run checks
     runs-on: ubuntu-latest
     permissions:
       contents: read
