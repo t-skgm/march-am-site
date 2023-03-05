@@ -1,11 +1,10 @@
 ---
 import Main from '../../components/molecules/Main.astro'
-import { routes } from '../../constants/routes'
+import ArticleContent from '../../components/organisms/ArticleContent.astro'
 import Layout from '../../layouts/Layout.astro'
-import { formatDateJp } from '../../utils/date'
-import type { ArticleEntry } from '../../infra/contentful/article'
 import { fetchArticleEntries } from '../../infra/contentful/article'
 import type { GetStaticPaths } from 'astro'
+import type { ArticleEntry } from '../../infra/contentful/interfaces'
 
 export type Props = {
   entry: ArticleEntry
@@ -21,58 +20,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 const { entry } = Astro.props
-const { title, postedAt, category, tags, thumbnail, slug, content } = entry
 ---
 
-<Layout title={title}>
+<Layout title={entry.title}>
   <Main>
-    <header>
-      {thumbnail && <img src={thumbnail} alt={`Eye catch of ${title}`} class="mb-8" />}
-      <h1 class="text-3xl font-bold break-all">
-        <a href={routes.article.slug(slug)}>{title}</a>
-      </h1>
-    </header>
-
-    <div class="mt-6 mb-2">
-      <a href={routes.article.category.page(category)} class="uppercase">{category}</a> | {
-        formatDateJp(postedAt)
-      }
-    </div>
-    {
-      tags && (
-        <div>
-          tags:
-          {tags.map((tag) => (
-            <a href={routes.article.tag.page(tag)}>{tag}</a>
-          ))}
-        </div>
-      )
-    }
-
-    <article class="post-content mt-10" set:html={content} />
+    <ArticleContent entry={entry} />
   </Main>
 </Layout>
-
-<style is:global lang="scss">
-  .post-content {
-    ul,
-    ol {
-      @apply mr-0 pr-0;
-    }
-
-    ul ol,
-    ol ul,
-    ul ul {
-      margin: 0;
-    }
-
-    img {
-      @apply h-auto max-w-full;
-    }
-
-    // iframe: YouTube
-    iframe.youtube {
-      @apply h-full max-w-full;
-    }
-  }
-</style>
