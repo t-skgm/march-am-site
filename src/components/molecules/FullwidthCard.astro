@@ -1,4 +1,5 @@
 ---
+import { routes } from '../../constants/routes'
 import type { ArticleEntry } from '../../infra/contentful/interfaces'
 import { formatDateJp } from '../../utils/date'
 import birdImage from '/assets/images/bird-silhouette-left.png'
@@ -31,13 +32,20 @@ const {
     }
     <div class="mb-1 font-bold hover:text-maccha">{title}</div>
     <div>
-      <span class="text-sm uppercase bg-maccha text-greenlite px-2 py-1 mr-2">{category}</span>
+      <a
+        href={routes.article.category.page(category)}
+        class="text-sm uppercase no-underline hover:underline bg-maccha text-greenlite px-2 py-1 mr-2"
+        >{category}</a
+      >
       {
         tags != null &&
           tags.map((tag) => (
-            <span class="text-sm text-maccha border-maccha border rounded-3xl px-2 py-1">
+            <a
+              href={routes.article.tag.page(tag)}
+              class="text-sm text-maccha no-underline hover:underline border-maccha border rounded-3xl px-2 py-1"
+            >
               {tag}
-            </span>
+            </a>
           ))
       }
     </div>
