@@ -85,20 +85,10 @@ const socialImageURL = new URL('/assets/ogp_site.jpg', baseUrl)
         background-color: #fff;
       }
 
-      .body-top {
-        background: repeat-y 0 / 50px url(/assets/images/back_gr.jpg),
-          repeat-y right 0% / 38px url(/assets/images/back_or.jpg);
-      }
-
       .content {
         @apply px-2 mx-3;
         background-color: rgb(247, 248, 247, 0.85);
         padding-bottom: 10rem;
-      }
-
-      .content-top {
-        @apply pl-4 pt-6;
-        margin: 0 50px 0 40px;
       }
 
       /* Bird. */
@@ -113,9 +103,22 @@ const socialImageURL = new URL('/assets/ogp_site.jpg', baseUrl)
         background: no-repeat 0 / 60px url(/assets/images/bird_s.png);
       }
 
-      .content-top::after {
-        bottom: 20px;
-        left: 7px;
+      /* less than lg */
+      @media (max-width: 1023px) {
+        .body-top {
+          background: repeat-y 0 / 50px url(/assets/images/back_gr.jpg),
+            repeat-y right 0% / 38px url(/assets/images/back_or.jpg);
+        }
+
+        .content-top {
+          @apply pl-4 pt-6;
+          margin: 0 50px 0 40px;
+        }
+
+        .content-top::after {
+          bottom: 20px;
+          left: 7px;
+        }
       }
 
       @media screen(lg) {

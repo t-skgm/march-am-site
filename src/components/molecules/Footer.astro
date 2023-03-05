@@ -57,7 +57,14 @@ const { isTop = false } = Astro.props
 
   .gutter-top {
     @apply p-10;
-    margin: 0 50px 0 40px;
+    @apply my-0;
+  }
+
+  /* less than lg */
+  @media (max-width: 1024px) {
+    .gutter-top {
+      margin: 0 50px 0 40px;
+    }
   }
 
   @media screen(lg) {
