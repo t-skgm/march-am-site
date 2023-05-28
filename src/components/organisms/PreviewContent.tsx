@@ -34,10 +34,10 @@ export const PreviewContent: FunctionComponent = () => {
   if (loading) return <p>Loading...</p>
   if (entry == null) return <p>Entry 取得失敗</p>
 
-  return <CopietArticleContent entry={entry} />
+  return <PreviewArticleContent entry={entry} />
 }
 
-const CopietArticleContent: FunctionComponent<{ entry: ArticleEntry }> = ({
+const PreviewArticleContent: FunctionComponent<{ entry: ArticleEntry }> = ({
   entry: { category, content, postedAt, slug, tags, thumbnail, title }
 }) => (
   <>
