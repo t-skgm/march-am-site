@@ -27,7 +27,7 @@
     "@fontsource/lora": "5.0.1",
     "astro": "2.0.14",
     "astro-seo": "0.7.1",
-    "contentful": "10.2.1",
+    "contentful": "9.3.5",
     "dayjs": "1.11.7",
     "patch-package": "7.0.0",
     "preact": "10.15.1",
