@@ -25,7 +25,7 @@ export const PreviewContent: FunctionComponent = () => {
     })().catch(console.warn)
   }, [])
 
-  console.log('entry', entry)
+  console.log({ entry })
 
   if (entry == null) return null
 
@@ -64,6 +64,7 @@ const CopietArticleContent: FunctionComponent<{ entry: ArticleEntry }> = ({
 
 const isValidAccess = (cookies: string[]): boolean => {
   if (import.meta.env.DEV) return true
+  console.log({ cookies })
   const token = Object.fromEntries(cookies.map((c) => c.trim().split('=')))
     .contentful_preview_token as string | undefined
 

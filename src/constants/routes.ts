@@ -5,7 +5,6 @@ export const routes = {
   about: '/about/',
   article: {
     index: '/article/',
-    /** @deprecated 通常 page を利用 */
     slug: (s: string) => `/article/${s}/`,
     page: (p: number = 1) => `/article/page/${p.toString()}/`,
     tag: {
