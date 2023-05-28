@@ -30,7 +30,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       status: 200,
       headers: {
         'Content-Type': 'text/html',
-        'Set-Cookie': `contentful_preview_token=${ContentfulPreviewToken}; SameSite=Lax; Secure; Path=/`
+        'Set-Cookie': `contentful_preview_token=${ContentfulPreviewToken}; SameSite=None; Secure; Path=/`
       }
     }
   )
