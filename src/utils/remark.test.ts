@@ -6,7 +6,7 @@ describe('remark', () => {
     const result = await remark.process(`# Title
 paragraph.`)
     expect(String(result)).toMatchInlineSnapshot(`
-      "<h1>Title</h1>
+      "<h1 id=\\"title\\">Title</h1>
       <p>paragraph.</p>"
     `)
   })
@@ -18,7 +18,7 @@ describe('processMarkdown()', () => {
 <p>paragraph with tag.</p>`)
 
     expect(String(result)).toMatchInlineSnapshot(`
-    "<h1>Title</h1>
+    "<h1 id=\\"title\\">Title</h1>
     <p>paragraph with tag.</p>"
   `)
   })
@@ -28,7 +28,7 @@ describe('processMarkdown()', () => {
 paragraph with <script /> tag.`)
 
     expect(String(result)).toMatchInlineSnapshot(`
-    "<h1>Title</h1>
+    "<h1 id=\\"title\\">Title</h1>
     <p>paragraph with <script /> tag.</p>"
   `)
   })
