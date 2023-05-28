@@ -8,7 +8,7 @@ import {
 import { processMarkdown } from '../../utils/remark'
 import { calcFirstPage, normalizeTag } from './common'
 import { uniqBy } from 'remeda'
-import { contentfulClient } from './client'
+import { createContentfulClient } from './client'
 
 const fetchCache: Record<string, ArticleEntity[]> = {}
 
@@ -36,7 +36,7 @@ const getNext = async <Item extends Entry<unknown>>(
   limit = 1000,
   prev: Item[] = []
 ): Promise<Item[]> => {
-  const current = await contentfulClient.getEntries({
+  const current = await createContentfulClient().getEntries({
     ...baseArgs,
     limit,
     skip

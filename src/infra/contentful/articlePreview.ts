@@ -1,9 +1,9 @@
 import { type ArticleEntry, type ArticleEntity, contentTypes } from './interfaces'
 import { processMarkdown } from '../../utils/remark'
-import { contentfulPreviewClient } from './clientPreview'
+import { createContentfulPreviewClient } from './clientPreview'
 
 export const fetchArticleBySlug = async (args: { slug: string }) => {
-  const entries = await contentfulPreviewClient().getEntries({
+  const entries = await createContentfulPreviewClient().getEntries({
     content_type: contentTypes.article,
     'fields.slug': args.slug,
     limit: 1
