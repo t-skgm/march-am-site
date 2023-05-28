@@ -7,6 +7,7 @@ import { formatDateJp } from '../../utils/date'
 
 export const PreviewContent: FunctionComponent = () => {
   const [entry, setEntry] = useState<ArticleEntry | undefined>()
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     const cookies = (window.document.cookie ?? '').split(';')
@@ -15,6 +16,7 @@ export const PreviewContent: FunctionComponent = () => {
     }
 
     ;(async () => {
+      setLoading(true)
       // fetch entry
       const search = new URLSearchParams(window.location.search)
       const slugParam = search.get('slug')
@@ -22,9 +24,14 @@ export const PreviewContent: FunctionComponent = () => {
         const entry = await fetchArticleEntry({ slug: slugParam })
         setEntry(entry)
       }
-    })().catch(console.warn)
+      setLoading(false)
+    })().catch((e) => {
+      console.warn(e)
+      setLoading(false)
+    })
   }, [])
 
+  if (loading) return <p>Loading...</p>
   if (entry == null) return <p>Entry 取得失敗</p>
 
   return <CopietArticleContent entry={entry} />
