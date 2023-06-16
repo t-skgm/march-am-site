@@ -1,5 +1,10 @@
-name: Notify of Deployment Completion
-on: push
+name: Notify of Deployment Completion (main branch)
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   notify:
     runs-on: ubuntu-latest
