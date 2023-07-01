@@ -15,6 +15,7 @@ export interface Props {
   /** canpnicalのPath部分を上書きしたい場合 */
   canonicalPath?: string | undefined
   overrideSEOProps?: Partial<SEOProps>
+  socialImageURL?: string | undefined
 }
 
 const { isTop = false, title, frontmatter, canonicalPath, overrideSEOProps } = Astro.props
@@ -25,7 +26,7 @@ const pageTitle = (divider: string) =>
 
 const baseUrl = Astro.site ?? Astro.url
 const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, baseUrl)
-const socialImageURL = new URL('/assets/ogp_site.jpg', baseUrl)
+const socialImageURL = Astro.props.socialImageURL ?? new URL('/assets/ogp_site.jpg', baseUrl)
 ---
 
 <!DOCTYPE html>

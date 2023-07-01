@@ -23,7 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const { entry } = Astro.props
 ---
 
-<Layout title={entry.title}>
+<Layout title={entry.title} socialImageURL={entry.ogpImageUrl}>
   <Main backTo={routes.article.index}>
     <ArticleContent entry={entry} />
   </Main>

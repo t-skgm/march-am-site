@@ -26,8 +26,8 @@ const main = async () => {
     accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN!
   })
 
-  const space = await contentfulClient.getSpace(process.env.CONTENTFUL_SPACE_ID!)
-  const environment = await space.getEnvironment(process.env.CONTENTFUL_ENVIRONMENT!)
+  const space = await contentfulClient.getSpace(process.env.PUBLIC_CONTENTFUL_SPACE_ID!)
+  const environment = await space.getEnvironment(process.env.PUBLIC_CONTENTFUL_ENVIRONMENT!)
   // const e = await environment.getEntry('5wkYpFhJ0bfqvXBMT2OMZY')
   // console.dir(e, { depth: 5 })
 

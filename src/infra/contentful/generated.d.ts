@@ -18,6 +18,9 @@ export interface IArticleFields {
   /** Thumbnail */
   thumbnail?: Asset | undefined
 
+  /** OGP Image URL */
+  ogpImageUrl?: string | undefined
+
   /** Tags */
   tags?: string[] | undefined
 
