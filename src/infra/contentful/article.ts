@@ -56,13 +56,16 @@ const getNext = async <Item extends Entry<unknown>>(
 
 // ------
 
-export const mapArticleEntry = async ({ fields }: Pick<ArticleEntity, 'fields'>) => ({
+export const mapArticleEntry = async ({
+  fields
+}: Pick<ArticleEntity, 'fields'>): Promise<ArticleEntry> => ({
   title: fields.title,
   slug: fields.slug,
   category: fields.category,
   postedAt: new Date(fields.postedAt),
   tags: fields.tags,
   thumbnail: fields.thumbnail?.fields.file.url,
+  ogpImageUrl: fields.ogpImageUrl,
   content: String(await processMarkdown(fields.body))
 })
 

@@ -15,7 +15,7 @@ export interface Props {
   /** canpnicalのPath部分を上書きしたい場合 */
   canonicalPath?: string | undefined
   overrideSEOProps?: Partial<SEOProps>
-  socialImageURL?: string
+  socialImageURL?: string | undefined
 }
 
 const { isTop = false, title, frontmatter, canonicalPath, overrideSEOProps } = Astro.props
