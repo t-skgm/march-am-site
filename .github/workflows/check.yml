@@ -23,10 +23,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
+          cache: 'npm'
 
       - name: Install Deps
-        run: |
-          npm install
+        run: npm ci
 
       - name: Run Lint
         run: npm run lint
