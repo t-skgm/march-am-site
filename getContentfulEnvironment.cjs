@@ -7,6 +7,6 @@ module.exports = async () => {
   })
 
   return contentfulClient
-    .getSpace(process.env.CONTENTFUL_SPACE_ID)
-    .then((space) => space.getEnvironment(process.env.CONTENTFUL_ENVIRONMENT))
+    .getSpace(process.env.PUBLIC_CONTENTFUL_SPACE_ID)
+    .then((space) => space.getEnvironment(process.env.PUBLIC_CONTENTFUL_ENVIRONMENT))
 }
