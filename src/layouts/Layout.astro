@@ -7,6 +7,7 @@ import Logo from '../components/molecules/Logo.astro'
 import Footer from '../components/molecules/Footer.astro'
 import GA from '../components/molecules/GoogleAnalytics.astro'
 import { site } from '../constants/site'
+import { getToken } from '../utils/getTokenNode'
 
 export interface Props {
   isTop?: boolean
@@ -20,13 +21,23 @@ export interface Props {
 
 const { isTop = false, title, frontmatter, canonicalPath, overrideSEOProps } = Astro.props
 
-const articleTitle = title ?? frontmatter?.title
+const articleTitle: string = title ?? frontmatter?.title
 const pageTitle = (divider: string) =>
   articleTitle ? `${articleTitle} ${divider} ${site.title}` : site.title
 
 const baseUrl = Astro.site ?? Astro.url
 const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, baseUrl)
-const socialImageURL = Astro.props.socialImageURL ?? new URL('/assets/ogp_site.jpg', baseUrl)
+
+const getOgpUrl = (text: string) => {
+  const token = getToken(import.meta.env.ENCRYTPTION_SECRET, { text })
+  return `${import.meta.env.PUBLIC_OGP_GENERATE_URL}/og?i=${token}&text=${encodeURIComponent(text)}`
+}
+
+const socialImageURL: string = (() => {
+  if (Astro.props.socialImageURL) return Astro.props.socialImageURL
+  if (articleTitle) return getOgpUrl(articleTitle)
+  return new URL('/assets/ogp_site.jpg', baseUrl).toString()
+})()
 ---
 
 <!DOCTYPE html>
@@ -40,7 +51,7 @@ const socialImageURL = Astro.props.socialImageURL ?? new URL('/assets/ogp_site.j
       canonical={canonicalURL.toString()}
       openGraph={{
         basic: {
-          image: socialImageURL.toString(),
+          image: socialImageURL,
           title: pageTitle('|'),
           type: 'blog'
         },
@@ -52,7 +63,7 @@ const socialImageURL = Astro.props.socialImageURL ?? new URL('/assets/ogp_site.j
         card: 'summary_large_image',
         site: `@${site.author.twitter}`,
         title: pageTitle('|'),
-        image: socialImageURL.toString(),
+        image: socialImageURL,
         imageAlt: 'Image of this site, ' + site.title
       }}
       extend={{
