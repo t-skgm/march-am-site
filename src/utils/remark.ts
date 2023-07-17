@@ -4,6 +4,7 @@ import remarkRehype from 'remark-rehype'
 import remarkToc from 'remark-toc'
 import remarkSlug from 'remark-slug'
 import rehypeStringify from 'rehype-stringify'
+import remarkGfm, { type Options as OptionsGfm } from 'remark-gfm'
 import type { Options as OptionsToc } from 'mdast-util-toc/lib'
 import type { Options as OptionsToHast } from 'mdast-util-to-hast/lib'
 import type { Options as OptionsToHtml } from 'hast-util-to-html'
@@ -12,6 +13,7 @@ import type { Options as OptionsToHtml } from 'hast-util-to-html'
 
 export const remark = unified()
   .use(remarkParse)
+  .use(remarkGfm, {} as OptionsGfm)
   // 見出しに ID を自動付与する
   .use(remarkSlug)
   .use(remarkToc, {
