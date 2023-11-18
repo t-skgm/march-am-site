@@ -15,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const entries = await fetchArticleEntries()
   const uniqTags = await fetchArticleTags()
 
-  return uniqTags.map((tag) => {
+  return uniqTags.flatMap((tag) => {
     const taggedEntries = entries.filter((e) => (e.tags ?? []).map(normalizeTag).includes(tag))
     const safeTag = cleanPathParam(tag)
 
@@ -38,10 +38,10 @@ const tag = safeTag ?? '?' // FIXME
 const title = `Tag: ${tag} (page ${page.currentPage})`
 ---
 
-<Layout title={title} canonicalPath={isIndexPage ? routes.article.tag.page(tag, 1) : undefined}>
+<Layout title={title} canonicalPath={isIndexPage != null ? routes.article.tag.page(tag.toString(), 1) : undefined}>
   <Main>
     <h1>{title}</h1>
     <ArticleList entries={page.data} fullwidth />
-    <Paginate page={page} urlWithPage={(page) => routes.article.tag.page(tag, page)} />
+    <Paginate page={page} urlWithPage={(page) => routes.article.tag.page(tag.toString(), page)} />
   </Main>
 </Layout>

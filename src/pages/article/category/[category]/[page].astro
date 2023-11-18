@@ -15,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const entries = await fetchArticleEntries()
   const uniqCategories = await fetchArticleCategories()
 
-  return uniqCategories.map((category) => {
+  return uniqCategories.flatMap((category) => {
     const taggedEntries = entries.filter((e) => normalizeTag(e.category) === category)
     const safeCategory = cleanPathParam(category)
 
@@ -41,11 +41,11 @@ const title = `Category: ${category} (page ${page.currentPage})`
 
 <Layout
   title={title}
-  canonicalPath={isIndexPage ? routes.article.category.page(category, 1) : undefined}
+  canonicalPath={isIndexPage != null ? routes.article.category.page(category.toString(), 1) : undefined}
 >
   <Main>
     <h1>{title}</h1>
     <ArticleList entries={page.data} fullwidth />
-    <Paginate page={page} urlWithPage={(page) => routes.article.category.page(category, page)} />
+    <Paginate page={page} urlWithPage={(page) => routes.article.category.page(category.toString(), page)} />
   </Main>
 </Layout>

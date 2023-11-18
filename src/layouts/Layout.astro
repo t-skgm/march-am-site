@@ -23,7 +23,7 @@ const { isTop = false, title, frontmatter, canonicalPath, overrideSEOProps } = A
 
 const articleTitle: string = title ?? frontmatter?.title
 const pageTitle = (divider: string) =>
-  articleTitle ? `${articleTitle} ${divider} ${site.title}` : site.title
+  articleTitle != null ? `${articleTitle} ${divider} ${site.title}` : site.title
 
 const baseUrl = Astro.site ?? Astro.url
 const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, baseUrl)
@@ -34,8 +34,8 @@ const getOgpUrl = (text: string) => {
 }
 
 const socialImageURL: string = (() => {
-  if (Astro.props.socialImageURL) return Astro.props.socialImageURL
-  if (articleTitle) return getOgpUrl(articleTitle)
+  if (Astro.props.socialImageURL != null) return Astro.props.socialImageURL
+  if (articleTitle != null) return getOgpUrl(articleTitle)
   return new URL('/assets/ogp_site.jpg', baseUrl).toString()
 })()
 ---

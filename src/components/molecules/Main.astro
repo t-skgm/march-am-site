@@ -22,7 +22,7 @@ const { backTo, isTop = false } = Astro.props
   <slot />
 </main>
 {
-  backTo && (
+  backTo != null && (
     <nav>
       <a href={backTo} class="back-to">
         ←
