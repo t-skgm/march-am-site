@@ -2,7 +2,7 @@
 import { routes } from '../../constants/routes'
 import type { ArticleEntry } from '../../infra/contentful/interfaces'
 import { formatDateJp } from '../../utils/date'
-import birdImage from '/assets/images/bird-silhouette-left.png'
+import birdImage from '../../assets/images/bird-silhouette-left.png'
 import { Image } from 'astro:assets'
 
 export interface Props {
@@ -27,7 +27,7 @@ const {
       ) : (
         <div class="thumbnail-placeholder">
           <Image src={birdImage} alt="title logo" />
-          <span class="text-lg text-greenlite mt-2">{title}</span>
+          <span class="text-lg text-greenlite mt-2 px-2">{title}</span>
         </div>
       )
     }
@@ -70,6 +70,7 @@ const {
   }
 
   .thumbnail-placeholder img {
-    height: 6rem;
+    max-height: calc(100% - 5rem);
+    width: auto;
   }
 </style>
