@@ -11,8 +11,8 @@ const {
   urlWithPage
 } = Astro.props
 
-const prevPageNum = url.prev ? currentPage - 1 : undefined
-const nextPageNum = url.next ? currentPage + 1 : undefined
+const prevPageNum = url.prev != null ? currentPage - 1 : undefined
+const nextPageNum = url.next != null ? currentPage + 1 : undefined
 
 const showFirst = currentPage !== 1 && currentPage !== 2
 const showFirstEllipsis = currentPage !== 1 && currentPage !== 2 && currentPage !== 3

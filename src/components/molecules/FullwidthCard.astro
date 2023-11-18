@@ -2,7 +2,8 @@
 import { routes } from '../../constants/routes'
 import type { ArticleEntry } from '../../infra/contentful/interfaces'
 import { formatDateJp } from '../../utils/date'
-import birdImage from '/assets/images/bird-silhouette-left.png'
+import birdImage from '../../assets/images/bird-silhouette-left.png'
+import { Image } from 'astro:assets'
 
 export interface Props {
   entry: ArticleEntry
@@ -25,8 +26,8 @@ const {
         </div>
       ) : (
         <div class="thumbnail-placeholder">
-          <img src={birdImage} />
-          <span class="text-lg text-greenlite mt-2">{title}</span>
+          <Image src={birdImage} alt="title logo" />
+          <span class="text-lg text-greenlite mt-2 px-2">{title}</span>
         </div>
       )
     }
@@ -38,15 +39,14 @@ const {
         >{category}</a
       >
       {
-        tags != null &&
-          tags.map((tag) => (
-            <a
-              href={routes.article.tag.page(tag)}
-              class="text-sm text-maccha no-underline hover:underline border-maccha border rounded-3xl px-2 py-1 mr-1"
-            >
-              {tag}
-            </a>
-          ))
+        tags?.map((tag) => (
+          <a
+            href={routes.article.tag.page(tag)}
+            class="text-sm text-maccha no-underline hover:underline border-maccha border rounded-3xl px-2 py-1 mr-1"
+          >
+            {tag}
+          </a>
+        ))
       }
     </div>
   </a>
@@ -70,6 +70,7 @@ const {
   }
 
   .thumbnail-placeholder img {
-    height: 6rem;
+    max-height: calc(100% - 5rem);
+    width: auto;
   }
 </style>

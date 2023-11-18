@@ -12,7 +12,7 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
 ---
 
 <header>
-  {thumbnail && <img src={thumbnail} alt={`Eye catch of ${title}`} class="mb-8" />}
+  {thumbnail != null && <img src={thumbnail} alt={`Eye catch of ${title}`} class="mb-8" />}
   <h1 class="text-3xl font-bold break-all">
     <a href={routes.article.slug(slug)}>{title}</a>
   </h1>
@@ -24,7 +24,7 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
   > | {formatDateJp(postedAt)}
 </div>
 {
-  tags && (
+  tags != null && (
     <div class="tag-list">
       {tags.map((tag) => (
         <a href={routes.article.tag.page(tag)} class="tag">
@@ -70,7 +70,7 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
     &::before {
       @apply h-4 w-4 inline-block mr-2;
       content: '';
-      background: url(/assets/icons/tag.svg);
+      background: url(../assets/images/icons/tag.svg);
     }
   }
 </style>

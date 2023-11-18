@@ -22,7 +22,7 @@ const { backTo, isTop = false } = Astro.props
   <slot />
 </main>
 {
-  backTo && (
+  backTo != null && (
     <nav>
       <a href={backTo} class="back-to">
         ←
@@ -37,7 +37,7 @@ const { backTo, isTop = false } = Astro.props
     content: '';
     width: 80px;
     height: 80px;
-    background: no-repeat 0 / 80px url(/assets/images/bird_s.png);
+    background: no-repeat 0 / 80px url(../../assets/images/bird_s.png);
   }
 
   main {
