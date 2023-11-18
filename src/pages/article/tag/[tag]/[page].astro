@@ -38,7 +38,10 @@ const tag = safeTag ?? '?' // FIXME
 const title = `Tag: ${tag} (page ${page.currentPage})`
 ---
 
-<Layout title={title} canonicalPath={isIndexPage != null ? routes.article.tag.page(tag.toString(), 1) : undefined}>
+<Layout
+  title={title}
+  canonicalPath={isIndexPage != null ? routes.article.tag.page(tag.toString(), 1) : undefined}
+>
   <Main>
     <h1>{title}</h1>
     <ArticleList entries={page.data} fullwidth />

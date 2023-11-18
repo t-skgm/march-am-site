@@ -41,11 +41,16 @@ const title = `Category: ${category} (page ${page.currentPage})`
 
 <Layout
   title={title}
-  canonicalPath={isIndexPage != null ? routes.article.category.page(category.toString(), 1) : undefined}
+  canonicalPath={isIndexPage != null
+    ? routes.article.category.page(category.toString(), 1)
+    : undefined}
 >
   <Main>
     <h1>{title}</h1>
     <ArticleList entries={page.data} fullwidth />
-    <Paginate page={page} urlWithPage={(page) => routes.article.category.page(category.toString(), page)} />
+    <Paginate
+      page={page}
+      urlWithPage={(page) => routes.article.category.page(category.toString(), page)}
+    />
   </Main>
 </Layout>
