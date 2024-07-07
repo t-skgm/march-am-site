@@ -73,6 +73,9 @@ export const onRequest = vercelOGPagesPlugin<Props>({
   },
   imagePathSuffix: '/social-image.png',
   options: {
+    headers: {
+      'Cache-Control': `max-age=${60 * 60 * 24}`
+    },
     width: 1200,
     height: 630
     // FIXME: bufferの渡し方わからん
@@ -82,7 +85,7 @@ export const onRequest = vercelOGPagesPlugin<Props>({
     //     data: fontNotoData,
     //     style: 'normal'
     //   }
-    // ]
+    // ],
   },
   autoInject: {
     openGraph: true
