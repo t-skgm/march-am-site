@@ -1,12 +1,12 @@
 ---
 import { routes } from '../../constants/routes'
-import type { ArticleEntry } from '../../infra/contentful/interfaces'
+import type { Article } from '../../infra/contentful/interfaces'
 import { formatDateJp } from '../../utils/date'
 import birdImage from '../../assets/images/bird-silhouette-left.png'
 import { Image } from 'astro:assets'
 
 export interface Props {
-  entry: ArticleEntry
+  entry: Article
   linkMapper: (slug: string) => string
 }
 

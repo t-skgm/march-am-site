@@ -4,7 +4,7 @@ import type { GetStaticPaths, Page } from 'astro'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
 import { calcFirstPage, normalizeTag } from '../../../../infra/contentful/common'
 import { configs } from '../../../../constants/site'
-import type { ArticleEntry } from '../../../../infra/contentful/interfaces'
+import type { Article } from '../../../../infra/contentful/interfaces'
 import { fetchArticleCategories, fetchArticleEntries } from '../../../../infra/contentful/article'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -25,7 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 type Props = {
-  page: Page<ArticleEntry>
+  page: Page<Article>
 }
 
 const { page } = Astro.props

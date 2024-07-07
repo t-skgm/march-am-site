@@ -9,7 +9,7 @@ import { cleanPathParam } from '../../../../utils/cleanPathParam'
 import { configs } from '../../../../constants/site'
 import { normalizeTag } from '../../../../infra/contentful/common'
 import { fetchArticleEntries, fetchArticleTags } from '../../../../infra/contentful/article'
-import type { ArticleEntry } from '../../../../infra/contentful/interfaces'
+import type { Article } from '../../../../infra/contentful/interfaces'
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const entries = await fetchArticleEntries()
@@ -27,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 }
 
 export type Props = {
-  page: Page<ArticleEntry>
+  page: Page<Article>
   /** /[tag]/page からのアクセスか  */
   isIndexPage?: boolean
 }
@@ -45,6 +45,9 @@ const title = `Tag: ${tag} (page ${page.currentPage})`
   <Main>
     <h1>{title}</h1>
     <ArticleList entries={page.data} fullwidth />
-    <Paginate page={page} urlWithPage={(page) => routes.article.tag.page(tag.toString(), page)} />
+    <Paginate
+      page={page}
+      urlWithPage={(pageNum) => routes.article.tag.page(tag.toString(), pageNum as number)}
+    />
   </Main>
 </Layout>

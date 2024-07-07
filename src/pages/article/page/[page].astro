@@ -6,7 +6,7 @@ import Paginate from '../../../components/molecules/Paginate.astro'
 import { routes } from '../../../constants/routes'
 import type { GetStaticPaths, Page } from 'astro'
 import { configs } from '../../../constants/site'
-import type { ArticleEntry } from '../../../infra/contentful/interfaces'
+import type { Article } from '../../../infra/contentful/interfaces'
 import { fetchArticleEntries } from '../../../infra/contentful/article'
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
@@ -15,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 }
 
 export type Props = {
-  page: Page<ArticleEntry>
+  page: Page<Article>
   /** /page からのアクセスか  */
   isIndexPage?: boolean
 }
