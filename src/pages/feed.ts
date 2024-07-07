@@ -6,7 +6,7 @@ import { fetchArticles } from '../infra/contentful/article'
 
 const articles = await fetchArticles()
 
-export const get: APIRoute = async () => {
+export const GET: APIRoute = async () => {
   const items: RSSOptions['items'] = articles.map(({ fields }) => ({
     link: routes.article.slug(fields.slug),
     title: fields.title,
