@@ -2,11 +2,11 @@ import { useEffect, useState } from 'preact/hooks'
 import type { FunctionComponent } from 'preact'
 import { routes } from '../constants/routes'
 import { fetchArticleEntry } from '../infra/contentful/articlePreview'
-import type { ArticleEntry } from '../infra/contentful/interfaces'
+import type { Article } from '../infra/contentful/interfaces'
 import { formatDateJp } from '../utils/date'
 
 export const PreviewContent: FunctionComponent = () => {
-  const [entry, setEntry] = useState<ArticleEntry | undefined>()
+  const [entry, setEntry] = useState<Article | undefined>()
   const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export const PreviewContent: FunctionComponent = () => {
   return <PreviewArticleContent entry={entry} />
 }
 
-const PreviewArticleContent: FunctionComponent<{ entry: ArticleEntry }> = ({
+const PreviewArticleContent: FunctionComponent<{ entry: Article }> = ({
   entry: { category, content, postedAt, slug, tags, thumbnail, title }
 }) => (
   <>

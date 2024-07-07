@@ -1,16 +1,17 @@
-import type { Entry } from 'contentful'
 import {
-  type ArticleEntity,
-  type ArticleEntry,
   contentTypes,
-  type SearchParams
+  type ArticleEntry,
+  type SearchParams,
+  type Article,
+  type ArticleSkeleton
 } from './interfaces'
 import { processMarkdown } from '../../utils/remark'
 import { calcFirstPage, normalizeTag } from './common'
 import { uniqueBy, pipe, sort, map } from 'remeda'
 import { createContentfulClient } from './client'
+import type { EntriesQueries } from 'contentful'
 
-const fetchCache: Record<string, ArticleEntity[]> = {}
+const fetchCache: Record<string, ArticleEntry[]> = {}
 
 export const fetchArticles = async (args: SearchParams = {}) => {
   // メモリキャッシュに存在すればそちらを返す
@@ -21,7 +22,7 @@ export const fetchArticles = async (args: SearchParams = {}) => {
   }
 
   // paginateしてすべて取得
-  const entries = await getNext<ArticleEntity>({
+  const entries = await getNext<ArticleEntry>({
     content_type: contentTypes.article,
     order: '-fields.postedAt',
     ...args
@@ -30,8 +31,8 @@ export const fetchArticles = async (args: SearchParams = {}) => {
   return entries
 }
 
-const getNext = async <Item extends Entry<unknown>>(
-  baseArgs: any,
+const getNext = async <Item extends ArticleEntry>(
+  baseArgs: EntriesQueries<ArticleSkeleton, undefined>,
   skip: number = 0,
   limit = 1000,
   prev: Item[] = []
@@ -58,18 +59,18 @@ const getNext = async <Item extends Entry<unknown>>(
 
 export const mapArticleEntry = async ({
   fields
-}: Pick<ArticleEntity, 'fields'>): Promise<ArticleEntry> => ({
+}: Pick<ArticleEntry, 'fields'>): Promise<Article> => ({
   title: fields.title,
   slug: fields.slug,
   category: fields.category,
   postedAt: new Date(fields.postedAt),
   tags: fields.tags,
-  thumbnail: fields.thumbnail?.fields.file.url,
+  thumbnail: fields.thumbnail?.fields.file?.url,
   ogpImageUrl: fields.ogpImageUrl,
   content: String(await processMarkdown(fields.body))
 })
 
-export const fetchArticleEntries = async (args: SearchParams = {}): Promise<ArticleEntry[]> => {
+export const fetchArticleEntries = async (args: SearchParams = {}): Promise<Article[]> => {
   const article = await fetchArticles(args)
   const articleEntries = await Promise.all(article.map(mapArticleEntry))
   return articleEntries
