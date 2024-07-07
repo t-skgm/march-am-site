@@ -4,11 +4,11 @@ import ArticleContent from '../../features/ArticleContent.astro'
 import Layout from '../../layouts/Layout.astro'
 import { fetchArticleEntries } from '../../infra/contentful/article'
 import type { GetStaticPaths } from 'astro'
-import type { ArticleEntry } from '../../infra/contentful/interfaces'
+import type { Article } from '../../infra/contentful/interfaces'
 import { routes } from '../../constants/routes'
 
 export type Props = {
-  entry: ArticleEntry
+  entry: Article
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

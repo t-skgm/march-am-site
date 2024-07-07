@@ -1,8 +1,23 @@
-import type { CONTENT_TYPE, IArticle, IArticleFields } from './generated'
+import type { TypeArticle, TypeArticleSkeleton } from './generated'
 
-export const contentTypes: Record<CONTENT_TYPE, CONTENT_TYPE> = {
-  article: 'article'
+export type ArticleEntry = TypeArticle<'WITHOUT_UNRESOLVABLE_LINKS'>
+
+export type ArticleSkeleton = TypeArticleSkeleton
+
+export type Article = {
+  title: string
+  slug: string
+  category: 'Diary' | 'Review'
+  postedAt: Date
+  tags?: string[] | undefined
+  thumbnail?: string | undefined
+  ogpImageUrl?: string | undefined
+  content: string
 }
+
+export const contentTypes = {
+  article: 'article'
+} as const
 
 export type SearchParams = {
   order?: string
@@ -10,12 +25,4 @@ export type SearchParams = {
   limit?: number
   skip?: number
   [param: string]: any
-}
-
-export type ArticleEntity = IArticle
-
-export type ArticleEntry = Omit<IArticleFields, 'body' | 'postedAt' | 'thumbnail'> & {
-  postedAt: Date
-  thumbnail: string | undefined
-  content: string
 }

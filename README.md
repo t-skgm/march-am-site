@@ -14,3 +14,8 @@
 - Astro.js
 - Tailwind
 - Contentful
+
+## dev
+
+- generate types
+  - `npx cf-content-types-generator --out src/infra/contentful --environment ENV --spaceId SPACE --token TOKEN --v10 --jsdoc --response`
