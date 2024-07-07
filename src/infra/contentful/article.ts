@@ -7,7 +7,7 @@ import {
 } from './interfaces'
 import { processMarkdown } from '../../utils/remark'
 import { calcFirstPage, normalizeTag } from './common'
-import { uniqBy, pipe, sort, map } from 'remeda'
+import { uniqueBy, pipe, sort, map } from 'remeda'
 import { createContentfulClient } from './client'
 
 const fetchCache: Record<string, ArticleEntity[]> = {}
@@ -88,7 +88,7 @@ export const fetchArticleTags = async (): Promise<string[]> => {
   const tags = entries.flatMap((e) => e.fields.tags ?? [])
   const uniqTags = pipe(
     tags,
-    uniqBy((t) => t.toLowerCase()),
+    uniqueBy((t) => t.toLowerCase()),
     sort((a, b) => a.localeCompare(b)),
     map(normalizeTag)
   )
@@ -101,7 +101,7 @@ export const fetchArticleCategories = async (): Promise<string[]> => {
   const categories = entries.map((e) => e.fields.category)
   const uniqCategories = pipe(
     categories,
-    uniqBy((t) => t.toLowerCase()),
+    uniqueBy((t) => t.toLowerCase()),
     sort((a, b) => a.localeCompare(b)),
     map(normalizeTag)
   )

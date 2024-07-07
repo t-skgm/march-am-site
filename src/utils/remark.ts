@@ -1,4 +1,4 @@
-import { unified } from 'unified'
+import { unified, type Plugin } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import remarkToc from 'remark-toc'
@@ -13,15 +13,15 @@ import type { Options as OptionsToHtml } from 'hast-util-to-html'
 
 export const remark = unified()
   .use(remarkParse)
-  .use(remarkGfm, {} as OptionsGfm)
+  .use(remarkGfm, {} satisfies OptionsGfm)
   // 見出しに ID を自動付与する
-  .use(remarkSlug)
+  .use(remarkSlug as Plugin)
   .use(remarkToc, {
     heading: '目次',
     tight: true
   } as OptionsToc)
-  .use(remarkRehype, { allowDangerousHtml: true } as OptionsToHast)
-  .use(rehypeStringify, { allowDangerousHtml: true } as OptionsToHtml)
+  .use(remarkRehype, { allowDangerousHtml: true } satisfies OptionsToHast)
+  .use(rehypeStringify, { allowDangerousHtml: true } satisfies OptionsToHtml)
 
 export const processMarkdown = async (mdStr: string): Promise<string> =>
   await remark.process(mdStr).then((vfile) => String(vfile))
