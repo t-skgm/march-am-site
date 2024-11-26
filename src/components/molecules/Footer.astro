@@ -77,17 +77,20 @@ const { isTop = false } = Astro.props
     }
   }
 
-  @media (max-width: 1024px) {
-    .links {
-      margin-left: 40px;
-      margin-right: 40px;
-    }
-  }
-
   .links {
     @apply pb-0;
+    margin-left: 300px;
+    margin-right: 250px;
+
     background-color: rgb(255 255 255 / 20%);
     font-family: 'Lora', serif;
+  }
+
+  /* less than lg */
+  @media (max-width: 1024px) {
+    .links {
+      margin: 0 12px 0 12px;
+    }
   }
 
   .links > ul {
@@ -111,9 +114,16 @@ const { isTop = false } = Astro.props
   }
 
   .links::after {
-    @apply block mx-auto mt-8 border border-greenish-dark border-solid;
+    @apply block mx-auto mt-4 border border-greenish-dark border-solid;
     width: 30%;
     content: '';
+  }
+
+  /* less than lg */
+  @media (max-width: 1024px) {
+    .links::after {
+      @apply w-40;
+    }
   }
 
   .sns {
