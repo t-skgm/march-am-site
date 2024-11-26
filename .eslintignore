@@ -1,1 +1,3 @@
 src/infra/contentful/generated.d.ts
+tailwind.config.cjs
+astro.config.mjs

@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-import { getViteConfig, type ViteUserConfig } from 'astro/config'
+import { getViteConfig } from 'astro/config'
 import type { UserConfig as VitestUserConfig } from 'vitest/config'
 
 const vitestConfig: VitestUserConfig = {
@@ -9,4 +9,4 @@ const vitestConfig: VitestUserConfig = {
   }
 }
 
-export default getViteConfig(vitestConfig as ViteUserConfig)
+export default getViteConfig(vitestConfig)

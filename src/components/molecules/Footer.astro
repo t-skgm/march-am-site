@@ -9,21 +9,23 @@ const { isTop = false } = Astro.props
 ---
 
 <footer>
-  <ul class:list={['links', { 'gutter-top': isTop, gutter: !isTop }]}>
-    <li>
-      <a href={routes.index}>Top</a>
-    </li>
-    <li>
-      <a href={routes.article.index}>Article</a>
-      <ul>
-        <li>→ <a href={routes.article.category.index}>Category</a></li>
-        <li>→ <a href={routes.article.tag.index}>Tag</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href={routes.about}>About</a>
-    </li>
-  </ul>
+  <section class="links">
+    <ul class:list={[{ 'gutter-top': isTop, gutter: !isTop }]}>
+      <li>
+        <a href={routes.index}>Top</a>
+      </li>
+      <li>
+        <a href={routes.article.index}>Article</a>
+        <ul>
+          <li>→ <a href={routes.article.category.index}>Category</a></li>
+          <li>→ <a href={routes.article.tag.index}>Tag</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href={routes.about}>About</a>
+      </li>
+    </ul>
+  </section>
 
   <ul class:list={['sns', { 'gutter-top': isTop, gutter: !isTop }]}>
     <li>
@@ -56,7 +58,7 @@ const { isTop = false } = Astro.props
   }
 
   .gutter-top {
-    @apply p-10;
+    @apply pt-10;
     @apply my-0;
   }
 
@@ -75,10 +77,21 @@ const { isTop = false } = Astro.props
     }
   }
 
+  @media (max-width: 1024px) {
+    .links {
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+  }
+
   .links {
-    @apply block text-center pb-0;
+    @apply pb-0;
     background-color: rgb(255 255 255 / 20%);
     font-family: 'Lora', serif;
+  }
+
+  .links > ul {
+    @apply w-36 px-0 mx-auto;
   }
 
   .links li {
