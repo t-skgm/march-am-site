@@ -3,7 +3,6 @@ import '../styles/global.css'
 import '@fontsource/lora'
 import type { Props as SEOProps } from 'astro-seo'
 import { SEO } from 'astro-seo'
-import { ViewTransitions } from 'astro:transitions'
 import Logo from '../components/molecules/Logo.astro'
 import Footer from '../components/molecules/Footer.astro'
 import GA from '../components/molecules/GoogleAnalytics.astro'
@@ -46,7 +45,6 @@ const socialImageURL: string = (() => {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <ViewTransitions />
     <SEO
       title={pageTitle('-')}
       description={site.description}
