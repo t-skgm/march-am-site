@@ -34,6 +34,4 @@ jobs:
         run: |
           curl https://api.cloudflare.com/client/v4/zones/${{vars.CLOUDFLARE_ZONE_ID}}/purge_cache \
             -H 'Content-Type: application/json' \
-            -H "X-Auth-Email: ${{secrets.CLOUDFLARE_ACCOUNT_ID}}" \
-            -H "X-Auth-Key: ${{secrets.CLOUDFLARE_API_TOKEN}}" \
-            -d '{"hosts": ["march-am.page"]}'
+            -H 'Authorization: Bearer ${{secrets.CLOUDFLARE_API_TOKEN}}'
