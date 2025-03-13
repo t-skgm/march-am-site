@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+# 重複実行はキャンセル
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   notify:
     runs-on: ubuntu-latest
@@ -23,7 +28,7 @@ jobs:
           project: 'march-am-site'
           slackWebHook: ${{ secrets.SLACK_WEBHOOK_URL }}
           # Add this if you want GitHub Deployments (see below)
-          githubToken: ${
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Purge Cache on CF
         run: |

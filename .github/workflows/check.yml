@@ -2,10 +2,15 @@ name: Check
 
 on:
   push:
-    branches-ignore: [ "main" ]
+    branches-ignore: ['main']
   pull_request:
     # The branches below must be a subset of the branches above
-    branches-ignore: [ "main" ]
+    branches-ignore: ['main']
+
+# 重複実行はキャンセル
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   checks:
