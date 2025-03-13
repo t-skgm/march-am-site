@@ -8,15 +8,8 @@ const SITE_URL = process.env.SITE_URL || process.env.CF_PAGES_URL || 'http://loc
 
 // https://astro.build/config
 export default defineConfig({
-  markdown: {
-    drafts: true,
-    gfm: true
-  },
-  integrations: [preact(), tailwind(), sitemap(), mdx()],
-  vite: {
-    ssr: {
-      noExternal: ['path-to-regexp']
-    }
-  },
+  markdown: { drafts: true, gfm: true },
+  integrations: [preact(), sitemap(), tailwind(), mdx()],
+  vite: { ssr: { noExternal: ['path-to-regexp'] } },
   site: SITE_URL
 })
