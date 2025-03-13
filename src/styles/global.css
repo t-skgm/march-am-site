@@ -29,6 +29,14 @@ html {
     @apply font-bold text-lg mb-2 mt-8 text-greenish-dark;
   }
 
+  h4 {
+    @apply font-bold text-base mb-2 mt-5 text-greenish-dark;
+  }
+
+  h4 + p {
+    @apply mt-2;
+  }
+
   p {
     @apply my-5 leading-loose text-greenish font-normal;
   }
