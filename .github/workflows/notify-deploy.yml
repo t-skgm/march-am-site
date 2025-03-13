@@ -32,7 +32,7 @@ jobs:
 
       - name: Purge Cache on CF
         run: |
-          curl https://api.cloudflare.com/client/v4/zones/${{env.CLOUDFLARE_ZONE_ID}}/purge_cache \
+          curl https://api.cloudflare.com/client/v4/zones/${{vars.CLOUDFLARE_ZONE_ID}}/purge_cache \
             -H 'Content-Type: application/json' \
             -H "X-Auth-Email: ${{secrets.CLOUDFLARE_ACCOUNT_ID}}" \
             -H "X-Auth-Key: ${{secrets.CLOUDFLARE_API_TOKEN}}" \
