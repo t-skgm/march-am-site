@@ -12,14 +12,23 @@ jobs:
       contents: read
       deployments: write
     steps:
-    - uses: actions/checkout@v3
-    - name: Await CF Pages and send Slack notification
-      id: cf-pages
-      uses: arddluma/cloudflare-pages-slack-notification@v3.1
-      with:
-        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        project: 'march-am-site'
-        slackWebHook: ${{ secrets.SLACK_WEBHOOK_URL }}
-        # Add this if you want GitHub Deployments (see below)
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v3
+
+      - name: Await CF Pages and send Slack notification
+        id: cf-pages
+        uses: arddluma/cloudflare-pages-slack-notification@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          project: 'march-am-site'
+          slackWebHook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          # Add this if you want GitHub Deployments (see below)
+          githubToken: ${
+
+      - name: Purge Cache on CF
+        run: |
+          curl https://api.cloudflare.com/client/v4/zones/${{env.CLOUDFLARE_ZONE_ID}}/purge_cache \
+            -H 'Content-Type: application/json' \
+            -H "X-Auth-Email: ${{secrets.CLOUDFLARE_ACCOUNT_ID}}" \
+            -H "X-Auth-Key: ${{secrets.CLOUDFLARE_API_TOKEN}}" \
+            -d '{"hosts": ["march-am.page"]}'
