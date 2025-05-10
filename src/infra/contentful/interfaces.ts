@@ -24,5 +24,6 @@ export type SearchParams = {
   /** max 1000 */
   limit?: number
   skip?: number
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [param: string]: any
 }

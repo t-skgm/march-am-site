@@ -1,9 +1,16 @@
+import type { Page } from 'astro'
 import { capitalizeWords } from '../../utils/string'
 
 export const onlyPublished = (entry: { data: { draft?: boolean | undefined } }): boolean =>
   entry.data.draft == null || !entry.data.draft
 
-export const calcFirstPage = <T>({ entries, pageSize }: { entries: T[]; pageSize: number }) => {
+export const calcFirstPage = async <T>({
+  entries,
+  pageSize
+}: {
+  entries: T[]
+  pageSize: number
+}): Promise<Page<T>> => {
   const entriesSize = entries.length
   const lastPage = Math.ceil(entriesSize / pageSize)
 
@@ -17,7 +24,9 @@ export const calcFirstPage = <T>({ entries, pageSize }: { entries: T[]; pageSize
     url: {
       current: 'current',
       prev: undefined,
-      next: lastPage > 1 ? 'next' : undefined
+      next: lastPage > 1 ? 'next' : undefined,
+      first: undefined,
+      last: lastPage > 1 ? 'last' : undefined
     },
     start: 0,
     end: pageSize - 1

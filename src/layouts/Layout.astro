@@ -12,7 +12,7 @@ import { getToken } from '../utils/getTokenNode'
 export interface Props {
   isTop?: boolean
   title?: string
-  frontmatter?: any
+  frontmatter?: Record<string, unknown>
   /** canpnicalのPath部分を上書きしたい場合 */
   canonicalPath?: string | undefined
   overrideSEOProps?: Partial<SEOProps>
@@ -21,7 +21,7 @@ export interface Props {
 
 const { isTop = false, title, frontmatter, canonicalPath, overrideSEOProps } = Astro.props
 
-const articleTitle: string = title ?? frontmatter?.title
+const articleTitle = (title ?? frontmatter?.title) as string | undefined
 const pageTitle = (divider: string) =>
   articleTitle != null ? `${articleTitle} ${divider} ${site.title}` : site.title
 

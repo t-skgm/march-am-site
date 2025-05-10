@@ -78,7 +78,7 @@ export const fetchArticleEntries = async (args: SearchParams = {}): Promise<Arti
 
 export const fetchArticlesFirstPage = async (pageSize: number = 20) => {
   const entries = await fetchArticleEntries({ limit: pageSize })
-  return calcFirstPage({ entries, pageSize })
+  return await calcFirstPage({ entries, pageSize })
 }
 
 // -----------

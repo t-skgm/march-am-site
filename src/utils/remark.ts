@@ -9,8 +9,6 @@ import type { Options as OptionsToc } from 'mdast-util-toc'
 import type { Options as OptionsToHast } from 'mdast-util-to-hast'
 import type { Options as OptionsToHtml } from 'hast-util-to-html'
 
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
 export const remark = unified()
   .use(remarkParse)
   .use(remarkGfm, {} satisfies OptionsGfm)
