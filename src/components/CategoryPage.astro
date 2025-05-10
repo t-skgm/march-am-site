@@ -1,0 +1,38 @@
+---
+import type { Page } from 'astro'
+import type { Article } from '../infra/contentful/interfaces'
+import Layout from '../layouts/Layout.astro'
+import { routes } from '../constants/routes'
+import Main from './molecules/Main.astro'
+import ArticleList from '../features/ArticleList.astro'
+import Paginate from './molecules/Paginate.astro'
+
+export type Props = {
+  page: Page<Article>
+  /** /[category]/page からのアクセスか  */
+  isIndexPage?: boolean
+}
+
+const { page, isIndexPage } = Astro.props
+
+const { category: safeCategory } = Astro.params
+const category = safeCategory ?? '?' // FIXME
+const title = `Category: ${category} (page ${page.currentPage})`
+---
+
+<Layout
+  title={title}
+  canonicalPath={isIndexPage != null
+    ? routes.article.category.page(category.toString(), 1)
+    : undefined}
+>
+  <Main>
+    <h1>{title}</h1>
+    <ArticleList entries={page.data} fullwidth />
+    <Paginate
+      page={page}
+      urlWithPage={(pageNum) =>
+        routes.article.category.page(category.toString(), pageNum as number)}
+    />
+  </Main>
+</Layout>

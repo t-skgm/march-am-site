@@ -1,21 +1,23 @@
 ---
-import CategoryPage from './[page].astro'
 import type { GetStaticPaths, Page } from 'astro'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
 import { calcFirstPage, normalizeTag } from '../../../../infra/contentful/common'
 import { configs } from '../../../../constants/site'
 import type { Article } from '../../../../infra/contentful/interfaces'
 import { fetchArticleCategories, fetchArticleEntries } from '../../../../infra/contentful/article'
+import CategoryPage from '../../../../components/CategoryPage.astro'
+import Bluebird from 'bluebird'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const entries = await fetchArticleEntries()
   const uniqCategories = await fetchArticleCategories()
 
-  return uniqCategories.map((_category) => {
+  return Bluebird.map(uniqCategories, async (_category) => {
     const category = cleanPathParam(_category)
 
     const categorygedEntries = entries.filter((e) => normalizeTag(e.category) === category)
-    const page = calcFirstPage({
+
+    const page = await calcFirstPage({
       entries: categorygedEntries,
       pageSize: configs.paginateSize
     })
@@ -31,4 +33,4 @@ type Props = {
 const { page } = Astro.props
 ---
 
-<CategoryPage isIndexPage page={page} />
+<CategoryPage page={page} isIndexPage />

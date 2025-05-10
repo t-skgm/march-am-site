@@ -1,15 +1,11 @@
 ---
-import Layout from '../../../../layouts/Layout.astro'
-import Main from '../../../../components/molecules/Main.astro'
-import ArticleList from '../../../../features/ArticleList.astro'
-import Paginate from '../../../../components/molecules/Paginate.astro'
 import type { GetStaticPaths, Page } from 'astro'
-import { routes } from '../../../../constants/routes'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
 import { configs } from '../../../../constants/site'
 import { normalizeTag } from '../../../../infra/contentful/common'
 import { fetchArticleEntries, fetchArticleTags } from '../../../../infra/contentful/article'
 import type { Article } from '../../../../infra/contentful/interfaces'
+import TagPage from '../../../../components/TagPage.astro'
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const entries = await fetchArticleEntries()
@@ -28,26 +24,8 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 
 export type Props = {
   page: Page<Article>
-  /** /[tag]/page からのアクセスか  */
-  isIndexPage?: boolean
 }
-const { page, isIndexPage } = Astro.props
-
-const { tag: safeTag } = Astro.params
-const tag = safeTag ?? '?' // FIXME
-const title = `Tag: ${tag} (page ${page.currentPage})`
+const { page } = Astro.props
 ---
 
-<Layout
-  title={title}
-  canonicalPath={isIndexPage != null ? routes.article.tag.page(tag.toString(), 1) : undefined}
->
-  <Main>
-    <h1>{title}</h1>
-    <ArticleList entries={page.data} fullwidth />
-    <Paginate
-      page={page}
-      urlWithPage={(pageNum) => routes.article.tag.page(tag.toString(), pageNum as number)}
-    />
-  </Main>
-</Layout>
+<TagPage page={page} />

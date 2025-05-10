@@ -1,21 +1,22 @@
 ---
-import TagPage from './[page].astro'
 import type { GetStaticPaths, Page } from 'astro'
 import { cleanPathParam } from '../../../../utils/cleanPathParam'
 import { calcFirstPage, normalizeTag } from '../../../../infra/contentful/common'
 import { configs } from '../../../../constants/site'
 import type { Article } from '../../../../infra/contentful/interfaces'
 import { fetchArticleEntries, fetchArticleTags } from '../../../../infra/contentful/article'
+import TagPage from '../../../../components/TagPage.astro'
+import Bluebird from 'bluebird'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const entries = await fetchArticleEntries()
   const uniqTags = await fetchArticleTags()
 
-  return uniqTags.map((_tag) => {
+  return Bluebird.map(uniqTags, async (_tag) => {
     const tag = cleanPathParam(_tag)
 
     const taggedEntries = entries.filter((e) => (e.tags ?? []).map(normalizeTag).includes(_tag))
-    const page = calcFirstPage({
+    const page = await calcFirstPage({
       entries: taggedEntries,
       pageSize: configs.paginateSize
     })
