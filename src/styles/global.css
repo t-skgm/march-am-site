@@ -13,7 +13,7 @@ html {
   }
 
   h1 {
-    @apply text-greenish-dark text-3xl font-bold uppercase;
+    @apply text-greenish-dark text-3xl font-bold mb-6 mt-2 leading-tight tracking-tight;
     font-family: 'Lora', serif;
   }
 
@@ -22,19 +22,27 @@ html {
   }
 
   h2 {
-    @apply font-bold text-xl mb-3 mt-12 text-greenish-dark;
+    @apply text-2xl font-semibold mb-5 leading-snug text-greenish-dark;
   }
 
   h3 {
-    @apply font-bold text-lg mb-2 mt-8 text-greenish-dark;
+    @apply text-2xl font-semibold mb-4 leading-snug text-greenish-dark;
   }
 
   h4 {
-    @apply font-bold text-base mb-2 mt-5 text-greenish-dark;
+    @apply text-xl font-medium mb-3 text-greenish-dark;
   }
 
   h4 + p {
     @apply mt-2;
+  }
+
+  h5 {
+    @apply text-lg font-medium mb-2 text-greenish-dark;
+  }
+
+  h6 {
+    @apply text-base font-medium mb-1 uppercase tracking-wide text-greenish-dark;
   }
 
   p {

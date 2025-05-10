@@ -58,6 +58,11 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
     iframe.youtube {
       @apply h-full max-w-full;
     }
+
+    iframe[src^="https://bandcamp.com/"]
+    {
+      @apply my-6;
+    }
   }
 
   .tag-list {

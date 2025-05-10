@@ -1,5 +1,4 @@
-import * as contentfulAll from 'contentful'
-const { createClient } = contentfulAll
+import { createClient } from 'contentful'
 
 /** プレビュー表示用 */
 export const createContentfulPreviewClient = () => {
