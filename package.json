@@ -48,11 +48,9 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250810.0",
-    "@types/bluebird": "3.5.42",
     "@types/node": "^24.2.1",
     "@types/react": "19.1.9",
     "@typescript-eslint/parser": "^8.39.0",
-    "bluebird": "3.7.2",
     "contentful-management": "^11.54.4",
     "dotenv": "^17.2.1",
     "eslint": "^9.33.0",
