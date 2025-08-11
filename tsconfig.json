@@ -6,12 +6,5 @@
     "esModuleInterop": true
   },
   "include": ["src/**/*", "script/**/*", "vitest.config.ts"],
-  "exclude": ["functions/**/*"],
-  "ts-node": {
-    "esm": true,
-    "compilerOptions": {
-      "noUnusedLocals": false,
-      "noUnusedParameters": false
-    }
-  }
+  "exclude": ["functions/**/*"]
 }

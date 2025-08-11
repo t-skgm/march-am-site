@@ -6,6 +6,7 @@ import { normalizeTag } from '../../../../infra/contentful/common'
 import { fetchArticleEntries, fetchArticleTags } from '../../../../infra/contentful/article'
 import type { Article } from '../../../../infra/contentful/interfaces'
 import TagPage from '../../../../components/TagPage.astro'
+import '../../../../styles/global.css'
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const entries = await fetchArticleEntries()

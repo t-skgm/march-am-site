@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import 'dotenv/config'
 import { readdir, readFile } from 'fs/promises'
-import Bluebird from 'bluebird'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import frontmatter from 'front-matter'
@@ -15,7 +13,7 @@ export interface Article {
   title: string
   postedAt: string
   slug: string
-  thumbnail?: any | undefined
+  thumbnail?: Record<string, unknown> | undefined
   tags?: string[] | undefined
 }
 
@@ -31,7 +29,7 @@ const main = async () => {
   // const e = await environment.getEntry('5wkYpFhJ0bfqvXBMT2OMZY')
   // console.dir(e, { depth: 5 })
 
-  await Bluebird.each(filenames, async (filename, idx) => {
+  for (const [idx, filename] of filenames.entries()) {
     if (idx % 10 === 1) console.log('idx:', idx)
 
     const markdownStr = await readFile(resolve(currentDir, './articles/', filename), {
@@ -55,7 +53,7 @@ const main = async () => {
     // console.log(draftEntry)
 
     await draftEntry.publish()
-  })
+  }
 }
 
 const ja = (value: string | string[]) => ({ 'ja-JP': value })

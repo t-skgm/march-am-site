@@ -4,13 +4,13 @@ import { capitalizeWords } from '../../utils/string'
 export const onlyPublished = (entry: { data: { draft?: boolean | undefined } }): boolean =>
   entry.data.draft == null || !entry.data.draft
 
-export const calcFirstPage = async <T>({
+export const calcFirstPage = <T>({
   entries,
   pageSize
 }: {
   entries: T[]
   pageSize: number
-}): Promise<Page<T>> => {
+}): Page<T> => {
   const entriesSize = entries.length
   const lastPage = Math.ceil(entriesSize / pageSize)
 

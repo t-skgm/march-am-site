@@ -11,6 +11,8 @@ import { Image } from 'astro:assets'
 </nav>
 
 <style>
+  @reference '../../styles/global.css';
+
   .logo {
     @apply absolute;
     top: theme(spacing.4);
@@ -22,7 +24,7 @@ import { Image } from 'astro:assets'
     width: 55px;
   }
 
-  @media screen(lg) {
+  @media (min-width: 1024px) {
     .logo {
       width: 80px;
       top: theme(spacing.16);

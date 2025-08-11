@@ -4,6 +4,7 @@ import Main from '../../../components/molecules/Main.astro'
 import { routes } from '../../../constants/routes'
 import { cleanPathParam } from '../../../utils/cleanPathParam'
 import { fetchArticleCategories } from '../../../infra/contentful/article'
+import '../../../styles/global.css'
 
 const categories = await fetchArticleCategories()
 

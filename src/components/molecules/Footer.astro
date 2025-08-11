@@ -48,6 +48,8 @@ const { isTop = false } = Astro.props
 </footer>
 
 <style>
+  @reference '../../styles/global.css';
+
   footer {
     background-color: rgb(251, 243, 178, 0.7);
   }
@@ -69,7 +71,7 @@ const { isTop = false } = Astro.props
     }
   }
 
-  @media screen(lg) {
+  @media (min-width: 1024px) {
     .gutter {
       @apply px-20;
       margin-left: 300px;

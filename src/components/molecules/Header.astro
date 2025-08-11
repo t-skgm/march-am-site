@@ -10,13 +10,15 @@ import { Image } from 'astro:assets'
 </nav>
 
 <style>
+  @reference '../../styles/global.css';
+
   .search {
     @apply fixed;
     top: theme(spacing.3);
     right: 5px;
   }
 
-  @media screen(lg) {
+  @media (min-width: 1024px) {
     .search {
       top: theme(spacing.4);
       right: 11px;

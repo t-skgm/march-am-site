@@ -4,6 +4,7 @@ import ArticleList from '../features/ArticleList.astro'
 import Main from '../components/molecules/Main.astro'
 import { routes } from '../constants/routes'
 import { fetchArticlesFirstPage } from '../infra/contentful/article'
+import '../styles/global.css'
 
 const firstPage = await fetchArticlesFirstPage()
 ---

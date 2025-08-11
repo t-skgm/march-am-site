@@ -6,6 +6,7 @@ import { fetchArticleEntries } from '../../infra/contentful/article'
 import type { GetStaticPaths } from 'astro'
 import type { Article } from '../../infra/contentful/interfaces'
 import { routes } from '../../constants/routes'
+import '../../styles/global.css'
 
 export type Props = {
   entry: Article

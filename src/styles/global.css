@@ -1,6 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-greenish: #4a4740;
+  --color-greenish-dark: #37342f;
+  --color-maccha: #769171;
+  --color-greenlite: #f7f8f7;
+}
 
 html {
   font-family: system-ui, sans-serif;
@@ -103,7 +108,7 @@ html {
   }
 
   blockquote > p {
-    @apply rounded bg-slate-100 p-6 italic;
+    @apply rounded-sm bg-slate-100 p-6 italic;
   }
 }
 
@@ -118,6 +123,6 @@ html {
 
   code[class*='language-'],
   pre[class*='language-'] {
-    @apply text-sm !important;
+    @apply text-sm!;
   }
 }

@@ -6,18 +6,17 @@ import { configs } from '../../../../constants/site'
 import type { Article } from '../../../../infra/contentful/interfaces'
 import { fetchArticleCategories, fetchArticleEntries } from '../../../../infra/contentful/article'
 import CategoryPage from '../../../../components/CategoryPage.astro'
-import Bluebird from 'bluebird'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const entries = await fetchArticleEntries()
   const uniqCategories = await fetchArticleCategories()
 
-  return Bluebird.map(uniqCategories, async (_category) => {
+  return uniqCategories.map((_category) => {
     const category = cleanPathParam(_category)
 
     const categorygedEntries = entries.filter((e) => normalizeTag(e.category) === category)
 
-    const page = await calcFirstPage({
+    const page = calcFirstPage({
       entries: categorygedEntries,
       pageSize: configs.paginateSize
     })

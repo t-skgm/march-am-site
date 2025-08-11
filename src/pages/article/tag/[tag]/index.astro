@@ -6,17 +6,17 @@ import { configs } from '../../../../constants/site'
 import type { Article } from '../../../../infra/contentful/interfaces'
 import { fetchArticleEntries, fetchArticleTags } from '../../../../infra/contentful/article'
 import TagPage from '../../../../components/TagPage.astro'
-import Bluebird from 'bluebird'
+import '../../../../styles/global.css'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const entries = await fetchArticleEntries()
   const uniqTags = await fetchArticleTags()
 
-  return Bluebird.map(uniqTags, async (_tag) => {
+  return uniqTags.map((_tag) => {
     const tag = cleanPathParam(_tag)
 
     const taggedEntries = entries.filter((e) => (e.tags ?? []).map(normalizeTag).includes(_tag))
-    const page = await calcFirstPage({
+    const page = calcFirstPage({
       entries: taggedEntries,
       pageSize: configs.paginateSize
     })
