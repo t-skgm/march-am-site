@@ -56,7 +56,7 @@ const { backTo, isTop = false } = Astro.props
     @apply text-4xl no-underline hover:underline mt-4;
   }
 
-  @media screen(lg) {
+  @media (min-width: 1024px) {
     main {
       @apply mx-auto px-0 pt-2;
       max-width: 660px;
