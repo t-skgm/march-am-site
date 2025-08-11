@@ -26,10 +26,11 @@
     "@astrojs/preact": "^4.1.0",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.4.2",
-    "@astrojs/tailwind": "^6.0.2",
     "@cloudflare/pages-plugin-vercel-og": "^0.1.2",
     "@contentful/rich-text-html-renderer": "^17.1.0",
     "@fontsource/lora": "^5.2.6",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.9",
     "astro-seo": "0.8.4",
     "contentful": "^11.7.15",
@@ -42,8 +43,7 @@
     "rehype-stringify": "^10.0.1",
     "remark-toc": "9.0.0",
     "remeda": "^2.30.0",
-    "sass": "^1.90.0",
-    "tailwindcss": "3.4.4",
+    "tailwindcss": "^4.1.11",
     "unified": "^11.0.5"
   },
   "devDependencies": {

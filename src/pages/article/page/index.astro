@@ -1,6 +1,7 @@
 ---
 import Page from './[page].astro'
 import { fetchArticlesFirstPage } from '../../../infra/contentful/article'
+import '../../../styles/global.css'
 
 const firstPage = await fetchArticlesFirstPage()
 ---

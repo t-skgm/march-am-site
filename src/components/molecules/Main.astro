@@ -33,6 +33,8 @@ const { backTo, isTop = false } = Astro.props
 }
 
 <style>
+  @reference '../../styles/global.css';
+
   main::after {
     @apply block mx-auto my-20;
     content: '';

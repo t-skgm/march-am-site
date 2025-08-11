@@ -37,7 +37,9 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
 
 <article class="post-content mt-10" set:html={content} />
 
-<style is:global lang="scss">
+<style is:global>
+  @reference '../styles/global.css';
+
   .post-content {
     ul,
     ol {

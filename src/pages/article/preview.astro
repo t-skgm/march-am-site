@@ -2,6 +2,7 @@
 import Main from '../../components/molecules/Main.astro'
 import { PreviewContent } from '../../features/PreviewContent'
 import Layout from '../../layouts/Layout.astro'
+import '../../styles/global.css'
 ---
 
 <Layout title="preview" overrideSEOProps={{ noindex: true, nofollow: true }}>
@@ -13,6 +14,8 @@ import Layout from '../../layouts/Layout.astro'
 </Layout>
 
 <style>
+  @reference '../../styles/global.css';
+
   .preview-note {
     @apply border-2 mb-4 p-4 border-green-600 text-greenish;
   }
