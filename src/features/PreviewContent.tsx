@@ -11,27 +11,24 @@ export const PreviewContent: FunctionComponent = () => {
   const [error, setError] = useState<Error | undefined>()
 
   useEffect(() => {
-    const cookies = (window.document.cookie ?? '').split(';')
-    if (!isValidAccess(cookies)) {
-      setError(new Error('Invalid Access'))
-      return
-    }
-
     ;(async () => {
-      setLoading(true)
-      // fetch entry
-      const search = new URLSearchParams(window.location.search)
-      const slugParam = search.get('slug')
-      if (slugParam != null) {
-        const entry = await fetchArticleEntry({ slug: slugParam })
-        setEntry(entry)
+      try {
+        setLoading(true)
+        setError(undefined)
+        // fetch entry
+        const search = new URLSearchParams(window.location.search)
+        const slugParam = search.get('slug')
+        if (slugParam != null) {
+          const entry = await fetchArticleEntry({ slug: slugParam })
+          setEntry(entry)
+        }
+        setLoading(false)
+      } catch (e) {
+        console.warn(e)
+        setError(e as Error)
+        setLoading(false)
       }
-      setLoading(false)
-    })().catch((e) => {
-      console.warn(e)
-      setError(e)
-      setLoading(false)
-    })
+    })()
   }, [])
 
   if (loading) return <p>Loading...</p>
@@ -70,14 +67,3 @@ const PreviewArticleContent: FunctionComponent<{ entry: Article }> = ({
     <article class="post-content mt-10" dangerouslySetInnerHTML={{ __html: content }} />
   </>
 )
-
-const isValidAccess = (cookies: string[]): boolean => {
-  if (import.meta.env.DEV) return true
-  const token = Object.fromEntries(cookies.map((c) => c.trim().split('=')))
-    .contentful_preview_token as string | undefined
-
-  // FIXME: 雑
-  if (token != null && token.length !== 0) return true
-
-  return false
-}
