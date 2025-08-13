@@ -24,21 +24,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   }
 
   const redirectURL = `${url.origin}/article/preview?slug=${slug}`
-  const response = new Response(
-    `<html><head><meta http-equiv="refresh" content="0; URL='${redirectURL}'"/></head></html>`,
-    {
-      status: 200,
-      headers: {
-        'Content-Type': 'text/html',
-        'Set-Cookie': `contentful_preview_token=${ContentfulPreviewToken}; SameSite=None; Secure; Path=/`
-      }
-    }
-  )
-  return response
+  return Response.redirect(redirectURL, 303)
 }
-
-/** FIXME: 雑 */
-const ContentfulPreviewToken = '24b648b45b108aeb21980aa907009387300ec2e5c598636607ccf2096e8cfc73'
 
 function ctEqual(a: Uint8Array, b: Uint8Array): boolean {
   if (a.length !== b.length || a.length === 0) {
