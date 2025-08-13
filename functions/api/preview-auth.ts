@@ -47,7 +47,6 @@ function ctEqual(a: Uint8Array, b: Uint8Array): boolean {
   const n = a.length
   let c = 0
   for (let i = 0; i < n; i++) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     c |= a[i]! ^ b[i]!
   }
   return c === 0

@@ -8,11 +8,13 @@ import { formatDateJp } from '../utils/date'
 export const PreviewContent: FunctionComponent = () => {
   const [entry, setEntry] = useState<Article | undefined>()
   const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<Error | undefined>()
 
   useEffect(() => {
     const cookies = (window.document.cookie ?? '').split(';')
     if (!isValidAccess(cookies)) {
-      throw new Error('Invalid Access')
+      setError(new Error('Invalid Access'))
+      return
     }
 
     ;(async () => {
@@ -27,11 +29,13 @@ export const PreviewContent: FunctionComponent = () => {
       setLoading(false)
     })().catch((e) => {
       console.warn(e)
+      setError(e)
       setLoading(false)
     })
   }, [])
 
   if (loading) return <p>Loading...</p>
+  if (error != null) return <p>Error: {error.message}</p>
   if (entry == null) return <p>Entry 取得失敗</p>
 
   return <PreviewArticleContent entry={entry} />
