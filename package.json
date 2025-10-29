@@ -62,10 +62,16 @@
     "prettier-plugin-astro": "^0.14.1",
     "sharp": "^0.34.3",
     "typescript": "^5.9.2",
+    "typescript-eslint": "^8.46.2",
     "vitest": "^4.0.5",
     "wrangler": "^4.28.1"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.52.5"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "^6.4.1"
+    }
   }
 }
