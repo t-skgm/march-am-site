@@ -31,7 +31,7 @@
     "@fontsource/lora": "^5.2.6",
     "@tailwindcss/postcss": "^4.1.11",
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.14.4",
+    "astro": "^5.15.9",
     "astro-seo": "0.8.4",
     "contentful": "^11.7.15",
     "dayjs": "^1.11.13",
