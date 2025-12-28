@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "dev:fn": "wrangler pages dev --compatibility-date 2023-05-18 -- npm run dev",
+    "dev:fn": "wrangler pages dev --compatibility-date 2023-05-18 -- pnpm dev",
     "start": "astro dev",
     "build": "astro build",
     "astro": "astro",
