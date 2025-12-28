@@ -14,7 +14,7 @@ export const remark = unified()
   .use(remarkParse)
   .use(remarkGfm, {} satisfies OptionsGfm)
   .use(remarkToc, { heading: '目次', tight: true } as OptionsToc)
-  .use(remarkLinkCard, { cache: true, shortenUrl: true })
+  .use(remarkLinkCard, { shortenUrl: true })
   .use(remarkRehype, { allowDangerousHtml: true } satisfies OptionsToHast)
   // 見出しに ID を自動付与する
   .use(rehypeSlug)
