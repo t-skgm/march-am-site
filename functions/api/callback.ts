@@ -31,9 +31,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const result = await response.json<ResponseBody>()
     if ('error' in result) {
       return new Response(renderBody('error', result), {
-        headers: {
-          'content-type': 'text/html;charset=UTF-8'
-        },
+        headers: { 'content-type': 'text/html;charset=UTF-8' },
         status: 401
       })
     }
@@ -46,17 +44,13 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     })
 
     return new Response(responseBody, {
-      headers: {
-        'content-type': 'text/html;charset=UTF-8'
-      },
+      headers: { 'content-type': 'text/html;charset=UTF-8' },
       status: 200
     })
   } catch (error) {
     console.error(error)
     return new Response((error as Error).message, {
-      headers: {
-        'content-type': 'text/html;charset=UTF-8'
-      },
+      headers: { 'content-type': 'text/html;charset=UTF-8' },
       status: 500
     })
   }

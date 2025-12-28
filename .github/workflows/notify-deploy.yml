@@ -23,9 +23,10 @@ jobs:
         id: cf-pages
         uses: arddluma/cloudflare-pages-slack-notification@v4
         with:
+          commitHash: ${{ github.sha }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          project: 'march-am-site'
+          project: "march-am-site"
           slackWebHook: ${{ secrets.SLACK_WEBHOOK_URL }}
           # Add this if you want GitHub Deployments (see below)
           githubToken: ${{ secrets.GITHUB_TOKEN }}
