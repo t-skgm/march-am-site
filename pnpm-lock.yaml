@@ -50,6 +50,15 @@ importers:
       dayjs:
         specifier: ^1.11.19
         version: 1.11.19
+      hast-util-to-html:
+        specifier: ^9.0.5
+        version: 9.0.5
+      mdast-util-to-hast:
+        specifier: ^13.2.1
+        version: 13.2.1
+      mdast-util-toc:
+        specifier: ^7.1.0
+        version: 7.1.0
       patch-package:
         specifier: 8.0.1
         version: 8.0.1
@@ -68,6 +77,15 @@ importers:
       rehype-stringify:
         specifier: ^10.0.1
         version: 10.0.1
+      remark-gfm:
+        specifier: ^4.0.1
+        version: 4.0.1
+      remark-parse:
+        specifier: ^11.0.0
+        version: 11.0.0
+      remark-rehype:
+        specifier: ^11.1.2
+        version: 11.1.2
       remark-toc:
         specifier: 9.0.0
         version: 9.0.0
