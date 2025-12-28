@@ -266,8 +266,7 @@ const getOpenGraph = async (targetUrl: URL): Promise<OgResult | undefined> => {
   try {
     const response = await fetch(targetUrl.toString(), {
       headers: {
-        "User-Agent":
-          "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+        "User-Agent": "bot",
         Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
       },
       signal: AbortSignal.timeout(10000),
