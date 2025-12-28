@@ -5,6 +5,6 @@
     "jsxImportSource": "preact",
     "esModuleInterop": true
   },
-  "include": ["src/**/*", "script/**/*", "vitest.config.ts"],
+  "include": ["src/**/*", "script/**/*", "vitest.config.ts", "tailwind.config.ts"],
   "exclude": ["functions/**/*"]
 }

@@ -58,14 +58,12 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
 
     /* iframe: YouTube */
     iframe.youtube,
-    iframe[src^="https://www.youtube.com"]
-    {
+    iframe[src^='https://www.youtube.com'] {
       @apply h-full max-w-full;
       aspect-ratio: 16 / 9;
     }
 
-    iframe[src^="https://bandcamp.com/"]
-    {
+    iframe[src^='https://bandcamp.com/'] {
       @apply my-6;
     }
   }
