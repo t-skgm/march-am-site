@@ -3,12 +3,13 @@ import preact from '@astrojs/preact'
 import sitemap from '@astrojs/sitemap'
 import mdx from '@astrojs/mdx'
 import tailwindcss from '@tailwindcss/vite'
+import remarkLinkCard from "remark-link-card-plus";
 
 const SITE_URL = process.env.SITE_URL || process.env.CF_PAGES_URL || 'http://localhost:3000'
 
 // https://astro.build/config
 export default defineConfig({
-  markdown: { drafts: true, gfm: true },
+  markdown: { drafts: true, gfm: true, remarkPlugins: [[remarkLinkCard, { cache: true, shortenUrl: true }]] },
   integrations: [preact(), sitemap(), mdx()],
   vite: {
     ssr: { noExternal: ['path-to-regexp'] },

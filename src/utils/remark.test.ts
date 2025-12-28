@@ -34,6 +34,25 @@ paragraph.`)
       </table>"
     `)
   })
+
+  test('can convert link card markdown', async () => {
+    const result = await remark.process(`https://example.com`)
+    expect(String(result)).toMatchInlineSnapshot(`
+      "<div class="remark-link-card-plus__container">
+        <a href="https://example.com/" target="_blank" rel="noreferrer noopener" class="remark-link-card-plus__card">
+          <div class="remark-link-card-plus__main">
+        <div class="remark-link-card-plus__content">
+          <div class="remark-link-card-plus__title">Example Domain</div>
+          <div class="remark-link-card-plus__description"></div>
+        </div>
+        <div class="remark-link-card-plus__meta">
+          <span class="remark-link-card-plus__url">example.com</span>
+        </div>
+      </div>
+        </a>
+      </div>"
+    `)
+  })
 })
 
 describe('processMarkdown()', () => {

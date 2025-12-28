@@ -2,6 +2,7 @@ import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import remarkToc from 'remark-toc'
+import remarkLinkCard from "remark-link-card-plus";
 import rehypeSlug from 'rehype-slug'
 import rehypeStringify from 'rehype-stringify'
 import remarkGfm, { type Options as OptionsGfm } from 'remark-gfm'
@@ -13,6 +14,7 @@ export const remark = unified()
   .use(remarkParse)
   .use(remarkGfm, {} satisfies OptionsGfm)
   .use(remarkToc, { heading: '目次', tight: true } as OptionsToc)
+  .use(remarkLinkCard, { cache: true, shortenUrl: true })
   .use(remarkRehype, { allowDangerousHtml: true } satisfies OptionsToHast)
   // 見出しに ID を自動付与する
   .use(rehypeSlug)
