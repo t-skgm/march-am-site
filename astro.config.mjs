@@ -3,7 +3,7 @@ import preact from '@astrojs/preact'
 import sitemap from '@astrojs/sitemap'
 import mdx from '@astrojs/mdx'
 import tailwindcss from '@tailwindcss/vite'
-import remarkLinkCard from "remark-link-card-plus";
+import remarkLinkCard from "./src/utils/remark-link-card-plus.js";
 
 const SITE_URL = process.env.SITE_URL || process.env.CF_PAGES_URL || 'http://localhost:3000'
 
