@@ -10,7 +10,7 @@ export type OgData = {
   imageUrl?: string | undefined;
 };
 
-type Options = {
+export type Options = {
   shortenUrl?: boolean;
   thumbnailPosition?: "right" | "left";
   noThumbnail?: boolean;
@@ -19,7 +19,7 @@ type Options = {
   ignoreExtensions?: string[];
 };
 
-type LinkCardData = {
+export type LinkCardData = {
   title: string;
   description: string;
   faviconUrl: string;
@@ -136,7 +136,8 @@ const remarkLinkCard: Plugin<[Options], Root> =
     return tree;
   };
 
-const isSameUrlValue = (a: string, b: string) => {
+// Exported for testing
+export const isSameUrlValue = (a: string, b: string) => {
   try {
     return new URL(a).toString() === new URL(b).toString();
   } catch {
@@ -144,7 +145,8 @@ const isSameUrlValue = (a: string, b: string) => {
   }
 };
 
-const parseOgTags = (html: string): OgResult => {
+// Exported for testing
+export const parseOgTags = (html: string): OgResult => {
   const result: OgResult = {};
 
   // Extract og:title
@@ -235,7 +237,8 @@ const parseOgTags = (html: string): OgResult => {
   return result;
 };
 
-const decodeHtmlEntities = (text: string): string => {
+// Exported for testing
+export const decodeHtmlEntities = (text: string): string => {
   const entities: Record<string, string> = {
     "&amp;": "&",
     "&lt;": "<",
@@ -368,7 +371,8 @@ const getFaviconUrl = async (
   return faviconUrl;
 };
 
-const getOgImageUrl = (
+// Exported for testing
+export const getOgImageUrl = (
   baseUrl: URL,
   imageUrl: string | undefined,
   options: Options,
@@ -389,12 +393,14 @@ const getOgImageUrl = (
   return imageUrl;
 };
 
-const className = (value: string) => {
+// Exported for testing
+export const className = (value: string) => {
   const prefix = "remark-link-card-plus";
   return `${prefix}__${value}`;
 };
 
-const createLinkCardNode = (data: LinkCardData, options: Options): Html => {
+// Exported for testing
+export const createLinkCardNode = (data: LinkCardData, options: Options): Html => {
   const { title, description, faviconUrl, ogImageUrl, displayUrl, url } = data;
   const isThumbnailLeft = options.thumbnailPosition === "left";
 
