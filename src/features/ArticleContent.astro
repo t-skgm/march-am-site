@@ -11,21 +11,21 @@ const { entry } = Astro.props
 const { title, postedAt, category, tags, thumbnail, slug, content } = entry
 ---
 
-<header>
+<header data-pagefind-ignore>
   {thumbnail != null && <img src={thumbnail} alt={`Eye catch of ${title}`} class="mb-8" />}
-  <h1 class="text-3xl font-bold break-all">
+  <h1 class="text-3xl font-bold break-all" data-pagefind-meta="title">
     <a href={routes.article.slug(slug)}>{title}</a>
   </h1>
 </header>
 
-<div class="mt-6 mb-2">
+<div class="mt-6 mb-2" data-pagefind-ignore>
   <a href={routes.article.category.page(category)} class="uppercase no-underline hover:underline"
     >{category}</a
   > | {formatDateJp(postedAt)}
 </div>
 {
   tags != null && (
-    <div class="tag-list">
+    <div class="tag-list" data-pagefind-ignore>
       {tags.map((tag) => (
         <a href={routes.article.tag.page(tag)} class="tag">
           {tag}

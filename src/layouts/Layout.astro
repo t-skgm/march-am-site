@@ -7,6 +7,7 @@ import { SEO } from 'astro-seo'
 import Logo from '../components/molecules/Logo.astro'
 import Footer from '../components/molecules/Footer.astro'
 import GA from '../components/molecules/GoogleAnalytics.astro'
+import { SearchModal } from '../features/search'
 import { site } from '../constants/site'
 import { getToken } from '../utils/getTokenNode'
 
@@ -85,8 +86,9 @@ const socialImageURL: string = (() => {
 
   <body class:list={{ 'body-top': isTop }}>
     <Logo />
+    <SearchModal client:load />
     <!-- <Header /> -->
-    <div class:list={['content', { 'content-top': isTop }]}>
+    <div class:list={['content', { 'content-top': isTop }]} data-pagefind-body>
       <slot />
     </div>
     <Footer isTop={isTop} />
