@@ -22,6 +22,7 @@ const title = `Tag: ${tag} (page ${page.currentPage})`
 <Layout
   title={title}
   canonicalPath={isIndexPage != null ? routes.article.tag.page(tag.toString(), 1) : undefined}
+  noPagefindIndex
 >
   <Main>
     <h1>{title}</h1>

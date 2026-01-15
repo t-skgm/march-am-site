@@ -26,7 +26,7 @@ const { page, isIndexPage } = Astro.props
 const title = `Article - ${Astro.params.page === undefined ? 'All' : `page ${page.currentPage}`}`
 ---
 
-<Layout title={title} canonicalPath={isIndexPage != null ? routes.article.page(1) : undefined}>
+<Layout title={title} canonicalPath={isIndexPage != null ? routes.article.page(1) : undefined} noPagefindIndex>
   <Main>
     <h1>{title}</h1>
     <ArticleList entries={page.data} fullwidth />
