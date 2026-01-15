@@ -1,15 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'preact/hooks'
 import type { FunctionComponent } from 'preact'
 
-declare global {
-  interface Window {
-    pagefind: {
-      init: () => Promise<void>
-      search: (query: string) => Promise<PagefindSearchResults>
-    }
-  }
-}
-
 interface PagefindSearchResults {
   results: PagefindSearchResult[]
 }
@@ -27,6 +18,10 @@ interface PagefindSearchData {
   excerpt: string
 }
 
+interface PagefindInstance {
+  search: (query: string) => Promise<PagefindSearchResults>
+}
+
 interface SearchResult {
   id: string
   url: string
@@ -42,40 +37,19 @@ export const SearchModal: FunctionComponent = () => {
   const [pagefindLoaded, setPagefindLoaded] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
+  const pagefindRef = useRef<PagefindInstance | null>(null)
 
-  // Load Pagefind script
+  // Load Pagefind via dynamic import
   const loadPagefind = useCallback(async () => {
-    if (pagefindLoaded || window.pagefind) {
-      if (window.pagefind && !pagefindLoaded) {
-        setPagefindLoaded(true)
-      }
+    if (pagefindLoaded || pagefindRef.current) {
       return
     }
 
     try {
-      // Dynamically load pagefind script
-      const script = document.createElement('script')
-      script.src = '/pagefind/pagefind.js'
-      script.type = 'module'
-
-      await new Promise<void>((resolve, reject) => {
-        script.onload = async () => {
-          // Wait for pagefind to be available
-          let attempts = 0
-          while (!window.pagefind && attempts < 50) {
-            await new Promise((r) => setTimeout(r, 100))
-            attempts++
-          }
-          if (window.pagefind) {
-            resolve()
-          } else {
-            reject(new Error('Pagefind not available'))
-          }
-        }
-        script.onerror = reject
-        document.head.appendChild(script)
-      })
-
+      // Dynamic import of Pagefind module
+      // @ts-expect-error - Pagefind is generated at build time
+      const pagefind = await import('/pagefind/pagefind.js')
+      pagefindRef.current = pagefind
       setPagefindLoaded(true)
     } catch (e) {
       console.error('Failed to load Pagefind:', e)
@@ -85,14 +59,14 @@ export const SearchModal: FunctionComponent = () => {
   // Handle search
   const handleSearch = useCallback(
     async (searchQuery: string) => {
-      if (!pagefindLoaded || !searchQuery.trim()) {
+      if (!pagefindRef.current || !searchQuery.trim()) {
         setResults([])
         return
       }
 
       setLoading(true)
       try {
-        const search = await window.pagefind.search(searchQuery)
+        const search = await pagefindRef.current.search(searchQuery)
         const searchResults = await Promise.all(
           search.results.slice(0, 10).map(async (result) => {
             const data = await result.data()
@@ -111,7 +85,7 @@ export const SearchModal: FunctionComponent = () => {
       }
       setLoading(false)
     },
-    [pagefindLoaded]
+    []
   )
 
   // Debounced search
