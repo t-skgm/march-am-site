@@ -13,12 +13,7 @@ export default defineConfig({
   integrations: [preact(), sitemap(), mdx()],
   vite: {
     ssr: { noExternal: ['path-to-regexp'] },
-    plugins: [tailwindcss()],
-    build: {
-      rollupOptions: {
-        external: ['/pagefind/pagefind-ui.js']
-      }
-    }
+    plugins: [tailwindcss()]
   },
   site: SITE_URL
 })

@@ -59,22 +59,40 @@
   </div>
 </dialog>
 
-<script>
-  function initSearch() {
-    const searchButton = document.getElementById('search-button')
-    const searchDialog = document.getElementById('search-dialog') as HTMLDialogElement | null
-    const searchClose = document.getElementById('search-close')
-    const pagefindContainer = document.getElementById('pagefind-container')
+<script is:inline>
+  (function() {
+    var pagefindLoaded = false;
+    var pagefindScriptLoaded = false;
 
-    let pagefindLoaded = false
+    function loadPagefindScript(callback) {
+      if (pagefindScriptLoaded) {
+        callback();
+        return;
+      }
+      var script = document.createElement('script');
+      script.src = '/pagefind/pagefind-ui.js';
+      script.onload = function() {
+        pagefindScriptLoaded = true;
+        callback();
+      };
+      script.onerror = function() {
+        var container = document.getElementById('pagefind-container');
+        if (container) {
+          container.innerHTML = '<p class="search-error">検索機能の読み込みに失敗しました。</p>';
+        }
+      };
+      document.head.appendChild(script);
+    }
 
-    async function loadPagefind() {
-      if (pagefindLoaded || !pagefindContainer) return
+    function loadPagefind() {
+      var pagefindContainer = document.getElementById('pagefind-container');
+      if (pagefindLoaded || !pagefindContainer) return;
 
-      try {
-        // @ts-ignore - Pagefind is loaded at runtime
-        const PagefindUI = (await import('/pagefind/pagefind-ui.js')).default
-        // @ts-ignore
+      loadPagefindScript(function() {
+        if (typeof PagefindUI === 'undefined') {
+          console.error('PagefindUI is not defined');
+          return;
+        }
         new PagefindUI({
           element: '#pagefind-container',
           showSubResults: true,
@@ -86,66 +104,70 @@
             one_result: '1件の記事が見つかりました',
             searching: '検索中...',
           },
-        })
-        pagefindLoaded = true
+        });
+        pagefindLoaded = true;
 
-        // Focus input after loading
-        setTimeout(() => {
-          const input = pagefindContainer.querySelector('input')
-          input?.focus()
-        }, 100)
-      } catch (error) {
-        console.error('Failed to load Pagefind:', error)
-        pagefindContainer.innerHTML = '<p class="search-error">検索機能の読み込みに失敗しました。</p>'
+        setTimeout(function() {
+          var input = pagefindContainer.querySelector('input');
+          if (input) input.focus();
+        }, 100);
+      });
+    }
+
+    function initSearch() {
+      var searchButton = document.getElementById('search-button');
+      var searchDialog = document.getElementById('search-dialog');
+      var searchClose = document.getElementById('search-close');
+
+      function openSearch() {
+        if (searchDialog) searchDialog.showModal();
+        loadPagefind();
       }
-    }
 
-    function openSearch() {
-      searchDialog?.showModal()
-      loadPagefind()
-    }
-
-    function closeSearch() {
-      searchDialog?.close()
-    }
-
-    // Open search button
-    searchButton?.addEventListener('click', openSearch)
-
-    // Close button
-    searchClose?.addEventListener('click', closeSearch)
-
-    // Close on backdrop click
-    searchDialog?.addEventListener('click', (e) => {
-      if (e.target === searchDialog) {
-        closeSearch()
+      function closeSearch() {
+        if (searchDialog) searchDialog.close();
       }
-    })
 
-    // Keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-      // Cmd/Ctrl + K to open
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault()
-        if (searchDialog?.open) {
-          closeSearch()
-        } else {
-          openSearch()
+      if (searchButton) {
+        searchButton.addEventListener('click', openSearch);
+      }
+
+      if (searchClose) {
+        searchClose.addEventListener('click', closeSearch);
+      }
+
+      if (searchDialog) {
+        searchDialog.addEventListener('click', function(e) {
+          if (e.target === searchDialog) {
+            closeSearch();
+          }
+        });
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          if (searchDialog && searchDialog.open) {
+            closeSearch();
+          } else {
+            openSearch();
+          }
         }
-      }
 
-      // Escape to close
-      if (e.key === 'Escape' && searchDialog?.open) {
-        closeSearch()
-      }
-    })
-  }
+        if (e.key === 'Escape' && searchDialog && searchDialog.open) {
+          closeSearch();
+        }
+      });
+    }
 
-  // Initialize on page load
-  initSearch()
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSearch);
+    } else {
+      initSearch();
+    }
 
-  // Re-initialize on page navigation (for View Transitions)
-  document.addEventListener('astro:page-load', initSearch)
+    document.addEventListener('astro:page-load', initSearch);
+  })();
 </script>
 
 <style is:global>
