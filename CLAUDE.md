@@ -58,6 +58,80 @@ src/
 ├── pages/          # Astroページ・APIルート
 ├── styles/         # CSS
 └── utils/          # ユーティリティ関数（Markdown処理、日付など）
+
+functions/          # Cloudflare Pages Functions
+├── api/            # プレビュー認証エンドポイント
+└── article/        # 記事ミドルウェア
+```
+
+## コンテンツアーキテクチャ
+
+### Contentful CMS
+
+Contentfulで単一のコンテンツタイプを管理:
+
+**`article`** (記事):
+- `title`: 記事タイトル
+- `slug`: URL用スラッグ
+- `category`: `Diary` | `Review`
+- `postedAt`: 投稿日時
+- `tags`: タグ配列
+- `thumbnail`: サムネイル画像
+- `ogpImageUrl`: OGP画像URL
+- `body`: Markdown形式の本文
+
+### コンテンツパイプライン
+
+```
+Contentful CMS
+    ↓
+src/infra/contentful/article.ts (fetchArticles)
+    ↓
+Markdown処理 via src/utils/remark.ts
+    - 目次自動生成 (mdast-util-toc)
+    - リンクカード機能 (remark-link-card-plus)
+    - GFM対応 (remark-gfm)
+    - 見出しへの自動ID付与 (rehype-slug)
+    ↓
+HTML出力
+```
+
+### 主要なデータ取得関数
+
+- `fetchArticles()` - 全記事取得（メモリキャッシュ付き）
+- `fetchArticleTags()` - タグ一覧取得
+- `fetchArticleCategories()` - カテゴリ一覧取得
+- `mapArticleEntry()` - Contentfulエントリを記事オブジェクトに変換
+
+## ページルート
+
+| ルート | 説明 |
+|-------|------|
+| `/` | トップページ |
+| `/article/` | 記事一覧（ページネーション付き） |
+| `/article/[slug]` | 個別記事ページ |
+| `/article/category/[category]/[page]` | カテゴリ別一覧 |
+| `/article/tag/[tag]/[page]` | タグ別一覧 |
+| `/about` | Aboutページ |
+| `/rss.xml` | RSSフィード |
+
+## Cloudflare Pages設定
+
+- **デプロイ**: GitHub Actions経由で自動デプロイ
+- **Functions**: プレビュー認証機能 (`/functions/api/`)
+- **OG画像**: `@cloudflare/pages-plugin-vercel-og` でOGP画像生成
+- **キャッシュ**: デプロイ時に全キャッシュパージ
+
+### 環境変数
+
+```
+PUBLIC_GA_TRACKING_ID           # Google Analytics
+PUBLIC_CONTENTFUL_SPACE_ID      # Contentful Space ID
+PUBLIC_CONTENTFUL_ENVIRONMENT   # Contentful Environment
+PUBLIC_CONTENTFUL_DELIVERY_TOKEN # Contentful Delivery API Token
+PUBLIC_CONTENTFUL_PREVIEW_TOKEN # Contentful Preview API Token
+CONTENTFUL_MANAGEMENT_TOKEN     # Contentful Management Token (scripts)
+CONTENTFUL_PREVIEW_SECRET       # Preview authentication secret
 ```
 
 ## ツールの利用
