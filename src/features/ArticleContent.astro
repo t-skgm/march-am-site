@@ -11,31 +11,33 @@ const { entry } = Astro.props
 const { title, postedAt, category, tags, thumbnail, slug, content } = entry
 ---
 
-<header>
-  {thumbnail != null && <img src={thumbnail} alt={`Eye catch of ${title}`} class="mb-8" />}
-  <h1 class="text-3xl font-bold break-all">
-    <a href={routes.article.slug(slug)}>{title}</a>
-  </h1>
-</header>
+<div data-pagefind-body>
+  <header>
+    {thumbnail != null && <img src={thumbnail} alt={`Eye catch of ${title}`} class="mb-8" data-pagefind-ignore />}
+    <h1 class="text-3xl font-bold break-all" data-pagefind-meta="title">
+      <a href={routes.article.slug(slug)}>{title}</a>
+    </h1>
+  </header>
 
-<div class="mt-6 mb-2">
-  <a href={routes.article.category.page(category)} class="uppercase no-underline hover:underline"
-    >{category}</a
-  > | {formatDateJp(postedAt)}
+  <div class="mt-6 mb-2" data-pagefind-ignore>
+    <a href={routes.article.category.page(category)} class="uppercase no-underline hover:underline"
+      >{category}</a
+    > | {formatDateJp(postedAt)}
+  </div>
+  {
+    tags != null && (
+      <div class="tag-list" data-pagefind-ignore>
+        {tags.map((tag) => (
+          <a href={routes.article.tag.page(tag)} class="tag" data-pagefind-filter="tag">
+            {tag}
+          </a>
+        ))}
+      </div>
+    )
+  }
+
+  <article class="post-content mt-10" set:html={content} />
 </div>
-{
-  tags != null && (
-    <div class="tag-list">
-      {tags.map((tag) => (
-        <a href={routes.article.tag.page(tag)} class="tag">
-          {tag}
-        </a>
-      ))}
-    </div>
-  )
-}
-
-<article class="post-content mt-10" set:html={content} />
 
 <style is:global>
   @reference '../styles/global.css';

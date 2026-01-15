@@ -8,7 +8,7 @@ export type Props = {
 const { isTop = false } = Astro.props
 ---
 
-<footer>
+<footer data-pagefind-ignore>
   <section class="links">
     <ul class:list={[{ 'gutter-top': isTop, gutter: !isTop }]}>
       <li>

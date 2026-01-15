@@ -1,0 +1,304 @@
+---
+// Search component with Pagefind integration
+---
+
+<div class="search-container">
+  <button
+    id="search-button"
+    type="button"
+    aria-label="サイト内検索"
+    class="search-button"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.3-4.3"></path>
+    </svg>
+    <span class="search-shortcut">
+      <kbd>⌘</kbd><kbd>K</kbd>
+    </span>
+  </button>
+</div>
+
+<dialog id="search-dialog" class="search-dialog">
+  <div class="search-dialog-content">
+    <div class="search-dialog-header">
+      <span class="search-title">検索</span>
+      <button
+        id="search-close"
+        type="button"
+        aria-label="閉じる"
+        class="search-close"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div id="pagefind-container"></div>
+  </div>
+</dialog>
+
+<script>
+  function initSearch() {
+    const searchButton = document.getElementById('search-button')
+    const searchDialog = document.getElementById('search-dialog') as HTMLDialogElement | null
+    const searchClose = document.getElementById('search-close')
+    const pagefindContainer = document.getElementById('pagefind-container')
+
+    let pagefindLoaded = false
+
+    async function loadPagefind() {
+      if (pagefindLoaded || !pagefindContainer) return
+
+      try {
+        // @ts-ignore - Pagefind is loaded at runtime
+        const pagefind = await import('/pagefind/pagefind-ui.js')
+        // @ts-ignore
+        new pagefind.PagefindUI({
+          element: '#pagefind-container',
+          showSubResults: true,
+          showImages: false,
+          translations: {
+            placeholder: '記事を検索...',
+            zero_results: '「[SEARCH_TERM]」に一致する結果はありませんでした',
+            many_results: '[COUNT]件の記事が見つかりました',
+            one_result: '1件の記事が見つかりました',
+            searching: '検索中...',
+          },
+        })
+        pagefindLoaded = true
+
+        // Focus input after loading
+        setTimeout(() => {
+          const input = pagefindContainer.querySelector('input')
+          input?.focus()
+        }, 100)
+      } catch (error) {
+        console.error('Failed to load Pagefind:', error)
+        pagefindContainer.innerHTML = '<p class="search-error">検索機能の読み込みに失敗しました。</p>'
+      }
+    }
+
+    function openSearch() {
+      searchDialog?.showModal()
+      loadPagefind()
+    }
+
+    function closeSearch() {
+      searchDialog?.close()
+    }
+
+    // Open search button
+    searchButton?.addEventListener('click', openSearch)
+
+    // Close button
+    searchClose?.addEventListener('click', closeSearch)
+
+    // Close on backdrop click
+    searchDialog?.addEventListener('click', (e) => {
+      if (e.target === searchDialog) {
+        closeSearch()
+      }
+    })
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Cmd/Ctrl + K to open
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        if (searchDialog?.open) {
+          closeSearch()
+        } else {
+          openSearch()
+        }
+      }
+
+      // Escape to close
+      if (e.key === 'Escape' && searchDialog?.open) {
+        closeSearch()
+      }
+    })
+  }
+
+  // Initialize on page load
+  initSearch()
+
+  // Re-initialize on page navigation (for View Transitions)
+  document.addEventListener('astro:page-load', initSearch)
+</script>
+
+<style is:global>
+  @reference '../styles/global.css';
+
+  .search-container {
+    @apply fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 100;
+  }
+
+  .search-button {
+    @apply flex items-center gap-2 px-3 py-2 rounded-lg;
+    @apply bg-white/80 backdrop-blur-sm border border-gray-200;
+    @apply hover:bg-white hover:border-gray-300;
+    @apply transition-all cursor-pointer;
+    @apply text-gray-600 hover:text-gray-900;
+  }
+
+  .search-shortcut {
+    @apply hidden md:flex items-center gap-1 text-xs text-gray-400;
+  }
+
+  .search-shortcut kbd {
+    @apply px-1.5 py-0.5 rounded;
+    @apply bg-gray-100 border border-gray-200;
+    font-family: inherit;
+  }
+
+  .search-dialog {
+    @apply fixed inset-0 w-full max-w-2xl mx-auto;
+    @apply bg-transparent border-none p-4;
+    margin-top: 10vh;
+    height: fit-content;
+    max-height: 80vh;
+  }
+
+  .search-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+  }
+
+  .search-dialog-content {
+    @apply bg-white rounded-xl shadow-2xl overflow-hidden;
+    @apply border border-gray-200;
+  }
+
+  .search-dialog-header {
+    @apply flex items-center justify-between px-4 py-3;
+    @apply border-b border-gray-200;
+  }
+
+  .search-title {
+    @apply text-sm font-medium text-gray-600;
+  }
+
+  .search-close {
+    @apply p-1 rounded hover:bg-gray-100;
+    @apply text-gray-400 hover:text-gray-600;
+    @apply transition-colors cursor-pointer;
+    border: none;
+    background: transparent;
+  }
+
+  .search-error {
+    @apply p-4 text-center text-gray-500;
+  }
+
+  /* Pagefind UI Customizations */
+  #pagefind-container {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: #1a1a1a;
+    --pagefind-ui-text: #333;
+    --pagefind-ui-background: #fff;
+    --pagefind-ui-border: #e5e7eb;
+    --pagefind-ui-tag: #f3f4f6;
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 8px;
+    --pagefind-ui-image-border-radius: 8px;
+    --pagefind-ui-image-box-ratio: 16 / 9;
+    --pagefind-ui-font: inherit;
+  }
+
+  .pagefind-ui {
+    @apply p-4;
+  }
+
+  .pagefind-ui .pagefind-ui__search-input {
+    @apply w-full px-4 py-3 text-base;
+    @apply border border-gray-200 rounded-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent;
+  }
+
+  .pagefind-ui .pagefind-ui__search-clear {
+    @apply top-1/2 -translate-y-1/2 right-3;
+    @apply w-6 h-6 rounded-full;
+    @apply bg-gray-100 hover:bg-gray-200;
+  }
+
+  .pagefind-ui .pagefind-ui__results-area {
+    @apply mt-4;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  .pagefind-ui .pagefind-ui__result {
+    @apply p-3 rounded-lg;
+    @apply hover:bg-gray-50;
+    @apply border-b border-gray-100 last:border-b-0;
+  }
+
+  .pagefind-ui .pagefind-ui__result-link {
+    @apply text-base font-medium text-gray-900;
+    @apply hover:text-gray-600 no-underline hover:underline;
+  }
+
+  .pagefind-ui .pagefind-ui__result-excerpt {
+    @apply mt-1 text-sm text-gray-600 leading-relaxed;
+  }
+
+  .pagefind-ui mark {
+    @apply bg-yellow-200 text-gray-900 rounded px-0.5;
+  }
+
+  .pagefind-ui .pagefind-ui__message {
+    @apply text-center py-8 text-gray-500;
+  }
+
+  @media (max-width: 640px) {
+    .search-dialog {
+      margin-top: 5vh;
+      max-height: 90vh;
+    }
+
+    .search-container {
+      top: 12px;
+      right: 12px;
+    }
+
+    .search-button {
+      @apply px-2 py-2;
+    }
+
+    .search-shortcut {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .search-container {
+      top: 24px;
+      right: 24px;
+    }
+  }
+</style>
