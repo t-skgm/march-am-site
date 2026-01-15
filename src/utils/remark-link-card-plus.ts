@@ -1,338 +1,328 @@
-import type { Html, Link, Root, Text } from "mdast";
-import sanitizeHtml from "sanitize-html";
-import type { Plugin } from "unified";
-import { visit } from "unist-util-visit";
+import type { Html, Link, Root, Text } from 'mdast'
+import sanitizeHtml from 'sanitize-html'
+import type { Plugin } from 'unified'
+import { visit } from 'unist-util-visit'
 
 export type OgData = {
-  title: string;
-  description: string;
-  faviconUrl?: string | undefined;
-  imageUrl?: string | undefined;
-};
+  title: string
+  description: string
+  faviconUrl?: string | undefined
+  imageUrl?: string | undefined
+}
 
 export type Options = {
-  shortenUrl?: boolean;
-  thumbnailPosition?: "right" | "left";
-  noThumbnail?: boolean;
-  noFavicon?: boolean;
-  ogTransformer?: (og: OgData, url: URL) => OgData;
-  ignoreExtensions?: string[];
-};
+  shortenUrl?: boolean
+  thumbnailPosition?: 'right' | 'left'
+  noThumbnail?: boolean
+  noFavicon?: boolean
+  ogTransformer?: (og: OgData, url: URL) => OgData
+  ignoreExtensions?: string[]
+}
 
 export type LinkCardData = {
-  title: string;
-  description: string;
-  faviconUrl: string;
-  ogImageUrl?: string;
-  displayUrl: string;
-  url: URL;
-};
+  title: string
+  description: string
+  faviconUrl: string
+  ogImageUrl?: string
+  displayUrl: string
+  url: URL
+}
 
 type OgResult = {
-  ogTitle?: string;
-  ogDescription?: string;
-  ogImage?: string;
-  favicon?: string;
-};
+  ogTitle?: string
+  ogDescription?: string
+  ogImage?: string
+  favicon?: string
+}
 
 const defaultOptions: Options = {
   shortenUrl: true,
-  thumbnailPosition: "right",
+  thumbnailPosition: 'right',
   noThumbnail: false,
   noFavicon: false,
-  ignoreExtensions: [],
-};
+  ignoreExtensions: []
+}
 
-const remarkLinkCard: Plugin<[Options], Root> =
-  (userOptions: Options) => async (tree) => {
-    const options = { ...defaultOptions, ...userOptions };
-    const transformers: (() => Promise<void>)[] = [];
+const remarkLinkCard: Plugin<[Options], Root> = (userOptions: Options) => async (tree) => {
+  const options = { ...defaultOptions, ...userOptions }
+  const transformers: (() => Promise<void>)[] = []
 
-    const shouldIgnoreUrl = (url: string): boolean => {
-      if (!options.ignoreExtensions?.length) return false;
-      try {
-        const urlObj = new URL(url);
-        const pathname = urlObj.pathname.toLowerCase();
-        return options.ignoreExtensions.some((ext) =>
-          pathname.endsWith(ext.toLowerCase()),
-        );
-      } catch {
-        return false;
-      }
-    };
-
-    const addTransformer = (url: string, index: number) => {
-      transformers.push(async () => {
-        const data = await getLinkCardData(new URL(url), options);
-        const linkCardNode = createLinkCardNode(data, options);
-        if (index !== undefined) {
-          tree.children.splice(index, 1, linkCardNode);
-        }
-      });
-    };
-
-    const isValidUrl = (value: string): boolean => {
-      if (!URL.canParse(value)) return false;
-
-      const basicUrlPattern = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/i;
-      if (!basicUrlPattern.test(value)) return false;
-
-      return true;
-    };
-
-    visit(tree, "paragraph", (paragraph, index, parent) => {
-      if (parent?.type !== "root" || paragraph.children.length !== 1) return;
-
-      let unmatchedLink: Link | undefined;
-      let processedUrl: string | undefined;
-
-      visit(paragraph, "link", (linkNode) => {
-        const firstChild = linkNode.children[0];
-        const hasOneChildText =
-          linkNode.children.length === 1 && firstChild?.type === "text";
-        if (!hasOneChildText) return;
-
-        const childText = firstChild as Text;
-        if (!isSameUrlValue(linkNode.url, childText.value)) {
-          unmatchedLink = linkNode;
-          return;
-        }
-
-        if (index !== undefined) {
-          processedUrl = linkNode.url;
-          if (!shouldIgnoreUrl(linkNode.url)) {
-            addTransformer(linkNode.url, index);
-          }
-        }
-      });
-
-      visit(paragraph, "text", (textNode) => {
-        if (!isValidUrl(textNode.value)) return;
-        if (processedUrl === textNode.value) return;
-
-        // NOTE: Skip card conversion if the link text and URL are different, e.g., [https://example.com](https://example.org)
-        if (
-          unmatchedLink &&
-          textNode.value === (unmatchedLink.children[0] as Text).value &&
-          textNode.position?.start.line === unmatchedLink.position?.start.line
-        ) {
-          return;
-        }
-
-        if (index !== undefined) {
-          if (!shouldIgnoreUrl(textNode.value)) {
-            addTransformer(textNode.value, index);
-          }
-        }
-      });
-    });
-
+  const shouldIgnoreUrl = (url: string): boolean => {
+    if (!options.ignoreExtensions?.length) return false
     try {
-      await Promise.all(transformers.map((t) => t()));
-    } catch (error) {
-      console.error(`[remark-link-card-plus] Error: ${error}`);
+      const urlObj = new URL(url)
+      const pathname = urlObj.pathname.toLowerCase()
+      return options.ignoreExtensions.some((ext) => pathname.endsWith(ext.toLowerCase()))
+    } catch {
+      return false
     }
+  }
 
-    return tree;
-  };
+  const addTransformer = (url: string, index: number) => {
+    transformers.push(async () => {
+      const data = await getLinkCardData(new URL(url), options)
+      const linkCardNode = createLinkCardNode(data, options)
+      if (index !== undefined) {
+        tree.children.splice(index, 1, linkCardNode)
+      }
+    })
+  }
+
+  const isValidUrl = (value: string): boolean => {
+    if (!URL.canParse(value)) return false
+
+    const basicUrlPattern = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/i
+    if (!basicUrlPattern.test(value)) return false
+
+    return true
+  }
+
+  visit(tree, 'paragraph', (paragraph, index, parent) => {
+    if (parent?.type !== 'root' || paragraph.children.length !== 1) return
+
+    let unmatchedLink: Link | undefined
+    let processedUrl: string | undefined
+
+    visit(paragraph, 'link', (linkNode) => {
+      const firstChild = linkNode.children[0]
+      const hasOneChildText = linkNode.children.length === 1 && firstChild?.type === 'text'
+      if (!hasOneChildText) return
+
+      const childText = firstChild as Text
+      if (!isSameUrlValue(linkNode.url, childText.value)) {
+        unmatchedLink = linkNode
+        return
+      }
+
+      if (index !== undefined) {
+        processedUrl = linkNode.url
+        if (!shouldIgnoreUrl(linkNode.url)) {
+          addTransformer(linkNode.url, index)
+        }
+      }
+    })
+
+    visit(paragraph, 'text', (textNode) => {
+      if (!isValidUrl(textNode.value)) return
+      if (processedUrl === textNode.value) return
+
+      // NOTE: Skip card conversion if the link text and URL are different, e.g., [https://example.com](https://example.org)
+      if (
+        unmatchedLink &&
+        textNode.value === (unmatchedLink.children[0] as Text).value &&
+        textNode.position?.start.line === unmatchedLink.position?.start.line
+      ) {
+        return
+      }
+
+      if (index !== undefined) {
+        if (!shouldIgnoreUrl(textNode.value)) {
+          addTransformer(textNode.value, index)
+        }
+      }
+    })
+  })
+
+  try {
+    await Promise.all(transformers.map((t) => t()))
+  } catch (error) {
+    console.error(`[remark-link-card-plus] Error: ${error}`)
+  }
+
+  return tree
+}
 
 // Exported for testing
 export const isSameUrlValue = (a: string, b: string) => {
   try {
-    return new URL(a).toString() === new URL(b).toString();
+    return new URL(a).toString() === new URL(b).toString()
   } catch {
-    return false;
+    return false
   }
-};
+}
 
 // Exported for testing
 export const parseOgTags = (html: string): OgResult => {
-  const result: OgResult = {};
+  const result: OgResult = {}
 
   // Extract og:title
   const titleMatch = html.match(
-    /<meta[^>]*property=["']og:title["'][^>]*content=["']([^"']*)["'][^>]*>/i,
-  );
+    /<meta[^>]*property=["']og:title["'][^>]*content=["']([^"']*)["'][^>]*>/i
+  )
   if (titleMatch?.[1]) {
-    result.ogTitle = decodeHtmlEntities(titleMatch[1]);
+    result.ogTitle = decodeHtmlEntities(titleMatch[1])
   } else {
     const titleMatch2 = html.match(
-      /<meta[^>]*content=["']([^"']*)["'][^>]*property=["']og:title["'][^>]*>/i,
-    );
+      /<meta[^>]*content=["']([^"']*)["'][^>]*property=["']og:title["'][^>]*>/i
+    )
     if (titleMatch2?.[1]) {
-      result.ogTitle = decodeHtmlEntities(titleMatch2[1]);
+      result.ogTitle = decodeHtmlEntities(titleMatch2[1])
     }
   }
 
   // Fallback to <title> tag
   if (!result.ogTitle) {
-    const titleTagMatch = html.match(/<title[^>]*>([^<]*)<\/title>/i);
+    const titleTagMatch = html.match(/<title[^>]*>([^<]*)<\/title>/i)
     if (titleTagMatch?.[1]) {
-      result.ogTitle = decodeHtmlEntities(titleTagMatch[1]);
+      result.ogTitle = decodeHtmlEntities(titleTagMatch[1])
     }
   }
 
   // Extract og:description
   const descMatch = html.match(
-    /<meta[^>]*property=["']og:description["'][^>]*content=["']([^"']*)["'][^>]*>/i,
-  );
+    /<meta[^>]*property=["']og:description["'][^>]*content=["']([^"']*)["'][^>]*>/i
+  )
   if (descMatch?.[1]) {
-    result.ogDescription = decodeHtmlEntities(descMatch[1]);
+    result.ogDescription = decodeHtmlEntities(descMatch[1])
   } else {
     const descMatch2 = html.match(
-      /<meta[^>]*content=["']([^"']*)["'][^>]*property=["']og:description["'][^>]*>/i,
-    );
+      /<meta[^>]*content=["']([^"']*)["'][^>]*property=["']og:description["'][^>]*>/i
+    )
     if (descMatch2?.[1]) {
-      result.ogDescription = decodeHtmlEntities(descMatch2[1]);
+      result.ogDescription = decodeHtmlEntities(descMatch2[1])
     }
   }
 
   // Fallback to meta description
   if (!result.ogDescription) {
     const metaDescMatch = html.match(
-      /<meta[^>]*name=["']description["'][^>]*content=["']([^"']*)["'][^>]*>/i,
-    );
+      /<meta[^>]*name=["']description["'][^>]*content=["']([^"']*)["'][^>]*>/i
+    )
     if (metaDescMatch?.[1]) {
-      result.ogDescription = decodeHtmlEntities(metaDescMatch[1]);
+      result.ogDescription = decodeHtmlEntities(metaDescMatch[1])
     } else {
       const metaDescMatch2 = html.match(
-        /<meta[^>]*content=["']([^"']*)["'][^>]*name=["']description["'][^>]*>/i,
-      );
+        /<meta[^>]*content=["']([^"']*)["'][^>]*name=["']description["'][^>]*>/i
+      )
       if (metaDescMatch2?.[1]) {
-        result.ogDescription = decodeHtmlEntities(metaDescMatch2[1]);
+        result.ogDescription = decodeHtmlEntities(metaDescMatch2[1])
       }
     }
   }
 
   // Extract og:image
   const imageMatch = html.match(
-    /<meta[^>]*property=["']og:image["'][^>]*content=["']([^"']*)["'][^>]*>/i,
-  );
+    /<meta[^>]*property=["']og:image["'][^>]*content=["']([^"']*)["'][^>]*>/i
+  )
   if (imageMatch?.[1]) {
-    result.ogImage = decodeHtmlEntities(imageMatch[1]);
+    result.ogImage = decodeHtmlEntities(imageMatch[1])
   } else {
     const imageMatch2 = html.match(
-      /<meta[^>]*content=["']([^"']*)["'][^>]*property=["']og:image["'][^>]*>/i,
-    );
+      /<meta[^>]*content=["']([^"']*)["'][^>]*property=["']og:image["'][^>]*>/i
+    )
     if (imageMatch2?.[1]) {
-      result.ogImage = decodeHtmlEntities(imageMatch2[1]);
+      result.ogImage = decodeHtmlEntities(imageMatch2[1])
     }
   }
 
   // Extract favicon
   const faviconMatch = html.match(
-    /<link[^>]*rel=["'](?:shortcut )?icon["'][^>]*href=["']([^"']*)["'][^>]*>/i,
-  );
+    /<link[^>]*rel=["'](?:shortcut )?icon["'][^>]*href=["']([^"']*)["'][^>]*>/i
+  )
   if (faviconMatch?.[1]) {
-    result.favicon = decodeHtmlEntities(faviconMatch[1]);
+    result.favicon = decodeHtmlEntities(faviconMatch[1])
   } else {
     const faviconMatch2 = html.match(
-      /<link[^>]*href=["']([^"']*)["'][^>]*rel=["'](?:shortcut )?icon["'][^>]*>/i,
-    );
+      /<link[^>]*href=["']([^"']*)["'][^>]*rel=["'](?:shortcut )?icon["'][^>]*>/i
+    )
     if (faviconMatch2?.[1]) {
-      result.favicon = decodeHtmlEntities(faviconMatch2[1]);
+      result.favicon = decodeHtmlEntities(faviconMatch2[1])
     }
   }
 
-  return result;
-};
+  return result
+}
 
 // Exported for testing
 export const decodeHtmlEntities = (text: string): string => {
   const entities: Record<string, string> = {
-    "&amp;": "&",
-    "&lt;": "<",
-    "&gt;": ">",
-    "&quot;": '"',
-    "&#39;": "'",
-    "&apos;": "'",
-    "&nbsp;": " ",
-  };
+    '&amp;': '&',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&quot;': '"',
+    '&#39;': "'",
+    '&apos;': "'",
+    '&nbsp;': ' '
+  }
 
-  let result = text;
+  let result = text
   for (const [entity, char] of Object.entries(entities)) {
-    result = result.replace(new RegExp(entity, "g"), char);
+    result = result.replace(new RegExp(entity, 'g'), char)
   }
 
   // Handle numeric entities
-  result = result.replace(/&#(\d+);/g, (_, num) =>
-    String.fromCharCode(parseInt(num, 10)),
-  );
-  result = result.replace(/&#x([0-9a-fA-F]+);/g, (_, hex) =>
-    String.fromCharCode(parseInt(hex, 16)),
-  );
+  result = result.replace(/&#(\d+);/g, (_, num) => String.fromCharCode(parseInt(num, 10)))
+  result = result.replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
 
-  return result;
-};
+  return result
+}
 
 const getOpenGraph = async (targetUrl: URL): Promise<OgResult | undefined> => {
   try {
     const response = await fetch(targetUrl.toString(), {
       headers: {
-        "User-Agent": "bot",
-        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        'User-Agent': 'bot',
+        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
       },
-      signal: AbortSignal.timeout(10000),
-    });
+      signal: AbortSignal.timeout(10000)
+    })
 
     if (!response.ok) {
       console.error(
-        `[remark-link-card-plus] Error: Failed to fetch ${targetUrl} - ${response.status}`,
-      );
-      return undefined;
+        `[remark-link-card-plus] Error: Failed to fetch ${targetUrl} - ${response.status}`
+      )
+      return undefined
     }
 
-    const html = await response.text();
-    return parseOgTags(html);
+    const html = await response.text()
+    return parseOgTags(html)
   } catch (error) {
     console.error(
-      `[remark-link-card-plus] Error: Failed to get the Open Graph data of ${targetUrl} due to ${error}.`,
-    );
-    return undefined;
+      `[remark-link-card-plus] Error: Failed to get the Open Graph data of ${targetUrl} due to ${error}.`
+    )
+    return undefined
   }
-};
+}
 
 const getFaviconImageSrc = async (url: URL) => {
-  const faviconUrl = `https://www.google.com/s2/favicons?domain=${url.hostname}`;
+  const faviconUrl = `https://www.google.com/s2/favicons?domain=${url.hostname}`
 
   try {
     const res = await fetch(faviconUrl, {
-      method: "HEAD",
-      signal: AbortSignal.timeout(10000),
-    });
-    if (!res.ok) return "";
+      method: 'HEAD',
+      signal: AbortSignal.timeout(10000)
+    })
+    if (!res.ok) return ''
 
-    return faviconUrl;
+    return faviconUrl
   } catch {
-    return "";
+    return ''
   }
-};
+}
 
 const getLinkCardData = async (url: URL, options: Options) => {
-  const ogRawResult = await getOpenGraph(url);
+  const ogRawResult = await getOpenGraph(url)
   let ogData: OgData = {
-    title: ogRawResult?.ogTitle || "",
-    description: ogRawResult?.ogDescription || "",
+    title: ogRawResult?.ogTitle || '',
+    description: ogRawResult?.ogDescription || '',
     faviconUrl: ogRawResult?.favicon,
-    imageUrl: ogRawResult?.ogImage,
-  };
-
-  if (options.ogTransformer) {
-    ogData = options.ogTransformer(ogData, url);
+    imageUrl: ogRawResult?.ogImage
   }
 
-  const title = ogData?.title || url.hostname;
-  const description = ogData?.description || "";
-  const faviconUrl = await getFaviconUrl(url, ogData?.faviconUrl, options);
-  const ogImageUrl = getOgImageUrl(url, ogData.imageUrl, options);
+  if (options.ogTransformer) {
+    ogData = options.ogTransformer(ogData, url)
+  }
 
-  let displayUrl = options.shortenUrl ? url.hostname : url.toString();
+  const title = ogData?.title || url.hostname
+  const description = ogData?.description || ''
+  const faviconUrl = await getFaviconUrl(url, ogData?.faviconUrl, options)
+  const ogImageUrl = getOgImageUrl(url, ogData.imageUrl, options)
+
+  let displayUrl = options.shortenUrl ? url.hostname : url.toString()
   try {
-    displayUrl = decodeURI(displayUrl);
+    displayUrl = decodeURI(displayUrl)
   } catch (error) {
-    console.error(
-      `[remark-link-card-plus] Error: Cannot decode url: "${url}"\n ${error}`,
-    );
+    console.error(`[remark-link-card-plus] Error: Cannot decode url: "${url}"\n ${error}`)
   }
 
   return {
@@ -341,90 +331,82 @@ const getLinkCardData = async (url: URL, options: Options) => {
     faviconUrl,
     ogImageUrl,
     displayUrl,
-    url,
-  };
-};
+    url
+  }
+}
 
-const getFaviconUrl = async (
-  url: URL,
-  ogFavicon: string | undefined,
-  options: Options,
-) => {
-  if (options.noFavicon) return "";
+const getFaviconUrl = async (url: URL, ogFavicon: string | undefined, options: Options) => {
+  if (options.noFavicon) return ''
 
-  let faviconUrl = ogFavicon;
+  let faviconUrl = ogFavicon
   if (faviconUrl && !URL.canParse(faviconUrl)) {
     try {
-      faviconUrl = new URL(faviconUrl, url.origin).toString();
+      faviconUrl = new URL(faviconUrl, url.origin).toString()
     } catch (error) {
       console.error(
-        `[remark-link-card-plus] Error: Failed to resolve favicon URL ${faviconUrl} relative to ${url}\n${error}`,
-      );
-      faviconUrl = undefined;
+        `[remark-link-card-plus] Error: Failed to resolve favicon URL ${faviconUrl} relative to ${url}\n${error}`
+      )
+      faviconUrl = undefined
     }
   }
 
   if (!faviconUrl) {
-    faviconUrl = await getFaviconImageSrc(url);
+    faviconUrl = await getFaviconImageSrc(url)
   }
 
-  return faviconUrl;
-};
+  return faviconUrl
+}
 
 // Exported for testing
-export const getOgImageUrl = (
-  baseUrl: URL,
-  imageUrl: string | undefined,
-  options: Options,
-) => {
-  if (options.noThumbnail) return "";
+export const getOgImageUrl = (baseUrl: URL, imageUrl: string | undefined, options: Options) => {
+  if (options.noThumbnail) return ''
 
-  if (!imageUrl || imageUrl.length === 0) return "";
+  if (!imageUrl || imageUrl.length === 0) return ''
 
   // Handle relative URLs
   if (!URL.canParse(imageUrl)) {
     try {
-      return new URL(imageUrl, baseUrl.origin).toString();
+      return new URL(imageUrl, baseUrl.origin).toString()
     } catch {
-      return "";
+      return ''
     }
   }
 
-  return imageUrl;
-};
+  return imageUrl
+}
 
 // Exported for testing
 export const className = (value: string) => {
-  const prefix = "remark-link-card-plus";
-  return `${prefix}__${value}`;
-};
+  const prefix = 'remark-link-card-plus'
+  return `${prefix}__${value}`
+}
 
 // Exported for testing
 export const createLinkCardNode = (data: LinkCardData, options: Options): Html => {
-  const { title, description, faviconUrl, ogImageUrl, displayUrl, url } = data;
-  const isThumbnailLeft = options.thumbnailPosition === "left";
+  const { title, description, faviconUrl, ogImageUrl, displayUrl, url } = data
+  const isThumbnailLeft = options.thumbnailPosition === 'left'
 
   const thumbnail = ogImageUrl
     ? `
-<div class="${className("thumbnail")}">
-  <img src="${ogImageUrl}" class="${className("image")}" alt="">
+<div class="${className('thumbnail')}">
+  <img src="${ogImageUrl}" class="${className('image')}" alt="">
 </div>`.trim()
-    : "";
+    : ''
 
   const mainContent = `
-<div class="${className("main")}">
-  <div class="${className("content")}">
-    <div class="${className("title")}">${sanitizeHtml(title)}</div>
-    <div class="${className("description")}">${sanitizeHtml(description)}</div>
+<div class="${className('main')}">
+  <div class="${className('content')}">
+    <div class="${className('title')}">${sanitizeHtml(title)}</div>
+    <div class="${className('description')}">${sanitizeHtml(description)}</div>
   </div>
-  <div class="${className("meta")}">
-    ${faviconUrl ? `<img src="${faviconUrl}" class="${className("favicon")}" width="14" height="14" alt="">` : ""}
-    <span class="${className("url")}">${sanitizeHtml(displayUrl)}</span>
+  <div class="${className('meta')}">
+    ${faviconUrl ? `<img src="${faviconUrl}" class="${className('favicon')}" width="14" height="14" alt="">` : ''}
+    <span class="${className('url')}">${sanitizeHtml(displayUrl)}</span>
   </div>
 </div>
 `
-    .replace(/\n\s*\n/g, "\n")
-    .trim();
+    .replace(/\n\s*\n/g, '\n')
+    .trim()
 
   const content = isThumbnailLeft
     ? `
@@ -432,18 +414,18 @@ ${thumbnail}
 ${mainContent}`
     : `
 ${mainContent}
-${thumbnail}`;
+${thumbnail}`
 
   return {
-    type: "html",
+    type: 'html',
     value: `
-<div class="${className("container")}">
-  <a href="${url.toString()}" target="_blank" rel="noreferrer noopener" class="${className("card")}">
+<div class="${className('container')}">
+  <a href="${url.toString()}" target="_blank" rel="noreferrer noopener" class="${className('card')}">
     ${content.trim()}
   </a>
 </div>
-`.trim(),
-  };
-};
+`.trim()
+  }
+}
 
-export default remarkLinkCard;
+export default remarkLinkCard

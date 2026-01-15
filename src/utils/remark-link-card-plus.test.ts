@@ -7,7 +7,7 @@ import {
   isSameUrlValue,
   parseOgTags,
   type LinkCardData,
-  type Options,
+  type Options
 } from './remark-link-card-plus'
 
 describe('decodeHtmlEntities', () => {
@@ -28,11 +28,11 @@ describe('decodeHtmlEntities', () => {
       expect(decodeHtmlEntities('&quot;')).toBe('"')
     })
 
-    test('decodes &#39; to \'', () => {
+    test("decodes &#39; to '", () => {
       expect(decodeHtmlEntities('&#39;')).toBe("'")
     })
 
-    test('decodes &apos; to \'', () => {
+    test("decodes &apos; to '", () => {
       expect(decodeHtmlEntities('&apos;')).toBe("'")
     })
 
@@ -484,7 +484,7 @@ describe('createLinkCardNode', () => {
     ogImageUrl: 'https://example.com/og.jpg',
     displayUrl: 'example.com',
     url: new URL('https://example.com'),
-    ...overrides,
+    ...overrides
   })
 
   describe('basic structure', () => {
@@ -569,7 +569,7 @@ describe('createLinkCardNode', () => {
         description: 'Test Description',
         faviconUrl: 'https://example.com/favicon.ico',
         displayUrl: 'example.com',
-        url: new URL('https://example.com'),
+        url: new URL('https://example.com')
       }
       const options: Options = {}
       const result = createLinkCardNode(data, options)
