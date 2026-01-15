@@ -564,7 +564,13 @@ describe('createLinkCardNode', () => {
     })
 
     test('excludes thumbnail when ogImageUrl is not provided', () => {
-      const data = createTestData({ ogImageUrl: undefined })
+      const data: LinkCardData = {
+        title: 'Test Title',
+        description: 'Test Description',
+        faviconUrl: 'https://example.com/favicon.ico',
+        displayUrl: 'example.com',
+        url: new URL('https://example.com'),
+      }
       const options: Options = {}
       const result = createLinkCardNode(data, options)
       expect(result.value).not.toContain('remark-link-card-plus__thumbnail')
