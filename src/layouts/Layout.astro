@@ -19,9 +19,11 @@ export interface Props {
   canonicalPath?: string | undefined
   overrideSEOProps?: Partial<SEOProps>
   socialImageURL?: string | undefined
+  /** pagefindのインデックス対象から除外する場合true */
+  noPagefindIndex?: boolean
 }
 
-const { isTop = false, title, frontmatter, canonicalPath, overrideSEOProps } = Astro.props
+const { isTop = false, title, frontmatter, canonicalPath, overrideSEOProps, noPagefindIndex = false } = Astro.props
 
 const articleTitle = (title ?? frontmatter?.title) as string | undefined
 const pageTitle = (divider: string) =>
@@ -88,7 +90,7 @@ const socialImageURL: string = (() => {
     <Logo />
     <SearchModal client:load />
     <!-- <Header /> -->
-    <div class:list={['content', { 'content-top': isTop }]} data-pagefind-body>
+    <div class:list={['content', { 'content-top': isTop }]} data-pagefind-body={!noPagefindIndex || undefined}>
       <slot />
     </div>
     <Footer isTop={isTop} />

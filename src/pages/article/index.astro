@@ -12,7 +12,7 @@ const firstPage = await fetchArticlesFirstPage()
 const title = 'Article: All'
 ---
 
-<Layout title={title}>
+<Layout title={title} noPagefindIndex>
   <Main>
     <h1>{title}</h1>
     <ArticleList entries={firstPage.data} fullwidth />

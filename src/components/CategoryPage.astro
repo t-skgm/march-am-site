@@ -25,6 +25,7 @@ const title = `Category: ${category} (page ${page.currentPage})`
   canonicalPath={isIndexPage != null
     ? routes.article.category.page(category.toString(), 1)
     : undefined}
+  noPagefindIndex
 >
   <Main>
     <h1>{title}</h1>
