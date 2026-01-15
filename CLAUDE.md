@@ -51,11 +51,85 @@ Do not use `npm install` or create `package-lock.json`. The project uses `pnpm-l
 src/
 ├── components/     # Astro UI components
 ├── constants/      # Site config, routes
-├── features/       # React/Preact components
+├── features/       # React/Preact components (Preact)
 ├── infra/          # Contentful client & data fetching
 │   └── contentful/
 ├── layouts/        # Page layouts
 ├── pages/          # Astro pages & API routes
 ├── styles/         # CSS
 └── utils/          # Utility functions (markdown processing, date, etc.)
+
+functions/          # Cloudflare Pages Functions
+├── api/            # Preview authentication endpoints
+└── article/        # Article middleware
+```
+
+## Content Architecture
+
+### Contentful CMS
+
+Content is managed in Contentful with a single content type:
+
+**`article`** (記事):
+- `title`: 記事タイトル
+- `slug`: URL用スラッグ
+- `category`: `Diary` | `Review`
+- `postedAt`: 投稿日時
+- `tags`: タグ配列
+- `thumbnail`: サムネイル画像
+- `ogpImageUrl`: OGP画像URL
+- `body`: Markdown形式の本文
+
+### Content Pipeline
+
+```
+Contentful CMS
+    ↓
+src/infra/contentful/article.ts (fetchArticles)
+    ↓
+Markdown processing via src/utils/remark.ts
+    - 目次自動生成 (mdast-util-toc)
+    - リンクカード機能 (remark-link-card-plus)
+    - GFM対応 (remark-gfm)
+    - 見出しへの自動ID付与 (rehype-slug)
+    ↓
+HTML output
+```
+
+### Key Data Access Functions
+
+- `fetchArticles()` - 全記事取得（メモリキャッシュ付き）
+- `fetchArticleTags()` - タグ一覧取得
+- `fetchArticleCategories()` - カテゴリ一覧取得
+- `mapArticleEntry()` - Contentfulエントリを記事オブジェクトに変換
+
+## Page Routes
+
+| Route | Description |
+|-------|-------------|
+| `/` | トップページ |
+| `/article/` | 記事一覧（ページネーション付き） |
+| `/article/[slug]` | 個別記事ページ |
+| `/article/category/[category]/[page]` | カテゴリ別一覧 |
+| `/article/tag/[tag]/[page]` | タグ別一覧 |
+| `/about` | Aboutページ |
+| `/rss.xml` | RSSフィード |
+
+## Cloudflare Pages Configuration
+
+- **Deployment**: GitHub Actions経由で自動デプロイ
+- **Functions**: プレビュー認証機能 (`/functions/api/`)
+- **OG Images**: `@cloudflare/pages-plugin-vercel-og` でOGP画像生成
+- **Cache**: デプロイ時に全キャッシュパージ
+
+### Environment Variables
+
+```
+PUBLIC_GA_TRACKING_ID           # Google Analytics
+PUBLIC_CONTENTFUL_SPACE_ID      # Contentful Space ID
+PUBLIC_CONTENTFUL_ENVIRONMENT   # Contentful Environment
+PUBLIC_CONTENTFUL_DELIVERY_TOKEN # Contentful Delivery API Token
+PUBLIC_CONTENTFUL_PREVIEW_TOKEN # Contentful Preview API Token
+CONTENTFUL_MANAGEMENT_TOKEN     # Contentful Management Token (scripts)
+CONTENTFUL_PREVIEW_SECRET       # Preview authentication secret
 ```
