@@ -134,6 +134,20 @@ CONTENTFUL_MANAGEMENT_TOKEN     # Contentful Management Token (scripts)
 CONTENTFUL_PREVIEW_SECRET       # Preview authentication secret
 ```
 
+## コミット前チェック
+
+コードを変更した後、コミット前に以下のチェックを必ず実行すること:
+
+```bash
+# 型チェック
+pnpm typecheck
+
+# リンティング
+pnpm lint
+```
+
+両方のチェックが通ることを確認してからコミットする。
+
 ## ツールの利用
 
 ### gh
