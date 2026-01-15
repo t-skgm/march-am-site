@@ -252,6 +252,53 @@ const pagefindRef = useRef<PagefindInstance | null>(null)
 
 ## ツールの利用
 
-### gh
+### gh コマンド
 
-- -R owner/repo フラグが必要です。
+このリポジトリでは git remote がプロキシ経由（`http://local_proxy@127.0.0.1:...`）で設定されているため、gh コマンドがデフォルトで GitHub ホストを検出できない。
+
+そのため、**必ず `-R owner/repo` フラグでリポジトリを明示的に指定する**こと。
+
+```bash
+# ❌ エラーになる
+gh pr create --title "..."
+
+# ✅ 正しい使い方
+gh pr create -R t-skgm/march-am-site --title "..."
+```
+
+## タスク完了後のフロー
+
+依頼されたタスクが完了したら、以下のフローでPRを作成する:
+
+1. **コミット前チェック**
+   ```bash
+   pnpm typecheck
+   pnpm lint
+   ```
+
+2. **変更をコミット**
+   ```bash
+   git add <変更ファイル>
+   git commit -m "fix/feat: 変更内容の要約"
+   ```
+
+3. **ブランチをプッシュ**
+   ```bash
+   git push -u origin <ブランチ名>
+   ```
+
+4. **PRを作成**
+   ```bash
+   gh pr create -R t-skgm/march-am-site --head <ブランチ名> --title "..." --body "..."
+   ```
+
+### PR本文のテンプレート
+
+```markdown
+## Summary
+- 変更内容を箇条書きで説明
+
+## Test plan
+- [ ] テスト項目1
+- [ ] テスト項目2
+```
