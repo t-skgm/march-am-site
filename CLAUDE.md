@@ -148,6 +148,108 @@ pnpm lint
 
 両方のチェックが通ることを確認してからコミットする。
 
+## React/Preact コンポーネント実装方針
+
+React公式ドキュメントのベストプラクティスに従う。
+
+### ファイル構成
+
+機能単位でディレクトリを作成し、以下のように分割する:
+
+```
+src/features/{feature-name}/
+├── index.ts          # エクスポート
+├── types.ts          # 型定義
+├── hooks.ts          # カスタムフック
+├── {Feature}.tsx     # メインコンポーネント
+└── {SubComponent}.tsx # サブコンポーネント
+```
+
+### コンポーネントの純粋性
+
+- 子コンポーネントやアイコンは親コンポーネントの外で定義する
+- レンダー内で関数コンポーネントを定義しない
+
+```tsx
+// ✅ Good: コンポーネント外で定義
+const SearchIcon: FunctionComponent = () => <svg>...</svg>
+
+export const SearchModal: FunctionComponent = () => {
+  return <SearchIcon />
+}
+
+// ❌ Bad: レンダー内で定義
+export const SearchModal: FunctionComponent = () => {
+  const SearchIcon = () => <svg>...</svg>  // 毎回再生成される
+  return <SearchIcon />
+}
+```
+
+### 不要なEffectを避ける
+
+- イベントに応じた処理はイベントハンドラ内で行う
+- Effectは外部システムとの同期にのみ使用する
+
+```tsx
+// ✅ Good: イベントハンドラ内でリセット
+const close = () => {
+  setIsOpen(false)
+  setQuery('')
+  clearResults()
+}
+
+// ❌ Bad: Effectでリセット
+useEffect(() => {
+  if (!isOpen) {
+    setQuery('')
+    clearResults()
+  }
+}, [isOpen])
+```
+
+### 状態の構造化
+
+- 重複した状態を持たない
+- refで十分な場合はstateを使わない
+
+```tsx
+// ✅ Good: refのみで管理
+const pagefindRef = useRef<PagefindInstance | null>(null)
+const isLoaded = pagefindRef.current !== null
+
+// ❌ Bad: 重複した状態
+const [pagefindLoaded, setPagefindLoaded] = useState(false)
+const pagefindRef = useRef<PagefindInstance | null>(null)
+```
+
+### カスタムフックでロジック再利用
+
+再利用可能なロジックはカスタムフックに抽出する:
+
+- `usePagefind` - 外部ライブラリの読み込みと操作
+- `useDebouncedValue` - 値のデバウンス
+- `useKeyboardShortcut` - キーボードショートカット
+
+### JSX内の条件分岐
+
+複雑な条件分岐は別コンポーネントに抽出する:
+
+```tsx
+// ✅ Good: 条件分岐をコンポーネントに隠蔽
+<SearchResults loading={loading} query={query} results={results} />
+
+// ❌ Bad: JSX内で複雑な条件分岐
+{loading && <div>検索中...</div>}
+{!loading && query && results.length === 0 && <div>見つかりません</div>}
+{!loading && results.map(...)}
+{!loading && !query && <div>検索してください</div>}
+```
+
+### スタイリング
+
+- Tailwind CSSのユーティリティクラスを直接使用する
+- インラインスタイルオブジェクトや外部CSSファイルは避ける
+
 ## ツールの利用
 
 ### gh
