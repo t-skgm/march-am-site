@@ -2,7 +2,7 @@ import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import remarkToc from 'remark-toc'
-import remarkLinkCard from "./remark-link-card-plus";
+import remarkLinkCard from './remark-link-card-plus'
 import rehypeSlug from 'rehype-slug'
 import rehypeStringify from 'rehype-stringify'
 import remarkGfm, { type Options as OptionsGfm } from 'remark-gfm'

@@ -102,11 +102,7 @@ export const SearchModal: FunctionComponent = () => {
             </div>
 
             <div class="overflow-y-auto p-2 max-h-[calc(70vh-60px)]">
-              <SearchResults
-                loading={pagefind.loading}
-                query={query}
-                results={pagefind.results}
-              />
+              <SearchResults loading={pagefind.loading} query={query} results={pagefind.results} />
             </div>
           </div>
         </div>
