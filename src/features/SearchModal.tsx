@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'preact/hooks'
-import type { FunctionComponent, JSX } from 'preact'
+import type { FunctionComponent } from 'preact'
 
 interface PagefindSearchResults {
   results: PagefindSearchResult[]
@@ -29,109 +29,12 @@ interface SearchResult {
   excerpt: string
 }
 
-const styles = {
-  button: {
-    position: 'fixed',
-    zIndex: 50,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '2.5rem',
-    height: '2.5rem',
-    borderRadius: '9999px',
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-    color: '#4a4740',
-    transition: 'all 0.2s',
-    cursor: 'pointer',
-    border: 'none',
-    top: '1rem',
-    right: '1rem'
-  } satisfies JSX.CSSProperties,
-  backdrop: {
-    position: 'fixed',
-    inset: 0,
-    zIndex: 50,
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    paddingTop: '10vh'
-  } satisfies JSX.CSSProperties,
-  modal: {
-    backgroundColor: 'white',
-    borderRadius: '0.5rem',
-    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    width: '100%',
-    maxWidth: '36rem',
-    margin: '0 1rem',
-    overflow: 'hidden',
-    maxHeight: '70vh'
-  } satisfies JSX.CSSProperties,
-  inputWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.75rem',
-    padding: '0.75rem 1rem',
-    borderBottom: '1px solid #e2e8f0'
-  } satisfies JSX.CSSProperties,
-  searchIcon: {
-    color: '#94a3b8',
-    flexShrink: 0
-  } satisfies JSX.CSSProperties,
-  input: {
-    flex: 1,
-    fontSize: '1rem',
-    outline: 'none',
-    backgroundColor: 'transparent',
-    border: 'none',
-    color: '#4a4740'
-  } satisfies JSX.CSSProperties,
-  kbd: {
-    padding: '0.25rem 0.5rem',
-    fontSize: '0.75rem',
-    borderRadius: '0.25rem',
-    backgroundColor: '#f1f5f9',
-    color: '#64748b',
-    fontFamily: 'monospace',
-    flexShrink: 0
-  } satisfies JSX.CSSProperties,
-  results: {
-    overflowY: 'auto',
-    padding: '0.5rem',
-    maxHeight: 'calc(70vh - 60px)'
-  } satisfies JSX.CSSProperties,
-  message: {
-    padding: '2rem 1rem',
-    textAlign: 'center',
-    color: '#64748b'
-  } satisfies JSX.CSSProperties,
-  resultItem: {
-    display: 'block',
-    padding: '0.75rem 1rem',
-    borderRadius: '0.375rem',
-    textDecoration: 'none',
-    transition: 'background-color 0.15s'
-  } satisfies JSX.CSSProperties,
-  resultTitle: {
-    fontWeight: 600,
-    color: '#37342f',
-    marginBottom: '0.25rem'
-  } satisfies JSX.CSSProperties,
-  resultExcerpt: {
-    fontSize: '0.875rem',
-    color: '#475569',
-    lineHeight: 1.625
-  } satisfies JSX.CSSProperties
-} as const
-
 export const SearchModal: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchResult[]>([])
   const [loading, setLoading] = useState(false)
   const [pagefindLoaded, setPagefindLoaded] = useState(false)
-  const [hoveredId, setHoveredId] = useState<string | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const pagefindRef = useRef<PagefindInstance | null>(null)
@@ -246,7 +149,7 @@ export const SearchModal: FunctionComponent = () => {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        style={styles.button}
+        class="fixed z-50 flex items-center justify-center w-10 h-10 rounded-full bg-white/90 shadow-md hover:shadow-lg text-greenish hover:text-greenish-dark transition-all duration-200 cursor-pointer border-none top-4 right-4 lg:top-8 lg:right-8 lg:w-12 lg:h-12"
         aria-label="検索を開く"
         title="検索 (Ctrl+K / Cmd+K)"
       >
@@ -254,10 +157,16 @@ export const SearchModal: FunctionComponent = () => {
       </button>
 
       {isOpen && (
-        <div style={styles.backdrop} onClick={handleBackdropClick}>
-          <div style={styles.modal} ref={modalRef}>
-            <div style={styles.inputWrapper}>
-              <span style={styles.searchIcon}>
+        <div
+          class="fixed inset-0 z-50 flex items-start justify-center bg-black/50 pt-[10vh]"
+          onClick={handleBackdropClick}
+        >
+          <div
+            class="bg-white rounded-lg shadow-2xl w-full max-w-xl mx-4 overflow-hidden max-h-[70vh]"
+            ref={modalRef}
+          >
+            <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-200">
+              <span class="text-slate-400 shrink-0">
                 <SearchIcon />
               </span>
               <input
@@ -266,16 +175,20 @@ export const SearchModal: FunctionComponent = () => {
                 value={query}
                 onInput={(e) => setQuery((e.target as HTMLInputElement).value)}
                 placeholder="記事を検索..."
-                style={styles.input}
+                class="flex-1 text-base outline-none bg-transparent border-none text-greenish placeholder:text-slate-400"
               />
-              <kbd style={styles.kbd}>ESC</kbd>
+              <kbd class="px-2 py-1 text-xs rounded bg-slate-100 text-slate-500 font-mono shrink-0">
+                ESC
+              </kbd>
             </div>
 
-            <div style={styles.results}>
-              {loading && <div style={styles.message}>検索中...</div>}
+            <div class="overflow-y-auto p-2 max-h-[calc(70vh-60px)]">
+              {loading && (
+                <div class="px-4 py-8 text-center text-slate-500">検索中...</div>
+              )}
 
               {!loading && query && results.length === 0 && (
-                <div style={styles.message}>
+                <div class="px-4 py-8 text-center text-slate-500">
                   「{query}」に一致する記事が見つかりませんでした
                 </div>
               )}
@@ -285,37 +198,27 @@ export const SearchModal: FunctionComponent = () => {
                   <a
                     key={result.id}
                     href={result.url}
-                    style={{
-                      ...styles.resultItem,
-                      backgroundColor: hoveredId === result.id ? '#f1f5f9' : 'transparent'
-                    }}
-                    onMouseEnter={() => setHoveredId(result.id)}
-                    onMouseLeave={() => setHoveredId(null)}
+                    class="block px-4 py-3 rounded-md no-underline hover:bg-slate-100 transition-colors duration-150"
                   >
-                    <div style={styles.resultTitle}>{result.title}</div>
+                    <div class="font-semibold text-greenish-dark mb-1">
+                      {result.title}
+                    </div>
                     <div
-                      style={styles.resultExcerpt}
+                      class="text-sm text-slate-600 leading-relaxed [&_mark]:bg-yellow-200 [&_mark]:text-greenish-dark [&_mark]:rounded [&_mark]:px-0.5"
                       dangerouslySetInnerHTML={{ __html: result.excerpt }}
                     />
                   </a>
                 ))}
 
               {!loading && !query && (
-                <div style={styles.message}>キーワードを入力して記事を検索</div>
+                <div class="px-4 py-8 text-center text-slate-500">
+                  キーワードを入力して記事を検索
+                </div>
               )}
             </div>
           </div>
         </div>
       )}
-
-      <style>{`
-        .search-result-excerpt mark {
-          background-color: #fef08a;
-          color: #37342f;
-          border-radius: 0.125rem;
-          padding: 0 0.125rem;
-        }
-      `}</style>
     </>
   )
 }
