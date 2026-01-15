@@ -1,61 +1,67 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with this repository.
+このファイルは、このリポジトリでClaude Code（claude.ai/code）を利用する際のガイドラインを示します。
 
-## Project Overview
+## プロジェクト概要
 
-**march-am-site** is a personal blog/website for "march-am" (街). The site is built as a static site using Astro and fetches content from Contentful CMS. It is deployed on Cloudflare Pages.
+**march-am-site** は「march-am」（街）の個人ブログ／ウェブサイトです。Astroで構築された静的サイトで、Contentful CMSからコンテンツを取得し、Cloudflare Pagesにデプロイされています。
 
-### Key Features
-- Blog articles with markdown support (including link cards, GFM tables)
-- Tag and category based article organization
-- RSS feed generation
-- OG image generation for social sharing
-- Japanese timezone support (Asia/Tokyo)
+### 主な特徴
+- マークダウン対応のブログ記事（リンクカード、GFMテーブル対応）
+- タグ・カテゴリによる記事整理
+- RSSフィード生成
+- SNSシェア用OG画像生成
+- 日本時間（Asia/Tokyo）対応
 
-## Package Manager
+## パッケージマネージャー
 
-This project uses **pnpm** (not npm or yarn).
+このプロジェクトは **pnpm** を使用します（npmやyarnは使用しません）。
 
 ```bash
-# Install dependencies
+# 依存関係のインストール
 pnpm install
 
-# Run development server
+# 開発サーバーの起動
 pnpm dev
 
-# Run linting
+# リンティングの実行
 pnpm lint
 
-# Run type checking
+# 型チェックの実行
 pnpm typecheck
 
-# Run tests
+# テストの実行
 pnpm test
 ```
 
-Do not use `npm install` or create `package-lock.json`. The project uses `pnpm-lock.yaml`.
+`npm install` の使用や `package-lock.json` の作成は禁止です。`pnpm-lock.yaml` を利用してください。
 
-## Tech Stack
+## 技術スタック
 
-- **Framework**: Astro (static site generator)
-- **Language**: TypeScript
-- **Testing**: Vitest
+- **フレームワーク**: Astro（静的サイトジェネレーター）
+- **言語**: TypeScript
+- **テスト**: Vitest
 - **CMS**: Contentful
-- **Styling**: Tailwind CSS
-- **Hosting**: Cloudflare Pages
+- **スタイリング**: Tailwind CSS
+- **ホスティング**: Cloudflare Pages
 
-## Directory Structure
+## ディレクトリ構成
 
 ```
 src/
-├── components/     # Astro UI components
-├── constants/      # Site config, routes
-├── features/       # React/Preact components
-├── infra/          # Contentful client & data fetching
+├── components/     # Astro UIコンポーネント
+├── constants/      # サイト設定・ルート
+├── features/       # React/Preactコンポーネント
+├── infra/          # Contentfulクライアント・データ取得
 │   └── contentful/
-├── layouts/        # Page layouts
-├── pages/          # Astro pages & API routes
+├── layouts/        # ページレイアウト
+├── pages/          # Astroページ・APIルート
 ├── styles/         # CSS
-└── utils/          # Utility functions (markdown processing, date, etc.)
+└── utils/          # ユーティリティ関数（Markdown処理、日付など）
 ```
+
+## ツールの利用
+
+### gh
+
+- -R owner/repo フラグが必要です。
