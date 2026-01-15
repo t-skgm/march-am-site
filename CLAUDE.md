@@ -21,7 +21,7 @@
 # 依存関係のインストール
 pnpm install
 
-# 開発サーバーの起動
+# 開発サーバーの起動（Astro + Pagefind両方起動）
 pnpm dev
 
 # リンティングの実行
@@ -32,6 +32,9 @@ pnpm typecheck
 
 # テストの実行
 pnpm test
+
+# プロダクションビルド（検索インデックス生成含む）
+pnpm build
 ```
 
 `npm install` の使用や `package-lock.json` の作成は禁止です。`pnpm-lock.yaml` を利用してください。
@@ -40,29 +43,48 @@ pnpm test
 
 - **フレームワーク**: Astro（静的サイトジェネレーター）
 - **言語**: TypeScript
+- **UIライブラリ**: Preact（インタラクティブコンポーネント用）
 - **テスト**: Vitest
 - **CMS**: Contentful
-- **スタイリング**: Tailwind CSS
+- **スタイリング**: Tailwind CSS v4
+- **検索**: Pagefind（静的サイト全文検索）
 - **ホスティング**: Cloudflare Pages
+- **Node.js**: v22以上必須（mise.tomlで管理）
 
 ## ディレクトリ構成
 
 ```
 src/
 ├── components/     # Astro UIコンポーネント
+│   └── molecules/  # 再利用可能なUIパーツ
 ├── constants/      # サイト設定・ルート
-├── features/       # React/Preactコンポーネント
+├── features/       # Preactインタラクティブコンポーネント
+│   └── search/     # 検索モーダル機能
 ├── infra/          # Contentfulクライアント・データ取得
 │   └── contentful/
 ├── layouts/        # ページレイアウト
 ├── pages/          # Astroページ・APIルート
-├── styles/         # CSS
-└── utils/          # ユーティリティ関数（Markdown処理、日付など）
+├── styles/         # CSS（global.css, remark-link-card.css）
+└── utils/          # ユーティリティ関数
 
 functions/          # Cloudflare Pages Functions
 ├── api/            # プレビュー認証エンドポイント
 └── article/        # 記事ミドルウェア
+
+docs/               # 機能設計ドキュメント
+└── features/       # 機能別の設計メモ
 ```
+
+### ユーティリティ関数 (`src/utils/`)
+
+| ファイル | 説明 |
+|---------|------|
+| `remark.ts` | Markdown→HTML変換（目次生成、GFM対応、slug付与） |
+| `remark-link-card-plus.ts` | リンクカード生成用remarkプラグイン |
+| `date.ts` | 日付フォーマット（Asia/Tokyo対応） |
+| `string.ts` | 文字列操作ユーティリティ |
+| `promise.ts` | Promise関連ヘルパー |
+| `cleanPathParam.ts` | URLパラメータのサニタイズ |
 
 ## コンテンツアーキテクチャ
 
@@ -134,7 +156,68 @@ CONTENTFUL_MANAGEMENT_TOKEN     # Contentful Management Token (scripts)
 CONTENTFUL_PREVIEW_SECRET       # Preview authentication secret
 ```
 
-## コミット前チェック
+## サイト内検索機能（Pagefind）
+
+Pagefindを使用したクライアントサイドの全文検索機能を実装している。
+
+### 動作フロー
+
+```
+[ビルド時]
+pnpm build
+    ↓
+Astro Build → 静的HTML生成
+    ↓
+Pagefind CLI がHTML出力をスキャン
+    ↓
+検索インデックス生成 (dist/pagefind/)
+
+[実行時]
+ユーザーがCmd/Ctrl+Kで検索モーダルを開く
+    ↓
+pagefind.jsが必要なインデックスチャンクを取得
+    ↓
+クライアントサイドで検索実行
+    ↓
+結果表示
+```
+
+### 検索機能の実装構成
+
+```
+src/features/search/
+├── index.ts          # エクスポート
+├── types.ts          # Pagefind型定義
+├── hooks.ts          # カスタムフック
+│   ├── usePagefind()         # Pagefind読み込み・検索
+│   ├── useDebouncedValue()   # 入力デバウンス
+│   └── useKeyboardShortcut() # キーボードショートカット
+├── SearchModal.tsx   # 検索モーダルコンポーネント
+└── SearchResults.tsx # 検索結果表示コンポーネント
+```
+
+### 開発時の注意
+
+- 開発時は `pnpm dev` で Pagefind のサーバーも同時起動する
+- 検索インデックスはビルド時に生成されるため、開発中は前回のビルド結果を使用
+- 新しいコンテンツの検索テストには `pnpm build` を再実行する必要がある
+
+### インデックス除外設定
+
+- `data-pagefind-ignore` 属性でナビゲーション、フッター等を除外
+- タグ一覧、カテゴリ一覧ページは検索対象外に設定
+
+## CI/CD
+
+### GitHub Actions
+
+PRおよびプッシュ時に以下のチェックが自動実行される（`.github/workflows/check.yml`）:
+
+1. `pnpm lint` - ESLintによるコード品質チェック
+2. `pnpm typecheck` - TypeScript型チェック
+3. `pnpm test` - Vitestによるユニットテスト
+
+### コミット前チェック
 
 コードを変更した後、コミット前に以下のチェックを必ず実行すること:
 
@@ -144,9 +227,12 @@ pnpm typecheck
 
 # リンティング
 pnpm lint
+
+# テスト（変更がある場合）
+pnpm test
 ```
 
-両方のチェックが通ることを確認してからコミットする。
+すべてのチェックが通ることを確認してからコミットする。
 
 ## React/Preact コンポーネント実装方針
 
