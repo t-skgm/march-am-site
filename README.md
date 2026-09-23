@@ -81,11 +81,11 @@ functions/          # Cloudflare Pages Functions
 
 ```bash
 pnpm dlx cf-content-types-generator \
-  --out src/infra/contentful \
-  --environment ENV \
-  --spaceId SPACE \
-  --token TOKEN \
-  --v10 --jsdoc --response
+  --out src/infra/contentful/generated \
+  --environment $ENV \
+  --spaceId $SPACE \
+  --token $TOKEN \
+  --jsdoc --response
 ```
 
 ## ライセンス
