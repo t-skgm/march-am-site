@@ -7,7 +7,7 @@ export type ArticleSkeleton = TypeArticleSkeleton
 export type Article = {
   title: string
   slug: string
-  category: 'Diary' | 'Review'
+  category: 'Diary' | 'Review' | 'Column'
   postedAt: Date
   tags?: string[] | undefined
   thumbnail?: string | undefined
