@@ -154,6 +154,8 @@ PUBLIC_CONTENTFUL_DELIVERY_TOKEN # Contentful Delivery API Token
 CONTENTFUL_PREVIEW_TOKEN         # Contentful Preview API Token (server-only)
 CONTENTFUL_MANAGEMENT_TOKEN     # Contentful Management Token (scripts)
 CONTENTFUL_PREVIEW_SECRET       # Preview authentication secret
+ENCRYPTION_SECRET               # Dynamic OGP URL signing secret (server/build only)
+PUBLIC_OGP_GENERATE_URL         # Base URL for dynamic OGP generation
 ```
 
 ## サイト内検索機能（Pagefind）
