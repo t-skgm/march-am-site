@@ -33,7 +33,7 @@ const baseUrl = Astro.site ?? Astro.url
 const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, baseUrl)
 
 const getOgpUrl = (text: string) => {
-  const token = getToken(import.meta.env.ENCRYTPTION_SECRET, { text })
+  const token = getToken(import.meta.env.ENCRYPTION_SECRET, { text })
   return `${import.meta.env.PUBLIC_OGP_GENERATE_URL}/og?i=${token}&text=${encodeURIComponent(text)}`
 }
 

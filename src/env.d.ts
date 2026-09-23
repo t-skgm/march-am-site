@@ -8,7 +8,7 @@ interface ImportMetaEnv {
   readonly PUBLIC_CONTENTFUL_DELIVERY_TOKEN: string
   readonly CONTENTFUL_MANAGEMENT_TOKEN: string
   readonly CONTENTFUL_PREVIEW_SECRET: string
-  readonly ENCRYTPTION_SECRET: string
+  readonly ENCRYPTION_SECRET: string
   readonly PUBLIC_OGP_GENERATE_URL: string
 }
 
