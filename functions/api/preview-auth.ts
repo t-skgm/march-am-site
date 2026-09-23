@@ -1,4 +1,5 @@
 import type { PagesFunction, Env } from './types'
+import { createPreviewSessionCookie } from './preview-session'
 
 export const onRequest: PagesFunction<Env> = async (context) => {
   const {
@@ -23,14 +24,14 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     return new Response('Unauthorized', { status: 401 })
   }
 
-  const redirectURL = `${url.origin}/article/preview?slug=${slug}`
-  return Response.redirect(redirectURL, 303)
+  const redirectURL = `${url.origin}/article/preview?slug=${encodeURIComponent(slug)}`
+  const headers = new Headers({ Location: redirectURL })
+  headers.append('Set-Cookie', createPreviewSessionCookie(env.CONTENTFUL_PREVIEW_SECRET, request.url))
+  return new Response(null, { headers, status: 303 })
 }
 
 function ctEqual(a: Uint8Array, b: Uint8Array): boolean {
-  if (a.length !== b.length || a.length === 0) {
-    throw new Error('arrays of different length')
-  }
+  if (a.length !== b.length || a.length === 0) return false
   const n = a.length
   let c = 0
   for (let i = 0; i < n; i++) {

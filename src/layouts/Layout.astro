@@ -31,15 +31,23 @@ const pageTitle = (divider: string) =>
 
 const baseUrl = Astro.site ?? Astro.url
 const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, baseUrl)
+const encryptionSecret = import.meta.env.ENCRYPTION_SECRET
+const ogpGenerateURL = import.meta.env.PUBLIC_OGP_GENERATE_URL
 
-const getOgpUrl = (text: string) => {
-  const token = getToken(import.meta.env.ENCRYTPTION_SECRET, { text })
-  return `${import.meta.env.PUBLIC_OGP_GENERATE_URL}/og?i=${token}&text=${encodeURIComponent(text)}`
+const getOgpUrl = (text: string): string | undefined => {
+  if (encryptionSecret == null || encryptionSecret.length === 0) return
+  if (ogpGenerateURL == null || ogpGenerateURL.length === 0) return
+
+  const token = getToken(encryptionSecret, { text })
+  return `${ogpGenerateURL}/og?i=${token}&text=${encodeURIComponent(text)}`
 }
 
 const socialImageURL: string = (() => {
   if (Astro.props.socialImageURL != null) return Astro.props.socialImageURL
-  if (articleTitle != null) return getOgpUrl(articleTitle)
+  if (articleTitle != null) {
+    const ogpUrl = getOgpUrl(articleTitle)
+    if (ogpUrl != null) return ogpUrl
+  }
   return new URL('/assets/ogp_site.jpg', baseUrl).toString()
 })()
 ---
