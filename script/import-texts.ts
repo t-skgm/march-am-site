@@ -22,7 +22,7 @@ const main = async () => {
 
   const contentfulClient = contentfulManagement.createClient({
     accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN!
-  })
+  }, { type: 'legacy' })
 
   const space = await contentfulClient.getSpace(process.env.PUBLIC_CONTENTFUL_SPACE_ID!)
   const environment = await space.getEnvironment(process.env.PUBLIC_CONTENTFUL_ENVIRONMENT!)
