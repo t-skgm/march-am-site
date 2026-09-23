@@ -1,15 +1,18 @@
-import { type Article, type ArticleEntry, contentTypes } from './interfaces'
+import { type Article, type ArticleEntry } from './interfaces'
 import { processMarkdown } from '../../utils/remark'
-import { createContentfulPreviewClient } from './clientPreview'
 
 export const fetchArticleBySlug = async (args: { slug: string }) => {
-  const entries = await createContentfulPreviewClient().getEntries({
-    content_type: contentTypes.article,
-    'fields.slug': args.slug,
-    limit: 1
-  })
-  const entry = entries.items[0]
-  return entry as ArticleEntry | undefined
+  const response = await fetch(
+    `/api/preview-article?slug=${encodeURIComponent(args.slug)}`,
+    { credentials: 'same-origin' }
+  )
+
+  if (!response.ok) {
+    throw new Error(`Preview API request failed: ${response.status}`)
+  }
+
+  const entry = (await response.json()) as ArticleEntry | null
+  return entry ?? undefined
 }
 
 export const mapArticleEntry = async ({

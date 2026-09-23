@@ -151,7 +151,7 @@ PUBLIC_GA_TRACKING_ID           # Google Analytics
 PUBLIC_CONTENTFUL_SPACE_ID      # Contentful Space ID
 PUBLIC_CONTENTFUL_ENVIRONMENT   # Contentful Environment
 PUBLIC_CONTENTFUL_DELIVERY_TOKEN # Contentful Delivery API Token
-PUBLIC_CONTENTFUL_PREVIEW_TOKEN # Contentful Preview API Token
+CONTENTFUL_PREVIEW_TOKEN         # Contentful Preview API Token (server-only)
 CONTENTFUL_MANAGEMENT_TOKEN     # Contentful Management Token (scripts)
 CONTENTFUL_PREVIEW_SECRET       # Preview authentication secret
 ```
