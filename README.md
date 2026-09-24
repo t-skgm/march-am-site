@@ -72,7 +72,7 @@ functions/          # Cloudflare Pages Functions
 | `PUBLIC_GA_TRACKING_ID` | Google Analytics |
 | `PUBLIC_CONTENTFUL_SPACE_ID` | Contentful Space ID |
 | `PUBLIC_CONTENTFUL_ENVIRONMENT` | Contentful Environment |
-| `PUBLIC_CONTENTFUL_DELIVERY_TOKEN` | Contentful Delivery API Token |
+| `CONTENTFUL_DELIVERY_TOKEN` | Contentful Delivery API Token (server-only) |
 | `CONTENTFUL_PREVIEW_TOKEN` | Contentful Preview API Token (server-only) |
 | `ENCRYPTION_SECRET` | Secret for dynamic OGP URL signing (server/build only) |
 | `PUBLIC_OGP_GENERATE_URL` | Base URL for dynamic OGP generation |
@@ -81,11 +81,11 @@ functions/          # Cloudflare Pages Functions
 
 ```bash
 pnpm dlx cf-content-types-generator \
-  --out src/infra/contentful \
-  --environment ENV \
-  --spaceId SPACE \
-  --token TOKEN \
-  --v10 --jsdoc --response
+  --out src/infra/contentful/generated \
+  --environment $ENV \
+  --spaceId $SPACE \
+  --token $TOKEN \
+  --jsdoc --response
 ```
 
 ## ライセンス

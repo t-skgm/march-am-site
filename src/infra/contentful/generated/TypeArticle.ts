@@ -18,7 +18,7 @@ export interface TypeArticleFields {
    * @name Category
    * @localized false
    */
-  category: EntryFieldTypes.Symbol<'Diary' | 'Review'>
+  category: EntryFieldTypes.Symbol<'Column' | 'Diary' | 'Review'>
   /**
    * Field type definition for field 'title' (Title)
    * @name Title
@@ -69,28 +69,36 @@ export interface TypeArticleFields {
  * @type {TypeArticleSkeleton}
  * @author 21n7y8VaJyQM8TcB6aGF2s
  * @since 2020-04-12T07:04:59.801Z
- * @version 31
+ * @version 35
  */
-export type TypeArticleSkeleton = EntrySkeletonType<TypeArticleFields, 'article'>
+export type TypeArticleSkeleton = EntrySkeletonType<
+  TypeArticleFields,
+  'article'
+>
 /**
  * Entry type definition for content type 'article' (Article)
  * @name TypeArticle
  * @type {TypeArticle}
  * @author 21n7y8VaJyQM8TcB6aGF2s
  * @since 2020-04-12T07:04:59.801Z
- * @version 31
+ * @version 35
  */
 export type TypeArticle<
   Modifiers extends ChainModifiers,
-  Locales extends LocaleCode = LocaleCode
+  Locales extends LocaleCode = LocaleCode,
 > = Entry<TypeArticleSkeleton, Modifiers, Locales>
-export type TypeArticleWithoutLinkResolutionResponse = TypeArticle<'WITHOUT_LINK_RESOLUTION'>
-export type TypeArticleWithoutUnresolvableLinksResponse = TypeArticle<'WITHOUT_UNRESOLVABLE_LINKS'>
-export type TypeArticleWithAllLocalesResponse<Locales extends LocaleCode = LocaleCode> =
-  TypeArticle<'WITH_ALL_LOCALES', Locales>
+export type TypeArticleWithoutLinkResolutionResponse = TypeArticle<
+  'WITHOUT_LINK_RESOLUTION'
+>
+export type TypeArticleWithoutUnresolvableLinksResponse = TypeArticle<
+  'WITHOUT_UNRESOLVABLE_LINKS'
+>
+export type TypeArticleWithAllLocalesResponse<
+  Locales extends LocaleCode = LocaleCode,
+> = TypeArticle<'WITH_ALL_LOCALES', Locales>
 export type TypeArticleWithAllLocalesAndWithoutLinkResolutionResponse<
-  Locales extends LocaleCode = LocaleCode
+  Locales extends LocaleCode = LocaleCode,
 > = TypeArticle<'WITHOUT_LINK_RESOLUTION' | 'WITH_ALL_LOCALES', Locales>
 export type TypeArticleWithAllLocalesAndWithoutUnresolvableLinksResponse<
-  Locales extends LocaleCode = LocaleCode
+  Locales extends LocaleCode = LocaleCode,
 > = TypeArticle<'WITHOUT_UNRESOLVABLE_LINKS' | 'WITH_ALL_LOCALES', Locales>
