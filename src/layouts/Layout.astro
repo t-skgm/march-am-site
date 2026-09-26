@@ -1,7 +1,11 @@
 ---
 import '../styles/global.css'
 import '../styles/remark-link-card.css'
-import '@fontsource/lora'
+// Lora は実際の使用箇所（h1: 700 normal / back-to-top・back-to: 400 italic / フッターnav: 600 italic）
+// に合わせて必要なウェイト・スタイルのみを読み込み、ブラウザによる合成(faux)イタリック・ボールドを避ける
+import '@fontsource/lora/400-italic.css'
+import '@fontsource/lora/600-italic.css'
+import '@fontsource/lora/700.css'
 import type { Props as SEOProps } from 'astro-seo'
 import { SEO } from 'astro-seo'
 import Logo from '../components/molecules/Logo.astro'
@@ -175,9 +179,9 @@ const socialImageURL: string = (() => {
           margin: 0 50px 0 40px;
         }
 
-        .content-top::after {
-          bottom: 20px;
-          left: 7px;
+        /* スマホ幅では本文末尾（Main.astro の main::after）の鳥と重複するため非表示 */
+        .content::after {
+          display: none;
         }
       }
 
@@ -185,7 +189,7 @@ const socialImageURL: string = (() => {
         body {
           background:
             repeat-y 0 / 300px url(../assets/images/back_gr.jpg),
-            repeat-y right 0 url(../assets/images/back_or.jpg);
+            repeat-y right 0 / 250px url(../assets/images/back_or.jpg);
         }
 
         .content {

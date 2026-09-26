@@ -1,6 +1,7 @@
 ---
 import Main from '../../components/molecules/Main.astro'
 import ArticleContent from '../../features/ArticleContent.astro'
+import ArticlePager, { type ArticlePagerItem } from '../../components/molecules/ArticlePager.astro'
 import Layout from '../../layouts/Layout.astro'
 import { fetchArticleEntries } from '../../infra/contentful/article'
 import type { GetStaticPaths } from 'astro'
@@ -11,23 +12,39 @@ import '../../styles/global.css'
 
 export type Props = {
   entry: Article
+  /** postedAt が新しい方の記事（一覧の一つ前） */
+  newerArticle?: ArticlePagerItem | undefined
+  /** postedAt が古い方の記事（一覧の一つ後） */
+  olderArticle?: ArticlePagerItem | undefined
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  // fetchArticleEntries() は postedAt の降順（新しい順）で返るため、
+  // 前後の記事はビルド時にこの一度の取得結果から index で求める
   const articleEntries = await fetchArticleEntries()
 
-  return articleEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry } satisfies Props
-  }))
+  return articleEntries.map((entry, index) => {
+    const newer = index > 0 ? articleEntries[index - 1] : undefined
+    const older = index < articleEntries.length - 1 ? articleEntries[index + 1] : undefined
+
+    return {
+      params: { slug: entry.slug },
+      props: {
+        entry,
+        newerArticle: newer != null ? { slug: newer.slug, title: newer.title } : undefined,
+        olderArticle: older != null ? { slug: older.slug, title: older.title } : undefined
+      } satisfies Props
+    }
+  })
 }
 
-const { entry } = Astro.props
+const { entry, newerArticle, olderArticle } = Astro.props
 const description = excerptFromHtml(entry.content)
 ---
 
 <Layout title={entry.title} description={description} socialImageURL={entry.ogpImageUrl}>
   <Main backTo={routes.article.index}>
     <ArticleContent entry={entry} />
+    <ArticlePager newerArticle={newerArticle} olderArticle={olderArticle} />
   </Main>
 </Layout>

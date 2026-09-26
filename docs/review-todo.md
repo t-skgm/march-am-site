@@ -39,22 +39,23 @@
 
 ## 🟡 デザイン
 
-- [ ] 記事タイトルの `break-all` をやめる（「Emo/P｜ost-Hardcore」と単語途中で折れる）→ `overflow-wrap: anywhere` + `text-wrap: balance`（`ArticleContent.astro`）
-- [ ] Lora のイタリック / 600 を読み込み、合成（faux）イタリック・ボールドを解消する（`Layout.astro`）
-- [ ] PC 幅で右側に約 180px の白帯が出る問題を解消する（本文右マージン 250px と背景画像幅の不一致）
-- [ ] プレースホルダーサムネイルとその下でタイトルが二重表示されるのを整理する。スマホで長いタイトルが下端ギリギリ
-- [ ] 右下固定の鳥が本文・フッターに重なる。フッター付近で鳥が 2 羽になる
-- [ ] 記事末尾の「←」だけの寂しいエリアに前後記事ナビ / 関連タグを置く
+- [x] 記事タイトルの `break-all` をやめる（「Emo/P｜ost-Hardcore」と単語途中で折れる）→ `overflow-wrap: anywhere` + `text-wrap: balance`（`ArticleContent.astro`）
+- [x] Lora のイタリック / 600 を読み込み、合成（faux）イタリック・ボールドを解消する（`Layout.astro`）
+- [x] PC 幅で右側に約 180px の白帯が出る問題を解消する（本文右マージン 250px と背景画像幅の不一致）
+- [x] プレースホルダーサムネイルとその下でタイトルが二重表示されるのを整理する。スマホで長いタイトルが下端ギリギリ
+- [x] 右下固定の鳥が本文・フッターに重なる（スマホでは非表示に）。フッター付近で鳥が 2 羽になる
+- [x] 記事末尾の「←」だけの寂しいエリアに前後記事ナビ / 関連タグを置く
 
 ## ⚪ コンテンツ / コード / 細部
 
 - [ ] 「Best Shoegazing Discs」の重複記事（別 slug で 2 件）を整理する（Contentful）
 - [ ] タグ表記ゆれを整理する（Apple Music / AppleMusic、scrap / Scrap、martin newell / Martin Newell）（Contentful）
-- [ ] タグ一覧に記事数を表示する、`☆6` 等のタグの意味を補足する
-- [ ] タグ URL を `encodeURIComponent` する（`/article/tag/BURGER NUDS/1/` にスペースが生で入る）
-- [ ] `ArticleList.astro` の `fullwidth != null` を `fullwidth ?` に修正する
+- [x] タグ一覧に記事数を表示する（カテゴリ一覧も）
+- [ ] `☆6` 等の評価タグの扱いを決める（タグ一覧から除外し記事内の評点表示に移す案あり）
+- [x] タグ URL を `encodeURIComponent` する（`/article/tag/BURGER NUDS/1/` にスペースが生で入る）
+- [x] `ArticleList.astro` の `fullwidth != null` を `fullwidth ?` に修正する
 - [x] 記事ページのタグ一覧に `flex-wrap` を付ける（`ArticleContent.astro`）
-- [ ] CLAUDE.md のカテゴリ記述を更新する（`Diary | Review` → `Column` を追加）
-- [ ] Twitter → X の名称・アイコン更新を検討する
+- [x] CLAUDE.md のカテゴリ記述を更新する（`Diary | Review` → `Column` を追加）
+- [x] Twitter → X の名称・アイコンを更新する
 - [x] `.playwright-mcp/` を `.gitignore` に追加する
-- [ ] 未使用の `src/components/molecules/Card.astro` を削除する
+- [x] 未使用の `src/components/molecules/Card.astro` を削除する
