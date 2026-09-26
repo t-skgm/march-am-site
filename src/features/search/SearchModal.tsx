@@ -1,6 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from 'preact/hooks'
-import type { FunctionComponent } from 'preact'
-import { usePagefind, useDebouncedValue, useKeyboardShortcut } from './hooks'
+import { useCallback, useEffect, useId, useState } from 'preact/hooks'
+import type { FunctionComponent, TargetedEvent } from 'preact'
+import {
+  usePagefind,
+  useDebouncedValue,
+  useKeyboardShortcut,
+  useDialogSync,
+  useBodyScrollLock
+} from './hooks'
 import { SearchResults } from './SearchResults'
 
 const SearchIcon: FunctionComponent = () => (
@@ -23,44 +29,51 @@ const SearchIcon: FunctionComponent = () => (
 export const SearchModal: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
-  const modalRef = useRef<HTMLDivElement>(null)
+  const inputId = useId()
 
   const { load, search, clearResults, loading, results } = usePagefind()
   const debouncedQuery = useDebouncedValue(query, 200)
+
+  const resetState = useCallback(() => {
+    setIsOpen(false)
+    setQuery('')
+    clearResults()
+  }, [clearResults])
 
   const open = useCallback(() => {
     setIsOpen(true)
     void load()
   }, [load])
 
-  const close = useCallback(() => {
-    setIsOpen(false)
-    setQuery('')
-    clearResults()
-  }, [clearResults])
+  // ネイティブ<dialog>とisOpenを同期する。Escキーで閉じられた場合も
+  // dialogのcloseイベント経由でresetStateが呼ばれ、フォーカスは
+  // ブラウザ標準の挙動で起動ボタンに自動的に戻る
+  const dialogRef = useDialogSync(isOpen, resetState)
+
+  // モーダル表示中は背面ページのスクロールをロックする
+  useBodyScrollLock(isOpen)
 
   // キーボードショートカット: Cmd/Ctrl + K でトグル
   useKeyboardShortcut(
     'k',
-    useCallback(() => (isOpen ? close() : open()), [isOpen, open, close]),
+    useCallback(() => (isOpen ? resetState() : open()), [isOpen, open, resetState]),
     { ctrlOrMeta: true }
   )
-
-  // キーボードショートカット: Escape で閉じる
-  useKeyboardShortcut('Escape', close)
 
   // デバウンスされたクエリで検索実行
   useEffect(() => {
     void search(debouncedQuery)
   }, [debouncedQuery, search])
 
-  const handleBackdropClick = useCallback(
-    (e: MouseEvent) => {
-      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-        close()
+  // 背景（::backdrop）クリックで閉じる。クリックされた要素がdialog自身の場合のみ
+  // 背景クリックと判定できる（中身のクリックはdialogの子要素がtargetになる）
+  const handleDialogClick = useCallback(
+    (e: TargetedEvent<HTMLDialogElement, MouseEvent>) => {
+      if (e.target === dialogRef.current) {
+        dialogRef.current?.close()
       }
     },
-    [close]
+    [dialogRef]
   )
 
   return (
@@ -75,41 +88,39 @@ export const SearchModal: FunctionComponent = () => {
         <SearchIcon />
       </button>
 
-      {isOpen && (
-        // 背景クリックで閉じる。キーボード操作は Escape ショートカットで代替している
-        <div
-          class="fixed inset-0 z-50 flex items-start justify-center bg-black/50 pt-[10vh]"
-          onClick={handleBackdropClick}
-          role="presentation"
-        >
-          <div
-            class="bg-white rounded-lg shadow-2xl w-full max-w-xl mx-4 overflow-hidden max-h-[70vh]"
-            ref={modalRef}
-          >
-            <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-200">
-              <span class="text-slate-400 shrink-0">
-                <SearchIcon />
-              </span>
-              <input
-                type="text"
-                value={query}
-                onInput={(e) => setQuery((e.target as HTMLInputElement).value)}
-                placeholder="記事を検索..."
-                class="flex-1 text-base outline-none bg-transparent border-none text-greenish placeholder:text-slate-400"
-                // oxlint-disable-next-line jsx-a11y/no-autofocus -- ユーザー操作で開いたモーダルの入力欄なのでフォーカスを移す
-                autoFocus
-              />
-              <kbd class="px-2 py-1 text-xs rounded bg-slate-100 text-slate-500 font-mono shrink-0">
-                ESC
-              </kbd>
-            </div>
-
-            <div class="overflow-y-auto p-2 max-h-[calc(70vh-60px)]">
-              <SearchResults loading={loading} query={query} results={results} />
-            </div>
-          </div>
+      {/* oxlint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- 背景(::backdrop)クリックで閉じるための補助的なハンドラ。キーボード操作はネイティブdialogのEsc/フォーカストラップで担保している */}
+      <dialog
+        ref={dialogRef}
+        onClick={handleDialogClick}
+        aria-label="サイト内検索"
+        class="fixed top-[10vh] left-1/2 right-auto bottom-auto -translate-x-1/2 m-0 w-[calc(100%-2rem)] max-w-xl rounded-lg border-0 bg-white p-0 shadow-2xl overflow-hidden max-h-[70vh] backdrop:bg-black/50"
+      >
+        <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-200">
+          <span class="text-slate-400 shrink-0">
+            <SearchIcon />
+          </span>
+          <label htmlFor={inputId} class="sr-only">
+            記事を検索
+          </label>
+          <input
+            id={inputId}
+            type="search"
+            value={query}
+            onInput={(e) => setQuery((e.target as HTMLInputElement).value)}
+            placeholder="記事を検索..."
+            class="flex-1 text-base bg-transparent border-none text-greenish placeholder:text-slate-400 rounded focus:outline-none focus-visible:outline-2 focus-visible:outline-greenish focus-visible:outline-offset-2"
+            // oxlint-disable-next-line jsx-a11y/no-autofocus -- ユーザー操作で開いたモーダルの入力欄なのでフォーカスを移す
+            autoFocus
+          />
+          <kbd class="px-2 py-1 text-xs rounded bg-slate-100 text-slate-500 font-mono shrink-0">
+            ESC
+          </kbd>
         </div>
-      )}
+
+        <div class="overflow-y-auto p-2 max-h-[calc(70vh-60px)]">
+          <SearchResults loading={loading} query={query} results={results} />
+        </div>
+      </dialog>
     </>
   )
 }

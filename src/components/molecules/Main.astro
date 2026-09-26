@@ -11,8 +11,8 @@ const { backTo, isTop = false } = Astro.props
 {
   !isTop && (
     <nav class="py-6">
-      <a href={routes.index} class="back-to-top">
-        ← back to top
+      <a href={routes.index} class="back-to-top inline-block py-1">
+        <span aria-hidden="true">←</span> back to top
       </a>
     </nav>
   )
@@ -24,9 +24,9 @@ const { backTo, isTop = false } = Astro.props
 
 {
   backTo != null && (
-    <nav>
-      <a href={backTo} class="back-to">
-        ←
+    <nav class="py-6">
+      <a href={backTo} class="back-to inline-block py-1">
+        <span aria-hidden="true">←</span> back to articles
       </a>
     </nav>
   )
@@ -53,7 +53,8 @@ const { backTo, isTop = false } = Astro.props
   }
 
   .back-to {
-    @apply text-4xl no-underline hover:underline mt-4;
+    @apply text-greenish no-underline hover:underline italic;
+    font-family: 'Lora', serif;
   }
 
   @media (min-width: 1024px) {

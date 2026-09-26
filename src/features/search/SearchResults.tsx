@@ -24,7 +24,23 @@ const ResultItem: FunctionComponent<{ result: SearchResult }> = ({ result }) => 
   </a>
 )
 
-export const SearchResults: FunctionComponent<SearchResultsProps> = ({
+function getStatusMessage({ loading, query, results }: SearchResultsProps): string {
+  if (loading) {
+    return '検索中...'
+  }
+
+  if (!query) {
+    return ''
+  }
+
+  if (results.length === 0) {
+    return `「${query}」に一致する記事が見つかりませんでした`
+  }
+
+  return `${results.length}件見つかりました`
+}
+
+const SearchResultsContent: FunctionComponent<SearchResultsProps> = ({
   loading,
   query,
   results
@@ -46,6 +62,20 @@ export const SearchResults: FunctionComponent<SearchResultsProps> = ({
       {results.map((result) => (
         <ResultItem key={result.id} result={result} />
       ))}
+    </>
+  )
+}
+
+export const SearchResults: FunctionComponent<SearchResultsProps> = (props) => {
+  const statusMessage = getStatusMessage(props)
+
+  return (
+    <>
+      {/* 件数変化・検索中・未検出をスクリーンリーダーに通知するライブリージョン */}
+      <output aria-live="polite" class="sr-only">
+        {statusMessage}
+      </output>
+      <SearchResultsContent {...props} />
     </>
   )
 }

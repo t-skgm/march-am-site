@@ -75,6 +75,55 @@ export function useDebouncedValue<T>(value: T, delay: number): T {
 }
 
 /**
+ * モーダル表示中に背面ページのスクロールをロックするカスタムフック
+ * （bodyのoverflowという外部システムとの同期のためuseEffectを使用）
+ */
+export function useBodyScrollLock(locked: boolean) {
+  useEffect(() => {
+    if (!locked) return undefined
+
+    const { style } = document.body
+    const previousOverflow = style.overflow
+    style.overflow = 'hidden'
+
+    return () => {
+      style.overflow = previousOverflow
+    }
+  }, [locked])
+}
+
+/**
+ * ネイティブ <dialog> 要素の開閉をisOpenと同期し、
+ * Escキー等によるcloseイベント発生時にonCloseを呼び出すカスタムフック
+ * （dialog要素という外部システムとの同期のためuseEffectを使用）
+ */
+export function useDialogSync(isOpen: boolean, onClose: () => void) {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+
+    if (isOpen && !dialog.open) {
+      dialog.showModal()
+    } else if (!isOpen && dialog.open) {
+      dialog.close()
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return undefined
+
+    const handleClose = () => onClose()
+    dialog.addEventListener('close', handleClose)
+    return () => dialog.removeEventListener('close', handleClose)
+  }, [onClose])
+
+  return dialogRef
+}
+
+/**
  * キーボードショートカットを登録するカスタムフック
  */
 export function useKeyboardShortcut(

@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # pagefind dev dir
 pagefind/
+
+# playwright mcp outputs
+.playwright-mcp/

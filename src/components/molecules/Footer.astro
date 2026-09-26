@@ -9,7 +9,7 @@ const { isTop = false } = Astro.props
 ---
 
 <footer>
-  <section class="links">
+  <nav class="links" aria-label="サイトナビゲーション">
     <ul class:list={[{ 'gutter-top': isTop, gutter: !isTop }]}>
       <li>
         <a href={routes.index}>Top</a>
@@ -17,15 +17,15 @@ const { isTop = false } = Astro.props
       <li>
         <a href={routes.article.index}>Article</a>
         <ul>
-          <li>→ <a href={routes.article.category.index}>Category</a></li>
-          <li>→ <a href={routes.article.tag.index}>Tag</a></li>
+          <li><span aria-hidden="true">→</span> <a href={routes.article.category.index}>Category</a></li>
+          <li><span aria-hidden="true">→</span> <a href={routes.article.tag.index}>Tag</a></li>
         </ul>
       </li>
       <li>
         <a href={routes.about}>About</a>
       </li>
     </ul>
-  </section>
+  </nav>
 
   <ul class:list={['sns', { 'gutter-top': isTop, gutter: !isTop }]}>
     <li>
@@ -112,7 +112,7 @@ const { isTop = false } = Astro.props
   }
 
   .links li li a {
-    @apply text-sm italic;
+    @apply text-sm italic inline-flex items-center min-h-6 min-w-6;
   }
 
   .links::after {

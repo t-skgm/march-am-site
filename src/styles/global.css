@@ -4,6 +4,8 @@
   --color-greenish: #4a4740;
   --color-greenish-dark: #37342f;
   --color-maccha: #769171;
+  /* 文字や小さな UI 用。greenlite / 白背景とのコントラスト比 5:1 以上 */
+  --color-maccha-dark: #56704f;
   --color-greenlite: #f7f8f7;
 }
 

@@ -14,6 +14,8 @@ import { getToken } from '../utils/getTokenNode'
 export interface Props {
   isTop?: boolean
   title?: string
+  /** ページ固有のmeta description。未指定の場合はsite.descriptionを使用する */
+  description?: string | undefined
   frontmatter?: Record<string, unknown>
   /** canpnicalのPath部分を上書きしたい場合 */
   canonicalPath?: string | undefined
@@ -23,7 +25,17 @@ export interface Props {
   noPagefindIndex?: boolean
 }
 
-const { isTop = false, title, frontmatter, canonicalPath, overrideSEOProps, noPagefindIndex = false } = Astro.props
+const {
+  isTop = false,
+  title,
+  description,
+  frontmatter,
+  canonicalPath,
+  overrideSEOProps,
+  noPagefindIndex = false
+} = Astro.props
+
+const pageDescription = description != null && description.length > 0 ? description : site.description
 
 const articleTitle = (title ?? frontmatter?.title) as string | undefined
 const pageTitle = (divider: string) =>
@@ -59,13 +71,16 @@ const socialImageURL: string = (() => {
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <SEO
       title={pageTitle('-')}
-      description={site.description}
+      description={pageDescription}
       canonical={canonicalURL.toString()}
       openGraph={{
         basic: {
           image: socialImageURL,
           title: pageTitle('|'),
           type: 'blog'
+        },
+        optional: {
+          description: pageDescription
         },
         image: {
           alt: 'Image of this site, ' + site.title
@@ -75,6 +90,7 @@ const socialImageURL: string = (() => {
         card: 'summary_large_image',
         site: `@${site.author.twitter}`,
         title: pageTitle('|'),
+        description: pageDescription,
         image: socialImageURL,
         imageAlt: 'Image of this site, ' + site.title
       }}
@@ -95,10 +111,20 @@ const socialImageURL: string = (() => {
   </head>
 
   <body class:list={{ 'body-top': isTop }}>
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:shadow"
+      >本文へスキップ</a
+    >
     <Logo />
     <SearchModal client:load />
     <!-- <Header /> -->
-    <div class:list={['content', { 'content-top': isTop }]} data-pagefind-body={!noPagefindIndex || undefined}>
+    <div
+      id="content"
+      tabindex="-1"
+      class:list={['content', { 'content-top': isTop }]}
+      data-pagefind-body={!noPagefindIndex || undefined}
+    >
       <slot />
     </div>
     <Footer isTop={isTop} />
@@ -117,6 +143,11 @@ const socialImageURL: string = (() => {
         @apply px-2 mx-3;
         background-color: rgb(247, 248, 247, 0.85);
         padding-bottom: 10rem;
+      }
+
+      /* スキップリンクによるフォーカス移動先。tabindex=-1 のフォーカスリングは不要 */
+      .content:focus {
+        outline: none;
       }
 
       /* Bird. */
