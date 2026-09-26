@@ -12,7 +12,7 @@ const gtagUrl = `https://www.googletagmanager.com/gtag/js?id=${gtagId}`
 <script define:vars={{ gtagId }}>
   window.dataLayer = window.dataLayer || []
   function gtag() {
-    // eslint-disable-next-line no-undef
+    // oxlint-disable-next-line prefer-rest-params -- gtag.js は Arguments オブジェクトを要求する
     dataLayer.push(arguments)
   }
   gtag('js', new Date())
