@@ -2,13 +2,14 @@
 import { routes } from '../constants/routes'
 import type { Article } from '../infra/contentful/interfaces'
 import { formatDateJp } from '../utils/date'
+import AdminEditLink from '../components/molecules/AdminEditLink.astro'
 
 export type Props = {
   entry: Article
 }
 
 const { entry } = Astro.props
-const { title, postedAt, category, tags, thumbnail, slug, content } = entry
+const { id, title, postedAt, category, tags, thumbnail, slug, content } = entry
 ---
 
 <header data-pagefind-ignore>
@@ -24,6 +25,7 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
     class="uppercase no-underline hover:underline inline-block py-1"
     >{category}</a
   > <span aria-hidden="true">|</span> <time datetime={postedAt.toISOString()}>{formatDateJp(postedAt)}</time>
+  <AdminEditLink entryId={id} class="ml-2" />
 </div>
 {
   tags != null && (

@@ -1,0 +1,25 @@
+---
+import { contentfulEntryEditUrl } from '../../utils/contentful'
+
+export interface Props {
+  entryId: string
+  class?: string
+}
+
+const { entryId, class: className } = Astro.props
+const editUrl = contentfulEntryEditUrl(entryId)
+---
+
+<a
+  href={editUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-admin-only
+  hidden
+  data-pagefind-ignore
+  class:list={[
+    'text-sm text-maccha-dark no-underline hover:underline border border-maccha-dark rounded px-2 py-1',
+    className
+  ]}
+  >✎ Contentful で編集</a
+>

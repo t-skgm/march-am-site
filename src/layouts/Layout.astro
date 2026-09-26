@@ -129,6 +129,12 @@ const socialImageURL: string = (() => {
     </div>
     <Footer isTop={isTop} />
 
+    <script>
+      import { revealAdminLinksIfAdmin } from '../features/admin/revealAdminLinks'
+
+      revealAdminLinksIfAdmin()
+    </script>
+
     <style>
       @reference '../styles/global.css';
 
