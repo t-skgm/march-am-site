@@ -12,7 +12,7 @@ const { backTo, isTop = false } = Astro.props
   !isTop && (
     <nav class="py-6">
       <a href={routes.index} class="back-to-top">
-        ← back to top
+        <span aria-hidden="true">←</span> back to top
       </a>
     </nav>
   )
@@ -26,7 +26,8 @@ const { backTo, isTop = false } = Astro.props
   backTo != null && (
     <nav>
       <a href={backTo} class="back-to">
-        ←
+        <span aria-hidden="true">←</span>
+        <span class="sr-only">記事一覧へ戻る</span>
       </a>
     </nav>
   )

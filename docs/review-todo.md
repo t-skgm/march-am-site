@@ -28,7 +28,7 @@
 
 - [x] サムネイル `<img>` に `alt`・`loading="lazy"` を付ける（高さ固定コンテナのため width/height は不要と判断）（`FullwidthCard.astro`）
 - [x] プレースホルダーの鳥画像を `alt=""`（装飾扱い）にする（`FullwidthCard.astro`）
-- [ ] 記事末尾の「←」リンクに `aria-label`（例: 記事一覧へ戻る）を付ける（`Main.astro`）
+- [x] 記事末尾の「←」リンクに `aria-label`（例: 記事一覧へ戻る）を付ける（`Main.astro`）
 - [ ] 「back to top」（→ `/`）と末尾「←」（→ `/article/`）の戻り先の不一致を整理する（`Main.astro`）
 - [ ] 埋め込み `iframe`（Apple Music 等）に `title` を付与する（remark 処理 or 記事側）
 - [ ] 記事ごとの meta description を設定する（現状全ページ "the site of march-am"）
