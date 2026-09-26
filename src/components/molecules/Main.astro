@@ -24,10 +24,9 @@ const { backTo, isTop = false } = Astro.props
 
 {
   backTo != null && (
-    <nav>
+    <nav class="py-6">
       <a href={backTo} class="back-to">
-        <span aria-hidden="true">←</span>
-        <span class="sr-only">記事一覧へ戻る</span>
+        <span aria-hidden="true">←</span> back to articles
       </a>
     </nav>
   )
@@ -54,7 +53,8 @@ const { backTo, isTop = false } = Astro.props
   }
 
   .back-to {
-    @apply text-4xl no-underline hover:underline mt-4;
+    @apply text-greenish no-underline hover:underline italic;
+    font-family: 'Lora', serif;
   }
 
   @media (min-width: 1024px) {
