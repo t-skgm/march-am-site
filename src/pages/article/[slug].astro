@@ -6,6 +6,7 @@ import { fetchArticleEntries } from '../../infra/contentful/article'
 import type { GetStaticPaths } from 'astro'
 import type { Article } from '../../infra/contentful/interfaces'
 import { routes } from '../../constants/routes'
+import { excerptFromHtml } from '../../utils/string'
 import '../../styles/global.css'
 
 export type Props = {
@@ -22,9 +23,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 const { entry } = Astro.props
+const description = excerptFromHtml(entry.content)
 ---
 
-<Layout title={entry.title} socialImageURL={entry.ogpImageUrl}>
+<Layout title={entry.title} description={description} socialImageURL={entry.ogpImageUrl}>
   <Main backTo={routes.article.index}>
     <ArticleContent entry={entry} />
   </Main>
