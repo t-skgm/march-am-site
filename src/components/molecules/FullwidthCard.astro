@@ -16,40 +16,43 @@ const {
 } = Astro.props
 ---
 
-<li class="py-2 list-none">
-  <a href={linkMapper(slug)} class="no-underline">
-    <div class="text-sm mb-1"><time>{formatDateJp(postedAt)}</time></div>
+<li class="card relative py-2 list-none">
+  <div class="text-sm mb-1">
+    <time datetime={postedAt.toISOString()}>{formatDateJp(postedAt)}</time>
+  </div>
+  {
+    thumbnail != null ? (
+      <div class="thumbnail">
+        {/* タイトルが直後にあるため装飾扱い */}
+        <img src={thumbnail} alt="" loading="lazy" decoding="async" />
+      </div>
+    ) : (
+      <div class="thumbnail-placeholder" aria-hidden="true">
+        <Image src={birdImage} alt="" />
+        <span class="text-xl font-bold text-greenlite mt-2 px-2">{title}</span>
+      </div>
+    )
+  }
+  <h2 class="card-title">
+    <a href={linkMapper(slug)} class="card-link">{title}</a>
+  </h2>
+  <div class="relative z-10 flex flex-wrap gap-2 mt-2">
+    <a
+      href={routes.article.category.page(category)}
+      class="text-sm uppercase no-underline hover:underline bg-maccha-dark text-greenlite px-2 py-1"
+      >{category}</a
+    >
     {
-      thumbnail != null ? (
-        <div class="thumbnail">
-          <img src={thumbnail} />
-        </div>
-      ) : (
-        <div class="thumbnail-placeholder">
-          <Image src={birdImage} alt="title logo" />
-          <span class="text-lg text-greenlite mt-2 px-2">{title}</span>
-        </div>
-      )
+      tags?.map((tag) => (
+        <a
+          href={routes.article.tag.page(tag)}
+          class="text-sm text-maccha-dark no-underline hover:underline border-maccha-dark border rounded-3xl px-2 py-1"
+        >
+          {tag}
+        </a>
+      ))
     }
-    <div class="mb-1 font-bold hover:text-maccha">{title}</div>
-    <div>
-      <a
-        href={routes.article.category.page(category)}
-        class="text-sm uppercase no-underline hover:underline bg-maccha text-greenlite px-2 py-1 mr-2"
-        >{category}</a
-      >
-      {
-        tags?.map((tag) => (
-          <a
-            href={routes.article.tag.page(tag)}
-            class="text-sm text-maccha no-underline hover:underline border-maccha border rounded-3xl px-2 py-1 mr-1"
-          >
-            {tag}
-          </a>
-        ))
-      }
-    </div>
-  </a>
+  </div>
 </li>
 
 <style>
@@ -72,7 +75,35 @@ const {
   }
 
   .thumbnail-placeholder img {
-    max-height: calc(100% - 5rem);
+    max-height: calc(100% - 6rem);
     width: auto;
+  }
+
+  .card-title {
+    @apply text-base font-bold my-1 leading-normal tracking-normal;
+    font-family: inherit;
+  }
+
+  .card-link {
+    @apply font-bold no-underline;
+  }
+
+  /* カード全体をクリック可能にする */
+  .card-link::after {
+    @apply absolute inset-0 rounded-lg;
+    content: '';
+  }
+
+  .card-link:focus-visible {
+    outline: none;
+  }
+
+  .card-link:focus-visible::after {
+    outline: 2px solid var(--color-maccha-dark);
+    outline-offset: 2px;
+  }
+
+  .card:hover .card-link {
+    @apply text-maccha-dark underline;
   }
 </style>

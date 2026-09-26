@@ -5,7 +5,7 @@
 
 ## 🔴 高：壊れている / 影響大
 
-- [ ] **記事カードのリンク入れ子を解消する**（`src/components/molecules/FullwidthCard.astro`）
+- [x] **記事カードのリンク入れ子を解消する**（`src/components/molecules/FullwidthCard.astro`）
   - カード全体の `<a>` 内にカテゴリ・タグの `<a>` があり不正 HTML。トップで無名の空リンクが 20 個生成され Tab フォーカスも止まる
   - リンク名が「日付 + title logo + タイトル×2」と冗長
   - 対応: タイトルのみを `<a>` にし `::after { position:absolute; inset:0 }` で全面クリック化、タグ類はリンク外へ
@@ -26,8 +26,8 @@
 
 ## 🟠 中：アクセシビリティ / SEO
 
-- [ ] サムネイル `<img>` に `alt`・`width`/`height`・`loading="lazy"` を付ける（`FullwidthCard.astro`）
-- [ ] プレースホルダーの鳥画像を `alt=""`（装飾扱い）にする（`FullwidthCard.astro`）
+- [x] サムネイル `<img>` に `alt`・`loading="lazy"` を付ける（高さ固定コンテナのため width/height は不要と判断）（`FullwidthCard.astro`）
+- [x] プレースホルダーの鳥画像を `alt=""`（装飾扱い）にする（`FullwidthCard.astro`）
 - [ ] 記事末尾の「←」リンクに `aria-label`（例: 記事一覧へ戻る）を付ける（`Main.astro`）
 - [ ] 「back to top」（→ `/`）と末尾「←」（→ `/article/`）の戻り先の不一致を整理する（`Main.astro`）
 - [ ] 埋め込み `iframe`（Apple Music 等）に `title` を付与する（remark 処理 or 記事側）
