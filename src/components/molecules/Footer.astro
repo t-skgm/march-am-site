@@ -9,7 +9,7 @@ const { isTop = false } = Astro.props
 ---
 
 <footer>
-  <section class="links">
+  <nav class="links" aria-label="サイトナビゲーション">
     <ul class:list={[{ 'gutter-top': isTop, gutter: !isTop }]}>
       <li>
         <a href={routes.index}>Top</a>
@@ -25,7 +25,7 @@ const { isTop = false } = Astro.props
         <a href={routes.about}>About</a>
       </li>
     </ul>
-  </section>
+  </nav>
 
   <ul class:list={['sns', { 'gutter-top': isTop, gutter: !isTop }]}>
     <li>
