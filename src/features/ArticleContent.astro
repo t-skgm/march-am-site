@@ -19,7 +19,9 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
 </header>
 
 <div class="mt-6 mb-2" data-pagefind-ignore>
-  <a href={routes.article.category.page(category)} class="uppercase no-underline hover:underline"
+  <a
+    href={routes.article.category.page(category)}
+    class="uppercase no-underline hover:underline inline-block py-1"
     >{category}</a
   > <span aria-hidden="true">|</span> <time datetime={postedAt.toISOString()}>{formatDateJp(postedAt)}</time>
 </div>
@@ -69,11 +71,11 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
   }
 
   .tag-list {
-    @apply flex gap-4 my-6;
+    @apply flex flex-wrap gap-4 my-6;
   }
 
   .tag {
-    @apply no-underline hover:underline flex items-center;
+    @apply no-underline hover:underline flex items-center min-h-6 min-w-6;
 
     &::before {
       @apply h-4 w-4 inline-block mr-2;

@@ -35,7 +35,7 @@
 - [x] スキップリンクを追加し、フッターの主要導線を `<nav>` にする（`Layout.astro` / `Footer.astro`）
 - [x] 装飾記号（「→」「&gt; View all articles」）を読み上げ対象から外す（`aria-hidden` or CSS）
 - [x] 記事の日付を `<time datetime>` にする（`src/features/ArticleContent.astro`）
-- [ ] スマホのタップ領域を 24px 以上にする（Category / Tag / back to top 等）
+- [x] スマホのタップ領域を 24px 以上にする（Category / Tag / back to top 等）
 
 ## 🟡 デザイン
 
@@ -53,7 +53,7 @@
 - [ ] タグ一覧に記事数を表示する、`☆6` 等のタグの意味を補足する
 - [ ] タグ URL を `encodeURIComponent` する（`/article/tag/BURGER NUDS/1/` にスペースが生で入る）
 - [ ] `ArticleList.astro` の `fullwidth != null` を `fullwidth ?` に修正する
-- [ ] 記事ページのタグ一覧に `flex-wrap` を付ける（`ArticleContent.astro`）
+- [x] 記事ページのタグ一覧に `flex-wrap` を付ける（`ArticleContent.astro`）
 - [ ] CLAUDE.md のカテゴリ記述を更新する（`Diary | Review` → `Column` を追加）
 - [ ] Twitter → X の名称・アイコン更新を検討する
 - [x] `.playwright-mcp/` を `.gitignore` に追加する
