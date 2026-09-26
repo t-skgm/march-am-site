@@ -16,8 +16,10 @@ export const fetchArticleBySlug = async (args: { slug: string }) => {
 }
 
 export const mapArticleEntry = async ({
-  fields
-}: Pick<ArticleEntry, 'fields'>): Promise<Article> => ({
+  fields,
+  sys
+}: Pick<ArticleEntry, 'fields' | 'sys'>): Promise<Article> => ({
+  id: sys.id,
   title: fields.title,
   slug: fields.slug,
   category: fields.category,

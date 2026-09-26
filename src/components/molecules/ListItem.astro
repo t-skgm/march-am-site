@@ -1,13 +1,15 @@
 ---
 import { formatDateJp } from '../../utils/date'
+import AdminEditLink from './AdminEditLink.astro'
 
 export interface Props {
   title: string
   href: string
   date: Date
+  entryId?: string
 }
 
-const { href, title, date } = Astro.props
+const { href, title, date, entryId } = Astro.props
 ---
 
 <li class="py-2 list-none">
@@ -17,4 +19,5 @@ const { href, title, date } = Astro.props
       posted at <time>{formatDateJp(date)}</time>
     </div>
   </a>
+  {entryId != null && <AdminEditLink entryId={entryId} />}
 </li>

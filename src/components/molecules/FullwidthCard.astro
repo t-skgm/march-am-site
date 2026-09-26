@@ -4,6 +4,7 @@ import type { Article } from '../../infra/contentful/interfaces'
 import { formatDateJp } from '../../utils/date'
 import birdImage from '../../assets/images/bird-silhouette-left.png'
 import { Image } from 'astro:assets'
+import AdminEditLink from './AdminEditLink.astro'
 
 export interface Props {
   entry: Article
@@ -11,7 +12,7 @@ export interface Props {
 }
 
 const {
-  entry: { slug, title, postedAt, thumbnail, category, tags },
+  entry: { id, slug, title, postedAt, thumbnail, category, tags },
   linkMapper
 } = Astro.props
 ---
@@ -51,6 +52,7 @@ const {
         </a>
       ))
     }
+    <AdminEditLink entryId={id} />
   </div>
 </li>
 

@@ -5,6 +5,8 @@ export type ArticleEntry = TypeArticle<'WITHOUT_UNRESOLVABLE_LINKS'>
 export type ArticleSkeleton = TypeArticleSkeleton
 
 export type Article = {
+  /** Contentful entry の sys.id */
+  id: string
   title: string
   slug: string
   category: 'Diary' | 'Review' | 'Column'
