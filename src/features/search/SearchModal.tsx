@@ -25,19 +25,19 @@ export const SearchModal: FunctionComponent = () => {
   const [query, setQuery] = useState('')
   const modalRef = useRef<HTMLDivElement>(null)
 
-  const pagefind = usePagefind()
+  const { load, search, clearResults, loading, results } = usePagefind()
   const debouncedQuery = useDebouncedValue(query, 200)
 
   const open = useCallback(() => {
     setIsOpen(true)
-    pagefind.load()
-  }, [pagefind.load])
+    void load()
+  }, [load])
 
   const close = useCallback(() => {
     setIsOpen(false)
     setQuery('')
-    pagefind.clearResults()
-  }, [pagefind.clearResults])
+    clearResults()
+  }, [clearResults])
 
   // キーボードショートカット: Cmd/Ctrl + K でトグル
   useKeyboardShortcut(
@@ -51,8 +51,8 @@ export const SearchModal: FunctionComponent = () => {
 
   // デバウンスされたクエリで検索実行
   useEffect(() => {
-    pagefind.search(debouncedQuery)
-  }, [debouncedQuery, pagefind.search])
+    void search(debouncedQuery)
+  }, [debouncedQuery, search])
 
   const handleBackdropClick = useCallback(
     (e: MouseEvent) => {
@@ -76,9 +76,11 @@ export const SearchModal: FunctionComponent = () => {
       </button>
 
       {isOpen && (
+        // 背景クリックで閉じる。キーボード操作は Escape ショートカットで代替している
         <div
           class="fixed inset-0 z-50 flex items-start justify-center bg-black/50 pt-[10vh]"
           onClick={handleBackdropClick}
+          role="presentation"
         >
           <div
             class="bg-white rounded-lg shadow-2xl w-full max-w-xl mx-4 overflow-hidden max-h-[70vh]"
@@ -94,6 +96,7 @@ export const SearchModal: FunctionComponent = () => {
                 onInput={(e) => setQuery((e.target as HTMLInputElement).value)}
                 placeholder="記事を検索..."
                 class="flex-1 text-base outline-none bg-transparent border-none text-greenish placeholder:text-slate-400"
+                // oxlint-disable-next-line jsx-a11y/no-autofocus -- ユーザー操作で開いたモーダルの入力欄なのでフォーカスを移す
                 autoFocus
               />
               <kbd class="px-2 py-1 text-xs rounded bg-slate-100 text-slate-500 font-mono shrink-0">
@@ -102,7 +105,7 @@ export const SearchModal: FunctionComponent = () => {
             </div>
 
             <div class="overflow-y-auto p-2 max-h-[calc(70vh-60px)]">
-              <SearchResults loading={pagefind.loading} query={query} results={pagefind.results} />
+              <SearchResults loading={loading} query={query} results={results} />
             </div>
           </div>
         </div>

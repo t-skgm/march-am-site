@@ -61,7 +61,7 @@ describe('processMarkdown()', () => {
     const result = await processMarkdown(`# Title
 <p>paragraph with tag.</p>`)
 
-    expect(String(result)).toMatchInlineSnapshot(`
+    expect(result).toMatchInlineSnapshot(`
       "<h1 id="title">Title</h1>
       <p>paragraph with tag.</p>"
     `)
@@ -71,7 +71,7 @@ describe('processMarkdown()', () => {
     const result = await processMarkdown(`# Title
 paragraph with <script /> tag.`)
 
-    expect(String(result)).toMatchInlineSnapshot(`
+    expect(result).toMatchInlineSnapshot(`
       "<h1 id="title">Title</h1>
       <p>paragraph with <script /> tag.</p>"
     `)

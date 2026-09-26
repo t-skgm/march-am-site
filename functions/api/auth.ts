@@ -1,6 +1,6 @@
 import type { PagesFunction, Env } from './types'
 
-export const onRequest: PagesFunction<Env> = async (context) => {
+export const onRequest: PagesFunction<Env> = (context) => {
   const {
     request, // same as existing Worker API
     env // same as existing Worker API

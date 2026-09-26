@@ -5,8 +5,7 @@ import { fileURLToPath } from 'url'
 import frontmatter from 'front-matter'
 import contentfulManagement from 'contentful-management'
 
-const filename = fileURLToPath(import.meta.url)
-const currentDir = dirname(filename)
+const currentDir = dirname(fileURLToPath(import.meta.url))
 
 export interface Article {
   category: 'Review' | 'Diary'
@@ -20,14 +19,13 @@ export interface Article {
 const main = async () => {
   const filenames = await readdir(resolve(currentDir, './articles/'))
 
+  // oxlint-disable-next-line typescript/no-deprecated -- legacyを治すの面倒なので
   const contentfulClient = contentfulManagement.createClient({
     accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN!
   }, { type: 'legacy' })
 
   const space = await contentfulClient.getSpace(process.env.PUBLIC_CONTENTFUL_SPACE_ID!)
   const environment = await space.getEnvironment(process.env.PUBLIC_CONTENTFUL_ENVIRONMENT!)
-  // const e = await environment.getEntry('5wkYpFhJ0bfqvXBMT2OMZY')
-  // console.dir(e, { depth: 5 })
 
   for (const [idx, filename] of filenames.entries()) {
     if (idx % 10 === 1) console.log('idx:', idx)

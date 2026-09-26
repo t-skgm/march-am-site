@@ -9,7 +9,4 @@ const vitestConfig: ViteUserConfig = {
   }
 }
 
-export default getViteConfig(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- astroのvite依存が古いため
-  vitestConfig as any
-)
+export default getViteConfig(vitestConfig)
