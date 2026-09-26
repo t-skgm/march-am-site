@@ -179,9 +179,9 @@ const socialImageURL: string = (() => {
           margin: 0 50px 0 40px;
         }
 
-        .content-top::after {
-          bottom: 20px;
-          left: 7px;
+        /* スマホ幅では本文末尾（Main.astro の main::after）の鳥と重複するため非表示 */
+        .content::after {
+          display: none;
         }
       }
 
