@@ -56,4 +56,4 @@
 - [ ] 記事ページのタグ一覧に `flex-wrap` を付ける（`ArticleContent.astro`）
 - [ ] CLAUDE.md のカテゴリ記述を更新する（`Diary | Review` → `Column` を追加）
 - [ ] Twitter → X の名称・アイコン更新を検討する
-- [ ] `.playwright-mcp/` を `.gitignore` に追加する
+- [x] `.playwright-mcp/` を `.gitignore` に追加する
