@@ -12,7 +12,7 @@
 - [x] **ロゴ（トップへのリンク）をクリック可能にする**（`src/components/molecules/Logo.astro`）
   - `z-index: -1` で body の背面に潜り、PC でクリック不可（`elementFromPoint` が BODY）
   - スマホでは半透明の本文背景の裏に透けて「back to top」と重なる
-- [ ] **検索モーダルのアクセシビリティ対応**（`src/features/search/SearchModal.tsx`）
+- [x] **検索モーダルのアクセシビリティ対応**（`src/features/search/SearchModal.tsx`）
   - `role="dialog"` / `aria-modal` / ラベルがない → `<dialog>` + `showModal()` への置き換えを検討
   - フォーカストラップがなく Tab で背面へ抜ける
   - 閉じた後に起動ボタンへフォーカスが戻らない
