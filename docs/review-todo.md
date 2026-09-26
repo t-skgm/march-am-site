@@ -30,7 +30,7 @@
 - [x] プレースホルダーの鳥画像を `alt=""`（装飾扱い）にする（`FullwidthCard.astro`）
 - [x] 記事末尾の「←」リンクに `aria-label`（例: 記事一覧へ戻る）を付ける（`Main.astro`）
 - [x] 「back to top」（→ `/`）と末尾「←」（→ `/article/`）の戻り先の不一致を整理する（`Main.astro`）
-- [ ] 埋め込み `iframe`（Apple Music 等）に `title` を付与する（remark 処理 or 記事側）
+- [x] 埋め込み `iframe`（Apple Music 等）に `title` を付与する（remark 処理 or 記事側）
 - [x] 記事ごとの meta description を設定する（現状全ページ "the site of march-am"）
 - [x] スキップリンクを追加し、フッターの主要導線を `<nav>` にする（`Layout.astro` / `Footer.astro`）
 - [x] 装飾記号（「→」「&gt; View all articles」）を読み上げ対象から外す（`aria-hidden` or CSS）

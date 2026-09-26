@@ -3,6 +3,7 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import remarkToc from 'remark-toc'
 import remarkLinkCard from './remark-link-card-plus'
+import { rehypeIframeTitle } from './rehype-iframe-title'
 import rehypeSlug from 'rehype-slug'
 import rehypeStringify from 'rehype-stringify'
 import remarkGfm, { type Options as OptionsGfm } from 'remark-gfm'
@@ -18,6 +19,8 @@ export const remark = unified()
   .use(remarkRehype, { allowDangerousHtml: true } satisfies OptionsToHast)
   // 見出しに ID を自動付与する
   .use(rehypeSlug)
+  // 埋め込み iframe に title / loading 属性を付与する（アクセシビリティ対応）
+  .use(rehypeIframeTitle)
   .use(rehypeStringify, { allowDangerousHtml: true } satisfies OptionsToHtml)
 
 export const processMarkdown = async (mdStr: string): Promise<string> =>

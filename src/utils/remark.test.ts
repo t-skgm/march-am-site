@@ -76,4 +76,24 @@ paragraph with <script /> tag.`)
       <p>paragraph with <script /> tag.</p>"
     `)
   })
+
+  test('埋め込み iframe に title と loading を付与する', async () => {
+    const result = await processMarkdown(
+      '<iframe src="https://embed.music.apple.com/jp/album/xxx" width="100%" height="150" frameborder="0"></iframe>'
+    )
+
+    expect(result).toMatchInlineSnapshot(
+      `"<iframe title="Apple Music の埋め込みプレイヤー" loading="lazy" src="https://embed.music.apple.com/jp/album/xxx" width="100%" height="150" frameborder="0"></iframe>"`
+    )
+  })
+
+  test('既に title がある iframe は上書きしない', async () => {
+    const result = await processMarkdown(
+      '<iframe title="カスタム" src="https://www.youtube.com/embed/xxx"></iframe>'
+    )
+
+    expect(result).toMatchInlineSnapshot(
+      `"<iframe loading="lazy" title="カスタム" src="https://www.youtube.com/embed/xxx"></iframe>"`
+    )
+  })
 })
