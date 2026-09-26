@@ -3,10 +3,16 @@ import Layout from '../../../layouts/Layout.astro'
 import Main from '../../../components/molecules/Main.astro'
 import { routes } from '../../../constants/routes'
 import { cleanPathParam } from '../../../utils/cleanPathParam'
-import { fetchArticleCategories } from '../../../infra/contentful/article'
+import { normalizeTag } from '../../../infra/contentful/common'
+import { fetchArticleCategories, fetchArticleEntries } from '../../../infra/contentful/article'
 import '../../../styles/global.css'
 
-const categories = await fetchArticleCategories()
+const [categories, entries] = await Promise.all([fetchArticleCategories(), fetchArticleEntries()])
+
+const categoryCounts = categories.map((category) => ({
+  category,
+  count: entries.filter((e) => normalizeTag(e.category) === category).length
+}))
 
 const title = 'Category: All'
 ---
@@ -16,9 +22,11 @@ const title = 'Category: All'
     <h1>{title}</h1>
     <ul>
       {
-        categories.map((category) => (
+        categoryCounts.map(({ category, count }) => (
           <li>
-            <a href={routes.article.category.page(cleanPathParam(category), 1)}>{category}</a>
+            <a href={routes.article.category.page(cleanPathParam(category), 1)}>
+              {category} <span class="text-sm text-maccha-dark">({count})</span>
+            </a>
           </li>
         ))
       }

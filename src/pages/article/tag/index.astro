@@ -3,10 +3,16 @@ import Layout from '../../../layouts/Layout.astro'
 import Main from '../../../components/molecules/Main.astro'
 import { routes } from '../../../constants/routes'
 import { cleanPathParam } from '../../../utils/cleanPathParam'
-import { fetchArticleTags } from '../../../infra/contentful/article'
+import { normalizeTag } from '../../../infra/contentful/common'
+import { fetchArticleEntries, fetchArticleTags } from '../../../infra/contentful/article'
 import '../../../styles/global.css'
 
-const allTags = await fetchArticleTags()
+const [allTags, entries] = await Promise.all([fetchArticleTags(), fetchArticleEntries()])
+
+const tagCounts = allTags.map((tag) => ({
+  tag,
+  count: entries.filter((e) => (e.tags ?? []).map(normalizeTag).includes(tag)).length
+}))
 
 const title = 'Tag: All'
 ---
@@ -16,9 +22,11 @@ const title = 'Tag: All'
     <h1>{title}</h1>
     <ul>
       {
-        allTags.map((tag) => (
+        tagCounts.map(({ tag, count }) => (
           <li>
-            <a href={routes.article.tag.page(cleanPathParam(tag), 1)}>{tag}</a>
+            <a href={routes.article.tag.page(cleanPathParam(tag), 1)}>
+              {tag} <span class="text-sm text-maccha-dark">({count})</span>
+            </a>
           </li>
         ))
       }
