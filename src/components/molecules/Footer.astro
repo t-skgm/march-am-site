@@ -30,10 +30,10 @@ const { isTop = false } = Astro.props
   <ul class:list={['sns', { 'gutter-top': isTop, gutter: !isTop }]}>
     <li>
       <a
-        class="sns-icon sns-tw"
-        href={`https://twitter.com/${site.author.twitter}`}
+        class="sns-icon sns-x"
+        href={`https://x.com/${site.author.twitter}`}
         target="_blank"
-        rel="noopener">Twitter: @march_am_</a
+        rel="noopener">X: @march_am_</a
       >
     </li>
     <li>
@@ -144,8 +144,8 @@ const { isTop = false } = Astro.props
     height: 2.5rem;
   }
 
-  .sns-tw {
-    background: 0 / 2.5rem url(../../assets/images/icons/logo_tw.svg);
+  .sns-x {
+    background: 0 / 2.5rem url(../../assets/images/icons/logo_x.svg);
   }
 
   .sns-apple {
