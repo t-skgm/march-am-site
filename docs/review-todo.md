@@ -51,7 +51,7 @@
 - [ ] 「Best Shoegazing Discs」の重複記事（別 slug で 2 件）を整理する（Contentful）
 - [ ] タグ表記ゆれを整理する（Apple Music / AppleMusic、scrap / Scrap、martin newell / Martin Newell）（Contentful）
 - [ ] タグ一覧に記事数を表示する、`☆6` 等のタグの意味を補足する
-- [ ] タグ URL を `encodeURIComponent` する（`/article/tag/BURGER NUDS/1/` にスペースが生で入る）
+- [x] タグ URL を `encodeURIComponent` する（`/article/tag/BURGER NUDS/1/` にスペースが生で入る）
 - [x] `ArticleList.astro` の `fullwidth != null` を `fullwidth ?` に修正する
 - [x] 記事ページのタグ一覧に `flex-wrap` を付ける（`ArticleContent.astro`）
 - [ ] CLAUDE.md のカテゴリ記述を更新する（`Diary | Review` → `Column` を追加）
