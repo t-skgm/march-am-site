@@ -144,8 +144,10 @@ const { isTop = false } = Astro.props
     height: 2.5rem;
   }
 
+  /* 公式ロゴは白塗りのため、形だけマスクに使い他アイコンと同じ色で塗る */
   .sns-x {
-    background: 0 / 2.5rem url(../../assets/images/icons/logo_x.svg);
+    background-color: #4a4740;
+    mask: url(../../assets/images/icons/logo.svg) center / 1.75rem no-repeat;
   }
 
   .sns-apple {
