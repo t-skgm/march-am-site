@@ -57,4 +57,4 @@
 - [ ] CLAUDE.md のカテゴリ記述を更新する（`Diary | Review` → `Column` を追加）
 - [ ] Twitter → X の名称・アイコン更新を検討する
 - [x] `.playwright-mcp/` を `.gitignore` に追加する
-- [ ] 未使用の `src/components/molecules/Card.astro` を削除する
+- [x] 未使用の `src/components/molecules/Card.astro` を削除する
