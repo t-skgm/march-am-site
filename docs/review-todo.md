@@ -9,7 +9,7 @@
   - カード全体の `<a>` 内にカテゴリ・タグの `<a>` があり不正 HTML。トップで無名の空リンクが 20 個生成され Tab フォーカスも止まる
   - リンク名が「日付 + title logo + タイトル×2」と冗長
   - 対応: タイトルのみを `<a>` にし `::after { position:absolute; inset:0 }` で全面クリック化、タグ類はリンク外へ
-- [ ] **ロゴ（トップへのリンク）をクリック可能にする**（`src/components/molecules/Logo.astro`）
+- [x] **ロゴ（トップへのリンク）をクリック可能にする**（`src/components/molecules/Logo.astro`）
   - `z-index: -1` で body の背面に潜り、PC でクリック不可（`elementFromPoint` が BODY）
   - スマホでは半透明の本文背景の裏に透けて「back to top」と重なる
 - [ ] **検索モーダルのアクセシビリティ対応**（`src/features/search/SearchModal.tsx`）
