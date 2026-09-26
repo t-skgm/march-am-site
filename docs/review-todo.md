@@ -33,7 +33,7 @@
 - [ ] 埋め込み `iframe`（Apple Music 等）に `title` を付与する（remark 処理 or 記事側）
 - [x] 記事ごとの meta description を設定する（現状全ページ "the site of march-am"）
 - [x] スキップリンクを追加し、フッターの主要導線を `<nav>` にする（`Layout.astro` / `Footer.astro`）
-- [ ] 装飾記号（「→」「&gt; View all articles」）を読み上げ対象から外す（`aria-hidden` or CSS）
+- [x] 装飾記号（「→」「&gt; View all articles」）を読み上げ対象から外す（`aria-hidden` or CSS）
 - [x] 記事の日付を `<time datetime>` にする（`src/features/ArticleContent.astro`）
 - [ ] スマホのタップ領域を 24px 以上にする（Category / Tag / back to top 等）
 
@@ -57,3 +57,4 @@
 - [ ] CLAUDE.md のカテゴリ記述を更新する（`Diary | Review` → `Column` を追加）
 - [ ] Twitter → X の名称・アイコン更新を検討する
 - [x] `.playwright-mcp/` を `.gitignore` に追加する
+- [ ] 未使用の `src/components/molecules/Card.astro` を削除する

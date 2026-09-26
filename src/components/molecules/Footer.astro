@@ -17,8 +17,8 @@ const { isTop = false } = Astro.props
       <li>
         <a href={routes.article.index}>Article</a>
         <ul>
-          <li>→ <a href={routes.article.category.index}>Category</a></li>
-          <li>→ <a href={routes.article.tag.index}>Tag</a></li>
+          <li><span aria-hidden="true">→</span> <a href={routes.article.category.index}>Category</a></li>
+          <li><span aria-hidden="true">→</span> <a href={routes.article.tag.index}>Tag</a></li>
         </ul>
       </li>
       <li>
