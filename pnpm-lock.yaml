@@ -293,6 +293,9 @@ importers:
       oxlint:
         specifier: ^1.83.0
         version: 1.83.0(oxlint-tsgolint@7.0.2002)
+      oxlint-tsgolint:
+        specifier: ^7.0.2002
+        version: 7.0.2002
       pagefind:
         specifier: ^1.5.2
         version: 1.5.2
@@ -7077,7 +7080,6 @@ snapshots:
       '@oxlint-tsgolint/linux-x64': 7.0.2002
       '@oxlint-tsgolint/win32-arm64': 7.0.2002
       '@oxlint-tsgolint/win32-x64': 7.0.2002
-    optional: true
 
   oxlint@1.83.0(oxlint-tsgolint@7.0.2002):
     optionalDependencies:

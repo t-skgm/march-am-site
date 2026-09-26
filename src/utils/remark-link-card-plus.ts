@@ -88,7 +88,7 @@ const remarkLinkCard: Plugin<[Options], Root> = (userOptions: Options) => async 
       const hasOneChildText = linkNode.children.length === 1 && firstChild?.type === 'text'
       if (!hasOneChildText) return
 
-      const childText = firstChild as Text
+      const childText = firstChild
       if (!isSameUrlValue(linkNode.url, childText.value)) {
         unmatchedLink = linkNode
         return
@@ -126,7 +126,7 @@ const remarkLinkCard: Plugin<[Options], Root> = (userOptions: Options) => async 
   try {
     await Promise.all(transformers.map((t) => t()))
   } catch (error) {
-    console.error(`[remark-link-card-plus] Error: ${error}`)
+    console.error(`[remark-link-card-plus] Error: ${String(error)}`)
   }
 
   return tree
@@ -278,7 +278,7 @@ const getOpenGraph = async (targetUrl: URL): Promise<OgResult | undefined> => {
     return parseOgTags(html)
   } catch (error) {
     console.error(
-      `[remark-link-card-plus] Error: Failed to get the Open Graph data of ${targetUrl} due to ${error}.`
+      `[remark-link-card-plus] Error: Failed to get the Open Graph data of ${targetUrl} due to ${String(error)}.`
     )
     return undefined
   }
@@ -322,7 +322,7 @@ const getLinkCardData = async (url: URL, options: Options) => {
   try {
     displayUrl = decodeURI(displayUrl)
   } catch (error) {
-    console.error(`[remark-link-card-plus] Error: Cannot decode url: "${url}"\n ${error}`)
+    console.error(`[remark-link-card-plus] Error: Cannot decode url: "${url}"\n ${String(error)}`)
   }
 
   return {
@@ -344,7 +344,7 @@ const getFaviconUrl = async (url: URL, ogFavicon: string | undefined, options: O
       faviconUrl = new URL(faviconUrl, url.origin).toString()
     } catch (error) {
       console.error(
-        `[remark-link-card-plus] Error: Failed to resolve favicon URL ${faviconUrl} relative to ${url}\n${error}`
+        `[remark-link-card-plus] Error: Failed to resolve favicon URL ${faviconUrl} relative to ${url}\n${String(error)}`
       )
       faviconUrl = undefined
     }

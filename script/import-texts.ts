@@ -5,8 +5,7 @@ import { fileURLToPath } from 'url'
 import frontmatter from 'front-matter'
 import contentfulManagement from 'contentful-management'
 
-const filename = fileURLToPath(import.meta.url)
-const currentDir = dirname(filename)
+const currentDir = dirname(fileURLToPath(import.meta.url))
 
 export interface Article {
   category: 'Review' | 'Diary'

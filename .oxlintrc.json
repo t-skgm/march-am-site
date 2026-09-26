@@ -1,11 +1,31 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["typescript", "import"],
+  "plugins": ["typescript", "import", "unicorn", "oxc", "promise", "react", "jsx-a11y", "vitest"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "error"
+  },
+  "options": {
+    "typeAware": true
+  },
   "env": {
     "builtin": true
   },
+  "settings": {
+    "react": {
+      "version": "19"
+    }
+  },
   "ignorePatterns": ["src/infra/contentful/generated.d.ts"],
   "rules": {
+    "eqeqeq": [
+      "error",
+      "always",
+      {
+        "null": "ignore"
+      }
+    ],
     "no-array-constructor": "error",
     "no-unused-expressions": "error",
     "no-unused-vars": "error",
@@ -30,7 +50,11 @@
     "typescript/no-wrapper-object-types": "error",
     "typescript/prefer-as-const": "error",
     "typescript/prefer-namespace-keyword": "error",
-    "typescript/triple-slash-reference": "off"
+    "typescript/triple-slash-reference": "off",
+    "typescript/no-unsafe-type-assertion": "off",
+    "import/no-unassigned-import": "off",
+    "react/react-in-jsx-scope": "off",
+    "unicorn/consistent-function-scoping": "off"
   },
   "overrides": [
     {
@@ -41,6 +65,14 @@
       "env": {
         "astro": true,
         "node": true
+      }
+    },
+    {
+      "files": ["script/**"],
+      "rules": {
+        "no-await-in-loop": "off",
+        "import/default": "off",
+        "import/no-named-as-default-member": "off"
       }
     }
   ]

@@ -67,7 +67,7 @@ export const mapArticleEntry = async ({
   tags: fields.tags,
   thumbnail: fields.thumbnail?.fields.file?.url,
   ogpImageUrl: fields.ogpImageUrl,
-  content: String(await processMarkdown(fields.body))
+  content: await processMarkdown(fields.body)
 })
 
 export const fetchArticleEntries = async (args: SearchParams = {}): Promise<Article[]> => {
@@ -78,7 +78,7 @@ export const fetchArticleEntries = async (args: SearchParams = {}): Promise<Arti
 
 export const fetchArticlesFirstPage = async (pageSize: number = 20) => {
   const entries = await fetchArticleEntries({ limit: pageSize })
-  return await calcFirstPage({ entries, pageSize })
+  return calcFirstPage({ entries, pageSize })
 }
 
 // -----------

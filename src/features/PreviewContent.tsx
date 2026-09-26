@@ -11,7 +11,7 @@ export const PreviewContent: FunctionComponent = () => {
   const [error, setError] = useState<Error | undefined>()
 
   useEffect(() => {
-    ;(async () => {
+    void (async () => {
       try {
         setLoading(true)
         setError(undefined)
@@ -19,8 +19,7 @@ export const PreviewContent: FunctionComponent = () => {
         const search = new URLSearchParams(window.location.search)
         const slugParam = search.get('slug')
         if (slugParam != null) {
-          const entry = await fetchArticleEntry({ slug: slugParam })
-          setEntry(entry)
+          setEntry(await fetchArticleEntry({ slug: slugParam }))
         }
         setLoading(false)
       } catch (e) {
@@ -59,7 +58,9 @@ const PreviewArticleContent: FunctionComponent<{ entry: Article }> = ({
       <div>
         tags:
         {tags.map((tag) => (
-          <a href={routes.article.tag.page(tag)}>{tag}</a>
+          <a key={tag} href={routes.article.tag.page(tag)}>
+            {tag}
+          </a>
         ))}
       </div>
     )}
