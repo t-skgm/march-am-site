@@ -30,6 +30,7 @@
     "no-unused-expressions": "error",
     "no-unused-vars": "error",
     "no-var": "error",
+    "no-duplicate-imports": ["error", { "allowSeparateTypeImports": true }],
     "prefer-const": "error",
     "prefer-rest-params": "error",
     "prefer-spread": "error",
@@ -52,6 +53,7 @@
     "typescript/prefer-namespace-keyword": "error",
     "typescript/triple-slash-reference": "off",
     "typescript/no-unsafe-type-assertion": "off",
+    "typescript/no-deprecated": "warn",
     "import/no-unassigned-import": "off",
     "react/react-in-jsx-scope": "off",
     "unicorn/consistent-function-scoping": "off"

@@ -22,7 +22,7 @@ export default defineConfig({
     ssr: { noExternal: ['path-to-regexp'] },
     plugins: [tailwindcss()],
     build: {
-      rollupOptions: {
+      rolldownOptions: {
         external: ['/pagefind/pagefind.js']
       }
     }
