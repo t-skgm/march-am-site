@@ -54,7 +54,7 @@
 - [x] タグ URL を `encodeURIComponent` する（`/article/tag/BURGER NUDS/1/` にスペースが生で入る）
 - [x] `ArticleList.astro` の `fullwidth != null` を `fullwidth ?` に修正する
 - [x] 記事ページのタグ一覧に `flex-wrap` を付ける（`ArticleContent.astro`）
-- [ ] CLAUDE.md のカテゴリ記述を更新する（`Diary | Review` → `Column` を追加）
+- [x] CLAUDE.md のカテゴリ記述を更新する（`Diary | Review` → `Column` を追加）
 - [ ] Twitter → X の名称・アイコン更新を検討する
 - [x] `.playwright-mcp/` を `.gitignore` に追加する
 - [x] 未使用の `src/components/molecules/Card.astro` を削除する

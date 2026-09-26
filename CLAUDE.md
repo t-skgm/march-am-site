@@ -95,7 +95,7 @@ Contentfulで単一のコンテンツタイプを管理:
 **`article`** (記事):
 - `title`: 記事タイトル
 - `slug`: URL用スラッグ
-- `category`: `Diary` | `Review`
+- `category`: `Diary` | `Review` | `Column`
 - `postedAt`: 投稿日時
 - `tags`: タグ配列
 - `thumbnail`: サムネイル画像
