@@ -13,7 +13,7 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
 
 <header data-pagefind-ignore>
   {thumbnail != null && <img src={thumbnail} alt={`Eye catch of ${title}`} class="mb-8" />}
-  <h1 class="text-3xl font-bold break-all" data-pagefind-meta="title">
+  <h1 class="text-3xl font-bold wrap-anywhere text-balance [word-break:auto-phrase]" data-pagefind-meta="title">
     <a href={routes.article.slug(slug)}>{title}</a>
   </h1>
 </header>

@@ -39,7 +39,7 @@
 
 ## 🟡 デザイン
 
-- [ ] 記事タイトルの `break-all` をやめる（「Emo/P｜ost-Hardcore」と単語途中で折れる）→ `overflow-wrap: anywhere` + `text-wrap: balance`（`ArticleContent.astro`）
+- [x] 記事タイトルの `break-all` をやめる（「Emo/P｜ost-Hardcore」と単語途中で折れる）→ `overflow-wrap: anywhere` + `text-wrap: balance`（`ArticleContent.astro`）
 - [ ] Lora のイタリック / 600 を読み込み、合成（faux）イタリック・ボールドを解消する（`Layout.astro`）
 - [ ] PC 幅で右側に約 180px の白帯が出る問題を解消する（本文右マージン 250px と背景画像幅の不一致）
 - [ ] プレースホルダーサムネイルとその下でタイトルが二重表示されるのを整理する。スマホで長いタイトルが下端ギリギリ
