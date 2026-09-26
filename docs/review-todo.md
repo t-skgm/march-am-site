@@ -34,7 +34,7 @@
 - [ ] 記事ごとの meta description を設定する（現状全ページ "the site of march-am"）
 - [ ] スキップリンクを追加し、フッターの主要導線を `<nav>` にする（`Layout.astro` / `Footer.astro`）
 - [ ] 装飾記号（「→」「&gt; View all articles」）を読み上げ対象から外す（`aria-hidden` or CSS）
-- [ ] 記事の日付を `<time datetime>` にする（`src/features/ArticleContent.astro`）
+- [x] 記事の日付を `<time datetime>` にする（`src/features/ArticleContent.astro`）
 - [ ] スマホのタップ領域を 24px 以上にする（Category / Tag / back to top 等）
 
 ## 🟡 デザイン

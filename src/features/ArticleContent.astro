@@ -21,7 +21,7 @@ const { title, postedAt, category, tags, thumbnail, slug, content } = entry
 <div class="mt-6 mb-2" data-pagefind-ignore>
   <a href={routes.article.category.page(category)} class="uppercase no-underline hover:underline"
     >{category}</a
-  > | {formatDateJp(postedAt)}
+  > <span aria-hidden="true">|</span> <time datetime={postedAt.toISOString()}>{formatDateJp(postedAt)}</time>
 </div>
 {
   tags != null && (
