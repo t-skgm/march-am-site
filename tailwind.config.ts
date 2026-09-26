@@ -10,6 +10,7 @@ export default {
           dark: '#37342f'
         },
         maccha: '#769171',
+        'maccha-dark': '#56704f',
         greenlite: '#F7F8F7'
       }
     }

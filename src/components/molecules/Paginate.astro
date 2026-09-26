@@ -20,7 +20,7 @@ const showLastEllipsis = currentPage !== lastPage && currentPage !== lastPage - 
 const showLast = currentPage < lastPage - 1
 ---
 
-<nav>
+<nav aria-label="ページネーション">
   {
     showFirst && (
       <a href={urlWithPage(1)} class="circle">
@@ -28,7 +28,9 @@ const showLast = currentPage < lastPage - 1
       </a>
     )
   }
-  {showFirstEllipsis && <div class="ellipsis-line">―</div>}
+  {showFirstEllipsis && (
+    <div class="ellipsis-line" aria-hidden="true">―</div>
+  )}
   {
     // prettier-ignore
     prevPageNum != null
@@ -39,7 +41,7 @@ const showLast = currentPage < lastPage - 1
         )
       : null
   }
-  <div class="current circle">{currentPage}</div>
+  <div class="current circle" aria-current="page">{currentPage}</div>
   {
     // prettier-ignore
     nextPageNum != null
@@ -50,7 +52,9 @@ const showLast = currentPage < lastPage - 1
         )
       : null
   }
-  {showLastEllipsis && <div class="ellipsis-line">―</div>}
+  {showLastEllipsis && (
+    <div class="ellipsis-line" aria-hidden="true">―</div>
+  )}
   {
     showLast && (
       <a href={urlWithPage(lastPage)} class="circle">
@@ -71,17 +75,17 @@ const showLast = currentPage < lastPage - 1
 
   .circle {
     @apply box-content inline-block border no-underline
-      text-maccha hover:text-white border-maccha hover:bg-maccha
+      text-maccha-dark hover:text-white border-maccha-dark hover:bg-maccha-dark
       text-center w-12 h-12;
     line-height: 3rem;
     border-radius: 2.6rem;
   }
 
   .current {
-    @apply bg-maccha text-white;
+    @apply bg-maccha-dark text-white;
   }
 
   .ellipsis-line {
-    @apply text-maccha;
+    @apply text-maccha-dark;
   }
 </style>
