@@ -215,7 +215,7 @@ src/features/search/
 
 PRおよびプッシュ時に以下のチェックが自動実行される（`.github/workflows/check.yml`）:
 
-1. `pnpm lint` - ESLintによるコード品質チェック
+1. `pnpm lint` - oxlintによるコード品質チェック
 2. `pnpm typecheck` - TypeScript型チェック
 3. `pnpm test` - Vitestによるユニットテスト
 

@@ -45,7 +45,7 @@ cp .env.example .env
 |---------|------|
 | `pnpm dev` | 開発サーバー起動（Astro + Pagefind） |
 | `pnpm build` | プロダクションビルド（検索インデックス生成含む） |
-| `pnpm lint` | ESLintによるコード品質チェック |
+| `pnpm lint` | oxlintによるコード品質チェック |
 | `pnpm typecheck` | TypeScript型チェック |
 | `pnpm test` | Vitestによるユニットテスト |
 
