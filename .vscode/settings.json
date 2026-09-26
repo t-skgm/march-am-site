@@ -1,11 +1,10 @@
 {
-  "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
-  "prettier.documentSelectors": ["**/*.astro"],
+  "oxc.enable": true,
   "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "astro-build.astro-vscode"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "vscode.markdown-language-features",
     "files.trimTrailingWhitespace": false,
     "editor.formatOnSave": false
   }
