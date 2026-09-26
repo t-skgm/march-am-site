@@ -17,8 +17,12 @@ const { isTop = false } = Astro.props
       <li>
         <a href={routes.article.index}>Article</a>
         <ul>
-          <li><span aria-hidden="true">→</span> <a href={routes.article.category.index}>Category</a></li>
-          <li><span aria-hidden="true">→</span> <a href={routes.article.tag.index}>Tag</a></li>
+          <li>
+            <span aria-hidden="true">→</span> <a href={routes.article.category.index}>Category</a>
+          </li>
+          <li>
+            <span aria-hidden="true">→</span> <a href={routes.article.tag.index}>Tag</a>
+          </li>
         </ul>
       </li>
       <li>
@@ -33,16 +37,20 @@ const { isTop = false } = Astro.props
         class="sns-icon sns-x"
         href={`https://x.com/${site.author.twitter}`}
         target="_blank"
-        rel="noopener">X: @march_am_</a
+        rel="noopener"
       >
+        X: @march_am_
+      </a>
     </li>
     <li>
       <a
         class="sns-icon sns-apple"
         href={`https://music.apple.com/profile/${site.author.appleMusic}`}
         target="_blank"
-        rel="noopener">Apple Music: march-am</a
+        rel="noopener"
       >
+        Apple Music: march-am
+      </a>
     </li>
   </ul>
 </footer>
@@ -144,10 +152,10 @@ const { isTop = false } = Astro.props
     height: 2.5rem;
   }
 
-  /* 公式ロゴは白塗りのため、形だけマスクに使い他アイコンと同じ色で塗る */
   .sns-x {
+    /* 公式ロゴは白塗りのため、形だけマスクに使い他アイコンと同じ色で塗る */
     background-color: #4a4740;
-    mask: url(../../assets/images/icons/logo.svg) center / 1.75rem no-repeat;
+    mask: url(../../assets/images/icons/logo_x.svg) center / 1.75rem no-repeat;
   }
 
   .sns-apple {
