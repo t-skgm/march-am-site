@@ -1,0 +1,98 @@
+---
+import { routes } from '../../constants/routes'
+
+export type ArticlePagerItem = {
+  slug: string
+  title: string
+}
+
+export type Props = {
+  /** postedAt が新しい方の記事（存在しない場合は最新記事） */
+  newerArticle?: ArticlePagerItem | undefined
+  /** postedAt が古い方の記事（存在しない場合は最古記事） */
+  olderArticle?: ArticlePagerItem | undefined
+}
+
+const { newerArticle, olderArticle } = Astro.props
+---
+
+{
+  (newerArticle != null || olderArticle != null) && (
+    <nav aria-label="前後の記事" class="pager">
+      <div class="pager-slot">
+        {newerArticle != null && (
+          <a href={routes.article.slug(newerArticle.slug)} class="pager-link">
+            <span class="pager-label">
+              <span aria-hidden="true">←</span> 新しい記事
+            </span>
+            <span class="pager-title">{newerArticle.title}</span>
+          </a>
+        )}
+      </div>
+      <div class="pager-slot pager-slot--older">
+        {olderArticle != null && (
+          <a href={routes.article.slug(olderArticle.slug)} class="pager-link pager-link--older">
+            <span class="pager-label">
+              古い記事 <span aria-hidden="true">→</span>
+            </span>
+            <span class="pager-title">{olderArticle.title}</span>
+          </a>
+        )}
+      </div>
+    </nav>
+  )
+}
+
+<style>
+  @reference '../../styles/global.css';
+
+  .pager {
+    @apply grid grid-cols-1 gap-3 my-10;
+  }
+
+  .pager-slot {
+    @apply min-h-0;
+  }
+
+  .pager-link {
+    @apply flex flex-col gap-1 rounded-lg border border-greenish-dark/15 px-4 py-3;
+    @apply no-underline hover:bg-greenlite transition-colors duration-150;
+    min-height: 24px;
+  }
+
+  .pager-link:hover .pager-title {
+    @apply underline;
+  }
+
+  .pager-link:focus-visible {
+    outline: 2px solid var(--color-maccha-dark);
+    outline-offset: 2px;
+  }
+
+  .pager-label {
+    @apply text-sm text-greenish italic;
+    font-family: 'Lora', serif;
+  }
+
+  .pager-title {
+    @apply text-base font-medium text-greenish-dark;
+  }
+
+  .pager-link--older {
+    @apply items-start;
+  }
+
+  @media (min-width: 1024px) {
+    .pager {
+      @apply grid-cols-2;
+    }
+
+    .pager-slot--older {
+      @apply text-right;
+    }
+
+    .pager-link--older {
+      @apply items-end;
+    }
+  }
+</style>
