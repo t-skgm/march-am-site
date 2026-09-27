@@ -17,7 +17,7 @@ const {
 } = Astro.props
 ---
 
-<li class="card relative py-2 list-none">
+<li class="card relative pt-2 mb-2 list-none">
   <div class="text-sm mb-1">
     <time datetime={postedAt.toISOString()}>{formatDateJp(postedAt)}</time>
   </div>
@@ -51,8 +51,8 @@ const {
         {tag}
       </a>
     ))}
+    <AdminEditLink entryId={id} class="relative z-10" />
   </div>
-  <AdminEditLink entryId={id} />
 </li>
 
 <style>
@@ -103,7 +103,8 @@ const {
     outline-offset: 2px;
   }
 
-  .card:hover .card-link {
+  /* 疑似要素 ::after のホバーも .card-link のホバーとして扱われるため、タグ等のホバー時は反応しない */
+  .card-link:hover {
     @apply text-maccha-dark underline;
   }
 </style>
