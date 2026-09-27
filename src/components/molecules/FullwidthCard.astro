@@ -103,7 +103,8 @@ const {
     outline-offset: 2px;
   }
 
-  .card:hover .card-link {
+  /* 疑似要素 ::after のホバーも .card-link のホバーとして扱われるため、タグ等のホバー時は反応しない */
+  .card-link:hover {
     @apply text-maccha-dark underline;
   }
 </style>
