@@ -17,7 +17,7 @@ const {
 } = Astro.props
 ---
 
-<li class="card relative py-2 list-none">
+<li class="card relative pt-2 mb-2 list-none">
   <div class="text-sm mb-1">
     <time datetime={postedAt.toISOString()}>{formatDateJp(postedAt)}</time>
   </div>
@@ -52,7 +52,7 @@ const {
       </a>
     ))}
   </div>
-  <AdminEditLink entryId={id} />
+  <AdminEditLink entryId={id} class="relative z-10" />
 </li>
 
 <style>
