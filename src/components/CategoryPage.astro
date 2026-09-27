@@ -22,9 +22,9 @@ const title = `Category: ${category} (page ${page.currentPage})`
 
 <Layout
   title={title}
-  canonicalPath={isIndexPage != null
-    ? routes.article.category.page(category.toString(), 1)
-    : undefined}
+  canonicalPath={
+    isIndexPage != null ? routes.article.category.page(category.toString(), 1) : undefined
+  }
   noPagefindIndex
 >
   <Main>
@@ -33,7 +33,8 @@ const title = `Category: ${category} (page ${page.currentPage})`
     <Paginate
       page={page}
       urlWithPage={(pageNum) =>
-        routes.article.category.page(category.toString(), pageNum as number)}
+        routes.article.category.page(category.toString(), pageNum as number)
+      }
     />
   </Main>
 </Layout>

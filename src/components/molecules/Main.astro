@@ -8,29 +8,25 @@ export type Props = {
 const { backTo, isTop = false } = Astro.props
 ---
 
-{
-  !isTop && (
-    <nav class="py-6">
-      <a href={routes.index} class="back-to-top inline-block py-1">
-        <span aria-hidden="true">←</span> back to top
-      </a>
-    </nav>
-  )
-}
+{!isTop && (
+  <nav class="py-6">
+    <a href={routes.index} class="back-to-top inline-block py-1">
+      <span aria-hidden="true">←</span> back to top
+    </a>
+  </nav>
+)}
 
 <main>
   <slot />
 </main>
 
-{
-  backTo != null && (
-    <nav class="py-6">
-      <a href={backTo} class="back-to inline-block py-1">
-        <span aria-hidden="true">←</span> back to articles
-      </a>
-    </nav>
-  )
-}
+{backTo != null && (
+  <nav class="py-6">
+    <a href={backTo} class="back-to inline-block py-1">
+      <span aria-hidden="true">←</span> back to articles
+    </a>
+  </nav>
+)}
 
 <style>
   @reference '../../styles/global.css';

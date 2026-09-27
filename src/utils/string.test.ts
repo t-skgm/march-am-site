@@ -14,7 +14,8 @@ describe('extractPlainTextFromHtml', () => {
   })
 
   test('strips inline tags inside the paragraph', () => {
-    const html = '<p>これは<strong>強調</strong>された<a href="https://example.com">リンク</a>を含む文章です。</p>'
+    const html =
+      '<p>これは<strong>強調</strong>された<a href="https://example.com">リンク</a>を含む文章です。</p>'
     expect(extractPlainTextFromHtml(html)).toBe('これは強調されたリンクを含む文章です。')
   })
 

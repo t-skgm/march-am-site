@@ -21,15 +21,13 @@ const title = 'Tag: All'
   <Main backTo={routes.article.index}>
     <h1>{title}</h1>
     <ul>
-      {
-        tagCounts.map(({ tag, count }) => (
-          <li>
-            <a href={routes.article.tag.page(cleanPathParam(tag), 1)}>
-              {tag} <span class="text-sm text-maccha-dark">({count})</span>
-            </a>
-          </li>
-        ))
-      }
+      {tagCounts.map(({ tag, count }) => (
+        <li>
+          <a href={routes.article.tag.page(cleanPathParam(tag), 1)}>
+            {tag} <span class="text-sm text-maccha-dark">({count})</span>
+          </a>
+        </li>
+      ))}
     </ul>
   </Main>
 </Layout>

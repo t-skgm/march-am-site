@@ -2,7 +2,7 @@
   "oxc.enable": true,
   "editor.formatOnSave": true,
   "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
     "editor.defaultFormatter": "vscode.markdown-language-features",

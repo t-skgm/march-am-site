@@ -39,7 +39,8 @@ const {
   noPagefindIndex = false
 } = Astro.props
 
-const pageDescription = description != null && description.length > 0 ? description : site.description
+const pageDescription =
+  description != null && description.length > 0 ? description : site.description
 
 const articleTitle = (title ?? frontmatter?.title) as string | undefined
 const pageTitle = (divider: string) =>
@@ -118,8 +119,9 @@ const socialImageURL: string = (() => {
     <a
       href="#content"
       class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:shadow"
-      >本文へスキップ</a
     >
+      本文へスキップ
+    </a>
     <Logo />
     <SearchModal client:load />
     <!-- <Header /> -->
@@ -138,7 +140,6 @@ const socialImageURL: string = (() => {
 
       revealAdminLinksIfAdmin()
     </script>
-
     <style>
       @reference '../styles/global.css';
 

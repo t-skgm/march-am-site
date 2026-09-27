@@ -16,32 +16,30 @@ export type Props = {
 const { newerArticle, olderArticle } = Astro.props
 ---
 
-{
-  (newerArticle != null || olderArticle != null) && (
-    <nav aria-label="前後の記事" class="pager">
-      <div class="pager-slot">
-        {newerArticle != null && (
-          <a href={routes.article.slug(newerArticle.slug)} class="pager-link">
-            <span class="pager-label">
-              <span aria-hidden="true">←</span> 新しい記事
-            </span>
-            <span class="pager-title">{newerArticle.title}</span>
-          </a>
-        )}
-      </div>
-      <div class="pager-slot pager-slot--older">
-        {olderArticle != null && (
-          <a href={routes.article.slug(olderArticle.slug)} class="pager-link pager-link--older">
-            <span class="pager-label">
-              古い記事 <span aria-hidden="true">→</span>
-            </span>
-            <span class="pager-title">{olderArticle.title}</span>
-          </a>
-        )}
-      </div>
-    </nav>
-  )
-}
+{(newerArticle != null || olderArticle != null) && (
+  <nav aria-label="前後の記事" class="pager">
+    <div class="pager-slot">
+      {newerArticle != null && (
+        <a href={routes.article.slug(newerArticle.slug)} class="pager-link">
+          <span class="pager-label">
+            <span aria-hidden="true">←</span> 新しい記事
+          </span>
+          <span class="pager-title">{newerArticle.title}</span>
+        </a>
+      )}
+    </div>
+    <div class="pager-slot pager-slot--older">
+      {olderArticle != null && (
+        <a href={routes.article.slug(olderArticle.slug)} class="pager-link pager-link--older">
+          <span class="pager-label">
+            古い記事 <span aria-hidden="true">→</span>
+          </span>
+          <span class="pager-title">{olderArticle.title}</span>
+        </a>
+      )}
+    </div>
+  </nav>
+)}
 
 <style>
   @reference '../../styles/global.css';

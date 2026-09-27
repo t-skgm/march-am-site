@@ -12,20 +12,18 @@ const { entries, fullwidth } = Astro.props
 ---
 
 <ul class="grid grid-cols-1 gap-4 p-0" data-pagefind-ignore="all">
-  {
-    entries.map((e) =>
-      fullwidth === true ? (
-        <FullwidthCard entry={e} linkMapper={routes.article.slug} />
-      ) : (
-        <ListItem
-          title={e.title}
-          date={e.postedAt}
-          href={routes.article.slug(e.slug)}
-          entryId={e.id}
-        />
-      )
+  {entries.map((e) =>
+    fullwidth === true ? (
+      <FullwidthCard entry={e} linkMapper={routes.article.slug} />
+    ) : (
+      <ListItem
+        title={e.title}
+        date={e.postedAt}
+        href={routes.article.slug(e.slug)}
+        entryId={e.id}
+      />
     )
-  }
+  )}
 </ul>
 
 <style></style>

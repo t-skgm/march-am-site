@@ -2,10 +2,9 @@ import { type Article, type ArticleEntry } from './interfaces'
 import { processMarkdown } from '../../utils/remark'
 
 export const fetchArticleBySlug = async (args: { slug: string }) => {
-  const response = await fetch(
-    `/api/preview-article?slug=${encodeURIComponent(args.slug)}`,
-    { credentials: 'same-origin' }
-  )
+  const response = await fetch(`/api/preview-article?slug=${encodeURIComponent(args.slug)}`, {
+    credentials: 'same-origin'
+  })
 
   if (!response.ok) {
     throw new Error(`Preview API request failed: ${response.status}`)

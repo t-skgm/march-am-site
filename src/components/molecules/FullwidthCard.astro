@@ -21,39 +21,38 @@ const {
   <div class="text-sm mb-1">
     <time datetime={postedAt.toISOString()}>{formatDateJp(postedAt)}</time>
   </div>
-  {
-    thumbnail != null ? (
-      <div class="thumbnail">
-        {/* タイトルが直後にあるため装飾扱い */}
-        <img src={thumbnail} alt="" loading="lazy" decoding="async" />
-      </div>
-    ) : (
-      <div class="thumbnail-placeholder" aria-hidden="true">
-        <Image src={birdImage} alt="" />
-      </div>
-    )
-  }
+  {thumbnail != null ? (
+    <div class="thumbnail">
+      {/* タイトルが直後にあるため装飾扱い */}
+      <img src={thumbnail} alt="" loading="lazy" decoding="async" />
+    </div>
+  ) : (
+    <div class="thumbnail-placeholder" aria-hidden="true">
+      <Image src={birdImage} alt="" />
+    </div>
+  )}
   <h2 class="card-title">
-    <a href={linkMapper(slug)} class="card-link">{title}</a>
+    <a href={linkMapper(slug)} class="card-link">
+      {title}
+    </a>
   </h2>
   <div class="relative z-10 flex flex-wrap gap-2 mt-2">
     <a
       href={routes.article.category.page(category)}
       class="text-sm uppercase no-underline hover:underline bg-maccha-dark text-greenlite px-2 py-1"
-      >{category}</a
     >
-    {
-      tags?.map((tag) => (
-        <a
-          href={routes.article.tag.page(tag)}
-          class="text-sm text-maccha-dark no-underline hover:underline border-maccha-dark border rounded-3xl px-2 py-1"
-        >
-          {tag}
-        </a>
-      ))
-    }
-    <AdminEditLink entryId={id} />
+      {category}
+    </a>
+    {tags?.map((tag) => (
+      <a
+        href={routes.article.tag.page(tag)}
+        class="text-sm text-maccha-dark no-underline hover:underline border-maccha-dark border rounded-3xl px-2 py-1"
+      >
+        {tag}
+      </a>
+    ))}
   </div>
+  <AdminEditLink entryId={id} />
 </li>
 
 <style>

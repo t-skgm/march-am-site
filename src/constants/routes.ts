@@ -21,7 +21,8 @@ export const routes = {
       index: '/article/tag/',
       /** @deprecated 通常 page を利用 */
       tag: (tag: string) => `/article/tag/${toSafePathSegment(tag)}/`,
-      page: (tag: string, p: number = 1) => `/article/tag/${toSafePathSegment(tag)}/${p.toString()}/`
+      page: (tag: string, p: number = 1) =>
+        `/article/tag/${toSafePathSegment(tag)}/${p.toString()}/`
     },
     category: {
       index: '/article/category/',

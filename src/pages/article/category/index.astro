@@ -21,15 +21,13 @@ const title = 'Category: All'
   <Main backTo={routes.article.index}>
     <h1>{title}</h1>
     <ul>
-      {
-        categoryCounts.map(({ category, count }) => (
-          <li>
-            <a href={routes.article.category.page(cleanPathParam(category), 1)}>
-              {category} <span class="text-sm text-maccha-dark">({count})</span>
-            </a>
-          </li>
-        ))
-      }
+      {categoryCounts.map(({ category, count }) => (
+        <li>
+          <a href={routes.article.category.page(cleanPathParam(category), 1)}>
+            {category} <span class="text-sm text-maccha-dark">({count})</span>
+          </a>
+        </li>
+      ))}
     </ul>
   </Main>
 </Layout>
