@@ -23,11 +23,33 @@ import { Image } from 'astro:assets'
     width: 55px;
   }
 
-  /* スマホ幅では左の帯が狭く本文と重なってしまうため非表示にする。
-     トップへの導線は back-to-top リンクやフッターの Top リンクで確保している。 */
   @media (max-width: 1023px) {
     .logo {
-      display: none;
+      position: relative;
+      top: auto;
+      left: auto;
+      margin: 0 24px;
+      height: 88px;
+      border-bottom: 1px solid #4a474020;
+    }
+
+    .logo a {
+      display: block;
+      position: relative;
+      width: 164px;
+      height: 76px;
+    }
+
+    .logo img {
+      position: absolute;
+      width: 34px;
+      height: auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(90deg);
+      filter: brightness(0) saturate(100%) invert(40%) sepia(13%) saturate(805%) hue-rotate(61deg)
+        brightness(93%) contrast(87%) drop-shadow(0.4px 0 0 #56704f) drop-shadow(-0.4px 0 0 #56704f)
+        drop-shadow(0 0.3px 0 #56704f);
     }
   }
 

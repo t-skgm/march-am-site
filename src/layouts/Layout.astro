@@ -175,15 +175,22 @@ const socialImageURL: string = (() => {
 
       /* less than lg */
       @media (max-width: 1023px) {
+        body,
         .body-top {
           background:
-            repeat-y 0 / 50px url(../assets/images/back_gr.jpg),
-            repeat-y right 0% / 38px url(../assets/images/back_or.jpg);
+            repeat-y left top / 10px url(../assets/images/back_gr.jpg),
+            repeat-y right top / 10px url(../assets/images/back_or.jpg);
+          background-color: #f7f8f7;
+        }
+
+        .content,
+        .content-top {
+          margin: 0 10px;
+          padding: 0 14px 3rem;
         }
 
         .content-top {
-          @apply pl-4 pt-6;
-          margin: 0 50px 0 40px;
+          padding-top: 8px;
         }
 
         /* スマホ幅では本文末尾（Main.astro の main::after）の鳥と重複するため非表示 */

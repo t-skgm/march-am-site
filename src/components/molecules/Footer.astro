@@ -2,163 +2,128 @@
 import { routes } from '../../constants/routes'
 import { site } from '../../constants/site'
 
-export type Props = {
-  isTop?: boolean
-}
-const { isTop = false } = Astro.props
+export type Props = { isTop?: boolean }
 ---
 
 <footer>
-  <nav class="links" aria-label="サイトナビゲーション">
-    <ul class:list={[{ 'gutter-top': isTop, gutter: !isTop }]}>
+  <div class="footer-inner">
+    <nav aria-label="サイトナビゲーション">
+      <ul class="primary-links">
+        <li>
+          <a href={routes.index}>Top</a>
+        </li>
+        <li>
+          <a href={routes.article.index}>Article</a>
+        </li>
+        <li>
+          <a href={routes.about}>About</a>
+        </li>
+      </ul>
+      <ul class="browse-links">
+        <li>
+          <a href={routes.article.category.index}>Category</a>
+        </li>
+        <li>
+          <a href={routes.article.tag.index}>Tag</a>
+        </li>
+      </ul>
+    </nav>
+    <ul class="sns">
       <li>
-        <a href={routes.index}>Top</a>
+        <a
+          class="sns-icon sns-x"
+          href={`https://x.com/${site.author.twitter}`}
+          target="_blank"
+          rel="noopener"
+        >
+          X: @march_am_
+        </a>
       </li>
       <li>
-        <a href={routes.article.index}>Article</a>
-        <ul>
-          <li>
-            <span aria-hidden="true">→</span> <a href={routes.article.category.index}>Category</a>
-          </li>
-          <li>
-            <span aria-hidden="true">→</span> <a href={routes.article.tag.index}>Tag</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href={routes.about}>About</a>
+        <a
+          class="sns-icon sns-apple"
+          href={`https://music.apple.com/profile/${site.author.appleMusic}`}
+          target="_blank"
+          rel="noopener"
+        >
+          Apple Music: march-am
+        </a>
       </li>
     </ul>
-  </nav>
-
-  <ul class:list={['sns', { 'gutter-top': isTop, gutter: !isTop }]}>
-    <li>
-      <a
-        class="sns-icon sns-x"
-        href={`https://x.com/${site.author.twitter}`}
-        target="_blank"
-        rel="noopener"
-      >
-        X: @march_am_
-      </a>
-    </li>
-    <li>
-      <a
-        class="sns-icon sns-apple"
-        href={`https://music.apple.com/profile/${site.author.appleMusic}`}
-        target="_blank"
-        rel="noopener"
-      >
-        Apple Music: march-am
-      </a>
-    </li>
-  </ul>
+  </div>
 </footer>
 
 <style>
   @reference '../../styles/global.css';
 
   footer {
-    background-color: rgb(251, 243, 178, 0.7);
+    margin: 0 10px;
+    background: #fbf3b266;
+    border-top: 1px solid #4a474020;
   }
-
-  .gutter {
-    @apply p-10;
-    margin: 0 12px 0 12px;
+  .footer-inner {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 28px 14px 32px;
   }
-
-  .gutter-top {
-    @apply pt-10;
-    @apply my-0;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-
-  /* less than lg */
-  @media (max-width: 1024px) {
-    .gutter-top {
-      margin: 0 50px 0 40px;
-    }
+  .primary-links {
+    gap: 28px;
   }
-
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 18px;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .browse-links {
+    gap: 24px;
+    margin-top: 4px;
+  }
+  .browse-links a {
+    font-size: 14px;
+    color: var(--color-maccha-dark);
+  }
+  .sns {
+    border-top: 1px solid #4a474020;
+    padding-top: 20px;
+    margin-top: 20px;
+    gap: 24px;
+  }
+  .sns-icon {
+    display: block;
+    font-size: 0;
+    width: 44px;
+    height: 44px;
+  }
+  .sns-x {
+    background-color: #4a4740;
+    mask: url(../../assets/images/icons/logo_x.svg) center / 24px no-repeat;
+  }
+  .sns-apple {
+    background: url(../../assets/images/icons/logo_apple.svg) center / 32px no-repeat;
+  }
   @media (min-width: 1024px) {
-    .gutter {
-      @apply px-20;
+    footer {
       margin-left: 300px;
       margin-right: 250px;
     }
-  }
-
-  .links {
-    @apply pb-0;
-    margin-left: 300px;
-    margin-right: 250px;
-
-    background-color: rgb(255 255 255 / 20%);
-    font-family: 'Lora', serif;
-  }
-
-  /* less than lg */
-  @media (max-width: 1024px) {
-    .links {
-      margin: 0 12px 0 12px;
+    .footer-inner {
+      padding: 40px;
     }
-  }
-
-  .links > ul {
-    @apply w-36 px-0 mx-auto;
-  }
-
-  .links li {
-    @apply block leading-10;
-  }
-
-  .links li ul {
-    @apply m-0;
-  }
-
-  .links a {
-    @apply text-xl italic uppercase no-underline font-semibold leading-10 text-gray-900;
-  }
-
-  .links li li a {
-    @apply text-sm italic inline-flex items-center min-h-6 min-w-6;
-  }
-
-  .links::after {
-    @apply block mx-auto mt-8 border border-greenish-dark border-solid;
-    width: 30%;
-    content: '';
-  }
-
-  /* less than lg */
-  @media (max-width: 1024px) {
-    .links::after {
-      @apply w-40;
-    }
-  }
-
-  .sns {
-    @apply pb-12 flex justify-center gap-8;
-    background-color: rgb(255 255 255 / 20%);
-  }
-
-  .sns li {
-    @apply list-none;
-  }
-
-  .sns-icon {
-    @apply block text-maccha;
-    font-size: 0;
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  .sns-x {
-    /* 公式ロゴは白塗りのため、形だけマスクに使い他アイコンと同じ色で塗る */
-    background-color: #4a4740;
-    mask: url(../../assets/images/icons/logo_x.svg) center / 1.75rem no-repeat;
-  }
-
-  .sns-apple {
-    background: 0 / 2.5rem url(../../assets/images/icons/logo_apple.svg);
   }
 </style>

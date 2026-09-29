@@ -26,4 +26,10 @@ const { entries, fullwidth } = Astro.props
   )}
 </ul>
 
-<style></style>
+<style>
+  @media (max-width: 1023px) {
+    ul {
+      gap: 0;
+    }
+  }
+</style>

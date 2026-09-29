@@ -81,7 +81,7 @@ export const SearchModal: FunctionComponent = () => {
       <button
         type="button"
         onClick={open}
-        class="fixed z-50 flex items-center justify-center w-10 h-10 rounded-full bg-white/90 shadow-md hover:shadow-lg text-greenish hover:text-greenish-dark transition-all duration-200 cursor-pointer border-none top-4 right-4 lg:top-8 lg:right-8 lg:w-12 lg:h-12"
+        class="absolute lg:fixed z-50 flex items-center justify-center w-11 h-11 rounded-full bg-white/90 shadow-sm hover:shadow-lg text-greenish hover:text-greenish-dark transition-all duration-200 cursor-pointer border-none top-5 right-6 lg:top-8 lg:right-8 lg:w-12 lg:h-12"
         aria-label="検索を開く"
         title="検索 (Ctrl+K / Cmd+K)"
       >
