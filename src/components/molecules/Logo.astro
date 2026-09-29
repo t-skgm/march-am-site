@@ -1,12 +1,28 @@
 ---
 import { routes } from '../../constants/routes'
 import logo from '../../assets/images/logo.svg'
+import logoSource from '../../assets/images/logo.svg?raw'
 import { Image } from 'astro:assets'
+
+// 元の文字のパスを保ち、横組み用にインクの色だけ揃える。
+const inkLogo = logoSource.replaceAll('#F7F8F7', '#4a4740')
 ---
 
 <nav class="logo">
-  <a href={routes.index}>
-    <Image src={logo} width="80" alt="march-am トップへ" />
+  <a href={routes.index} aria-label="march-am トップへ">
+    <Image src={logo} width="80" alt="" />
+    <svg class="handwritten-logo" viewBox="0 0 680 220" aria-hidden="true" focusable="false">
+      <g transform="translate(656 0) rotate(90)">
+        <Fragment set:html={inkLogo} />
+      </g>
+      <g fill="none" stroke="#4a4740" stroke-linecap="round" stroke-linejoin="round">
+        <path
+          d="M 35 184 C 137 164, 272 188, 398 176 S 567 164, 640 168 C 650 169, 629 181, 614 184"
+          stroke-width="3"
+        />
+        <path d="M 66 197 C 124 188, 192 194, 225 190" stroke-width="1.8" />
+      </g>
+    </svg>
   </a>
 </nav>
 
@@ -23,11 +39,45 @@ import { Image } from 'astro:assets'
     width: 55px;
   }
 
-  /* スマホ幅では左の帯が狭く本文と重なってしまうため非表示にする。
-     トップへの導線は back-to-top リンクやフッターの Top リンクで確保している。 */
+  .handwritten-logo {
+    display: none;
+  }
+
+  .logo a:focus-visible {
+    outline: 2px solid var(--color-maccha-dark);
+    outline-offset: 4px;
+  }
+
   @media (max-width: 1023px) {
     .logo {
+      position: relative;
+      top: auto;
+      left: auto;
+      margin: 0 24px;
+      height: 116px;
+      border-bottom: 1px solid #4a474020;
+    }
+
+    .logo a {
+      display: block;
+      position: relative;
+      top: 14px;
+      width: 260px;
+      height: 92px;
+    }
+
+    .logo img {
       display: none;
+    }
+
+    .handwritten-logo {
+      display: block;
+      position: absolute;
+      width: 260px;
+      height: auto;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
     }
   }
 

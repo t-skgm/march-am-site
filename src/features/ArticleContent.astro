@@ -3,6 +3,7 @@ import { routes } from '../constants/routes'
 import type { Article } from '../infra/contentful/interfaces'
 import { formatDateJp } from '../utils/date'
 import AdminEditLink from '../components/molecules/AdminEditLink.astro'
+import TaxonomyLink from '../components/molecules/TaxonomyLink.astro'
 
 export type Props = {
   entry: Article
@@ -22,33 +23,33 @@ const { id, title, postedAt, category, tags, thumbnail, slug, content } = entry
   </h1>
 </header>
 
-<div class="mt-6 mb-2" data-pagefind-ignore>
-  <a
-    href={routes.article.category.page(category)}
-    class="uppercase no-underline hover:underline inline-block py-1"
-  >
-    {category}
-  </a>{' '}
-  <span aria-hidden="true">|</span>{' '}
-  <time datetime={postedAt.toISOString()}>{formatDateJp(postedAt)}</time>
-  <AdminEditLink entryId={id} class="ml-2" />
-</div>
-{tags != null && (
-  <div class="tag-list" data-pagefind-ignore>
-    {tags.map((tag) => (
-      <a href={routes.article.tag.page(tag)} class="tag">
-        {tag}
-      </a>
-    ))}
+<div class="article-details" data-pagefind-ignore>
+  <div class="article-meta">
+    <time datetime={postedAt.toISOString()}>{formatDateJp(postedAt)}</time>
+    <TaxonomyLink label={category} kind="category" />
+    <AdminEditLink entryId={id} />
   </div>
-)}
+  {tags != null && tags.length > 0 && (
+    <div class="article-tag-list">
+      {tags.map((tag) => (
+        <TaxonomyLink label={tag} kind="tag" />
+      ))}
+    </div>
+  )}
+</div>
 
-<article class="post-content mt-10" set:html={content} />
+<article class="post-content" set:html={content} />
 
 <style is:global>
   @reference '../styles/global.css';
 
   .post-content {
+    display: flow-root;
+
+    > :first-child {
+      margin-top: 0;
+    }
+
     ul,
     ol {
       @apply mr-0 pr-0;
@@ -76,17 +77,30 @@ const { id, title, postedAt, category, tags, thumbnail, slug, content } = entry
     }
   }
 
-  .tag-list {
-    @apply flex flex-wrap gap-4 my-6;
+  /* 一覧と共通のメタデータ・タグを使用する。 */
+  .article-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 24px 0 32px;
   }
 
-  .tag {
-    @apply no-underline hover:underline flex items-center min-h-6 min-w-6;
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+  }
 
-    &::before {
-      @apply h-4 w-4 inline-block mr-2;
-      content: '';
-      background: url(../assets/images/icons/tag.svg);
-    }
+  .article-meta time {
+    color: #68665e;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .article-tag-list {
+    @apply flex flex-wrap;
+    gap: 8px;
+    margin: 0;
   }
 </style>

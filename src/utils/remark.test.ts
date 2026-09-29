@@ -46,7 +46,6 @@ paragraph.`)
           <div class="remark-link-card-plus__description"></div>
         </div>
         <div class="remark-link-card-plus__meta">
-          <img src="data:," class="remark-link-card-plus__favicon" width="14" height="14" alt="">
           <span class="remark-link-card-plus__url">example.com</span>
         </div>
       </div>

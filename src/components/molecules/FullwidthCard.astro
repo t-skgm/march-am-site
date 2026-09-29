@@ -1,10 +1,10 @@
 ---
-import { routes } from '../../constants/routes'
 import type { Article } from '../../infra/contentful/interfaces'
 import { formatDateJp } from '../../utils/date'
 import birdImage from '../../assets/images/bird-silhouette-left.png'
 import { Image } from 'astro:assets'
 import AdminEditLink from './AdminEditLink.astro'
+import TaxonomyLink from './TaxonomyLink.astro'
 
 export interface Props {
   entry: Article
@@ -18,8 +18,11 @@ const {
 ---
 
 <li class="card relative pt-2 mb-2 list-none">
-  <div class="text-sm mb-1">
+  <div class="card-meta text-sm mb-1">
     <time datetime={postedAt.toISOString()}>{formatDateJp(postedAt)}</time>
+    <span class="mobile-category">
+      <TaxonomyLink label={category} kind="category" />
+    </span>
   </div>
   {thumbnail != null ? (
     <div class="thumbnail">
@@ -36,20 +39,12 @@ const {
       {title}
     </a>
   </h2>
-  <div class="relative z-10 flex flex-wrap gap-2 mt-2">
-    <a
-      href={routes.article.category.page(category)}
-      class="text-sm uppercase no-underline hover:underline bg-maccha-dark text-greenlite px-2 py-1"
-    >
-      {category}
-    </a>
+  <div class="card-tags relative z-10 flex flex-wrap gap-2 mt-2">
+    <span class="desktop-category">
+      <TaxonomyLink label={category} kind="category" />
+    </span>
     {tags?.map((tag) => (
-      <a
-        href={routes.article.tag.page(tag)}
-        class="text-sm text-maccha-dark no-underline hover:underline border-maccha-dark border rounded-3xl px-2 py-1"
-      >
-        {tag}
-      </a>
+      <TaxonomyLink label={tag} kind="tag" />
     ))}
     <AdminEditLink entryId={id} class="relative z-10" />
   </div>
@@ -106,5 +101,61 @@ const {
   /* 疑似要素 ::after のホバーも .card-link のホバーとして扱われるため、タグ等のホバー時は反応しない */
   .card-link:hover {
     @apply text-maccha-dark underline;
+  }
+
+  .mobile-category {
+    display: none;
+  }
+
+  @media (max-width: 1023px) {
+    .card {
+      padding: 24px 0 28px;
+      margin: 0;
+      border-bottom: 1px solid #4a474020;
+    }
+
+    .card:first-child {
+      padding-top: 8px;
+    }
+
+    .thumbnail-placeholder,
+    .desktop-category {
+      display: none;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    .card-meta time {
+      color: #68665e;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mobile-category {
+      display: inline-flex;
+    }
+
+    .thumbnail {
+      height: auto;
+      aspect-ratio: 16 / 10;
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      line-height: 1.65;
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .card-tags {
+      gap: 6px;
+      margin-top: 8px;
+    }
   }
 </style>
