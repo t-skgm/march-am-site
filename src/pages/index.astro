@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import ArticleList from '../features/ArticleList.astro'
 import Main from '../components/molecules/Main.astro'
 import { routes } from '../constants/routes'
+import { site } from '../constants/site'
 import { fetchArticlesFirstPage } from '../infra/contentful/article'
 import '../styles/global.css'
 import '../styles/remark-link-card.css'
@@ -12,7 +13,7 @@ const firstPage = await fetchArticlesFirstPage()
 
 <Layout isTop>
   <Main isTop>
-    <h1>Article</h1>
+    <h1 class="sr-only">{site.title}</h1>
     <ArticleList entries={firstPage.data} fullwidth />
     <p>
       <a href={routes.article.page(2)}>
