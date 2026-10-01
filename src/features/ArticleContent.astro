@@ -15,10 +15,7 @@ const { id, title, postedAt, category, tags, thumbnail, slug, content } = entry
 
 <header data-pagefind-ignore>
   {thumbnail != null && <img src={thumbnail} alt={`Eye catch of ${title}`} class="mb-8" />}
-  <h1
-    class="text-3xl font-bold wrap-anywhere text-balance [word-break:auto-phrase]"
-    data-pagefind-meta="title"
-  >
+  <h1 class="content-header" data-pagefind-meta="title">
     <a href={routes.article.slug(slug)}>{title}</a>
   </h1>
 </header>
@@ -43,8 +40,14 @@ const { id, title, postedAt, category, tags, thumbnail, slug, content } = entry
 <style is:global>
   @reference '../styles/global.css';
 
+  .content-header {
+    @apply text-2xl font-bold wrap-anywhere;
+    font-feature-settings: 'halt';
+  }
+
   .post-content {
     display: flow-root;
+    font-feature-settings: 'halt';
 
     > :first-child {
       margin-top: 0;
